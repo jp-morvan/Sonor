@@ -1,5 +1,15 @@
 <audio id="audio" src="/uploads/audio/empty.ogg" controls preload></audio>
 <script type="text/javascript">
-//  var ap = new AudioPlayer(document.getElementById('audio'));
-//alert(ap.getTimeToWaitToTest());
+function test()
+{
+  var player = document.getElementById('audio');
+  var ap = new AudioPlayer(player);
+  while(ap.goToNextSong() !== true)
+  {
+    var wait = ap.getTimeToWaitToTest();
+    setInterval(alert,wait);
+  }
+  alert('Chanson suivante !');
+}
 </script>
+<a onclick="test(); return false;">test</a>
