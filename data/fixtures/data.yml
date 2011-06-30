@@ -1,0 +1,102 @@
+Chanson:
+  Chanson_1:
+    titre: Burnin
+    duree: '00:03:00'
+    Album: Album_2
+    slug: burnin
+  Chanson_2:
+    titre: 'Around the world'
+    duree: '00:07:00'
+    Album: Album_2
+    slug: around-the-world
+  Chanson_3:
+    titre: 'harder better'
+    duree: '00:04:00'
+    Album: Album_3
+    slug: harder-better
+  Chanson_4:
+    titre: Ensemble
+    duree: '00:03:00'
+    Album: Album_1
+    slug: ensemble
+  Chanson_5:
+    titre: 'Tournent les violons'
+    duree: '00:02:00'
+    Album: Album_1
+    slug: tournent-les-violons
+Album:
+  Album_1:
+    titre: 'chanson pour les pieds'
+    Artiste: Artiste_1
+    slug: chanson-pour-les-pieds
+  Album_2:
+    titre: homework
+    Artiste: Artiste_2
+    slug: homework
+  Album_3:
+    titre: discovery
+    Artiste: Artiste_2
+    slug: discovery
+  Album_4:
+    titre: test
+    Artiste: Artiste_1
+    slug: test
+Playlist:
+  Playlist_1:
+    titre: 'j''aime bien daft punk'
+    sfGuardUser: sfGuardUser_1
+    slug: j-aime-bien-daft-punk
+Artiste:
+  Artiste_1:
+    nom: 'jj goldman'
+    slug: jj-goldman
+  Artiste_2:
+    nom: 'daft punk'
+    slug: daft-punk
+ChansonsPlaylists:
+  ChansonsPlaylists_1:
+    Playlist: Playlist_1
+    Chanson: Chanson_1
+  ChansonsPlaylists_2:
+    Playlist: Playlist_1
+    Chanson: Chanson_2
+  ChansonsPlaylists_3:
+    Playlist: Playlist_1
+    Chanson: Chanson_3
+  ChansonsPlaylists_4:
+    Playlist: Playlist_1
+    Chanson: Chanson_4
+  ChansonsPlaylists_5:
+    Playlist: Playlist_1
+    Chanson: Chanson_5
+AlbumsUsers:
+  AlbumsUsers_1:
+    Album: Album_1
+    sfGuardUser: sfGuardUser_1
+  AlbumsUsers_2:
+    Album: Album_3
+    sfGuardUser: sfGuardUser_1
+  AlbumsUsers_3:
+    Album: Album_4
+    sfGuardUser: sfGuardUser_1
+sfGuardUser:
+  sfGuardUser_1:
+    first_name: Jean-Philippe
+    last_name: Morvan
+    email_address: jeanphilippe.morvan@gmail.com
+    username: jeanphilippe.morvan@gmail.com
+    algorithm: sha1
+    salt: 0a7e414befcab5863c2905874b8681a6
+    password: 6a393f25fb5bb66cebbc299381f31409caf4aab5
+    is_active: true
+    is_super_admin: false
+    last_login: '2011-06-29 14:35:14'
+    created_at: '2011-06-29 13:28:53'
+    updated_at: '2011-06-29 14:35:14'
+sfGuardRememberKey:
+  sfGuardRememberKey_2:
+    User: sfGuardUser_1
+    remember_key: 8y8otru4kh8o00wcgwc4cc80co4ok04
+    ip_address: 10.104.102.34
+    created_at: '2011-06-29 14:35:14'
+    updated_at: '2011-06-29 14:35:14'

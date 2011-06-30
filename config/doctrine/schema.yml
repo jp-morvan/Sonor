@@ -1,0 +1,95 @@
+options:
+  collate: utf8_general_ci
+  charset: utf8
+Chanson:
+  actAs:
+    Sluggable:
+      fields: [titre]
+      name: slug
+      type: string
+      length: 255
+      unique: true
+      canUpdate: true
+  columns:
+    titre: string(255)
+    duree: time
+    audio_file: string(255)
+    id_album: integer
+  relations:
+    Album: { onDelete: CASCADE, onUpdate: CASCADE, local: id_album, foreign: id }
+    Playlists:
+      class:    Playlist
+      refClass: ChansonsPlaylists
+      local:    id_chanson
+      foreign:  id_playlist
+Album:
+  actAs:
+    Sluggable:
+      fields: [titre]
+      name: slug
+      type: string
+      length: 255
+      unique: true
+      canUpdate: true
+  columns:
+    titre: string(255)
+    id_artiste: integer
+  relations:
+    Artiste: { onDelete: CASCADE, onUpdate: CASCADE, local: id_artiste, foreign: id }
+    Users:
+      class:    sfGuardUser
+      refClass: AlbumsUsers
+      local:    id_album
+      foreign:  id_user
+Artiste:
+  actAs:
+    Sluggable:
+      fields: [nom]
+      name: slug
+      type: string
+      length: 255
+      unique: true
+      canUpdate: true
+  columns:
+    nom: string(255)
+Playlist:
+  actAs:
+    Sluggable:
+      fields: [titre]
+      name: slug
+      type: string
+      length: 255
+      unique: true
+      canUpdate: true
+  columns:
+    titre: string(255)
+    id_user: integer
+  relations:
+    sfGuardUser: { onDelete: CASCADE, onUpdate: CASCADE, local: id_user, foreign: id }
+    Chansons:
+      class:    Chanson
+      refClass: ChansonsPlaylists
+      local:    id_playlist
+      foreign:  id_chanson
+ChansonsPlaylists:
+  columns:
+    id_playlist:
+      type: integer
+      notnull: true
+    id_chanson:
+      type: integer
+      notnull: true
+  relations:
+    Playlist:   { onDelete: CASCADE, onUpdate: CASCADE, local: id_playlist, foreign: id }
+    Chanson: { onDelete: CASCADE, onUpdate: CASCADE, local: id_chanson, foreign: id }
+AlbumsUsers:
+  columns:
+    id_album:
+      type: integer
+      notnull: true
+    id_user:
+      type: integer
+      notnull: true
+  relations:
+    Album:   { onDelete: CASCADE, onUpdate: CASCADE, local: id_album, foreign: id }
+    sfGuardUser:    { onDelete: CASCADE, onUpdate: CASCADE, local: id_user, foreign: id }

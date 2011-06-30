@@ -1,0 +1,26 @@
+play:
+  url:  /lecture/:type/:slug
+  param:  { module: accueil, action: ajaxLecture, type: '', slug: '' }
+
+show_chansons:
+  url:  /liste-des-chansons/:type/:slug
+  param:  { module: accueil, action: ajaxListeChansons, type: '', slug: '' }
+
+javascript_functions:
+  url:   /functions.:sf_format
+  param: { module: accueil, action: javascript, sf_format: js }
+#  requirements:
+#    sf_format: (?:js)
+
+homepage:
+  url:   /
+  param: { module: accueil, action: index }
+
+# generic rules
+# please, remove them by adding more specific rules
+default_index:
+  url:   /:module
+  param: { action: index }
+
+default:
+  url:   /:module/:action/*

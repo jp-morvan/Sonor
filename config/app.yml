@@ -1,0 +1,8 @@
+all:
+  files:
+    storage_path: <?php echo sfConfig::get('sf_upload_dir') ?>/audio/
+  player:
+    js_path: /js/speakker/
+    css_path: /css/speakker/
+    images_path: /images/speakker/
+    swf_path: /swf/speakker/
