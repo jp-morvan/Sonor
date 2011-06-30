@@ -14,7 +14,7 @@ default:
 
   stylesheets:    [main.css]
 
-  javascripts:    [/js/jquery/jquery.min.js, /js/jquery/jquery-ui.custom.min.js, /sfFormExtraPlugin/js/jquery.autocompleter.js]
+  javascripts:    [/js/jquery/jquery.min.js, /js/jquery/jquery-ui.custom.min.js, /sfFormExtraPlugin/js/jquery.autocompleter.js, /js/audio_player.js]
 
   has_layout:     true
   layout:         layout
