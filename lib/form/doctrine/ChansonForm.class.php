@@ -12,7 +12,7 @@ class ChansonForm extends BaseChansonForm
 {
   public function configure()
   {
-    unset($this['slug'], $this['playlists_list'], $this['duree'], $this['titre']);
+    unset($this['slug'], $this['playlists_list'], $this['duree'], $this['titre'], $this['id_album']);
     $this->widgetSchema['audio_file'] = new sfWidgetFormInputFile();
     $this->validatorSchema['audio_file'] = new sfValidatorFile(array(
                                         'required' => true,
@@ -47,21 +47,46 @@ class ChansonForm extends BaseChansonForm
       $audio = new audio();
       $infos = $audio->analyze($file);
       tools::pr($infos);
+      $values['titre'] = $audio->getTitre();
       $values['duree'] = $audio->getDuration();
-      $values['duree'] = $audio->getAlbum();
-      $values['duree'] = $audio->getArtiste();
-      $values['duree'] = $audio->getTitre();
-      tools::pr($audio->getDuration());
-      tools::pr($audio->getAlbum());
-      tools::pr($audio->getArtiste());
-      tools::pr($audio->getTitre());
+      $artiste = $this->_issetArtisteOrCreate($audio->getArtiste());
+      $values['id_album'] = $this->_issetAlbumOrCreate($audio->getAlbum(), $artiste);
+      //$values['duree'] = $audio->getTitre();
+      //tools::pr($audio->getDuration());
+      //tools::pr($this->_issetAlbumOrCreate($audio->getAlbum()));
+      //tools::pr($audio->getArtiste());
     }
-    die();
-//    parent::doUpdateObject($values);
+    //die();
+    parent::doUpdateObject($values);
   }
   
   private function _getAudioFileMetadatas()
   {
     
+  }
+  
+  private function _issetArtisteOrCreate($artiste)
+  {
+    if(($art = Doctrine_Core::getTable('Artiste')->findOneBy('nom', $artiste)) !== false)
+    {
+      return $art->id;
+    }
+    $art = new Artiste();
+    $art->nom = $artiste;
+    $art->save();
+    return $art->id;
+  }
+  
+  private function _issetAlbumOrCreate($album, $artiste_id)
+  {
+    if(($alb = Doctrine_Core::getTable('Album')->findOneBy('titre', $album)) !== false)
+    {
+      return $alb->id;
+    }
+    $alb = new Album();
+    $alb->titre = $album;
+    $alb->id_artiste = $artiste_id;
+    $alb->save();
+    return $alb->id;
   }
 }
