@@ -12,7 +12,7 @@ class ChansonForm extends BaseChansonForm
 {
   public function configure()
   {
-    unset($this['slug'], $this['playlists_list'], $this['duree'], $this['titre'], $this['id_album']);
+    unset($this['slug'], $this['playlists_list'], $this['duree'], $this['titre'], $this['id_album'], $this['piste']);
     $this->widgetSchema['audio_file'] = new sfWidgetFormInputFile();
     $this->validatorSchema['audio_file'] = new sfValidatorFile(array(
                                         'required' => true,
@@ -44,13 +44,14 @@ class ChansonForm extends BaseChansonForm
     if(file_exists($file))
     {
 //      $values['titre'] = ;
-      $audio = new audio();
-      $infos = $audio->analyze($file);
-      tools::pr($infos);
-      $values['titre'] = $audio->getTitre();
-      $values['duree'] = $audio->getDuration();
-      $artiste = $this->_issetArtisteOrCreate($audio->getArtiste());
-      $values['id_album'] = $this->_issetAlbumOrCreate($audio->getAlbum(), $artiste);
+      $audio = new audio($file);
+      if($audio->hasTags())
+      {
+        $values['titre'] = $audio->getTag('title');
+        $values['duree'] = $audio->getTag('duration');
+        $artiste = $this->_issetArtisteOrCreate($audio->getTag('artist'));
+        $values['id_album'] = $this->_issetAlbumOrCreate($audio->getTag('album'), $artiste);
+      }
       //$values['duree'] = $audio->getTitre();
       //tools::pr($audio->getDuration());
       //tools::pr($this->_issetAlbumOrCreate($audio->getAlbum()));
@@ -60,14 +61,9 @@ class ChansonForm extends BaseChansonForm
     parent::doUpdateObject($values);
   }
   
-  private function _getAudioFileMetadatas()
-  {
-    
-  }
-  
   private function _issetArtisteOrCreate($artiste)
   {
-    if(($art = Doctrine_Core::getTable('Artiste')->findOneBy('nom', $artiste)) !== false)
+    if(!is_null($artiste) && ($art = Doctrine_Core::getTable('Artiste')->findOneBy('nom', $artiste)) !== false)
     {
       return $art->id;
     }
@@ -79,7 +75,7 @@ class ChansonForm extends BaseChansonForm
   
   private function _issetAlbumOrCreate($album, $artiste_id)
   {
-    if(($alb = Doctrine_Core::getTable('Album')->findOneBy('titre', $album)) !== false)
+    if(!is_null($album) && ($alb = Doctrine_Core::getTable('Album')->findOneBy('titre', $album)) !== false)
     {
       return $alb->id;
     }

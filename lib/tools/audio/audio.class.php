@@ -10,31 +10,46 @@ class audio extends getID3
   private $_infos = null,
           $_tags = null;
   
-  function analyze($filename) 
+  public function __construct($filename)
   {
     $this->_infos = parent::analyze($filename);
-    $this->_tags = $this->_infos['tags']['id3v1'];
-    return $this->_infos;
+    if($this->hasTags())
+    {
+      $this->setTags();
+    }
+    tools::pr($this->_tags);
+  }
+
+  
+  public function hasTags()
+  {
+    return isset($this->_infos['tags']);
   }
   
+  public function setTags()
+  {
+    for($i=1; $i < 10; $i++)
+    {
+      if(isset($this->_infos['tags']['id3v'.$i]))
+      {
+        $this->_tags = $this->_infos['tags']['id3v'.$i];
+        return;
+      }
+    }
+  }
+    
   public function getDuration() 
   {
     return date('H:i:s', mktime(0, 0, $this->_infos['playtime_seconds'], 0, 0, 0));
   }
   
-  public function getArtiste() 
+  public function getTag($tag)
   {
-    return $this->_tags['artist'][0];
-  }
-  
-  public function getAlbum() 
-  {
-    return $this->_tags['album'][0];
-  }
-  
-  public function getTitre() 
-  {
-    return $this->_tags['title'][0];
+    if(isset($this->_tags[$tag]))
+    {
+      return $this->_tags[$tag][0];
+    }
+    return null;
   }
 }
 
