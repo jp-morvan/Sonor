@@ -30,7 +30,8 @@ class convert
         $this->input_format,
         $this->output_format,
     ));
-    exec($command);
+    exec($command, $output);
+    print_r($output);
   }
 
   private function setOutputFileAndCodec()

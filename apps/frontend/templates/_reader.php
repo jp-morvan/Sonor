@@ -1,4 +1,4 @@
-<audio id="audio" src="/uploads/audio/empty.ogg" controls preload></audio>
+<audio id="audio" src="<?php echo $sf_request->getAudioFilePath() ?>empty.<?php echo $sf_request->getAudioFileType() ?>" controls preload></audio>
 <script type="text/javascript">
 function test()
 {

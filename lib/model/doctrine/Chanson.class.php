@@ -15,5 +15,10 @@ class Chanson extends BaseChanson
   public function __toString()
   {
     return $this->titre;
+  }  
+  
+  public function generateAudioFileFilename(sfValidatedFile $file)
+  {
+    return tools::slugify($this->name.$file->getOriginalExtension());
   }
 }

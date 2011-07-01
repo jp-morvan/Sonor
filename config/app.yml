@@ -1,8 +1,7 @@
 all:
   files:
-    storage_path: <?php echo sfConfig::get('sf_upload_dir') ?>/audio/
-  player:
-    js_path: /js/speakker/
-    css_path: /css/speakker/
-    images_path: /images/speakker/
-    swf_path: /swf/speakker/
+    storage_path: 
+      mp3: <?php echo sfConfig::get('sf_upload_dir') ?>/audio/mp3/
+      ogg: <?php echo sfConfig::get('sf_upload_dir') ?>/audio/ogg/
+      todo: <?php echo sfConfig::get('sf_upload_dir') ?>/audio/todo/
+      no_metadata: <?php echo sfConfig::get('sf_upload_dir') ?>/audio/no_metadata/

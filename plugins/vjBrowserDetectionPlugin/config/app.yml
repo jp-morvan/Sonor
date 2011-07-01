@@ -1,0 +1,3 @@
+all:
+  vjBrowserDetectionPlugin:
+    browsers_file: '<?php echo sfConfig::get('sf_plugins_dir') ?>/vjBrowserDetectionPlugin/config/browsers.yml'

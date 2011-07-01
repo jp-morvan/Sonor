@@ -1,0 +1,112 @@
+vjBrowserDetectionPlugin
+=================
+
+This readme presents briefly how to use this plugin.
+
+It's very simple. For example, you need to add a css file is user's browser is Internet Explorer,
+you can use : if($sf_request->isIEBrowser()).
+
+Installation
+------------
+
+  * Install the plugin
+
+        $ symfony plugin:install vjBrowserDetectionPlugin
+        $ symfony cc
+
+Use the WebRequest class
+
+  * edit apps/your_app/config/factories.yml
+
+        all: #or dev, prod, test
+          request:
+            class: browserDetectionWebRequest
+
+You can use it everywhere sfWebRequest is implemented. For example, in an action :
+
+        public function executeIndex(sfWebRequest $request)
+        {
+          echo $request->getBrowserInformation('name');
+          // echo "Mozilla Firefox" or "Internet Explorer" or "Google Chrome" etc...
+        }
+
+
+Use your own browsers.yml file
+-------------
+
+Maybe you want to use your own browsers file (with more or less browsers)
+
+  * edit apps/your_frontend_app/config/app.yml
+
+        all:
+          vjBrowserDetectionPlugin:
+            browser_file: '<?php echo sfConfig::get('sf_plugins_dir') ?>/vjBrowserDetectionPlugin/config/browsers.yml'
+
+
+API
+-------------
+
+Here is the list of methods available :
+
+* getUserAgent()
+
+        /**
+         * Return $_SERVER['HTTP_USER_AGENT']
+         *
+         * @return string the http_user_agent
+         */
+
+* getBrowsers()
+
+        /**
+         * Load browsers file and parse it
+         *
+         * @return array Browsers list
+         */
+
+* setBrowser()
+
+        /**
+         * Set user's browser's datas
+         */
+
+* getBrowser()
+
+        /**
+         * Get user's browser's datas
+         *
+         * @return array The user's browser's datas
+         */
+
+* getBrowserInformation($info = "br")
+
+        /**
+         * Get one of the three informations from user's browser's datas
+         *
+         * @param string $info 'br' or 'name' or 'version' (browser's datas)
+         * @return string Browser data for info entry
+         */
+
+* isIEBrowser()
+
+        /**
+         * If user's browser in Internet Explorer
+         *
+         * @return boolean True if user's browser is Internet Explorer otherwise false
+         */
+
+* isIEBrowserVersion($version = 6)
+
+        **
+         * If user's browser's version of Internet Explorer is the version passed on parameter
+         *
+         * @param int $version
+         * @return boolean True if user's browser's version of Internet Explorer is version otherwise false
+         */
+
+
+Contact
+-------------
+
+Please contact me if you see a problem, an error or if you think that something can be enhanced !
+Advice are cool too !

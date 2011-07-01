@@ -23,8 +23,8 @@ class accueilActions extends sfActions
     $type = $request->getParameter('type');
     $slug = $request->getParameter('slug');
     $chanson = Doctrine_Core::getTable('Chanson')->findOneBy('slug', $slug);
-    $path = substr(sfConfig::get('app_files_storage_path'), strlen(sfConfig::get('sf_web_dir')));
-    return $this->renderText($path.$chanson->audio_file);
+    $file = $request->getAudioFilePath().$chanson->audio_file.".".$request->getAudioFileType();
+    return $this->renderText($file);
   }
   
   public function executeAjaxListeChansons(sfWebRequest $request)

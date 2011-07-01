@@ -1,0 +1,193 @@
+all:
+  'Trident/4.0':
+    'br': 'IE8'
+    'name': 'Internet Explorer'
+    'version': '8'
+  'MSIE 8':
+    'br': 'IE8'
+    'name': 'Internet Explorer'
+    'version': '8'
+  'MSIE 7':
+    'br': 'IE7'
+    'name': 'Internet Explorer'
+    'version': '7'
+  'MSIE 6':
+    'br': 'IE6'
+    'name': 'Internet Explorer'
+    'version': '6'
+  'MSIE 5.5':
+    'br': 'IE'
+    'name': 'Internet Explorer'
+    'version': '5.5'
+  'MSIE 5':
+    'br': 'IE'
+    'name': 'Internet Explorer'
+    'version': '5'
+  'MSIE 4':
+    'br': 'IE'
+    'name': 'Internet Explorer'
+    'version': '4'
+  'MSIE 3':
+    'br': 'IE'
+    'name': 'Internet Explorer'
+    'version': '3'
+  'MSIE 2':
+    'br': 'IE'
+    'name': 'Internet Explorer'
+    'version': '2'
+  'MSIE':
+    'br': 'IE'
+    'name': 'Internet Explorer'
+    'version': 'x'
+  'amaya':
+    'br': 'other'
+    'name': 'Amaya'
+    'version': 'x'
+  'Chrome/5':
+    'br': 'Chrome'
+    'name': 'Google Chrome'
+    'version': "5"
+  'Chrome/4':
+    'br': 'Chrome'
+    'name': 'Google Chrome'
+    'version': "4"
+  'Chrome/3':
+    'br': 'Chrome'
+    'name': 'Google Chrome'
+    'version': "3"
+  'Chrome/2':
+    'br': 'Chrome'
+    'name': 'Google Chrome'
+    'version': "2"
+  'Chrome/1':
+    'br': 'Chrome'
+    'name': 'Google Chrome'
+    'version': "1"
+  'Chrome/0':
+    'br': 'Chrome'
+    'name': 'Google Chrome'
+    'version': "0"
+  'Chrome':
+    'br': 'Chrome'
+    'name': 'Google Chrome'
+    'version': 'x'
+  'ELinks':
+    'br': 'other'
+    'name': 'ELinks'
+    'version': 'x'
+  'Firebird':
+    'br': 'other'
+    'name': 'Firebird'
+    'version': 'x'
+  'Firefox/3':
+    'br': 'Firefox'
+    'name': 'Mozilla Firefox'
+    'version': '3'
+  'Firefox/2':
+    'br': 'Firefox'
+    'name': 'Mozilla Firefox'
+    'version': '2'
+  'Firefox/1':
+    'br': 'Firefox'
+    'name': 'Mozilla Firefox'
+    'version': '1'
+  'Firefox':
+    'br': 'Firefox'
+    'name': 'Mozilla Firefox'
+    'version': 'x'
+  'iCab':
+    'br': 'other'
+    'name': 'iCab'
+    'version': 'x'
+  'Konqueror/4':
+    'br': 'other'
+    'name': 'Konqueror'
+    'version': '4'
+  'Konqueror/3':
+    'br': 'other'
+    'name': 'Konqueror'
+    'version': '3'
+  'Konqueror':
+    'br': 'other'
+    'name': 'Konqueror'
+    'version': 'x'
+  'Links':
+    'br': 'other'
+    'name': 'Links'
+    'version': 'x'
+  'Lynx':
+    'br': 'other'
+    'name': 'Lynx'
+    'version': 'x'
+  'midori':
+    'br': 'other'
+    'name': 'Midori'
+    'version': 'x'
+  'Minimo':
+    'br': 'other'
+    'name': 'Minimo'
+    'version': 'x'
+  'Netscape/8':
+    'br': 'other'
+    'name': 'Netscape'
+    'version': '8'
+  'Netscape/7':
+    'br': 'other'
+    'name': 'Netscape'
+    'version': '7'
+  'Netscape':
+    'br': 'other'
+    'name': 'Netscape'
+    'version': 'x'
+  'OffByOne':
+    'br': 'other'
+    'name': 'OffByOne'
+    'version': 'x'
+  'OmniWeb':
+    'br': 'other'
+    'name': 'OmniWeb'
+    'version': 'x'
+  'Opera/9':
+    'br': 'other'
+    'name': 'Opera'
+    'version': '9'
+  'Opera 9':
+    'br': 'other'
+    'name': 'Opera'
+    'version': '9'
+  'Opera/8':
+    'br': 'other'
+    'name': 'Opera'
+    'version': '8'
+  'Opera 8':
+    'br': 'other'
+    'name': 'Opera'
+    'version': '8'
+  'Opera/7':
+    'br': 'other'
+    'name': 'Opera'
+    'version': '7'
+  'Opera 7':
+    'br': 'other'
+    'name': 'Opera'
+    'version': '7'
+  'Opera/6':
+    'br': 'other'
+    'name': 'Opera'
+    'version': '6'
+  'Opera 6':
+    'br': 'other'
+    'name': 'Opera'
+    'version': '6'
+  'Opera':
+    'br': 'other'
+    'name': 'Opera'
+    'version': 'x'
+  'Nokia':
+    'br': 'other'
+    'name': 'Nokia'
+    'version': 'x'
+  'Safari':
+    'br': 'Safari'
+    'name': 'Safari'
+    'version': 'x'

@@ -23,3 +23,6 @@ all:
 
   user:
     class: myUser
+
+  request:
+    class: myWebRequest
