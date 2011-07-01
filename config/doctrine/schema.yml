@@ -15,6 +15,7 @@ Chanson:
     duree: time
     audio_file: string(255)
     id_album: integer
+    piste: integer
   relations:
     Album: { onDelete: CASCADE, onUpdate: CASCADE, local: id_album, foreign: id }
     Playlists:
