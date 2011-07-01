@@ -29,6 +29,12 @@ Chanson:
     audio_file: tournent
     Album: Album_1
     slug: tournent-les-violons
+  Chanson_10:
+    titre: 01-jacqueline.mp3
+    duree: '00:02:29'
+    audio_file: 01-jacqueline.mp3
+    Album: Album_1
+    slug: 01-jacqueline-mp3
 Album:
   Album_1:
     titre: 'chanson pour les pieds'
