@@ -19,6 +19,11 @@ class Chanson extends BaseChanson
   
   public function generateAudioFileFilename(sfValidatedFile $file)
   {
-    return tools::slugify($this->name.$file->getOriginalExtension());
+    return tools::slugify($this->getAudioFilenameWithoutExtension($file)).$file->getOriginalExtension();
+  }
+  
+  public function getAudioFilenameWithoutExtension(sfValidatedFile $file) 
+  {
+    return substr($file->getOriginalName(), 0, (strlen($file->getOriginalName()) - strlen($file->getOriginalExtension())));
   }
 }

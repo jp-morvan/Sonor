@@ -11860,3 +11860,1571 @@ Jun 30 08:39:57 symfony [info] {sfWebDebugLogger} Factories 92.04 ms (1)
 Jun 30 08:39:57 symfony [info] {sfWebDebugLogger} Action "accueil/javascript" 0.33 ms (1)
 Jun 30 08:39:57 symfony [info] {sfWebDebugLogger} View "Success" for "accueil/javascript" 4.98 ms (1)
 Jun 30 08:39:57 symfony [info] {sfWebResponse} Send content (326 o)
+Jul 01 13:10:01 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/guard/login)
+Jul 01 13:10:01 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/guard/logout)
+Jul 01 13:10:01 symfony [info] {sfPatternRouting} Match route "homepage" (/) for / with parameters array (  'module' => 'accueil',  'action' => 'index',)
+Jul 01 13:10:01 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jul 01 13:10:01 symfony [info] {sfFilterChain} Executing filter "sfGuardRememberMeFilter"
+Jul 01 13:10:01 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jul 01 13:10:01 symfony [info] {accueilActions} Call "accueilActions->executeIndex()"
+Jul 01 13:10:01 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/indexSuccess.php"
+Jul 01 13:10:01 symfony [info] {sfPHPView} Decorate content with "/var/www/sonor/apps/frontend/templates/layout.php"
+Jul 01 13:10:01 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/templates/layout.php"
+Jul 01 13:10:01 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/templates/_user_infos.php"
+Jul 01 13:10:01 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Jul 01 13:10:01 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.first_name AS s__first_name, s.last_name AS s__last_name, s.email_address AS s__email_address, s.username AS s__username, s.algorithm AS s__algorithm, s.salt AS s__salt, s.password AS s__password, s.is_active AS s__is_active, s.is_super_admin AS s__is_super_admin, s.last_login AS s__last_login, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM sf_guard_user s WHERE (s.id = ?) LIMIT 1 - (1)
+Jul 01 13:10:01 symfony [info] {main} Call "accueil->executeSearch()"
+Jul 01 13:10:01 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/_search.php"
+Jul 01 13:10:01 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/templates/_reader.php"
+Jul 01 13:10:01 symfony [info] {main} Call "accueil->executeSidebar()"
+Jul 01 13:10:01 symfony [info] {Doctrine_Connection_Statement} execute : SELECT p.id AS p__id, p.titre AS p__titre, p.id_user AS p__id_user, p.slug AS p__slug, c.id AS c__id, c.titre AS c__titre, c.duree AS c__duree, c.audio_file AS c__audio_file, c.id_album AS c__id_album, c.slug AS c__slug FROM playlist p LEFT JOIN chansons_playlists c2 ON (p.id = c2.id_playlist) LEFT JOIN chanson c ON c.id = c2.id_chanson WHERE (p.id_user = ?) ORDER BY p.titre ASC - (1)
+Jul 01 13:10:01 symfony [info] {Doctrine_Connection_Statement} execute : SELECT a.id AS a__id, a.titre AS a__titre, a.id_artiste AS a__id_artiste, a.slug AS a__slug FROM album a LEFT JOIN albums_users a2 ON (a.id = a2.id_album) LEFT JOIN sf_guard_user s ON s.id = a2.id_user WHERE (s.id IN (?)) ORDER BY a.titre ASC - (1)
+Jul 01 13:10:01 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/_sidebar.php"
+Jul 01 13:10:01 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jul 01 13:10:01 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jul 01 13:10:01 symfony [info] {sfWebDebugLogger} Configuration 243.86 ms (11)
+Jul 01 13:10:01 symfony [info] {sfWebDebugLogger} Factories 145.24 ms (1)
+Jul 01 13:10:01 symfony [info] {sfWebDebugLogger} Action "accueil/index" 0.23 ms (1)
+Jul 01 13:10:01 symfony [info] {sfWebDebugLogger} View "Success" for "accueil/index" 107.90 ms (1)
+Jul 01 13:10:01 symfony [info] {sfWebDebugLogger} Partial "global/_user_infos" 37.73 ms (1)
+Jul 01 13:10:01 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.03 ms (4)
+Jul 01 13:10:01 symfony [info] {sfWebDebugLogger} Component "accueil/search" 4.06 ms (1)
+Jul 01 13:10:01 symfony [info] {sfWebDebugLogger} Partial "accueil/_search" 3.71 ms (1)
+Jul 01 13:10:01 symfony [info] {sfWebDebugLogger} Partial "global/_reader" 1.08 ms (1)
+Jul 01 13:10:01 symfony [info] {sfWebDebugLogger} Component "accueil/sidebar" 37.40 ms (1)
+Jul 01 13:10:01 symfony [info] {sfWebDebugLogger} Partial "accueil/_sidebar" 2.89 ms (1)
+Jul 01 13:10:01 symfony [info] {sfWebResponse} Send content (46712 o)
+Jul 01 13:10:01 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/guard/login)
+Jul 01 13:10:01 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/guard/logout)
+Jul 01 13:10:01 symfony [info] {sfPatternRouting} Match route "javascript_functions" (/functions.:sf_format) for /functions with parameters array (  'module' => 'accueil',  'action' => 'javascript',  'sf_format' => 'js',)
+Jul 01 13:10:01 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jul 01 13:10:01 symfony [info] {sfFilterChain} Executing filter "sfGuardRememberMeFilter"
+Jul 01 13:10:01 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jul 01 13:10:01 symfony [info] {accueilActions} Call "accueilActions->executeJavascript()"
+Jul 01 13:10:01 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/javascriptSuccess.js.php"
+Jul 01 13:10:01 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jul 01 13:10:01 symfony [info] {sfWebResponse} Send header "Content-Type: application/javascript"
+Jul 01 13:10:01 symfony [info] {sfWebDebugLogger} Configuration 3.43 ms (9)
+Jul 01 13:10:01 symfony [info] {sfWebDebugLogger} Factories 38.04 ms (1)
+Jul 01 13:10:01 symfony [info] {sfWebDebugLogger} Action "accueil/javascript" 0.30 ms (1)
+Jul 01 13:10:01 symfony [info] {sfWebDebugLogger} View "Success" for "accueil/javascript" 4.74 ms (1)
+Jul 01 13:10:01 symfony [info] {sfWebResponse} Send content (326 o)
+Jul 01 13:11:31 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/guard/login)
+Jul 01 13:11:31 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/guard/logout)
+Jul 01 13:11:31 symfony [info] {sfPatternRouting} Match route "homepage" (/) for / with parameters array (  'module' => 'accueil',  'action' => 'index',)
+Jul 01 13:11:31 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jul 01 13:11:31 symfony [info] {sfFilterChain} Executing filter "sfGuardRememberMeFilter"
+Jul 01 13:11:31 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jul 01 13:11:31 symfony [info] {accueilActions} Call "accueilActions->executeIndex()"
+Jul 01 13:11:31 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/indexSuccess.php"
+Jul 01 13:11:31 symfony [info] {sfPHPView} Decorate content with "/var/www/sonor/apps/frontend/templates/layout.php"
+Jul 01 13:11:31 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/templates/layout.php"
+Jul 01 13:11:31 symfony [err] {sfWebDebugLogger}  Error at /var/www/sonor/apps/frontend/templates/layout.php on line 9 (Object of class sfOutputEscaperArrayDecorator could not be converted to string)
+Jul 01 13:11:59 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/guard/login)
+Jul 01 13:11:59 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/guard/logout)
+Jul 01 13:11:59 symfony [info] {sfPatternRouting} Match route "homepage" (/) for / with parameters array (  'module' => 'accueil',  'action' => 'index',)
+Jul 01 13:12:00 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jul 01 13:12:00 symfony [info] {sfFilterChain} Executing filter "sfGuardRememberMeFilter"
+Jul 01 13:12:00 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jul 01 13:12:00 symfony [info] {accueilActions} Call "accueilActions->executeIndex()"
+Jul 01 13:12:00 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/indexSuccess.php"
+Jul 01 13:12:00 symfony [info] {sfPHPView} Decorate content with "/var/www/sonor/apps/frontend/templates/layout.php"
+Jul 01 13:12:00 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/templates/layout.php"
+Jul 01 13:12:00 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/templates/_user_infos.php"
+Jul 01 13:12:00 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Jul 01 13:12:00 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.first_name AS s__first_name, s.last_name AS s__last_name, s.email_address AS s__email_address, s.username AS s__username, s.algorithm AS s__algorithm, s.salt AS s__salt, s.password AS s__password, s.is_active AS s__is_active, s.is_super_admin AS s__is_super_admin, s.last_login AS s__last_login, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM sf_guard_user s WHERE (s.id = ?) LIMIT 1 - (1)
+Jul 01 13:12:00 symfony [info] {main} Call "accueil->executeSearch()"
+Jul 01 13:12:00 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/_search.php"
+Jul 01 13:12:00 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/templates/_reader.php"
+Jul 01 13:12:00 symfony [info] {main} Call "accueil->executeSidebar()"
+Jul 01 13:12:00 symfony [info] {Doctrine_Connection_Statement} execute : SELECT p.id AS p__id, p.titre AS p__titre, p.id_user AS p__id_user, p.slug AS p__slug, c.id AS c__id, c.titre AS c__titre, c.duree AS c__duree, c.audio_file AS c__audio_file, c.id_album AS c__id_album, c.slug AS c__slug FROM playlist p LEFT JOIN chansons_playlists c2 ON (p.id = c2.id_playlist) LEFT JOIN chanson c ON c.id = c2.id_chanson WHERE (p.id_user = ?) ORDER BY p.titre ASC - (1)
+Jul 01 13:12:00 symfony [info] {Doctrine_Connection_Statement} execute : SELECT a.id AS a__id, a.titre AS a__titre, a.id_artiste AS a__id_artiste, a.slug AS a__slug FROM album a LEFT JOIN albums_users a2 ON (a.id = a2.id_album) LEFT JOIN sf_guard_user s ON s.id = a2.id_user WHERE (s.id IN (?)) ORDER BY a.titre ASC - (1)
+Jul 01 13:12:00 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/_sidebar.php"
+Jul 01 13:12:00 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jul 01 13:12:00 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jul 01 13:12:00 symfony [info] {sfWebDebugLogger} Configuration 3.31 ms (11)
+Jul 01 13:12:00 symfony [info] {sfWebDebugLogger} Factories 15.76 ms (1)
+Jul 01 13:12:00 symfony [info] {sfWebDebugLogger} Action "accueil/index" 0.32 ms (1)
+Jul 01 13:12:00 symfony [info] {sfWebDebugLogger} View "Success" for "accueil/index" 136.86 ms (1)
+Jul 01 13:12:00 symfony [info] {sfWebDebugLogger} Partial "global/_user_infos" 24.32 ms (1)
+Jul 01 13:12:00 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.03 ms (4)
+Jul 01 13:12:00 symfony [info] {sfWebDebugLogger} Component "accueil/search" 3.49 ms (1)
+Jul 01 13:12:00 symfony [info] {sfWebDebugLogger} Partial "accueil/_search" 3.82 ms (1)
+Jul 01 13:12:00 symfony [info] {sfWebDebugLogger} Partial "global/_reader" 0.86 ms (1)
+Jul 01 13:12:00 symfony [info] {sfWebDebugLogger} Component "accueil/sidebar" 36.29 ms (1)
+Jul 01 13:12:00 symfony [info] {sfWebDebugLogger} Partial "accueil/_sidebar" 2.85 ms (1)
+Jul 01 13:12:00 symfony [info] {sfWebResponse} Send content (47039 o)
+Jul 01 13:12:00 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/guard/login)
+Jul 01 13:12:00 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/guard/logout)
+Jul 01 13:12:00 symfony [info] {sfPatternRouting} Match route "javascript_functions" (/functions.:sf_format) for /functions with parameters array (  'module' => 'accueil',  'action' => 'javascript',  'sf_format' => 'js',)
+Jul 01 13:12:00 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jul 01 13:12:00 symfony [info] {sfFilterChain} Executing filter "sfGuardRememberMeFilter"
+Jul 01 13:12:00 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jul 01 13:12:00 symfony [info] {accueilActions} Call "accueilActions->executeJavascript()"
+Jul 01 13:12:00 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/javascriptSuccess.js.php"
+Jul 01 13:12:00 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jul 01 13:12:00 symfony [info] {sfWebResponse} Send header "Content-Type: application/javascript"
+Jul 01 13:12:00 symfony [info] {sfWebDebugLogger} Configuration 10.75 ms (9)
+Jul 01 13:12:00 symfony [info] {sfWebDebugLogger} Factories 30.31 ms (1)
+Jul 01 13:12:00 symfony [info] {sfWebDebugLogger} Action "accueil/javascript" 0.31 ms (1)
+Jul 01 13:12:00 symfony [info] {sfWebDebugLogger} View "Success" for "accueil/javascript" 4.37 ms (1)
+Jul 01 13:12:00 symfony [info] {sfWebResponse} Send content (326 o)
+Jul 01 13:12:13 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/guard/login)
+Jul 01 13:12:13 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/guard/logout)
+Jul 01 13:12:13 symfony [info] {sfPatternRouting} Match route "homepage" (/) for / with parameters array (  'module' => 'accueil',  'action' => 'index',)
+Jul 01 13:12:13 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jul 01 13:12:13 symfony [info] {sfFilterChain} Executing filter "sfGuardRememberMeFilter"
+Jul 01 13:12:13 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jul 01 13:12:13 symfony [info] {accueilActions} Call "accueilActions->executeIndex()"
+Jul 01 13:12:13 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/indexSuccess.php"
+Jul 01 13:12:13 symfony [info] {sfPHPView} Decorate content with "/var/www/sonor/apps/frontend/templates/layout.php"
+Jul 01 13:12:13 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/templates/layout.php"
+Jul 01 13:12:13 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/templates/_user_infos.php"
+Jul 01 13:12:14 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Jul 01 13:12:14 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.first_name AS s__first_name, s.last_name AS s__last_name, s.email_address AS s__email_address, s.username AS s__username, s.algorithm AS s__algorithm, s.salt AS s__salt, s.password AS s__password, s.is_active AS s__is_active, s.is_super_admin AS s__is_super_admin, s.last_login AS s__last_login, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM sf_guard_user s WHERE (s.id = ?) LIMIT 1 - (1)
+Jul 01 13:12:14 symfony [info] {main} Call "accueil->executeSearch()"
+Jul 01 13:12:14 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/_search.php"
+Jul 01 13:12:14 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/templates/_reader.php"
+Jul 01 13:12:14 symfony [info] {main} Call "accueil->executeSidebar()"
+Jul 01 13:12:14 symfony [info] {Doctrine_Connection_Statement} execute : SELECT p.id AS p__id, p.titre AS p__titre, p.id_user AS p__id_user, p.slug AS p__slug, c.id AS c__id, c.titre AS c__titre, c.duree AS c__duree, c.audio_file AS c__audio_file, c.id_album AS c__id_album, c.slug AS c__slug FROM playlist p LEFT JOIN chansons_playlists c2 ON (p.id = c2.id_playlist) LEFT JOIN chanson c ON c.id = c2.id_chanson WHERE (p.id_user = ?) ORDER BY p.titre ASC - (1)
+Jul 01 13:12:14 symfony [info] {Doctrine_Connection_Statement} execute : SELECT a.id AS a__id, a.titre AS a__titre, a.id_artiste AS a__id_artiste, a.slug AS a__slug FROM album a LEFT JOIN albums_users a2 ON (a.id = a2.id_album) LEFT JOIN sf_guard_user s ON s.id = a2.id_user WHERE (s.id IN (?)) ORDER BY a.titre ASC - (1)
+Jul 01 13:12:14 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/_sidebar.php"
+Jul 01 13:12:14 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jul 01 13:12:14 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jul 01 13:12:14 symfony [info] {sfWebDebugLogger} Configuration 3.36 ms (11)
+Jul 01 13:12:14 symfony [info] {sfWebDebugLogger} Factories 14.90 ms (1)
+Jul 01 13:12:14 symfony [info] {sfWebDebugLogger} Action "accueil/index" 0.21 ms (1)
+Jul 01 13:12:14 symfony [info] {sfWebDebugLogger} View "Success" for "accueil/index" 130.39 ms (1)
+Jul 01 13:12:14 symfony [info] {sfWebDebugLogger} Partial "global/_user_infos" 20.85 ms (1)
+Jul 01 13:12:14 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.03 ms (4)
+Jul 01 13:12:14 symfony [info] {sfWebDebugLogger} Component "accueil/search" 3.46 ms (1)
+Jul 01 13:12:14 symfony [info] {sfWebDebugLogger} Partial "accueil/_search" 4.02 ms (1)
+Jul 01 13:12:14 symfony [info] {sfWebDebugLogger} Partial "global/_reader" 1.14 ms (1)
+Jul 01 13:12:14 symfony [info] {sfWebDebugLogger} Component "accueil/sidebar" 35.73 ms (1)
+Jul 01 13:12:14 symfony [info] {sfWebDebugLogger} Partial "accueil/_sidebar" 2.51 ms (1)
+Jul 01 13:12:14 symfony [info] {sfWebResponse} Send content (46777 o)
+Jul 01 13:15:29 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/guard/login)
+Jul 01 13:15:29 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/guard/logout)
+Jul 01 13:15:29 symfony [info] {sfPatternRouting} Match route "homepage" (/) for / with parameters array (  'module' => 'accueil',  'action' => 'index',)
+Jul 01 13:15:29 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jul 01 13:15:29 symfony [info] {sfFilterChain} Executing filter "sfGuardRememberMeFilter"
+Jul 01 13:15:29 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jul 01 13:15:29 symfony [info] {accueilActions} Call "accueilActions->executeIndex()"
+Jul 01 13:15:29 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/indexSuccess.php"
+Jul 01 13:15:29 symfony [info] {sfPHPView} Decorate content with "/var/www/sonor/apps/frontend/templates/layout.php"
+Jul 01 13:15:29 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/templates/layout.php"
+Jul 01 13:15:29 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/templates/_user_infos.php"
+Jul 01 13:15:29 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Jul 01 13:15:29 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.first_name AS s__first_name, s.last_name AS s__last_name, s.email_address AS s__email_address, s.username AS s__username, s.algorithm AS s__algorithm, s.salt AS s__salt, s.password AS s__password, s.is_active AS s__is_active, s.is_super_admin AS s__is_super_admin, s.last_login AS s__last_login, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM sf_guard_user s WHERE (s.id = ?) LIMIT 1 - (1)
+Jul 01 13:15:29 symfony [info] {main} Call "accueil->executeSearch()"
+Jul 01 13:15:29 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/_search.php"
+Jul 01 13:15:29 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/templates/_reader.php"
+Jul 01 13:15:29 symfony [info] {main} Call "accueil->executeSidebar()"
+Jul 01 13:15:29 symfony [info] {Doctrine_Connection_Statement} execute : SELECT p.id AS p__id, p.titre AS p__titre, p.id_user AS p__id_user, p.slug AS p__slug, c.id AS c__id, c.titre AS c__titre, c.duree AS c__duree, c.audio_file AS c__audio_file, c.id_album AS c__id_album, c.slug AS c__slug FROM playlist p LEFT JOIN chansons_playlists c2 ON (p.id = c2.id_playlist) LEFT JOIN chanson c ON c.id = c2.id_chanson WHERE (p.id_user = ?) ORDER BY p.titre ASC - (1)
+Jul 01 13:15:29 symfony [info] {Doctrine_Connection_Statement} execute : SELECT a.id AS a__id, a.titre AS a__titre, a.id_artiste AS a__id_artiste, a.slug AS a__slug FROM album a LEFT JOIN albums_users a2 ON (a.id = a2.id_album) LEFT JOIN sf_guard_user s ON s.id = a2.id_user WHERE (s.id IN (?)) ORDER BY a.titre ASC - (1)
+Jul 01 13:15:29 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/_sidebar.php"
+Jul 01 13:15:29 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jul 01 13:15:29 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jul 01 13:15:29 symfony [info] {sfWebDebugLogger} Configuration 3.02 ms (11)
+Jul 01 13:15:29 symfony [info] {sfWebDebugLogger} Factories 15.01 ms (1)
+Jul 01 13:15:29 symfony [info] {sfWebDebugLogger} Action "accueil/index" 0.34 ms (1)
+Jul 01 13:15:29 symfony [info] {sfWebDebugLogger} View "Success" for "accueil/index" 120.96 ms (1)
+Jul 01 13:15:29 symfony [info] {sfWebDebugLogger} Partial "global/_user_infos" 19.65 ms (1)
+Jul 01 13:15:29 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.03 ms (4)
+Jul 01 13:15:29 symfony [info] {sfWebDebugLogger} Component "accueil/search" 3.02 ms (1)
+Jul 01 13:15:29 symfony [info] {sfWebDebugLogger} Partial "accueil/_search" 3.53 ms (1)
+Jul 01 13:15:29 symfony [info] {sfWebDebugLogger} Partial "global/_reader" 46.64 ms (1)
+Jul 01 13:15:29 symfony [info] {sfWebDebugLogger} Component "accueil/sidebar" 32.52 ms (1)
+Jul 01 13:15:29 symfony [info] {sfWebDebugLogger} Partial "accueil/_sidebar" 2.46 ms (1)
+Jul 01 13:15:29 symfony [info] {sfWebResponse} Send content (46743 o)
+Jul 01 13:15:29 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/guard/login)
+Jul 01 13:15:29 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/guard/logout)
+Jul 01 13:15:29 symfony [info] {sfPatternRouting} Match route "javascript_functions" (/functions.:sf_format) for /functions with parameters array (  'module' => 'accueil',  'action' => 'javascript',  'sf_format' => 'js',)
+Jul 01 13:15:29 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jul 01 13:15:29 symfony [info] {sfFilterChain} Executing filter "sfGuardRememberMeFilter"
+Jul 01 13:15:29 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jul 01 13:15:29 symfony [info] {accueilActions} Call "accueilActions->executeJavascript()"
+Jul 01 13:15:29 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/javascriptSuccess.js.php"
+Jul 01 13:15:29 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jul 01 13:15:29 symfony [info] {sfWebResponse} Send header "Content-Type: application/javascript"
+Jul 01 13:15:29 symfony [info] {sfWebDebugLogger} Configuration 2.78 ms (9)
+Jul 01 13:15:29 symfony [info] {sfWebDebugLogger} Factories 30.21 ms (1)
+Jul 01 13:15:29 symfony [info] {sfWebDebugLogger} Action "accueil/javascript" 0.23 ms (1)
+Jul 01 13:15:29 symfony [info] {sfWebDebugLogger} View "Success" for "accueil/javascript" 5.75 ms (1)
+Jul 01 13:15:29 symfony [info] {sfWebResponse} Send content (326 o)
+Jul 01 13:17:08 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/guard/login)
+Jul 01 13:17:08 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/guard/logout)
+Jul 01 13:17:08 symfony [info] {sfPatternRouting} Match route "homepage" (/) for / with parameters array (  'module' => 'accueil',  'action' => 'index',)
+Jul 01 13:17:08 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jul 01 13:17:08 symfony [info] {sfFilterChain} Executing filter "sfGuardRememberMeFilter"
+Jul 01 13:17:08 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jul 01 13:17:08 symfony [info] {accueilActions} Call "accueilActions->executeIndex()"
+Jul 01 13:17:08 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/indexSuccess.php"
+Jul 01 13:17:08 symfony [info] {sfPHPView} Decorate content with "/var/www/sonor/apps/frontend/templates/layout.php"
+Jul 01 13:17:08 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/templates/layout.php"
+Jul 01 13:17:08 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/templates/_user_infos.php"
+Jul 01 13:17:08 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Jul 01 13:17:08 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.first_name AS s__first_name, s.last_name AS s__last_name, s.email_address AS s__email_address, s.username AS s__username, s.algorithm AS s__algorithm, s.salt AS s__salt, s.password AS s__password, s.is_active AS s__is_active, s.is_super_admin AS s__is_super_admin, s.last_login AS s__last_login, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM sf_guard_user s WHERE (s.id = ?) LIMIT 1 - (1)
+Jul 01 13:17:08 symfony [info] {main} Call "accueil->executeSearch()"
+Jul 01 13:17:08 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/_search.php"
+Jul 01 13:17:08 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/templates/_reader.php"
+Jul 01 13:17:08 symfony [info] {main} Call "accueil->executeSidebar()"
+Jul 01 13:17:08 symfony [info] {Doctrine_Connection_Statement} execute : SELECT p.id AS p__id, p.titre AS p__titre, p.id_user AS p__id_user, p.slug AS p__slug, c.id AS c__id, c.titre AS c__titre, c.duree AS c__duree, c.audio_file AS c__audio_file, c.id_album AS c__id_album, c.slug AS c__slug FROM playlist p LEFT JOIN chansons_playlists c2 ON (p.id = c2.id_playlist) LEFT JOIN chanson c ON c.id = c2.id_chanson WHERE (p.id_user = ?) ORDER BY p.titre ASC - (1)
+Jul 01 13:17:08 symfony [info] {Doctrine_Connection_Statement} execute : SELECT a.id AS a__id, a.titre AS a__titre, a.id_artiste AS a__id_artiste, a.slug AS a__slug FROM album a LEFT JOIN albums_users a2 ON (a.id = a2.id_album) LEFT JOIN sf_guard_user s ON s.id = a2.id_user WHERE (s.id IN (?)) ORDER BY a.titre ASC - (1)
+Jul 01 13:17:08 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/_sidebar.php"
+Jul 01 13:17:08 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jul 01 13:17:08 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jul 01 13:17:08 symfony [info] {sfWebDebugLogger} Configuration 3.35 ms (11)
+Jul 01 13:17:08 symfony [info] {sfWebDebugLogger} Factories 58.05 ms (1)
+Jul 01 13:17:08 symfony [info] {sfWebDebugLogger} Action "accueil/index" 0.31 ms (1)
+Jul 01 13:17:08 symfony [info] {sfWebDebugLogger} View "Success" for "accueil/index" 206.06 ms (1)
+Jul 01 13:17:08 symfony [info] {sfWebDebugLogger} Partial "global/_user_infos" 63.91 ms (1)
+Jul 01 13:17:08 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.03 ms (4)
+Jul 01 13:17:08 symfony [info] {sfWebDebugLogger} Component "accueil/search" 9.79 ms (1)
+Jul 01 13:17:08 symfony [info] {sfWebDebugLogger} Partial "accueil/_search" 5.61 ms (1)
+Jul 01 13:17:08 symfony [info] {sfWebDebugLogger} Partial "global/_reader" 54.65 ms (1)
+Jul 01 13:17:08 symfony [info] {sfWebDebugLogger} Component "accueil/sidebar" 43.72 ms (1)
+Jul 01 13:17:08 symfony [info] {sfWebDebugLogger} Partial "accueil/_sidebar" 2.63 ms (1)
+Jul 01 13:17:08 symfony [info] {sfWebResponse} Send content (46745 o)
+Jul 01 13:17:08 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/guard/login)
+Jul 01 13:17:08 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/guard/logout)
+Jul 01 13:17:08 symfony [info] {sfPatternRouting} Match route "javascript_functions" (/functions.:sf_format) for /functions with parameters array (  'module' => 'accueil',  'action' => 'javascript',  'sf_format' => 'js',)
+Jul 01 13:17:08 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jul 01 13:17:08 symfony [info] {sfFilterChain} Executing filter "sfGuardRememberMeFilter"
+Jul 01 13:17:08 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jul 01 13:17:08 symfony [info] {accueilActions} Call "accueilActions->executeJavascript()"
+Jul 01 13:17:08 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/javascriptSuccess.js.php"
+Jul 01 13:17:08 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jul 01 13:17:08 symfony [info] {sfWebResponse} Send header "Content-Type: application/javascript"
+Jul 01 13:17:08 symfony [info] {sfWebDebugLogger} Configuration 2.38 ms (9)
+Jul 01 13:17:08 symfony [info] {sfWebDebugLogger} Factories 27.96 ms (1)
+Jul 01 13:17:08 symfony [info] {sfWebDebugLogger} Action "accueil/javascript" 0.24 ms (1)
+Jul 01 13:17:08 symfony [info] {sfWebDebugLogger} View "Success" for "accueil/javascript" 4.74 ms (1)
+Jul 01 13:17:08 symfony [info] {sfWebResponse} Send content (326 o)
+Jul 01 13:17:35 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/guard/login)
+Jul 01 13:17:35 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/guard/logout)
+Jul 01 13:17:35 symfony [info] {sfPatternRouting} Match route "homepage" (/) for / with parameters array (  'module' => 'accueil',  'action' => 'index',)
+Jul 01 13:17:35 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jul 01 13:17:35 symfony [info] {sfFilterChain} Executing filter "sfGuardRememberMeFilter"
+Jul 01 13:17:35 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jul 01 13:17:35 symfony [info] {accueilActions} Call "accueilActions->executeIndex()"
+Jul 01 13:17:35 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/indexSuccess.php"
+Jul 01 13:17:35 symfony [info] {sfPHPView} Decorate content with "/var/www/sonor/apps/frontend/templates/layout.php"
+Jul 01 13:17:35 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/templates/layout.php"
+Jul 01 13:17:35 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/templates/_user_infos.php"
+Jul 01 13:17:35 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Jul 01 13:17:35 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.first_name AS s__first_name, s.last_name AS s__last_name, s.email_address AS s__email_address, s.username AS s__username, s.algorithm AS s__algorithm, s.salt AS s__salt, s.password AS s__password, s.is_active AS s__is_active, s.is_super_admin AS s__is_super_admin, s.last_login AS s__last_login, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM sf_guard_user s WHERE (s.id = ?) LIMIT 1 - (1)
+Jul 01 13:17:35 symfony [info] {main} Call "accueil->executeSearch()"
+Jul 01 13:17:35 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/_search.php"
+Jul 01 13:17:35 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/templates/_reader.php"
+Jul 01 13:17:35 symfony [info] {main} Call "accueil->executeSidebar()"
+Jul 01 13:17:35 symfony [info] {Doctrine_Connection_Statement} execute : SELECT p.id AS p__id, p.titre AS p__titre, p.id_user AS p__id_user, p.slug AS p__slug, c.id AS c__id, c.titre AS c__titre, c.duree AS c__duree, c.audio_file AS c__audio_file, c.id_album AS c__id_album, c.slug AS c__slug FROM playlist p LEFT JOIN chansons_playlists c2 ON (p.id = c2.id_playlist) LEFT JOIN chanson c ON c.id = c2.id_chanson WHERE (p.id_user = ?) ORDER BY p.titre ASC - (1)
+Jul 01 13:17:35 symfony [info] {Doctrine_Connection_Statement} execute : SELECT a.id AS a__id, a.titre AS a__titre, a.id_artiste AS a__id_artiste, a.slug AS a__slug FROM album a LEFT JOIN albums_users a2 ON (a.id = a2.id_album) LEFT JOIN sf_guard_user s ON s.id = a2.id_user WHERE (s.id IN (?)) ORDER BY a.titre ASC - (1)
+Jul 01 13:17:35 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/_sidebar.php"
+Jul 01 13:17:35 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jul 01 13:17:35 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jul 01 13:17:35 symfony [info] {sfWebDebugLogger} Configuration 3.02 ms (11)
+Jul 01 13:17:35 symfony [info] {sfWebDebugLogger} Factories 18.38 ms (1)
+Jul 01 13:17:35 symfony [info] {sfWebDebugLogger} Action "accueil/index" 0.22 ms (1)
+Jul 01 13:17:35 symfony [info] {sfWebDebugLogger} View "Success" for "accueil/index" 144.82 ms (1)
+Jul 01 13:17:35 symfony [info] {sfWebDebugLogger} Partial "global/_user_infos" 26.38 ms (1)
+Jul 01 13:17:35 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.03 ms (4)
+Jul 01 13:17:35 symfony [info] {sfWebDebugLogger} Component "accueil/search" 3.70 ms (1)
+Jul 01 13:17:35 symfony [info] {sfWebDebugLogger} Partial "accueil/_search" 4.27 ms (1)
+Jul 01 13:17:35 symfony [info] {sfWebDebugLogger} Partial "global/_reader" 54.93 ms (1)
+Jul 01 13:17:35 symfony [info] {sfWebDebugLogger} Component "accueil/sidebar" 36.48 ms (1)
+Jul 01 13:17:35 symfony [info] {sfWebDebugLogger} Partial "accueil/_sidebar" 2.88 ms (1)
+Jul 01 13:17:35 symfony [info] {sfWebResponse} Send content (46743 o)
+Jul 01 13:17:35 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/guard/login)
+Jul 01 13:17:35 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/guard/logout)
+Jul 01 13:17:35 symfony [info] {sfPatternRouting} Match route "javascript_functions" (/functions.:sf_format) for /functions with parameters array (  'module' => 'accueil',  'action' => 'javascript',  'sf_format' => 'js',)
+Jul 01 13:17:35 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jul 01 13:17:35 symfony [info] {sfFilterChain} Executing filter "sfGuardRememberMeFilter"
+Jul 01 13:17:35 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jul 01 13:17:35 symfony [info] {accueilActions} Call "accueilActions->executeJavascript()"
+Jul 01 13:17:35 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/javascriptSuccess.js.php"
+Jul 01 13:17:35 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jul 01 13:17:35 symfony [info] {sfWebResponse} Send header "Content-Type: application/javascript"
+Jul 01 13:17:35 symfony [info] {sfWebDebugLogger} Configuration 3.26 ms (9)
+Jul 01 13:17:35 symfony [info] {sfWebDebugLogger} Factories 33.22 ms (1)
+Jul 01 13:17:35 symfony [info] {sfWebDebugLogger} Action "accueil/javascript" 0.36 ms (1)
+Jul 01 13:17:35 symfony [info] {sfWebDebugLogger} View "Success" for "accueil/javascript" 4.24 ms (1)
+Jul 01 13:17:35 symfony [info] {sfWebResponse} Send content (326 o)
+Jul 01 13:17:45 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/guard/login)
+Jul 01 13:17:45 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/guard/logout)
+Jul 01 13:17:45 symfony [info] {sfPatternRouting} Match route "homepage" (/) for / with parameters array (  'module' => 'accueil',  'action' => 'index',)
+Jul 01 13:17:45 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jul 01 13:17:45 symfony [info] {sfFilterChain} Executing filter "sfGuardRememberMeFilter"
+Jul 01 13:17:45 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jul 01 13:17:45 symfony [info] {accueilActions} Call "accueilActions->executeIndex()"
+Jul 01 13:17:45 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/indexSuccess.php"
+Jul 01 13:17:45 symfony [info] {sfPHPView} Decorate content with "/var/www/sonor/apps/frontend/templates/layout.php"
+Jul 01 13:17:45 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/templates/layout.php"
+Jul 01 13:17:45 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/templates/_user_infos.php"
+Jul 01 13:17:45 symfony [info] {main} Call "accueil->executeSearch()"
+Jul 01 13:17:45 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/_search.php"
+Jul 01 13:17:45 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/templates/_reader.php"
+Jul 01 13:17:45 symfony [info] {main} Call "accueil->executeSidebar()"
+Jul 01 13:17:45 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/_sidebar.php"
+Jul 01 13:17:45 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jul 01 13:17:45 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jul 01 13:17:45 symfony [info] {sfWebDebugLogger} Configuration 3.14 ms (11)
+Jul 01 13:17:45 symfony [info] {sfWebDebugLogger} Factories 36.82 ms (1)
+Jul 01 13:17:45 symfony [info] {sfWebDebugLogger} Action "accueil/index" 0.32 ms (1)
+Jul 01 13:17:45 symfony [info] {sfWebDebugLogger} View "Success" for "accueil/index" 85.44 ms (1)
+Jul 01 13:17:45 symfony [info] {sfWebDebugLogger} Partial "global/_user_infos" 1.17 ms (1)
+Jul 01 13:17:45 symfony [info] {sfWebDebugLogger} Component "accueil/search" 10.00 ms (1)
+Jul 01 13:17:45 symfony [info] {sfWebDebugLogger} Partial "accueil/_search" 5.27 ms (1)
+Jul 01 13:17:45 symfony [info] {sfWebDebugLogger} Partial "global/_reader" 51.28 ms (1)
+Jul 01 13:17:45 symfony [info] {sfWebDebugLogger} Component "accueil/sidebar" 0.04 ms (1)
+Jul 01 13:17:45 symfony [info] {sfWebDebugLogger} Partial "accueil/_sidebar" 1.16 ms (1)
+Jul 01 13:17:45 symfony [info] {sfWebResponse} Send content (36601 o)
+Jul 01 13:17:48 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/guard/login)
+Jul 01 13:17:48 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/guard/logout)
+Jul 01 13:17:48 symfony [info] {sfPatternRouting} Match route "homepage" (/) for / with parameters array (  'module' => 'accueil',  'action' => 'index',)
+Jul 01 13:17:48 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jul 01 13:17:48 symfony [info] {sfFilterChain} Executing filter "sfGuardRememberMeFilter"
+Jul 01 13:17:48 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jul 01 13:17:48 symfony [info] {accueilActions} Call "accueilActions->executeIndex()"
+Jul 01 13:17:48 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/indexSuccess.php"
+Jul 01 13:17:48 symfony [info] {sfPHPView} Decorate content with "/var/www/sonor/apps/frontend/templates/layout.php"
+Jul 01 13:17:48 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/templates/layout.php"
+Jul 01 13:17:48 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/templates/_user_infos.php"
+Jul 01 13:17:48 symfony [info] {main} Call "accueil->executeSearch()"
+Jul 01 13:17:48 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/_search.php"
+Jul 01 13:17:48 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/templates/_reader.php"
+Jul 01 13:17:48 symfony [info] {main} Call "accueil->executeSidebar()"
+Jul 01 13:17:48 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/_sidebar.php"
+Jul 01 13:17:48 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jul 01 13:17:48 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jul 01 13:17:48 symfony [info] {sfWebDebugLogger} Configuration 2.95 ms (11)
+Jul 01 13:17:48 symfony [info] {sfWebDebugLogger} Factories 15.98 ms (1)
+Jul 01 13:17:48 symfony [info] {sfWebDebugLogger} Action "accueil/index" 0.22 ms (1)
+Jul 01 13:17:48 symfony [info] {sfWebDebugLogger} View "Success" for "accueil/index" 76.20 ms (1)
+Jul 01 13:17:48 symfony [info] {sfWebDebugLogger} Partial "global/_user_infos" 1.49 ms (1)
+Jul 01 13:17:48 symfony [info] {sfWebDebugLogger} Component "accueil/search" 3.33 ms (1)
+Jul 01 13:17:48 symfony [info] {sfWebDebugLogger} Partial "accueil/_search" 3.63 ms (1)
+Jul 01 13:17:48 symfony [info] {sfWebDebugLogger} Partial "global/_reader" 53.85 ms (1)
+Jul 01 13:17:48 symfony [info] {sfWebDebugLogger} Component "accueil/sidebar" 0.04 ms (1)
+Jul 01 13:17:48 symfony [info] {sfWebDebugLogger} Partial "accueil/_sidebar" 0.85 ms (1)
+Jul 01 13:17:48 symfony [info] {sfWebResponse} Send content (36616 o)
+Jul 01 13:17:50 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/guard/login)
+Jul 01 13:17:50 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/guard/logout)
+Jul 01 13:17:50 symfony [info] {sfPatternRouting} Match route "sf_guard_signin" (/guard/login) for /guard/login with parameters array (  'module' => 'sfGuardAuth',  'action' => 'signin',)
+Jul 01 13:17:50 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jul 01 13:17:50 symfony [info] {sfFilterChain} Executing filter "sfGuardRememberMeFilter"
+Jul 01 13:17:50 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jul 01 13:17:50 symfony [info] {sfGuardAuthActions} Call "sfGuardAuthActions->executeSignin()"
+Jul 01 13:17:50 symfony [info] {sfPHPView} Render "/var/www/sonor/plugins/sfDoctrineGuardPlugin/modules/sfGuardAuth/templates/signinSuccess.php"
+Jul 01 13:17:50 symfony [info] {sfPartialView} Render "/var/www/sonor/plugins/sfDoctrineGuardPlugin/modules/sfGuardAuth/templates/_signin_form.php"
+Jul 01 13:17:50 symfony [info] {sfPHPView} Decorate content with "/var/www/sonor/apps/frontend/templates/layout.php"
+Jul 01 13:17:50 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/templates/layout.php"
+Jul 01 13:17:50 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/templates/_user_infos.php"
+Jul 01 13:17:50 symfony [info] {main} Call "accueil->executeSearch()"
+Jul 01 13:17:50 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/_search.php"
+Jul 01 13:17:50 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/templates/_reader.php"
+Jul 01 13:17:50 symfony [info] {main} Call "accueil->executeSidebar()"
+Jul 01 13:17:50 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/_sidebar.php"
+Jul 01 13:17:50 symfony [info] {sfWebResponse} Send status "HTTP/1.1 401 Unauthorized"
+Jul 01 13:17:50 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jul 01 13:17:50 symfony [info] {sfWebDebugLogger} Configuration 33.64 ms (12)
+Jul 01 13:17:50 symfony [info] {sfWebDebugLogger} Factories 14.41 ms (1)
+Jul 01 13:17:50 symfony [info] {sfWebDebugLogger} Action "sfGuardAuth/signin" 6.42 ms (1)
+Jul 01 13:17:50 symfony [info] {sfWebDebugLogger} View "Success" for "sfGuardAuth/signin" 85.65 ms (1)
+Jul 01 13:17:50 symfony [info] {sfWebDebugLogger} Partial "sfGuardAuth/_signin_form" 5.86 ms (1)
+Jul 01 13:17:50 symfony [info] {sfWebDebugLogger} Partial "global/_user_infos" 1.16 ms (1)
+Jul 01 13:17:50 symfony [info] {sfWebDebugLogger} Component "accueil/search" 2.02 ms (1)
+Jul 01 13:17:50 symfony [info] {sfWebDebugLogger} Partial "accueil/_search" 3.22 ms (1)
+Jul 01 13:17:50 symfony [info] {sfWebDebugLogger} Partial "global/_reader" 48.56 ms (1)
+Jul 01 13:17:50 symfony [info] {sfWebDebugLogger} Component "accueil/sidebar" 0.04 ms (1)
+Jul 01 13:17:50 symfony [info] {sfWebDebugLogger} Partial "accueil/_sidebar" 0.93 ms (1)
+Jul 01 13:17:50 symfony [info] {sfWebResponse} Send content (41738 o)
+Jul 01 13:19:46 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/guard/login)
+Jul 01 13:19:46 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/guard/logout)
+Jul 01 13:19:46 symfony [info] {sfPatternRouting} Match route "homepage" (/) for / with parameters array (  'module' => 'accueil',  'action' => 'index',)
+Jul 01 13:19:46 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jul 01 13:19:46 symfony [info] {sfFilterChain} Executing filter "sfGuardRememberMeFilter"
+Jul 01 13:19:46 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jul 01 13:19:46 symfony [info] {accueilActions} Call "accueilActions->executeIndex()"
+Jul 01 13:19:46 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/indexSuccess.php"
+Jul 01 13:19:46 symfony [info] {sfPHPView} Decorate content with "/var/www/sonor/apps/frontend/templates/layout.php"
+Jul 01 13:19:46 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/templates/layout.php"
+Jul 01 13:19:46 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/templates/_user_infos.php"
+Jul 01 13:19:46 symfony [info] {main} Call "accueil->executeSearch()"
+Jul 01 13:19:46 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/_search.php"
+Jul 01 13:19:46 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/templates/_reader.php"
+Jul 01 13:19:46 symfony [info] {main} Call "accueil->executeSidebar()"
+Jul 01 13:19:46 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/_sidebar.php"
+Jul 01 13:19:46 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jul 01 13:19:46 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jul 01 13:19:46 symfony [info] {sfWebDebugLogger} Configuration 10.19 ms (12)
+Jul 01 13:19:46 symfony [info] {sfWebDebugLogger} Factories 15.84 ms (1)
+Jul 01 13:19:46 symfony [info] {sfWebDebugLogger} Action "accueil/index" 0.29 ms (1)
+Jul 01 13:19:46 symfony [info] {sfWebDebugLogger} View "Success" for "accueil/index" 72.73 ms (1)
+Jul 01 13:19:46 symfony [info] {sfWebDebugLogger} Partial "global/_user_infos" 1.54 ms (1)
+Jul 01 13:19:46 symfony [info] {sfWebDebugLogger} Component "accueil/search" 3.54 ms (1)
+Jul 01 13:19:46 symfony [info] {sfWebDebugLogger} Partial "accueil/_search" 4.50 ms (1)
+Jul 01 13:19:46 symfony [info] {sfWebDebugLogger} Partial "global/_reader" 48.81 ms (1)
+Jul 01 13:19:46 symfony [info] {sfWebDebugLogger} Component "accueil/sidebar" 0.05 ms (1)
+Jul 01 13:19:46 symfony [info] {sfWebDebugLogger} Partial "accueil/_sidebar" 0.78 ms (1)
+Jul 01 13:19:46 symfony [info] {sfWebResponse} Send content (36265 o)
+Jul 01 13:19:48 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/guard/login)
+Jul 01 13:19:48 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/guard/logout)
+Jul 01 13:19:48 symfony [info] {sfPatternRouting} Match route "sf_guard_signin" (/guard/login) for /guard/login with parameters array (  'module' => 'sfGuardAuth',  'action' => 'signin',)
+Jul 01 13:19:48 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jul 01 13:19:48 symfony [info] {sfFilterChain} Executing filter "sfGuardRememberMeFilter"
+Jul 01 13:19:48 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jul 01 13:19:48 symfony [info] {sfGuardAuthActions} Call "sfGuardAuthActions->executeSignin()"
+Jul 01 13:19:48 symfony [info] {sfPHPView} Render "/var/www/sonor/plugins/sfDoctrineGuardPlugin/modules/sfGuardAuth/templates/signinSuccess.php"
+Jul 01 13:19:48 symfony [info] {sfPartialView} Render "/var/www/sonor/plugins/sfDoctrineGuardPlugin/modules/sfGuardAuth/templates/_signin_form.php"
+Jul 01 13:19:48 symfony [info] {sfPHPView} Decorate content with "/var/www/sonor/apps/frontend/templates/layout.php"
+Jul 01 13:19:48 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/templates/layout.php"
+Jul 01 13:19:48 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/templates/_user_infos.php"
+Jul 01 13:19:48 symfony [info] {main} Call "accueil->executeSearch()"
+Jul 01 13:19:48 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/_search.php"
+Jul 01 13:19:48 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/templates/_reader.php"
+Jul 01 13:19:48 symfony [info] {main} Call "accueil->executeSidebar()"
+Jul 01 13:19:48 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/_sidebar.php"
+Jul 01 13:19:48 symfony [info] {sfWebResponse} Send status "HTTP/1.1 401 Unauthorized"
+Jul 01 13:19:48 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jul 01 13:19:48 symfony [info] {sfWebDebugLogger} Configuration 3.71 ms (11)
+Jul 01 13:19:48 symfony [info] {sfWebDebugLogger} Factories 28.42 ms (1)
+Jul 01 13:19:48 symfony [info] {sfWebDebugLogger} Action "sfGuardAuth/signin" 4.58 ms (1)
+Jul 01 13:19:48 symfony [info] {sfWebDebugLogger} View "Success" for "sfGuardAuth/signin" 77.87 ms (1)
+Jul 01 13:19:48 symfony [info] {sfWebDebugLogger} Partial "sfGuardAuth/_signin_form" 6.13 ms (1)
+Jul 01 13:19:48 symfony [info] {sfWebDebugLogger} Partial "global/_user_infos" 1.08 ms (1)
+Jul 01 13:19:48 symfony [info] {sfWebDebugLogger} Component "accueil/search" 1.90 ms (1)
+Jul 01 13:19:48 symfony [info] {sfWebDebugLogger} Partial "accueil/_search" 3.00 ms (1)
+Jul 01 13:19:48 symfony [info] {sfWebDebugLogger} Partial "global/_reader" 49.80 ms (1)
+Jul 01 13:19:48 symfony [info] {sfWebDebugLogger} Component "accueil/sidebar" 0.04 ms (1)
+Jul 01 13:19:48 symfony [info] {sfWebDebugLogger} Partial "accueil/_sidebar" 1.10 ms (1)
+Jul 01 13:19:48 symfony [info] {sfWebResponse} Send content (41401 o)
+Jul 01 13:19:58 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/guard/login)
+Jul 01 13:19:58 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/guard/logout)
+Jul 01 13:19:58 symfony [info] {sfPatternRouting} Match route "sf_guard_signin" (/guard/login) for /guard/login with parameters array (  'module' => 'sfGuardAuth',  'action' => 'signin',)
+Jul 01 13:19:58 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jul 01 13:19:58 symfony [info] {sfFilterChain} Executing filter "sfGuardRememberMeFilter"
+Jul 01 13:19:58 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jul 01 13:19:58 symfony [info] {sfGuardAuthActions} Call "sfGuardAuthActions->executeSignin()"
+Jul 01 13:19:58 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Jul 01 13:19:58 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.first_name AS s__first_name, s.last_name AS s__last_name, s.email_address AS s__email_address, s.username AS s__username, s.algorithm AS s__algorithm, s.salt AS s__salt, s.password AS s__password, s.is_active AS s__is_active, s.is_super_admin AS s__is_super_admin, s.last_login AS s__last_login, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM sf_guard_user s WHERE (s.username = ? AND s.is_active = ?) - (jeanphilippe.morvan@gmail.com, 1)
+Jul 01 13:19:58 symfony [info] {myUser} User is authenticated
+Jul 01 13:19:58 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.description AS s__description, s.created_at AS s__created_at, s.updated_at AS s__updated_at, s2.user_id AS s2__user_id, s2.permission_id AS s2__permission_id, s2.created_at AS s2__created_at, s2.updated_at AS s2__updated_at FROM sf_guard_permission s LEFT JOIN sf_guard_user_permission s2 ON s.id = s2.permission_id WHERE (s2.user_id IN (?)) - (1)
+Jul 01 13:19:58 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.description AS s__description, s.created_at AS s__created_at, s.updated_at AS s__updated_at, s2.user_id AS s2__user_id, s2.group_id AS s2__group_id, s2.created_at AS s2__created_at, s2.updated_at AS s2__updated_at FROM sf_guard_group s LEFT JOIN sf_guard_user_group s2 ON s.id = s2.group_id WHERE (s2.user_id IN (?)) - (1)
+Jul 01 13:19:58 symfony [info] {myUser} Add credential(s) ""
+Jul 01 13:19:58 symfony [info] {Doctrine_Connection_Statement} execute : UPDATE sf_guard_user SET last_login = ?, updated_at = ? WHERE id = ? - (2011-07-01 13:19:58, 2011-07-01 13:19:58, 1)
+Jul 01 13:19:58 symfony [info] {sfFrontWebController} Redirect to "http://sonor/frontend_dev.php"
+Jul 01 13:19:58 symfony [info] {sfWebResponse} Send status "HTTP/1.1 302 Found"
+Jul 01 13:19:58 symfony [info] {sfWebResponse} Send header "Location: http://sonor/frontend_dev.php"
+Jul 01 13:19:58 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jul 01 13:19:58 symfony [info] {sfWebDebugLogger} Configuration 2.15 ms (8)
+Jul 01 13:19:58 symfony [info] {sfWebDebugLogger} Factories 18.94 ms (1)
+Jul 01 13:19:58 symfony [info] {sfWebDebugLogger} Action "sfGuardAuth/signin" 79.37 ms (1)
+Jul 01 13:19:58 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.04 ms (5)
+Jul 01 13:19:58 symfony [info] {sfWebResponse} Send content (100 o)
+Jul 01 13:19:58 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/guard/login)
+Jul 01 13:19:58 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/guard/logout)
+Jul 01 13:19:58 symfony [info] {sfPatternRouting} Match route "homepage" (/) for / with parameters array (  'module' => 'accueil',  'action' => 'index',)
+Jul 01 13:19:58 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jul 01 13:19:58 symfony [info] {sfFilterChain} Executing filter "sfGuardRememberMeFilter"
+Jul 01 13:19:58 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jul 01 13:19:58 symfony [info] {accueilActions} Call "accueilActions->executeIndex()"
+Jul 01 13:19:58 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/indexSuccess.php"
+Jul 01 13:19:58 symfony [info] {sfPHPView} Decorate content with "/var/www/sonor/apps/frontend/templates/layout.php"
+Jul 01 13:19:58 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/templates/layout.php"
+Jul 01 13:19:58 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/templates/_user_infos.php"
+Jul 01 13:19:58 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Jul 01 13:19:58 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.first_name AS s__first_name, s.last_name AS s__last_name, s.email_address AS s__email_address, s.username AS s__username, s.algorithm AS s__algorithm, s.salt AS s__salt, s.password AS s__password, s.is_active AS s__is_active, s.is_super_admin AS s__is_super_admin, s.last_login AS s__last_login, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM sf_guard_user s WHERE (s.id = ?) LIMIT 1 - (1)
+Jul 01 13:19:58 symfony [info] {main} Call "accueil->executeSearch()"
+Jul 01 13:19:58 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/_search.php"
+Jul 01 13:19:58 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/templates/_reader.php"
+Jul 01 13:19:58 symfony [info] {main} Call "accueil->executeSidebar()"
+Jul 01 13:19:58 symfony [info] {Doctrine_Connection_Statement} execute : SELECT p.id AS p__id, p.titre AS p__titre, p.id_user AS p__id_user, p.slug AS p__slug, c.id AS c__id, c.titre AS c__titre, c.duree AS c__duree, c.audio_file AS c__audio_file, c.id_album AS c__id_album, c.slug AS c__slug FROM playlist p LEFT JOIN chansons_playlists c2 ON (p.id = c2.id_playlist) LEFT JOIN chanson c ON c.id = c2.id_chanson WHERE (p.id_user = ?) ORDER BY p.titre ASC - (1)
+Jul 01 13:19:58 symfony [info] {Doctrine_Connection_Statement} execute : SELECT a.id AS a__id, a.titre AS a__titre, a.id_artiste AS a__id_artiste, a.slug AS a__slug FROM album a LEFT JOIN albums_users a2 ON (a.id = a2.id_album) LEFT JOIN sf_guard_user s ON s.id = a2.id_user WHERE (s.id IN (?)) ORDER BY a.titre ASC - (1)
+Jul 01 13:19:58 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/_sidebar.php"
+Jul 01 13:19:58 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jul 01 13:19:58 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jul 01 13:19:58 symfony [info] {sfWebDebugLogger} Configuration 3.20 ms (11)
+Jul 01 13:19:58 symfony [info] {sfWebDebugLogger} Factories 14.24 ms (1)
+Jul 01 13:19:58 symfony [info] {sfWebDebugLogger} Action "accueil/index" 0.33 ms (1)
+Jul 01 13:19:58 symfony [info] {sfWebDebugLogger} View "Success" for "accueil/index" 135.87 ms (1)
+Jul 01 13:19:58 symfony [info] {sfWebDebugLogger} Partial "global/_user_infos" 22.03 ms (1)
+Jul 01 13:19:58 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.03 ms (4)
+Jul 01 13:19:58 symfony [info] {sfWebDebugLogger} Component "accueil/search" 3.76 ms (1)
+Jul 01 13:19:58 symfony [info] {sfWebDebugLogger} Partial "accueil/_search" 4.46 ms (1)
+Jul 01 13:19:58 symfony [info] {sfWebDebugLogger} Partial "global/_reader" 50.30 ms (1)
+Jul 01 13:19:58 symfony [info] {sfWebDebugLogger} Component "accueil/sidebar" 37.35 ms (1)
+Jul 01 13:19:58 symfony [info] {sfWebDebugLogger} Partial "accueil/_sidebar" 2.56 ms (1)
+Jul 01 13:19:58 symfony [info] {sfWebResponse} Send content (46614 o)
+Jul 01 13:19:58 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/guard/login)
+Jul 01 13:19:58 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/guard/logout)
+Jul 01 13:19:58 symfony [info] {sfPatternRouting} Match route "javascript_functions" (/functions.:sf_format) for /functions with parameters array (  'module' => 'accueil',  'action' => 'javascript',  'sf_format' => 'js',)
+Jul 01 13:19:58 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jul 01 13:19:58 symfony [info] {sfFilterChain} Executing filter "sfGuardRememberMeFilter"
+Jul 01 13:19:58 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jul 01 13:19:58 symfony [info] {accueilActions} Call "accueilActions->executeJavascript()"
+Jul 01 13:19:58 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/javascriptSuccess.js.php"
+Jul 01 13:19:58 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jul 01 13:19:58 symfony [info] {sfWebResponse} Send header "Content-Type: application/javascript"
+Jul 01 13:19:58 symfony [info] {sfWebDebugLogger} Configuration 2.29 ms (9)
+Jul 01 13:19:58 symfony [info] {sfWebDebugLogger} Factories 13.11 ms (1)
+Jul 01 13:19:58 symfony [info] {sfWebDebugLogger} Action "accueil/javascript" 0.21 ms (1)
+Jul 01 13:19:58 symfony [info] {sfWebDebugLogger} View "Success" for "accueil/javascript" 4.08 ms (1)
+Jul 01 13:19:58 symfony [info] {sfWebResponse} Send content (326 o)
+Jul 01 13:20:12 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/guard/login)
+Jul 01 13:20:12 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/guard/logout)
+Jul 01 13:20:12 symfony [info] {sfPatternRouting} Match route "homepage" (/) for / with parameters array (  'module' => 'accueil',  'action' => 'index',)
+Jul 01 13:20:12 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jul 01 13:20:12 symfony [info] {sfFilterChain} Executing filter "sfGuardRememberMeFilter"
+Jul 01 13:20:12 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jul 01 13:20:12 symfony [info] {accueilActions} Call "accueilActions->executeIndex()"
+Jul 01 13:20:12 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/indexSuccess.php"
+Jul 01 13:20:12 symfony [info] {sfPHPView} Decorate content with "/var/www/sonor/apps/frontend/templates/layout.php"
+Jul 01 13:20:12 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/templates/layout.php"
+Jul 01 13:20:13 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/templates/_user_infos.php"
+Jul 01 13:20:13 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Jul 01 13:20:13 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.first_name AS s__first_name, s.last_name AS s__last_name, s.email_address AS s__email_address, s.username AS s__username, s.algorithm AS s__algorithm, s.salt AS s__salt, s.password AS s__password, s.is_active AS s__is_active, s.is_super_admin AS s__is_super_admin, s.last_login AS s__last_login, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM sf_guard_user s WHERE (s.id = ?) LIMIT 1 - (1)
+Jul 01 13:20:13 symfony [info] {main} Call "accueil->executeSearch()"
+Jul 01 13:20:13 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/_search.php"
+Jul 01 13:20:13 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/templates/_reader.php"
+Jul 01 13:20:13 symfony [info] {main} Call "accueil->executeSidebar()"
+Jul 01 13:20:13 symfony [info] {Doctrine_Connection_Statement} execute : SELECT p.id AS p__id, p.titre AS p__titre, p.id_user AS p__id_user, p.slug AS p__slug, c.id AS c__id, c.titre AS c__titre, c.duree AS c__duree, c.audio_file AS c__audio_file, c.id_album AS c__id_album, c.slug AS c__slug FROM playlist p LEFT JOIN chansons_playlists c2 ON (p.id = c2.id_playlist) LEFT JOIN chanson c ON c.id = c2.id_chanson WHERE (p.id_user = ?) ORDER BY p.titre ASC - (1)
+Jul 01 13:20:13 symfony [info] {Doctrine_Connection_Statement} execute : SELECT a.id AS a__id, a.titre AS a__titre, a.id_artiste AS a__id_artiste, a.slug AS a__slug FROM album a LEFT JOIN albums_users a2 ON (a.id = a2.id_album) LEFT JOIN sf_guard_user s ON s.id = a2.id_user WHERE (s.id IN (?)) ORDER BY a.titre ASC - (1)
+Jul 01 13:20:13 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/_sidebar.php"
+Jul 01 13:20:13 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jul 01 13:20:13 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jul 01 13:20:13 symfony [info] {sfWebDebugLogger} Configuration 3.41 ms (11)
+Jul 01 13:20:13 symfony [info] {sfWebDebugLogger} Factories 47.65 ms (1)
+Jul 01 13:20:13 symfony [info] {sfWebDebugLogger} Action "accueil/index" 0.25 ms (1)
+Jul 01 13:20:13 symfony [info] {sfWebDebugLogger} View "Success" for "accueil/index" 169.10 ms (1)
+Jul 01 13:20:13 symfony [info] {sfWebDebugLogger} Partial "global/_user_infos" 31.86 ms (1)
+Jul 01 13:20:13 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.03 ms (4)
+Jul 01 13:20:13 symfony [info] {sfWebDebugLogger} Component "accueil/search" 8.55 ms (1)
+Jul 01 13:20:13 symfony [info] {sfWebDebugLogger} Partial "accueil/_search" 4.67 ms (1)
+Jul 01 13:20:13 symfony [info] {sfWebDebugLogger} Partial "global/_reader" 52.10 ms (1)
+Jul 01 13:20:13 symfony [info] {sfWebDebugLogger} Component "accueil/sidebar" 42.38 ms (1)
+Jul 01 13:20:13 symfony [info] {sfWebDebugLogger} Partial "accueil/_sidebar" 2.78 ms (1)
+Jul 01 13:20:13 symfony [info] {sfWebResponse} Send content (46583 o)
+Jul 01 13:23:04 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/guard/login)
+Jul 01 13:23:04 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/guard/logout)
+Jul 01 13:23:04 symfony [info] {sfPatternRouting} Match route "homepage" (/) for / with parameters array (  'module' => 'accueil',  'action' => 'index',)
+Jul 01 13:23:04 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jul 01 13:23:04 symfony [info] {sfFilterChain} Executing filter "sfGuardRememberMeFilter"
+Jul 01 13:23:04 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jul 01 13:23:04 symfony [info] {accueilActions} Call "accueilActions->executeIndex()"
+Jul 01 13:23:04 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/indexSuccess.php"
+Jul 01 13:23:04 symfony [info] {sfPHPView} Decorate content with "/var/www/sonor/apps/frontend/templates/layout.php"
+Jul 01 13:23:04 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/templates/layout.php"
+Jul 01 13:23:04 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/templates/_user_infos.php"
+Jul 01 13:23:04 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Jul 01 13:23:04 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.first_name AS s__first_name, s.last_name AS s__last_name, s.email_address AS s__email_address, s.username AS s__username, s.algorithm AS s__algorithm, s.salt AS s__salt, s.password AS s__password, s.is_active AS s__is_active, s.is_super_admin AS s__is_super_admin, s.last_login AS s__last_login, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM sf_guard_user s WHERE (s.id = ?) LIMIT 1 - (1)
+Jul 01 13:23:04 symfony [info] {main} Call "accueil->executeSearch()"
+Jul 01 13:23:04 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/_search.php"
+Jul 01 13:23:04 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/templates/_reader.php"
+Jul 01 13:23:04 symfony [info] {main} Call "accueil->executeSidebar()"
+Jul 01 13:23:04 symfony [info] {Doctrine_Connection_Statement} execute : SELECT p.id AS p__id, p.titre AS p__titre, p.id_user AS p__id_user, p.slug AS p__slug, c.id AS c__id, c.titre AS c__titre, c.duree AS c__duree, c.audio_file AS c__audio_file, c.id_album AS c__id_album, c.slug AS c__slug FROM playlist p LEFT JOIN chansons_playlists c2 ON (p.id = c2.id_playlist) LEFT JOIN chanson c ON c.id = c2.id_chanson WHERE (p.id_user = ?) ORDER BY p.titre ASC - (1)
+Jul 01 13:23:04 symfony [info] {Doctrine_Connection_Statement} execute : SELECT a.id AS a__id, a.titre AS a__titre, a.id_artiste AS a__id_artiste, a.slug AS a__slug FROM album a LEFT JOIN albums_users a2 ON (a.id = a2.id_album) LEFT JOIN sf_guard_user s ON s.id = a2.id_user WHERE (s.id IN (?)) ORDER BY a.titre ASC - (1)
+Jul 01 13:23:04 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/_sidebar.php"
+Jul 01 13:23:04 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jul 01 13:23:04 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jul 01 13:23:04 symfony [info] {sfWebDebugLogger} Configuration 472.04 ms (11)
+Jul 01 13:23:04 symfony [info] {sfWebDebugLogger} Factories 273.58 ms (1)
+Jul 01 13:23:04 symfony [info] {sfWebDebugLogger} Action "accueil/index" 0.22 ms (1)
+Jul 01 13:23:04 symfony [info] {sfWebDebugLogger} View "Success" for "accueil/index" 301.70 ms (1)
+Jul 01 13:23:04 symfony [info] {sfWebDebugLogger} Partial "global/_user_infos" 59.13 ms (1)
+Jul 01 13:23:04 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.03 ms (4)
+Jul 01 13:23:04 symfony [info] {sfWebDebugLogger} Component "accueil/search" 8.02 ms (1)
+Jul 01 13:23:04 symfony [info] {sfWebDebugLogger} Partial "accueil/_search" 7.90 ms (1)
+Jul 01 13:23:04 symfony [info] {sfWebDebugLogger} Partial "global/_reader" 102.33 ms (1)
+Jul 01 13:23:04 symfony [info] {sfWebDebugLogger} Component "accueil/sidebar" 82.39 ms (1)
+Jul 01 13:23:04 symfony [info] {sfWebDebugLogger} Partial "accueil/_sidebar" 2.53 ms (1)
+Jul 01 13:23:04 symfony [info] {sfWebResponse} Send content (46826 o)
+Jul 01 13:23:04 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/guard/login)
+Jul 01 13:23:04 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/guard/logout)
+Jul 01 13:23:04 symfony [info] {sfPatternRouting} Match route "javascript_functions" (/functions.:sf_format) for /functions with parameters array (  'module' => 'accueil',  'action' => 'javascript',  'sf_format' => 'js',)
+Jul 01 13:23:04 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jul 01 13:23:04 symfony [info] {sfFilterChain} Executing filter "sfGuardRememberMeFilter"
+Jul 01 13:23:04 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jul 01 13:23:04 symfony [info] {accueilActions} Call "accueilActions->executeJavascript()"
+Jul 01 13:23:04 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/javascriptSuccess.js.php"
+Jul 01 13:23:04 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jul 01 13:23:04 symfony [info] {sfWebResponse} Send header "Content-Type: application/javascript"
+Jul 01 13:23:04 symfony [info] {sfWebDebugLogger} Configuration 2.81 ms (9)
+Jul 01 13:23:04 symfony [info] {sfWebDebugLogger} Factories 52.17 ms (1)
+Jul 01 13:23:04 symfony [info] {sfWebDebugLogger} Action "accueil/javascript" 0.25 ms (1)
+Jul 01 13:23:04 symfony [info] {sfWebDebugLogger} View "Success" for "accueil/javascript" 14.13 ms (1)
+Jul 01 13:23:04 symfony [info] {sfWebResponse} Send content (326 o)
+Jul 01 13:23:10 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/guard/login)
+Jul 01 13:23:10 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/guard/logout)
+Jul 01 13:23:10 symfony [info] {sfPatternRouting} Match route "homepage" (/) for / with parameters array (  'module' => 'accueil',  'action' => 'index',)
+Jul 01 13:23:10 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jul 01 13:23:10 symfony [info] {sfFilterChain} Executing filter "sfGuardRememberMeFilter"
+Jul 01 13:23:10 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jul 01 13:23:10 symfony [info] {accueilActions} Call "accueilActions->executeIndex()"
+Jul 01 13:23:10 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/indexSuccess.php"
+Jul 01 13:23:10 symfony [info] {sfPHPView} Decorate content with "/var/www/sonor/apps/frontend/templates/layout.php"
+Jul 01 13:23:10 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/templates/layout.php"
+Jul 01 13:23:10 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/templates/_user_infos.php"
+Jul 01 13:23:10 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Jul 01 13:23:10 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.first_name AS s__first_name, s.last_name AS s__last_name, s.email_address AS s__email_address, s.username AS s__username, s.algorithm AS s__algorithm, s.salt AS s__salt, s.password AS s__password, s.is_active AS s__is_active, s.is_super_admin AS s__is_super_admin, s.last_login AS s__last_login, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM sf_guard_user s WHERE (s.id = ?) LIMIT 1 - (1)
+Jul 01 13:23:10 symfony [info] {main} Call "accueil->executeSearch()"
+Jul 01 13:23:10 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/_search.php"
+Jul 01 13:23:10 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/templates/_reader.php"
+Jul 01 13:23:10 symfony [info] {main} Call "accueil->executeSidebar()"
+Jul 01 13:23:10 symfony [info] {Doctrine_Connection_Statement} execute : SELECT p.id AS p__id, p.titre AS p__titre, p.id_user AS p__id_user, p.slug AS p__slug, c.id AS c__id, c.titre AS c__titre, c.duree AS c__duree, c.audio_file AS c__audio_file, c.id_album AS c__id_album, c.slug AS c__slug FROM playlist p LEFT JOIN chansons_playlists c2 ON (p.id = c2.id_playlist) LEFT JOIN chanson c ON c.id = c2.id_chanson WHERE (p.id_user = ?) ORDER BY p.titre ASC - (1)
+Jul 01 13:23:10 symfony [info] {Doctrine_Connection_Statement} execute : SELECT a.id AS a__id, a.titre AS a__titre, a.id_artiste AS a__id_artiste, a.slug AS a__slug FROM album a LEFT JOIN albums_users a2 ON (a.id = a2.id_album) LEFT JOIN sf_guard_user s ON s.id = a2.id_user WHERE (s.id IN (?)) ORDER BY a.titre ASC - (1)
+Jul 01 13:23:10 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/_sidebar.php"
+Jul 01 13:23:11 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jul 01 13:23:11 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jul 01 13:23:11 symfony [info] {sfWebDebugLogger} Configuration 3.27 ms (11)
+Jul 01 13:23:11 symfony [info] {sfWebDebugLogger} Factories 16.03 ms (1)
+Jul 01 13:23:11 symfony [info] {sfWebDebugLogger} Action "accueil/index" 0.22 ms (1)
+Jul 01 13:23:11 symfony [info] {sfWebDebugLogger} View "Success" for "accueil/index" 133.52 ms (1)
+Jul 01 13:23:11 symfony [info] {sfWebDebugLogger} Partial "global/_user_infos" 22.92 ms (1)
+Jul 01 13:23:11 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.03 ms (4)
+Jul 01 13:23:11 symfony [info] {sfWebDebugLogger} Component "accueil/search" 3.14 ms (1)
+Jul 01 13:23:11 symfony [info] {sfWebDebugLogger} Partial "accueil/_search" 3.97 ms (1)
+Jul 01 13:23:11 symfony [info] {sfWebDebugLogger} Partial "global/_reader" 49.11 ms (1)
+Jul 01 13:23:11 symfony [info] {sfWebDebugLogger} Component "accueil/sidebar" 37.45 ms (1)
+Jul 01 13:23:11 symfony [info] {sfWebDebugLogger} Partial "accueil/_sidebar" 2.72 ms (1)
+Jul 01 13:23:11 symfony [info] {sfWebResponse} Send content (46840 o)
+Jul 01 13:23:11 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/guard/login)
+Jul 01 13:23:11 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/guard/logout)
+Jul 01 13:23:11 symfony [info] {sfPatternRouting} Match route "javascript_functions" (/functions.:sf_format) for /functions with parameters array (  'module' => 'accueil',  'action' => 'javascript',  'sf_format' => 'js',)
+Jul 01 13:23:11 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jul 01 13:23:11 symfony [info] {sfFilterChain} Executing filter "sfGuardRememberMeFilter"
+Jul 01 13:23:11 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jul 01 13:23:11 symfony [info] {accueilActions} Call "accueilActions->executeJavascript()"
+Jul 01 13:23:11 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/javascriptSuccess.js.php"
+Jul 01 13:23:11 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jul 01 13:23:11 symfony [info] {sfWebResponse} Send header "Content-Type: application/javascript"
+Jul 01 13:23:11 symfony [info] {sfWebDebugLogger} Configuration 2.86 ms (9)
+Jul 01 13:23:11 symfony [info] {sfWebDebugLogger} Factories 14.72 ms (1)
+Jul 01 13:23:11 symfony [info] {sfWebDebugLogger} Action "accueil/javascript" 0.21 ms (1)
+Jul 01 13:23:11 symfony [info] {sfWebDebugLogger} View "Success" for "accueil/javascript" 4.20 ms (1)
+Jul 01 13:23:11 symfony [info] {sfWebResponse} Send content (326 o)
+Jul 01 13:23:13 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/guard/login)
+Jul 01 13:23:13 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/guard/logout)
+Jul 01 13:23:13 symfony [info] {sfPatternRouting} Match route "homepage" (/) for / with parameters array (  'module' => 'accueil',  'action' => 'index',)
+Jul 01 13:23:13 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jul 01 13:23:13 symfony [info] {sfFilterChain} Executing filter "sfGuardRememberMeFilter"
+Jul 01 13:23:13 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jul 01 13:23:13 symfony [info] {accueilActions} Call "accueilActions->executeIndex()"
+Jul 01 13:23:13 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/indexSuccess.php"
+Jul 01 13:23:13 symfony [info] {sfPHPView} Decorate content with "/var/www/sonor/apps/frontend/templates/layout.php"
+Jul 01 13:23:13 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/templates/layout.php"
+Jul 01 13:23:13 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/templates/_user_infos.php"
+Jul 01 13:23:13 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Jul 01 13:23:13 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.first_name AS s__first_name, s.last_name AS s__last_name, s.email_address AS s__email_address, s.username AS s__username, s.algorithm AS s__algorithm, s.salt AS s__salt, s.password AS s__password, s.is_active AS s__is_active, s.is_super_admin AS s__is_super_admin, s.last_login AS s__last_login, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM sf_guard_user s WHERE (s.id = ?) LIMIT 1 - (1)
+Jul 01 13:23:13 symfony [info] {main} Call "accueil->executeSearch()"
+Jul 01 13:23:13 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/_search.php"
+Jul 01 13:23:13 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/templates/_reader.php"
+Jul 01 13:23:14 symfony [info] {main} Call "accueil->executeSidebar()"
+Jul 01 13:23:14 symfony [info] {Doctrine_Connection_Statement} execute : SELECT p.id AS p__id, p.titre AS p__titre, p.id_user AS p__id_user, p.slug AS p__slug, c.id AS c__id, c.titre AS c__titre, c.duree AS c__duree, c.audio_file AS c__audio_file, c.id_album AS c__id_album, c.slug AS c__slug FROM playlist p LEFT JOIN chansons_playlists c2 ON (p.id = c2.id_playlist) LEFT JOIN chanson c ON c.id = c2.id_chanson WHERE (p.id_user = ?) ORDER BY p.titre ASC - (1)
+Jul 01 13:23:14 symfony [info] {Doctrine_Connection_Statement} execute : SELECT a.id AS a__id, a.titre AS a__titre, a.id_artiste AS a__id_artiste, a.slug AS a__slug FROM album a LEFT JOIN albums_users a2 ON (a.id = a2.id_album) LEFT JOIN sf_guard_user s ON s.id = a2.id_user WHERE (s.id IN (?)) ORDER BY a.titre ASC - (1)
+Jul 01 13:23:14 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/_sidebar.php"
+Jul 01 13:23:14 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jul 01 13:23:14 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jul 01 13:23:14 symfony [info] {sfWebDebugLogger} Configuration 6.98 ms (11)
+Jul 01 13:23:14 symfony [info] {sfWebDebugLogger} Factories 27.58 ms (1)
+Jul 01 13:23:14 symfony [info] {sfWebDebugLogger} Action "accueil/index" 0.32 ms (1)
+Jul 01 13:23:14 symfony [info] {sfWebDebugLogger} View "Success" for "accueil/index" 153.48 ms (1)
+Jul 01 13:23:14 symfony [info] {sfWebDebugLogger} Partial "global/_user_infos" 24.41 ms (1)
+Jul 01 13:23:14 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.03 ms (4)
+Jul 01 13:23:14 symfony [info] {sfWebDebugLogger} Component "accueil/search" 3.28 ms (1)
+Jul 01 13:23:14 symfony [info] {sfWebDebugLogger} Partial "accueil/_search" 3.86 ms (1)
+Jul 01 13:23:14 symfony [info] {sfWebDebugLogger} Partial "global/_reader" 49.21 ms (1)
+Jul 01 13:23:14 symfony [info] {sfWebDebugLogger} Component "accueil/sidebar" 41.88 ms (1)
+Jul 01 13:23:14 symfony [info] {sfWebDebugLogger} Partial "accueil/_sidebar" 2.73 ms (1)
+Jul 01 13:23:14 symfony [info] {sfWebResponse} Send content (46808 o)
+Jul 01 13:24:17 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/guard/login)
+Jul 01 13:24:17 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/guard/logout)
+Jul 01 13:24:17 symfony [info] {sfPatternRouting} Match route "homepage" (/) for / with parameters array (  'module' => 'accueil',  'action' => 'index',)
+Jul 01 13:24:17 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jul 01 13:24:17 symfony [info] {sfFilterChain} Executing filter "sfGuardRememberMeFilter"
+Jul 01 13:24:17 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jul 01 13:24:17 symfony [info] {accueilActions} Call "accueilActions->executeIndex()"
+Jul 01 13:24:17 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/indexSuccess.php"
+Jul 01 13:24:17 symfony [info] {sfPHPView} Decorate content with "/var/www/sonor/apps/frontend/templates/layout.php"
+Jul 01 13:24:17 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/templates/layout.php"
+Jul 01 13:24:17 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/templates/_user_infos.php"
+Jul 01 13:24:17 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Jul 01 13:24:17 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.first_name AS s__first_name, s.last_name AS s__last_name, s.email_address AS s__email_address, s.username AS s__username, s.algorithm AS s__algorithm, s.salt AS s__salt, s.password AS s__password, s.is_active AS s__is_active, s.is_super_admin AS s__is_super_admin, s.last_login AS s__last_login, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM sf_guard_user s WHERE (s.id = ?) LIMIT 1 - (1)
+Jul 01 13:24:17 symfony [info] {main} Call "accueil->executeSearch()"
+Jul 01 13:24:17 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/_search.php"
+Jul 01 13:24:17 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/templates/_reader.php"
+Jul 01 13:24:17 symfony [info] {main} Call "accueil->executeSidebar()"
+Jul 01 13:24:17 symfony [info] {Doctrine_Connection_Statement} execute : SELECT p.id AS p__id, p.titre AS p__titre, p.id_user AS p__id_user, p.slug AS p__slug, c.id AS c__id, c.titre AS c__titre, c.duree AS c__duree, c.audio_file AS c__audio_file, c.id_album AS c__id_album, c.slug AS c__slug FROM playlist p LEFT JOIN chansons_playlists c2 ON (p.id = c2.id_playlist) LEFT JOIN chanson c ON c.id = c2.id_chanson WHERE (p.id_user = ?) ORDER BY p.titre ASC - (1)
+Jul 01 13:24:17 symfony [info] {Doctrine_Connection_Statement} execute : SELECT a.id AS a__id, a.titre AS a__titre, a.id_artiste AS a__id_artiste, a.slug AS a__slug FROM album a LEFT JOIN albums_users a2 ON (a.id = a2.id_album) LEFT JOIN sf_guard_user s ON s.id = a2.id_user WHERE (s.id IN (?)) ORDER BY a.titre ASC - (1)
+Jul 01 13:24:17 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/_sidebar.php"
+Jul 01 13:24:17 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jul 01 13:24:17 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jul 01 13:24:17 symfony [info] {sfWebDebugLogger} Configuration 468.71 ms (11)
+Jul 01 13:24:17 symfony [info] {sfWebDebugLogger} Factories 282.08 ms (1)
+Jul 01 13:24:17 symfony [info] {sfWebDebugLogger} Action "accueil/index" 0.23 ms (1)
+Jul 01 13:24:17 symfony [info] {sfWebDebugLogger} View "Success" for "accueil/index" 140.75 ms (1)
+Jul 01 13:24:17 symfony [info] {sfWebDebugLogger} Partial "global/_user_infos" 22.96 ms (1)
+Jul 01 13:24:17 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.03 ms (4)
+Jul 01 13:24:17 symfony [info] {sfWebDebugLogger} Component "accueil/search" 3.48 ms (1)
+Jul 01 13:24:17 symfony [info] {sfWebDebugLogger} Partial "accueil/_search" 4.56 ms (1)
+Jul 01 13:24:17 symfony [info] {sfWebDebugLogger} Partial "global/_reader" 48.82 ms (1)
+Jul 01 13:24:17 symfony [info] {sfWebDebugLogger} Component "accueil/sidebar" 37.07 ms (1)
+Jul 01 13:24:17 symfony [info] {sfWebDebugLogger} Partial "accueil/_sidebar" 3.03 ms (1)
+Jul 01 13:24:17 symfony [info] {sfWebResponse} Send content (46841 o)
+Jul 01 13:24:33 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/guard/login)
+Jul 01 13:24:33 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/guard/logout)
+Jul 01 13:24:33 symfony [info] {sfPatternRouting} Match route "homepage" (/) for / with parameters array (  'module' => 'accueil',  'action' => 'index',)
+Jul 01 13:24:33 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jul 01 13:24:33 symfony [info] {sfFilterChain} Executing filter "sfGuardRememberMeFilter"
+Jul 01 13:24:33 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jul 01 13:24:33 symfony [info] {accueilActions} Call "accueilActions->executeIndex()"
+Jul 01 13:24:33 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/indexSuccess.php"
+Jul 01 13:24:33 symfony [info] {sfPHPView} Decorate content with "/var/www/sonor/apps/frontend/templates/layout.php"
+Jul 01 13:24:33 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/templates/layout.php"
+Jul 01 13:24:33 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/templates/_user_infos.php"
+Jul 01 13:24:33 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Jul 01 13:24:33 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.first_name AS s__first_name, s.last_name AS s__last_name, s.email_address AS s__email_address, s.username AS s__username, s.algorithm AS s__algorithm, s.salt AS s__salt, s.password AS s__password, s.is_active AS s__is_active, s.is_super_admin AS s__is_super_admin, s.last_login AS s__last_login, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM sf_guard_user s WHERE (s.id = ?) LIMIT 1 - (1)
+Jul 01 13:24:33 symfony [info] {main} Call "accueil->executeSearch()"
+Jul 01 13:24:33 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/_search.php"
+Jul 01 13:24:33 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/templates/_reader.php"
+Jul 01 13:24:33 symfony [info] {main} Call "accueil->executeSidebar()"
+Jul 01 13:24:33 symfony [info] {Doctrine_Connection_Statement} execute : SELECT p.id AS p__id, p.titre AS p__titre, p.id_user AS p__id_user, p.slug AS p__slug, c.id AS c__id, c.titre AS c__titre, c.duree AS c__duree, c.audio_file AS c__audio_file, c.id_album AS c__id_album, c.slug AS c__slug FROM playlist p LEFT JOIN chansons_playlists c2 ON (p.id = c2.id_playlist) LEFT JOIN chanson c ON c.id = c2.id_chanson WHERE (p.id_user = ?) ORDER BY p.titre ASC - (1)
+Jul 01 13:24:33 symfony [info] {Doctrine_Connection_Statement} execute : SELECT a.id AS a__id, a.titre AS a__titre, a.id_artiste AS a__id_artiste, a.slug AS a__slug FROM album a LEFT JOIN albums_users a2 ON (a.id = a2.id_album) LEFT JOIN sf_guard_user s ON s.id = a2.id_user WHERE (s.id IN (?)) ORDER BY a.titre ASC - (1)
+Jul 01 13:24:33 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/_sidebar.php"
+Jul 01 13:24:33 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jul 01 13:24:33 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jul 01 13:24:33 symfony [info] {sfWebDebugLogger} Configuration 6.68 ms (11)
+Jul 01 13:24:33 symfony [info] {sfWebDebugLogger} Factories 34.96 ms (1)
+Jul 01 13:24:33 symfony [info] {sfWebDebugLogger} Action "accueil/index" 0.24 ms (1)
+Jul 01 13:24:33 symfony [info] {sfWebDebugLogger} View "Success" for "accueil/index" 266.91 ms (1)
+Jul 01 13:24:33 symfony [info] {sfWebDebugLogger} Partial "global/_user_infos" 40.69 ms (1)
+Jul 01 13:24:33 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.03 ms (4)
+Jul 01 13:24:33 symfony [info] {sfWebDebugLogger} Component "accueil/search" 7.73 ms (1)
+Jul 01 13:24:33 symfony [info] {sfWebDebugLogger} Partial "accueil/_search" 8.01 ms (1)
+Jul 01 13:24:33 symfony [info] {sfWebDebugLogger} Partial "global/_reader" 96.34 ms (1)
+Jul 01 13:24:33 symfony [info] {sfWebDebugLogger} Component "accueil/sidebar" 74.83 ms (1)
+Jul 01 13:24:33 symfony [info] {sfWebDebugLogger} Partial "accueil/_sidebar" 2.82 ms (1)
+Jul 01 13:24:33 symfony [info] {sfWebResponse} Send content (46842 o)
+Jul 01 13:24:33 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/guard/login)
+Jul 01 13:24:33 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/guard/logout)
+Jul 01 13:24:33 symfony [info] {sfPatternRouting} Match route "javascript_functions" (/functions.:sf_format) for /functions with parameters array (  'module' => 'accueil',  'action' => 'javascript',  'sf_format' => 'js',)
+Jul 01 13:24:33 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jul 01 13:24:33 symfony [info] {sfFilterChain} Executing filter "sfGuardRememberMeFilter"
+Jul 01 13:24:33 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jul 01 13:24:33 symfony [info] {accueilActions} Call "accueilActions->executeJavascript()"
+Jul 01 13:24:33 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/javascriptSuccess.js.php"
+Jul 01 13:24:33 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jul 01 13:24:33 symfony [info] {sfWebResponse} Send header "Content-Type: application/javascript"
+Jul 01 13:24:33 symfony [info] {sfWebDebugLogger} Configuration 3.54 ms (9)
+Jul 01 13:24:33 symfony [info] {sfWebDebugLogger} Factories 46.88 ms (1)
+Jul 01 13:24:33 symfony [info] {sfWebDebugLogger} Action "accueil/javascript" 0.64 ms (1)
+Jul 01 13:24:33 symfony [info] {sfWebDebugLogger} View "Success" for "accueil/javascript" 8.39 ms (1)
+Jul 01 13:24:33 symfony [info] {sfWebResponse} Send content (326 o)
+Jul 01 13:24:36 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/guard/login)
+Jul 01 13:24:36 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/guard/logout)
+Jul 01 13:24:36 symfony [info] {sfPatternRouting} Match route "homepage" (/) for / with parameters array (  'module' => 'accueil',  'action' => 'index',)
+Jul 01 13:24:36 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jul 01 13:24:36 symfony [info] {sfFilterChain} Executing filter "sfGuardRememberMeFilter"
+Jul 01 13:24:36 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jul 01 13:24:36 symfony [info] {accueilActions} Call "accueilActions->executeIndex()"
+Jul 01 13:24:36 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/indexSuccess.php"
+Jul 01 13:24:36 symfony [info] {sfPHPView} Decorate content with "/var/www/sonor/apps/frontend/templates/layout.php"
+Jul 01 13:24:36 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/templates/layout.php"
+Jul 01 13:24:36 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/templates/_user_infos.php"
+Jul 01 13:24:36 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Jul 01 13:24:36 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.first_name AS s__first_name, s.last_name AS s__last_name, s.email_address AS s__email_address, s.username AS s__username, s.algorithm AS s__algorithm, s.salt AS s__salt, s.password AS s__password, s.is_active AS s__is_active, s.is_super_admin AS s__is_super_admin, s.last_login AS s__last_login, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM sf_guard_user s WHERE (s.id = ?) LIMIT 1 - (1)
+Jul 01 13:24:36 symfony [info] {main} Call "accueil->executeSearch()"
+Jul 01 13:24:36 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/_search.php"
+Jul 01 13:24:36 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/templates/_reader.php"
+Jul 01 13:24:36 symfony [info] {main} Call "accueil->executeSidebar()"
+Jul 01 13:24:36 symfony [info] {Doctrine_Connection_Statement} execute : SELECT p.id AS p__id, p.titre AS p__titre, p.id_user AS p__id_user, p.slug AS p__slug, c.id AS c__id, c.titre AS c__titre, c.duree AS c__duree, c.audio_file AS c__audio_file, c.id_album AS c__id_album, c.slug AS c__slug FROM playlist p LEFT JOIN chansons_playlists c2 ON (p.id = c2.id_playlist) LEFT JOIN chanson c ON c.id = c2.id_chanson WHERE (p.id_user = ?) ORDER BY p.titre ASC - (1)
+Jul 01 13:24:36 symfony [info] {Doctrine_Connection_Statement} execute : SELECT a.id AS a__id, a.titre AS a__titre, a.id_artiste AS a__id_artiste, a.slug AS a__slug FROM album a LEFT JOIN albums_users a2 ON (a.id = a2.id_album) LEFT JOIN sf_guard_user s ON s.id = a2.id_user WHERE (s.id IN (?)) ORDER BY a.titre ASC - (1)
+Jul 01 13:24:36 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/_sidebar.php"
+Jul 01 13:24:36 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jul 01 13:24:36 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jul 01 13:24:36 symfony [info] {sfWebDebugLogger} Configuration 3.58 ms (11)
+Jul 01 13:24:36 symfony [info] {sfWebDebugLogger} Factories 17.26 ms (1)
+Jul 01 13:24:36 symfony [info] {sfWebDebugLogger} Action "accueil/index" 0.37 ms (1)
+Jul 01 13:24:36 symfony [info] {sfWebDebugLogger} View "Success" for "accueil/index" 141.45 ms (1)
+Jul 01 13:24:36 symfony [info] {sfWebDebugLogger} Partial "global/_user_infos" 26.18 ms (1)
+Jul 01 13:24:36 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.03 ms (4)
+Jul 01 13:24:36 symfony [info] {sfWebDebugLogger} Component "accueil/search" 3.51 ms (1)
+Jul 01 13:24:36 symfony [info] {sfWebDebugLogger} Partial "accueil/_search" 4.33 ms (1)
+Jul 01 13:24:36 symfony [info] {sfWebDebugLogger} Partial "global/_reader" 52.71 ms (1)
+Jul 01 13:24:36 symfony [info] {sfWebDebugLogger} Component "accueil/sidebar" 36.27 ms (1)
+Jul 01 13:24:36 symfony [info] {sfWebDebugLogger} Partial "accueil/_sidebar" 3.27 ms (1)
+Jul 01 13:24:36 symfony [info] {sfWebResponse} Send content (46862 o)
+Jul 01 13:24:36 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/guard/login)
+Jul 01 13:24:36 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/guard/logout)
+Jul 01 13:24:36 symfony [info] {sfPatternRouting} Match route "javascript_functions" (/functions.:sf_format) for /functions with parameters array (  'module' => 'accueil',  'action' => 'javascript',  'sf_format' => 'js',)
+Jul 01 13:24:36 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jul 01 13:24:36 symfony [info] {sfFilterChain} Executing filter "sfGuardRememberMeFilter"
+Jul 01 13:24:36 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jul 01 13:24:36 symfony [info] {accueilActions} Call "accueilActions->executeJavascript()"
+Jul 01 13:24:36 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/javascriptSuccess.js.php"
+Jul 01 13:24:36 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jul 01 13:24:36 symfony [info] {sfWebResponse} Send header "Content-Type: application/javascript"
+Jul 01 13:24:36 symfony [info] {sfWebDebugLogger} Configuration 2.42 ms (9)
+Jul 01 13:24:36 symfony [info] {sfWebDebugLogger} Factories 14.52 ms (1)
+Jul 01 13:24:36 symfony [info] {sfWebDebugLogger} Action "accueil/javascript" 0.24 ms (1)
+Jul 01 13:24:36 symfony [info] {sfWebDebugLogger} View "Success" for "accueil/javascript" 4.29 ms (1)
+Jul 01 13:24:36 symfony [info] {sfWebResponse} Send content (326 o)
+Jul 01 13:24:39 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/guard/login)
+Jul 01 13:24:39 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/guard/logout)
+Jul 01 13:24:39 symfony [info] {sfPatternRouting} Match route "homepage" (/) for / with parameters array (  'module' => 'accueil',  'action' => 'index',)
+Jul 01 13:24:39 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jul 01 13:24:39 symfony [info] {sfFilterChain} Executing filter "sfGuardRememberMeFilter"
+Jul 01 13:24:39 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jul 01 13:24:39 symfony [info] {accueilActions} Call "accueilActions->executeIndex()"
+Jul 01 13:24:39 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/indexSuccess.php"
+Jul 01 13:24:39 symfony [info] {sfPHPView} Decorate content with "/var/www/sonor/apps/frontend/templates/layout.php"
+Jul 01 13:24:39 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/templates/layout.php"
+Jul 01 13:24:39 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/templates/_user_infos.php"
+Jul 01 13:24:39 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Jul 01 13:24:39 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.first_name AS s__first_name, s.last_name AS s__last_name, s.email_address AS s__email_address, s.username AS s__username, s.algorithm AS s__algorithm, s.salt AS s__salt, s.password AS s__password, s.is_active AS s__is_active, s.is_super_admin AS s__is_super_admin, s.last_login AS s__last_login, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM sf_guard_user s WHERE (s.id = ?) LIMIT 1 - (1)
+Jul 01 13:24:39 symfony [info] {main} Call "accueil->executeSearch()"
+Jul 01 13:24:39 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/_search.php"
+Jul 01 13:24:39 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/templates/_reader.php"
+Jul 01 13:24:39 symfony [info] {main} Call "accueil->executeSidebar()"
+Jul 01 13:24:39 symfony [info] {Doctrine_Connection_Statement} execute : SELECT p.id AS p__id, p.titre AS p__titre, p.id_user AS p__id_user, p.slug AS p__slug, c.id AS c__id, c.titre AS c__titre, c.duree AS c__duree, c.audio_file AS c__audio_file, c.id_album AS c__id_album, c.slug AS c__slug FROM playlist p LEFT JOIN chansons_playlists c2 ON (p.id = c2.id_playlist) LEFT JOIN chanson c ON c.id = c2.id_chanson WHERE (p.id_user = ?) ORDER BY p.titre ASC - (1)
+Jul 01 13:24:39 symfony [info] {Doctrine_Connection_Statement} execute : SELECT a.id AS a__id, a.titre AS a__titre, a.id_artiste AS a__id_artiste, a.slug AS a__slug FROM album a LEFT JOIN albums_users a2 ON (a.id = a2.id_album) LEFT JOIN sf_guard_user s ON s.id = a2.id_user WHERE (s.id IN (?)) ORDER BY a.titre ASC - (1)
+Jul 01 13:24:39 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/_sidebar.php"
+Jul 01 13:24:39 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jul 01 13:24:39 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jul 01 13:24:39 symfony [info] {sfWebDebugLogger} Configuration 7.48 ms (11)
+Jul 01 13:24:39 symfony [info] {sfWebDebugLogger} Factories 27.96 ms (1)
+Jul 01 13:24:39 symfony [info] {sfWebDebugLogger} Action "accueil/index" 0.22 ms (1)
+Jul 01 13:24:39 symfony [info] {sfWebDebugLogger} View "Success" for "accueil/index" 137.23 ms (1)
+Jul 01 13:24:39 symfony [info] {sfWebDebugLogger} Partial "global/_user_infos" 21.51 ms (1)
+Jul 01 13:24:39 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.03 ms (4)
+Jul 01 13:24:39 symfony [info] {sfWebDebugLogger} Component "accueil/search" 3.56 ms (1)
+Jul 01 13:24:39 symfony [info] {sfWebDebugLogger} Partial "accueil/_search" 3.82 ms (1)
+Jul 01 13:24:39 symfony [info] {sfWebDebugLogger} Partial "global/_reader" 50.12 ms (1)
+Jul 01 13:24:39 symfony [info] {sfWebDebugLogger} Component "accueil/sidebar" 41.23 ms (1)
+Jul 01 13:24:39 symfony [info] {sfWebDebugLogger} Partial "accueil/_sidebar" 3.31 ms (1)
+Jul 01 13:24:39 symfony [info] {sfWebResponse} Send content (46830 o)
+Jul 01 13:26:17 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/guard/login)
+Jul 01 13:26:17 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/guard/logout)
+Jul 01 13:26:17 symfony [info] {sfPatternRouting} Match route "homepage" (/) for / with parameters array (  'module' => 'accueil',  'action' => 'index',)
+Jul 01 13:26:17 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jul 01 13:26:17 symfony [info] {sfFilterChain} Executing filter "sfGuardRememberMeFilter"
+Jul 01 13:26:17 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jul 01 13:26:17 symfony [info] {accueilActions} Call "accueilActions->executeIndex()"
+Jul 01 13:26:17 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/indexSuccess.php"
+Jul 01 13:26:17 symfony [info] {sfPHPView} Decorate content with "/var/www/sonor/apps/frontend/templates/layout.php"
+Jul 01 13:26:17 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/templates/layout.php"
+Jul 01 13:26:17 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/templates/_user_infos.php"
+Jul 01 13:26:17 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Jul 01 13:26:17 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.first_name AS s__first_name, s.last_name AS s__last_name, s.email_address AS s__email_address, s.username AS s__username, s.algorithm AS s__algorithm, s.salt AS s__salt, s.password AS s__password, s.is_active AS s__is_active, s.is_super_admin AS s__is_super_admin, s.last_login AS s__last_login, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM sf_guard_user s WHERE (s.id = ?) LIMIT 1 - (1)
+Jul 01 13:26:17 symfony [info] {main} Call "accueil->executeSearch()"
+Jul 01 13:26:17 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/_search.php"
+Jul 01 13:26:17 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/templates/_reader.php"
+Jul 01 13:26:17 symfony [info] {main} Call "accueil->executeSidebar()"
+Jul 01 13:26:17 symfony [info] {Doctrine_Connection_Statement} execute : SELECT p.id AS p__id, p.titre AS p__titre, p.id_user AS p__id_user, p.slug AS p__slug, c.id AS c__id, c.titre AS c__titre, c.duree AS c__duree, c.audio_file AS c__audio_file, c.id_album AS c__id_album, c.slug AS c__slug FROM playlist p LEFT JOIN chansons_playlists c2 ON (p.id = c2.id_playlist) LEFT JOIN chanson c ON c.id = c2.id_chanson WHERE (p.id_user = ?) ORDER BY p.titre ASC - (1)
+Jul 01 13:26:17 symfony [info] {Doctrine_Connection_Statement} execute : SELECT a.id AS a__id, a.titre AS a__titre, a.id_artiste AS a__id_artiste, a.slug AS a__slug FROM album a LEFT JOIN albums_users a2 ON (a.id = a2.id_album) LEFT JOIN sf_guard_user s ON s.id = a2.id_user WHERE (s.id IN (?)) ORDER BY a.titre ASC - (1)
+Jul 01 13:26:17 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/_sidebar.php"
+Jul 01 13:26:17 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jul 01 13:26:17 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jul 01 13:26:17 symfony [info] {sfWebDebugLogger} Configuration 441.39 ms (11)
+Jul 01 13:26:17 symfony [info] {sfWebDebugLogger} Factories 271.76 ms (1)
+Jul 01 13:26:17 symfony [info] {sfWebDebugLogger} Action "accueil/index" 0.25 ms (1)
+Jul 01 13:26:17 symfony [info] {sfWebDebugLogger} View "Success" for "accueil/index" 130.96 ms (1)
+Jul 01 13:26:17 symfony [info] {sfWebDebugLogger} Partial "global/_user_infos" 20.73 ms (1)
+Jul 01 13:26:17 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.03 ms (4)
+Jul 01 13:26:17 symfony [info] {sfWebDebugLogger} Component "accueil/search" 3.10 ms (1)
+Jul 01 13:26:17 symfony [info] {sfWebDebugLogger} Partial "accueil/_search" 3.57 ms (1)
+Jul 01 13:26:17 symfony [info] {sfWebDebugLogger} Partial "global/_reader" 47.66 ms (1)
+Jul 01 13:26:17 symfony [info] {sfWebDebugLogger} Component "accueil/sidebar" 33.39 ms (1)
+Jul 01 13:26:17 symfony [info] {sfWebDebugLogger} Partial "accueil/_sidebar" 2.54 ms (1)
+Jul 01 13:26:17 symfony [info] {sfWebResponse} Send content (46860 o)
+Jul 01 13:26:25 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/guard/login)
+Jul 01 13:26:25 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/guard/logout)
+Jul 01 13:26:25 symfony [info] {sfPatternRouting} Match route "homepage" (/) for / with parameters array (  'module' => 'accueil',  'action' => 'index',)
+Jul 01 13:26:25 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jul 01 13:26:25 symfony [info] {sfFilterChain} Executing filter "sfGuardRememberMeFilter"
+Jul 01 13:26:25 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jul 01 13:26:25 symfony [info] {accueilActions} Call "accueilActions->executeIndex()"
+Jul 01 13:26:25 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/indexSuccess.php"
+Jul 01 13:26:25 symfony [info] {sfPHPView} Decorate content with "/var/www/sonor/apps/frontend/templates/layout.php"
+Jul 01 13:26:25 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/templates/layout.php"
+Jul 01 13:26:25 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/templates/_user_infos.php"
+Jul 01 13:26:25 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Jul 01 13:26:25 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.first_name AS s__first_name, s.last_name AS s__last_name, s.email_address AS s__email_address, s.username AS s__username, s.algorithm AS s__algorithm, s.salt AS s__salt, s.password AS s__password, s.is_active AS s__is_active, s.is_super_admin AS s__is_super_admin, s.last_login AS s__last_login, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM sf_guard_user s WHERE (s.id = ?) LIMIT 1 - (1)
+Jul 01 13:26:25 symfony [info] {main} Call "accueil->executeSearch()"
+Jul 01 13:26:25 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/_search.php"
+Jul 01 13:26:25 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/templates/_reader.php"
+Jul 01 13:26:25 symfony [info] {main} Call "accueil->executeSidebar()"
+Jul 01 13:26:25 symfony [info] {Doctrine_Connection_Statement} execute : SELECT p.id AS p__id, p.titre AS p__titre, p.id_user AS p__id_user, p.slug AS p__slug, c.id AS c__id, c.titre AS c__titre, c.duree AS c__duree, c.audio_file AS c__audio_file, c.id_album AS c__id_album, c.slug AS c__slug FROM playlist p LEFT JOIN chansons_playlists c2 ON (p.id = c2.id_playlist) LEFT JOIN chanson c ON c.id = c2.id_chanson WHERE (p.id_user = ?) ORDER BY p.titre ASC - (1)
+Jul 01 13:26:25 symfony [info] {Doctrine_Connection_Statement} execute : SELECT a.id AS a__id, a.titre AS a__titre, a.id_artiste AS a__id_artiste, a.slug AS a__slug FROM album a LEFT JOIN albums_users a2 ON (a.id = a2.id_album) LEFT JOIN sf_guard_user s ON s.id = a2.id_user WHERE (s.id IN (?)) ORDER BY a.titre ASC - (1)
+Jul 01 13:26:25 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/_sidebar.php"
+Jul 01 13:26:25 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jul 01 13:26:25 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jul 01 13:26:25 symfony [info] {sfWebDebugLogger} Configuration 15.55 ms (11)
+Jul 01 13:26:25 symfony [info] {sfWebDebugLogger} Factories 28.82 ms (1)
+Jul 01 13:26:25 symfony [info] {sfWebDebugLogger} Action "accueil/index" 0.23 ms (1)
+Jul 01 13:26:25 symfony [info] {sfWebDebugLogger} View "Success" for "accueil/index" 308.82 ms (1)
+Jul 01 13:26:25 symfony [info] {sfWebDebugLogger} Partial "global/_user_infos" 60.36 ms (1)
+Jul 01 13:26:25 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.03 ms (4)
+Jul 01 13:26:25 symfony [info] {sfWebDebugLogger} Component "accueil/search" 7.50 ms (1)
+Jul 01 13:26:25 symfony [info] {sfWebDebugLogger} Partial "accueil/_search" 8.48 ms (1)
+Jul 01 13:26:25 symfony [info] {sfWebDebugLogger} Partial "global/_reader" 98.17 ms (1)
+Jul 01 13:26:25 symfony [info] {sfWebDebugLogger} Component "accueil/sidebar" 90.36 ms (1)
+Jul 01 13:26:25 symfony [info] {sfWebDebugLogger} Partial "accueil/_sidebar" 7.62 ms (1)
+Jul 01 13:26:25 symfony [info] {sfWebResponse} Send content (46839 o)
+Jul 01 13:26:25 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/guard/login)
+Jul 01 13:26:25 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/guard/logout)
+Jul 01 13:26:25 symfony [info] {sfPatternRouting} Match route "javascript_functions" (/functions.:sf_format) for /functions with parameters array (  'module' => 'accueil',  'action' => 'javascript',  'sf_format' => 'js',)
+Jul 01 13:26:25 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jul 01 13:26:25 symfony [info] {sfFilterChain} Executing filter "sfGuardRememberMeFilter"
+Jul 01 13:26:25 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jul 01 13:26:25 symfony [info] {accueilActions} Call "accueilActions->executeJavascript()"
+Jul 01 13:26:25 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/javascriptSuccess.js.php"
+Jul 01 13:26:25 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jul 01 13:26:25 symfony [info] {sfWebResponse} Send header "Content-Type: application/javascript"
+Jul 01 13:26:25 symfony [info] {sfWebDebugLogger} Configuration 2.81 ms (9)
+Jul 01 13:26:25 symfony [info] {sfWebDebugLogger} Factories 35.60 ms (1)
+Jul 01 13:26:25 symfony [info] {sfWebDebugLogger} Action "accueil/javascript" 0.32 ms (1)
+Jul 01 13:26:25 symfony [info] {sfWebDebugLogger} View "Success" for "accueil/javascript" 8.67 ms (1)
+Jul 01 13:26:25 symfony [info] {sfWebResponse} Send content (326 o)
+Jul 01 13:26:38 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/guard/login)
+Jul 01 13:26:38 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/guard/logout)
+Jul 01 13:26:38 symfony [info] {sfPatternRouting} Match route "homepage" (/) for / with parameters array (  'module' => 'accueil',  'action' => 'index',)
+Jul 01 13:26:38 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jul 01 13:26:38 symfony [info] {sfFilterChain} Executing filter "sfGuardRememberMeFilter"
+Jul 01 13:26:38 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jul 01 13:26:38 symfony [info] {accueilActions} Call "accueilActions->executeIndex()"
+Jul 01 13:26:38 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/indexSuccess.php"
+Jul 01 13:26:38 symfony [info] {sfPHPView} Decorate content with "/var/www/sonor/apps/frontend/templates/layout.php"
+Jul 01 13:26:38 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/templates/layout.php"
+Jul 01 13:26:38 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/templates/_user_infos.php"
+Jul 01 13:26:38 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Jul 01 13:26:38 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.first_name AS s__first_name, s.last_name AS s__last_name, s.email_address AS s__email_address, s.username AS s__username, s.algorithm AS s__algorithm, s.salt AS s__salt, s.password AS s__password, s.is_active AS s__is_active, s.is_super_admin AS s__is_super_admin, s.last_login AS s__last_login, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM sf_guard_user s WHERE (s.id = ?) LIMIT 1 - (1)
+Jul 01 13:26:38 symfony [info] {main} Call "accueil->executeSearch()"
+Jul 01 13:26:38 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/_search.php"
+Jul 01 13:26:38 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/templates/_reader.php"
+Jul 01 13:26:39 symfony [info] {main} Call "accueil->executeSidebar()"
+Jul 01 13:26:39 symfony [info] {Doctrine_Connection_Statement} execute : SELECT p.id AS p__id, p.titre AS p__titre, p.id_user AS p__id_user, p.slug AS p__slug, c.id AS c__id, c.titre AS c__titre, c.duree AS c__duree, c.audio_file AS c__audio_file, c.id_album AS c__id_album, c.slug AS c__slug FROM playlist p LEFT JOIN chansons_playlists c2 ON (p.id = c2.id_playlist) LEFT JOIN chanson c ON c.id = c2.id_chanson WHERE (p.id_user = ?) ORDER BY p.titre ASC - (1)
+Jul 01 13:26:39 symfony [info] {Doctrine_Connection_Statement} execute : SELECT a.id AS a__id, a.titre AS a__titre, a.id_artiste AS a__id_artiste, a.slug AS a__slug FROM album a LEFT JOIN albums_users a2 ON (a.id = a2.id_album) LEFT JOIN sf_guard_user s ON s.id = a2.id_user WHERE (s.id IN (?)) ORDER BY a.titre ASC - (1)
+Jul 01 13:26:39 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/_sidebar.php"
+Jul 01 13:26:39 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jul 01 13:26:39 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jul 01 13:26:39 symfony [info] {sfWebDebugLogger} Configuration 3.33 ms (11)
+Jul 01 13:26:39 symfony [info] {sfWebDebugLogger} Factories 30.44 ms (1)
+Jul 01 13:26:39 symfony [info] {sfWebDebugLogger} Action "accueil/index" 0.33 ms (1)
+Jul 01 13:26:39 symfony [info] {sfWebDebugLogger} View "Success" for "accueil/index" 273.59 ms (1)
+Jul 01 13:26:39 symfony [info] {sfWebDebugLogger} Partial "global/_user_infos" 42.78 ms (1)
+Jul 01 13:26:39 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.03 ms (4)
+Jul 01 13:26:39 symfony [info] {sfWebDebugLogger} Component "accueil/search" 8.14 ms (1)
+Jul 01 13:26:39 symfony [info] {sfWebDebugLogger} Partial "accueil/_search" 8.42 ms (1)
+Jul 01 13:26:39 symfony [info] {sfWebDebugLogger} Partial "global/_reader" 100.81 ms (1)
+Jul 01 13:26:39 symfony [info] {sfWebDebugLogger} Component "accueil/sidebar" 80.54 ms (1)
+Jul 01 13:26:39 symfony [info] {sfWebDebugLogger} Partial "accueil/_sidebar" 6.54 ms (1)
+Jul 01 13:26:39 symfony [info] {sfWebResponse} Send content (46858 o)
+Jul 01 13:26:39 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/guard/login)
+Jul 01 13:26:39 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/guard/logout)
+Jul 01 13:26:39 symfony [info] {sfPatternRouting} Match route "javascript_functions" (/functions.:sf_format) for /functions with parameters array (  'module' => 'accueil',  'action' => 'javascript',  'sf_format' => 'js',)
+Jul 01 13:26:39 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jul 01 13:26:39 symfony [info] {sfFilterChain} Executing filter "sfGuardRememberMeFilter"
+Jul 01 13:26:39 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jul 01 13:26:39 symfony [info] {accueilActions} Call "accueilActions->executeJavascript()"
+Jul 01 13:26:39 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/javascriptSuccess.js.php"
+Jul 01 13:26:39 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jul 01 13:26:39 symfony [info] {sfWebResponse} Send header "Content-Type: application/javascript"
+Jul 01 13:26:39 symfony [info] {sfWebDebugLogger} Configuration 2.40 ms (9)
+Jul 01 13:26:39 symfony [info] {sfWebDebugLogger} Factories 51.82 ms (1)
+Jul 01 13:26:39 symfony [info] {sfWebDebugLogger} Action "accueil/javascript" 3.89 ms (1)
+Jul 01 13:26:39 symfony [info] {sfWebDebugLogger} View "Success" for "accueil/javascript" 8.72 ms (1)
+Jul 01 13:26:39 symfony [info] {sfWebResponse} Send content (326 o)
+Jul 01 13:26:40 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/guard/login)
+Jul 01 13:26:40 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/guard/logout)
+Jul 01 13:26:40 symfony [info] {sfPatternRouting} Match route "homepage" (/) for / with parameters array (  'module' => 'accueil',  'action' => 'index',)
+Jul 01 13:26:40 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jul 01 13:26:40 symfony [info] {sfFilterChain} Executing filter "sfGuardRememberMeFilter"
+Jul 01 13:26:40 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jul 01 13:26:40 symfony [info] {accueilActions} Call "accueilActions->executeIndex()"
+Jul 01 13:26:40 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/indexSuccess.php"
+Jul 01 13:26:40 symfony [info] {sfPHPView} Decorate content with "/var/www/sonor/apps/frontend/templates/layout.php"
+Jul 01 13:26:40 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/templates/layout.php"
+Jul 01 13:26:40 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/templates/_user_infos.php"
+Jul 01 13:26:40 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Jul 01 13:26:40 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.first_name AS s__first_name, s.last_name AS s__last_name, s.email_address AS s__email_address, s.username AS s__username, s.algorithm AS s__algorithm, s.salt AS s__salt, s.password AS s__password, s.is_active AS s__is_active, s.is_super_admin AS s__is_super_admin, s.last_login AS s__last_login, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM sf_guard_user s WHERE (s.id = ?) LIMIT 1 - (1)
+Jul 01 13:26:40 symfony [info] {main} Call "accueil->executeSearch()"
+Jul 01 13:26:40 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/_search.php"
+Jul 01 13:26:40 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/templates/_reader.php"
+Jul 01 13:26:40 symfony [info] {main} Call "accueil->executeSidebar()"
+Jul 01 13:26:40 symfony [info] {Doctrine_Connection_Statement} execute : SELECT p.id AS p__id, p.titre AS p__titre, p.id_user AS p__id_user, p.slug AS p__slug, c.id AS c__id, c.titre AS c__titre, c.duree AS c__duree, c.audio_file AS c__audio_file, c.id_album AS c__id_album, c.slug AS c__slug FROM playlist p LEFT JOIN chansons_playlists c2 ON (p.id = c2.id_playlist) LEFT JOIN chanson c ON c.id = c2.id_chanson WHERE (p.id_user = ?) ORDER BY p.titre ASC - (1)
+Jul 01 13:26:40 symfony [info] {Doctrine_Connection_Statement} execute : SELECT a.id AS a__id, a.titre AS a__titre, a.id_artiste AS a__id_artiste, a.slug AS a__slug FROM album a LEFT JOIN albums_users a2 ON (a.id = a2.id_album) LEFT JOIN sf_guard_user s ON s.id = a2.id_user WHERE (s.id IN (?)) ORDER BY a.titre ASC - (1)
+Jul 01 13:26:40 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/_sidebar.php"
+Jul 01 13:26:40 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jul 01 13:26:40 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jul 01 13:26:40 symfony [info] {sfWebDebugLogger} Configuration 3.35 ms (11)
+Jul 01 13:26:40 symfony [info] {sfWebDebugLogger} Factories 40.14 ms (1)
+Jul 01 13:26:40 symfony [info] {sfWebDebugLogger} Action "accueil/index" 0.24 ms (1)
+Jul 01 13:26:40 symfony [info] {sfWebDebugLogger} View "Success" for "accueil/index" 148.84 ms (1)
+Jul 01 13:26:40 symfony [info] {sfWebDebugLogger} Partial "global/_user_infos" 27.23 ms (1)
+Jul 01 13:26:40 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.03 ms (4)
+Jul 01 13:26:40 symfony [info] {sfWebDebugLogger} Component "accueil/search" 3.74 ms (1)
+Jul 01 13:26:40 symfony [info] {sfWebDebugLogger} Partial "accueil/_search" 4.02 ms (1)
+Jul 01 13:26:40 symfony [info] {sfWebDebugLogger} Partial "global/_reader" 50.95 ms (1)
+Jul 01 13:26:40 symfony [info] {sfWebDebugLogger} Component "accueil/sidebar" 36.59 ms (1)
+Jul 01 13:26:40 symfony [info] {sfWebDebugLogger} Partial "accueil/_sidebar" 2.80 ms (1)
+Jul 01 13:26:40 symfony [info] {sfWebResponse} Send content (46877 o)
+Jul 01 13:26:58 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/guard/login)
+Jul 01 13:26:58 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/guard/logout)
+Jul 01 13:26:58 symfony [info] {sfPatternRouting} Match route "homepage" (/) for / with parameters array (  'module' => 'accueil',  'action' => 'index',)
+Jul 01 13:26:59 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jul 01 13:26:59 symfony [info] {sfFilterChain} Executing filter "sfGuardRememberMeFilter"
+Jul 01 13:26:59 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jul 01 13:26:59 symfony [info] {accueilActions} Call "accueilActions->executeIndex()"
+Jul 01 13:26:59 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/indexSuccess.php"
+Jul 01 13:26:59 symfony [info] {sfPHPView} Decorate content with "/var/www/sonor/apps/frontend/templates/layout.php"
+Jul 01 13:26:59 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/templates/layout.php"
+Jul 01 13:26:59 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/templates/_user_infos.php"
+Jul 01 13:26:59 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Jul 01 13:26:59 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.first_name AS s__first_name, s.last_name AS s__last_name, s.email_address AS s__email_address, s.username AS s__username, s.algorithm AS s__algorithm, s.salt AS s__salt, s.password AS s__password, s.is_active AS s__is_active, s.is_super_admin AS s__is_super_admin, s.last_login AS s__last_login, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM sf_guard_user s WHERE (s.id = ?) LIMIT 1 - (1)
+Jul 01 13:26:59 symfony [info] {main} Call "accueil->executeSearch()"
+Jul 01 13:26:59 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/_search.php"
+Jul 01 13:26:59 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/templates/_reader.php"
+Jul 01 13:26:59 symfony [info] {main} Call "accueil->executeSidebar()"
+Jul 01 13:26:59 symfony [info] {Doctrine_Connection_Statement} execute : SELECT p.id AS p__id, p.titre AS p__titre, p.id_user AS p__id_user, p.slug AS p__slug, c.id AS c__id, c.titre AS c__titre, c.duree AS c__duree, c.audio_file AS c__audio_file, c.id_album AS c__id_album, c.slug AS c__slug FROM playlist p LEFT JOIN chansons_playlists c2 ON (p.id = c2.id_playlist) LEFT JOIN chanson c ON c.id = c2.id_chanson WHERE (p.id_user = ?) ORDER BY p.titre ASC - (1)
+Jul 01 13:26:59 symfony [info] {Doctrine_Connection_Statement} execute : SELECT a.id AS a__id, a.titre AS a__titre, a.id_artiste AS a__id_artiste, a.slug AS a__slug FROM album a LEFT JOIN albums_users a2 ON (a.id = a2.id_album) LEFT JOIN sf_guard_user s ON s.id = a2.id_user WHERE (s.id IN (?)) ORDER BY a.titre ASC - (1)
+Jul 01 13:26:59 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/_sidebar.php"
+Jul 01 13:26:59 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jul 01 13:26:59 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jul 01 13:26:59 symfony [info] {sfWebDebugLogger} Configuration 3.03 ms (11)
+Jul 01 13:26:59 symfony [info] {sfWebDebugLogger} Factories 33.14 ms (1)
+Jul 01 13:26:59 symfony [info] {sfWebDebugLogger} Action "accueil/index" 0.34 ms (1)
+Jul 01 13:26:59 symfony [info] {sfWebDebugLogger} View "Success" for "accueil/index" 150.71 ms (1)
+Jul 01 13:26:59 symfony [info] {sfWebDebugLogger} Partial "global/_user_infos" 26.21 ms (1)
+Jul 01 13:26:59 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.03 ms (4)
+Jul 01 13:26:59 symfony [info] {sfWebDebugLogger} Component "accueil/search" 3.73 ms (1)
+Jul 01 13:26:59 symfony [info] {sfWebDebugLogger} Partial "accueil/_search" 4.45 ms (1)
+Jul 01 13:26:59 symfony [info] {sfWebDebugLogger} Partial "global/_reader" 50.74 ms (1)
+Jul 01 13:26:59 symfony [info] {sfWebDebugLogger} Component "accueil/sidebar" 36.46 ms (1)
+Jul 01 13:26:59 symfony [info] {sfWebDebugLogger} Partial "accueil/_sidebar" 2.77 ms (1)
+Jul 01 13:26:59 symfony [info] {sfWebResponse} Send content (46858 o)
+Jul 01 13:27:27 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/guard/login)
+Jul 01 13:27:27 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/guard/logout)
+Jul 01 13:27:27 symfony [info] {sfPatternRouting} Match route "homepage" (/) for / with parameters array (  'module' => 'accueil',  'action' => 'index',)
+Jul 01 13:27:27 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jul 01 13:27:27 symfony [info] {sfFilterChain} Executing filter "sfGuardRememberMeFilter"
+Jul 01 13:27:27 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jul 01 13:27:27 symfony [info] {accueilActions} Call "accueilActions->executeIndex()"
+Jul 01 13:27:27 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/indexSuccess.php"
+Jul 01 13:27:27 symfony [info] {sfPHPView} Decorate content with "/var/www/sonor/apps/frontend/templates/layout.php"
+Jul 01 13:27:27 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/templates/layout.php"
+Jul 01 13:27:27 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/templates/_user_infos.php"
+Jul 01 13:27:28 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Jul 01 13:27:28 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.first_name AS s__first_name, s.last_name AS s__last_name, s.email_address AS s__email_address, s.username AS s__username, s.algorithm AS s__algorithm, s.salt AS s__salt, s.password AS s__password, s.is_active AS s__is_active, s.is_super_admin AS s__is_super_admin, s.last_login AS s__last_login, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM sf_guard_user s WHERE (s.id = ?) LIMIT 1 - (1)
+Jul 01 13:27:28 symfony [info] {main} Call "accueil->executeSearch()"
+Jul 01 13:27:28 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/_search.php"
+Jul 01 13:27:28 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/templates/_reader.php"
+Jul 01 13:27:28 symfony [info] {main} Call "accueil->executeSidebar()"
+Jul 01 13:27:28 symfony [info] {Doctrine_Connection_Statement} execute : SELECT p.id AS p__id, p.titre AS p__titre, p.id_user AS p__id_user, p.slug AS p__slug, c.id AS c__id, c.titre AS c__titre, c.duree AS c__duree, c.audio_file AS c__audio_file, c.id_album AS c__id_album, c.slug AS c__slug FROM playlist p LEFT JOIN chansons_playlists c2 ON (p.id = c2.id_playlist) LEFT JOIN chanson c ON c.id = c2.id_chanson WHERE (p.id_user = ?) ORDER BY p.titre ASC - (1)
+Jul 01 13:27:28 symfony [info] {Doctrine_Connection_Statement} execute : SELECT a.id AS a__id, a.titre AS a__titre, a.id_artiste AS a__id_artiste, a.slug AS a__slug FROM album a LEFT JOIN albums_users a2 ON (a.id = a2.id_album) LEFT JOIN sf_guard_user s ON s.id = a2.id_user WHERE (s.id IN (?)) ORDER BY a.titre ASC - (1)
+Jul 01 13:27:28 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/_sidebar.php"
+Jul 01 13:27:28 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jul 01 13:27:28 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jul 01 13:27:28 symfony [info] {sfWebDebugLogger} Configuration 28.91 ms (12)
+Jul 01 13:27:28 symfony [info] {sfWebDebugLogger} Factories 36.17 ms (1)
+Jul 01 13:27:28 symfony [info] {sfWebDebugLogger} Action "accueil/index" 0.53 ms (1)
+Jul 01 13:27:28 symfony [info] {sfWebDebugLogger} View "Success" for "accueil/index" 147.14 ms (1)
+Jul 01 13:27:28 symfony [info] {sfWebDebugLogger} Partial "global/_user_infos" 33.25 ms (1)
+Jul 01 13:27:28 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.03 ms (4)
+Jul 01 13:27:28 symfony [info] {sfWebDebugLogger} Component "accueil/search" 4.45 ms (1)
+Jul 01 13:27:28 symfony [info] {sfWebDebugLogger} Partial "accueil/_search" 4.17 ms (1)
+Jul 01 13:27:28 symfony [info] {sfWebDebugLogger} Partial "global/_reader" 49.93 ms (1)
+Jul 01 13:27:28 symfony [info] {sfWebDebugLogger} Component "accueil/sidebar" 35.65 ms (1)
+Jul 01 13:27:28 symfony [info] {sfWebDebugLogger} Partial "accueil/_sidebar" 3.17 ms (1)
+Jul 01 13:27:28 symfony [info] {sfWebResponse} Send content (46784 o)
+Jul 01 13:27:33 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/guard/login)
+Jul 01 13:27:33 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/guard/logout)
+Jul 01 13:27:33 symfony [info] {sfPatternRouting} Match route "homepage" (/) for / with parameters array (  'module' => 'accueil',  'action' => 'index',)
+Jul 01 13:27:33 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jul 01 13:27:33 symfony [info] {sfFilterChain} Executing filter "sfGuardRememberMeFilter"
+Jul 01 13:27:33 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jul 01 13:27:33 symfony [info] {accueilActions} Call "accueilActions->executeIndex()"
+Jul 01 13:27:33 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/indexSuccess.php"
+Jul 01 13:27:33 symfony [info] {sfPHPView} Decorate content with "/var/www/sonor/apps/frontend/templates/layout.php"
+Jul 01 13:27:33 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/templates/layout.php"
+Jul 01 13:27:33 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/templates/_user_infos.php"
+Jul 01 13:27:33 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Jul 01 13:27:33 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.first_name AS s__first_name, s.last_name AS s__last_name, s.email_address AS s__email_address, s.username AS s__username, s.algorithm AS s__algorithm, s.salt AS s__salt, s.password AS s__password, s.is_active AS s__is_active, s.is_super_admin AS s__is_super_admin, s.last_login AS s__last_login, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM sf_guard_user s WHERE (s.id = ?) LIMIT 1 - (1)
+Jul 01 13:27:33 symfony [info] {main} Call "accueil->executeSearch()"
+Jul 01 13:27:33 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/_search.php"
+Jul 01 13:27:33 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/templates/_reader.php"
+Jul 01 13:27:33 symfony [info] {main} Call "accueil->executeSidebar()"
+Jul 01 13:27:33 symfony [info] {Doctrine_Connection_Statement} execute : SELECT p.id AS p__id, p.titre AS p__titre, p.id_user AS p__id_user, p.slug AS p__slug, c.id AS c__id, c.titre AS c__titre, c.duree AS c__duree, c.audio_file AS c__audio_file, c.id_album AS c__id_album, c.slug AS c__slug FROM playlist p LEFT JOIN chansons_playlists c2 ON (p.id = c2.id_playlist) LEFT JOIN chanson c ON c.id = c2.id_chanson WHERE (p.id_user = ?) ORDER BY p.titre ASC - (1)
+Jul 01 13:27:33 symfony [info] {Doctrine_Connection_Statement} execute : SELECT a.id AS a__id, a.titre AS a__titre, a.id_artiste AS a__id_artiste, a.slug AS a__slug FROM album a LEFT JOIN albums_users a2 ON (a.id = a2.id_album) LEFT JOIN sf_guard_user s ON s.id = a2.id_user WHERE (s.id IN (?)) ORDER BY a.titre ASC - (1)
+Jul 01 13:27:33 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/_sidebar.php"
+Jul 01 13:27:33 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jul 01 13:27:33 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jul 01 13:27:33 symfony [info] {sfWebDebugLogger} Configuration 3.67 ms (11)
+Jul 01 13:27:33 symfony [info] {sfWebDebugLogger} Factories 32.36 ms (1)
+Jul 01 13:27:33 symfony [info] {sfWebDebugLogger} Action "accueil/index" 0.22 ms (1)
+Jul 01 13:27:33 symfony [info] {sfWebDebugLogger} View "Success" for "accueil/index" 132.31 ms (1)
+Jul 01 13:27:33 symfony [info] {sfWebDebugLogger} Partial "global/_user_infos" 21.91 ms (1)
+Jul 01 13:27:33 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.03 ms (4)
+Jul 01 13:27:33 symfony [info] {sfWebDebugLogger} Component "accueil/search" 3.01 ms (1)
+Jul 01 13:27:33 symfony [info] {sfWebDebugLogger} Partial "accueil/_search" 4.08 ms (1)
+Jul 01 13:27:33 symfony [info] {sfWebDebugLogger} Partial "global/_reader" 49.89 ms (1)
+Jul 01 13:27:33 symfony [info] {sfWebDebugLogger} Component "accueil/sidebar" 35.78 ms (1)
+Jul 01 13:27:33 symfony [info] {sfWebDebugLogger} Partial "accueil/_sidebar" 3.33 ms (1)
+Jul 01 13:27:33 symfony [info] {sfWebResponse} Send content (46782 o)
+Jul 01 13:27:37 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/guard/login)
+Jul 01 13:27:37 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/guard/logout)
+Jul 01 13:27:37 symfony [info] {sfPatternRouting} Match route "homepage" (/) for / with parameters array (  'module' => 'accueil',  'action' => 'index',)
+Jul 01 13:27:37 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jul 01 13:27:37 symfony [info] {sfFilterChain} Executing filter "sfGuardRememberMeFilter"
+Jul 01 13:27:37 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jul 01 13:27:37 symfony [info] {accueilActions} Call "accueilActions->executeIndex()"
+Jul 01 13:27:37 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/indexSuccess.php"
+Jul 01 13:27:37 symfony [info] {sfPHPView} Decorate content with "/var/www/sonor/apps/frontend/templates/layout.php"
+Jul 01 13:27:37 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/templates/layout.php"
+Jul 01 13:27:37 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/templates/_user_infos.php"
+Jul 01 13:27:37 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Jul 01 13:27:37 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.first_name AS s__first_name, s.last_name AS s__last_name, s.email_address AS s__email_address, s.username AS s__username, s.algorithm AS s__algorithm, s.salt AS s__salt, s.password AS s__password, s.is_active AS s__is_active, s.is_super_admin AS s__is_super_admin, s.last_login AS s__last_login, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM sf_guard_user s WHERE (s.id = ?) LIMIT 1 - (1)
+Jul 01 13:27:37 symfony [info] {main} Call "accueil->executeSearch()"
+Jul 01 13:27:37 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/_search.php"
+Jul 01 13:27:37 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/templates/_reader.php"
+Jul 01 13:27:37 symfony [info] {main} Call "accueil->executeSidebar()"
+Jul 01 13:27:37 symfony [info] {Doctrine_Connection_Statement} execute : SELECT p.id AS p__id, p.titre AS p__titre, p.id_user AS p__id_user, p.slug AS p__slug, c.id AS c__id, c.titre AS c__titre, c.duree AS c__duree, c.audio_file AS c__audio_file, c.id_album AS c__id_album, c.slug AS c__slug FROM playlist p LEFT JOIN chansons_playlists c2 ON (p.id = c2.id_playlist) LEFT JOIN chanson c ON c.id = c2.id_chanson WHERE (p.id_user = ?) ORDER BY p.titre ASC - (1)
+Jul 01 13:27:37 symfony [info] {Doctrine_Connection_Statement} execute : SELECT a.id AS a__id, a.titre AS a__titre, a.id_artiste AS a__id_artiste, a.slug AS a__slug FROM album a LEFT JOIN albums_users a2 ON (a.id = a2.id_album) LEFT JOIN sf_guard_user s ON s.id = a2.id_user WHERE (s.id IN (?)) ORDER BY a.titre ASC - (1)
+Jul 01 13:27:37 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/_sidebar.php"
+Jul 01 13:27:37 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jul 01 13:27:37 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jul 01 13:27:37 symfony [info] {sfWebDebugLogger} Configuration 7.92 ms (11)
+Jul 01 13:27:37 symfony [info] {sfWebDebugLogger} Factories 28.30 ms (1)
+Jul 01 13:27:37 symfony [info] {sfWebDebugLogger} Action "accueil/index" 0.27 ms (1)
+Jul 01 13:27:37 symfony [info] {sfWebDebugLogger} View "Success" for "accueil/index" 291.59 ms (1)
+Jul 01 13:27:37 symfony [info] {sfWebDebugLogger} Partial "global/_user_infos" 61.07 ms (1)
+Jul 01 13:27:37 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.03 ms (4)
+Jul 01 13:27:37 symfony [info] {sfWebDebugLogger} Component "accueil/search" 3.45 ms (1)
+Jul 01 13:27:37 symfony [info] {sfWebDebugLogger} Partial "accueil/_search" 8.32 ms (1)
+Jul 01 13:27:37 symfony [info] {sfWebDebugLogger} Partial "global/_reader" 102.97 ms (1)
+Jul 01 13:27:37 symfony [info] {sfWebDebugLogger} Component "accueil/sidebar" 83.67 ms (1)
+Jul 01 13:27:37 symfony [info] {sfWebDebugLogger} Partial "accueil/_sidebar" 2.97 ms (1)
+Jul 01 13:27:37 symfony [info] {sfWebResponse} Send content (46764 o)
+Jul 01 13:27:37 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/guard/login)
+Jul 01 13:27:37 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/guard/logout)
+Jul 01 13:27:37 symfony [info] {sfPatternRouting} Match route "javascript_functions" (/functions.:sf_format) for /functions with parameters array (  'module' => 'accueil',  'action' => 'javascript',  'sf_format' => 'js',)
+Jul 01 13:27:37 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jul 01 13:27:37 symfony [info] {sfFilterChain} Executing filter "sfGuardRememberMeFilter"
+Jul 01 13:27:37 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jul 01 13:27:37 symfony [info] {accueilActions} Call "accueilActions->executeJavascript()"
+Jul 01 13:27:37 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/javascriptSuccess.js.php"
+Jul 01 13:27:37 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jul 01 13:27:37 symfony [info] {sfWebResponse} Send header "Content-Type: application/javascript"
+Jul 01 13:27:37 symfony [info] {sfWebDebugLogger} Configuration 3.04 ms (9)
+Jul 01 13:27:37 symfony [info] {sfWebDebugLogger} Factories 37.87 ms (1)
+Jul 01 13:27:37 symfony [info] {sfWebDebugLogger} Action "accueil/javascript" 0.22 ms (1)
+Jul 01 13:27:37 symfony [info] {sfWebDebugLogger} View "Success" for "accueil/javascript" 7.67 ms (1)
+Jul 01 13:27:37 symfony [info] {sfWebResponse} Send content (326 o)
+Jul 01 13:27:53 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/guard/login)
+Jul 01 13:27:53 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/guard/logout)
+Jul 01 13:27:53 symfony [info] {sfPatternRouting} Match route "homepage" (/) for / with parameters array (  'module' => 'accueil',  'action' => 'index',)
+Jul 01 13:27:53 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jul 01 13:27:53 symfony [info] {sfFilterChain} Executing filter "sfGuardRememberMeFilter"
+Jul 01 13:27:53 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jul 01 13:27:53 symfony [info] {accueilActions} Call "accueilActions->executeIndex()"
+Jul 01 13:27:53 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/indexSuccess.php"
+Jul 01 13:27:53 symfony [info] {sfPHPView} Decorate content with "/var/www/sonor/apps/frontend/templates/layout.php"
+Jul 01 13:27:53 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/templates/layout.php"
+Jul 01 13:27:53 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/templates/_user_infos.php"
+Jul 01 13:27:53 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Jul 01 13:27:53 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.first_name AS s__first_name, s.last_name AS s__last_name, s.email_address AS s__email_address, s.username AS s__username, s.algorithm AS s__algorithm, s.salt AS s__salt, s.password AS s__password, s.is_active AS s__is_active, s.is_super_admin AS s__is_super_admin, s.last_login AS s__last_login, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM sf_guard_user s WHERE (s.id = ?) LIMIT 1 - (1)
+Jul 01 13:27:53 symfony [info] {main} Call "accueil->executeSearch()"
+Jul 01 13:27:53 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/_search.php"
+Jul 01 13:27:53 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/templates/_reader.php"
+Jul 01 13:27:53 symfony [info] {main} Call "accueil->executeSidebar()"
+Jul 01 13:27:53 symfony [info] {Doctrine_Connection_Statement} execute : SELECT p.id AS p__id, p.titre AS p__titre, p.id_user AS p__id_user, p.slug AS p__slug, c.id AS c__id, c.titre AS c__titre, c.duree AS c__duree, c.audio_file AS c__audio_file, c.id_album AS c__id_album, c.slug AS c__slug FROM playlist p LEFT JOIN chansons_playlists c2 ON (p.id = c2.id_playlist) LEFT JOIN chanson c ON c.id = c2.id_chanson WHERE (p.id_user = ?) ORDER BY p.titre ASC - (1)
+Jul 01 13:27:53 symfony [info] {Doctrine_Connection_Statement} execute : SELECT a.id AS a__id, a.titre AS a__titre, a.id_artiste AS a__id_artiste, a.slug AS a__slug FROM album a LEFT JOIN albums_users a2 ON (a.id = a2.id_album) LEFT JOIN sf_guard_user s ON s.id = a2.id_user WHERE (s.id IN (?)) ORDER BY a.titre ASC - (1)
+Jul 01 13:27:53 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/_sidebar.php"
+Jul 01 13:27:53 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jul 01 13:27:53 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jul 01 13:27:53 symfony [info] {sfWebDebugLogger} Configuration 3.47 ms (11)
+Jul 01 13:27:53 symfony [info] {sfWebDebugLogger} Factories 18.96 ms (1)
+Jul 01 13:27:53 symfony [info] {sfWebDebugLogger} Action "accueil/index" 0.46 ms (1)
+Jul 01 13:27:53 symfony [info] {sfWebDebugLogger} View "Success" for "accueil/index" 138.72 ms (1)
+Jul 01 13:27:53 symfony [info] {sfWebDebugLogger} Partial "global/_user_infos" 27.20 ms (1)
+Jul 01 13:27:53 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.03 ms (4)
+Jul 01 13:27:53 symfony [info] {sfWebDebugLogger} Component "accueil/search" 3.80 ms (1)
+Jul 01 13:27:53 symfony [info] {sfWebDebugLogger} Partial "accueil/_search" 3.43 ms (1)
+Jul 01 13:27:53 symfony [info] {sfWebDebugLogger} Partial "global/_reader" 49.02 ms (1)
+Jul 01 13:27:53 symfony [info] {sfWebDebugLogger} Component "accueil/sidebar" 37.35 ms (1)
+Jul 01 13:27:53 symfony [info] {sfWebDebugLogger} Partial "accueil/_sidebar" 2.53 ms (1)
+Jul 01 13:27:53 symfony [info] {sfWebResponse} Send content (46782 o)
+Jul 01 13:27:53 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/guard/login)
+Jul 01 13:27:53 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/guard/logout)
+Jul 01 13:27:53 symfony [info] {sfPatternRouting} Match route "javascript_functions" (/functions.:sf_format) for /functions with parameters array (  'module' => 'accueil',  'action' => 'javascript',  'sf_format' => 'js',)
+Jul 01 13:27:53 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jul 01 13:27:53 symfony [info] {sfFilterChain} Executing filter "sfGuardRememberMeFilter"
+Jul 01 13:27:53 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jul 01 13:27:53 symfony [info] {accueilActions} Call "accueilActions->executeJavascript()"
+Jul 01 13:27:53 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/javascriptSuccess.js.php"
+Jul 01 13:27:53 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jul 01 13:27:53 symfony [info] {sfWebResponse} Send header "Content-Type: application/javascript"
+Jul 01 13:27:53 symfony [info] {sfWebDebugLogger} Configuration 2.96 ms (9)
+Jul 01 13:27:53 symfony [info] {sfWebDebugLogger} Factories 14.88 ms (1)
+Jul 01 13:27:53 symfony [info] {sfWebDebugLogger} Action "accueil/javascript" 0.31 ms (1)
+Jul 01 13:27:53 symfony [info] {sfWebDebugLogger} View "Success" for "accueil/javascript" 4.27 ms (1)
+Jul 01 13:27:53 symfony [info] {sfWebResponse} Send content (326 o)
+Jul 01 13:28:06 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/guard/login)
+Jul 01 13:28:06 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/guard/logout)
+Jul 01 13:28:06 symfony [info] {sfPatternRouting} Match route "homepage" (/) for / with parameters array (  'module' => 'accueil',  'action' => 'index',)
+Jul 01 13:28:06 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jul 01 13:28:06 symfony [info] {sfFilterChain} Executing filter "sfGuardRememberMeFilter"
+Jul 01 13:28:06 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jul 01 13:28:06 symfony [info] {accueilActions} Call "accueilActions->executeIndex()"
+Jul 01 13:28:06 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/indexSuccess.php"
+Jul 01 13:28:06 symfony [info] {sfPHPView} Decorate content with "/var/www/sonor/apps/frontend/templates/layout.php"
+Jul 01 13:28:06 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/templates/layout.php"
+Jul 01 13:28:06 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/templates/_user_infos.php"
+Jul 01 13:28:06 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Jul 01 13:28:06 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.first_name AS s__first_name, s.last_name AS s__last_name, s.email_address AS s__email_address, s.username AS s__username, s.algorithm AS s__algorithm, s.salt AS s__salt, s.password AS s__password, s.is_active AS s__is_active, s.is_super_admin AS s__is_super_admin, s.last_login AS s__last_login, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM sf_guard_user s WHERE (s.id = ?) LIMIT 1 - (1)
+Jul 01 13:28:06 symfony [info] {main} Call "accueil->executeSearch()"
+Jul 01 13:28:06 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/_search.php"
+Jul 01 13:28:06 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/templates/_reader.php"
+Jul 01 13:28:06 symfony [info] {main} Call "accueil->executeSidebar()"
+Jul 01 13:28:06 symfony [info] {Doctrine_Connection_Statement} execute : SELECT p.id AS p__id, p.titre AS p__titre, p.id_user AS p__id_user, p.slug AS p__slug, c.id AS c__id, c.titre AS c__titre, c.duree AS c__duree, c.audio_file AS c__audio_file, c.id_album AS c__id_album, c.slug AS c__slug FROM playlist p LEFT JOIN chansons_playlists c2 ON (p.id = c2.id_playlist) LEFT JOIN chanson c ON c.id = c2.id_chanson WHERE (p.id_user = ?) ORDER BY p.titre ASC - (1)
+Jul 01 13:28:06 symfony [info] {Doctrine_Connection_Statement} execute : SELECT a.id AS a__id, a.titre AS a__titre, a.id_artiste AS a__id_artiste, a.slug AS a__slug FROM album a LEFT JOIN albums_users a2 ON (a.id = a2.id_album) LEFT JOIN sf_guard_user s ON s.id = a2.id_user WHERE (s.id IN (?)) ORDER BY a.titre ASC - (1)
+Jul 01 13:28:06 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/_sidebar.php"
+Jul 01 13:28:06 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jul 01 13:28:06 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jul 01 13:28:06 symfony [info] {sfWebDebugLogger} Configuration 3.07 ms (11)
+Jul 01 13:28:06 symfony [info] {sfWebDebugLogger} Factories 32.69 ms (1)
+Jul 01 13:28:06 symfony [info] {sfWebDebugLogger} Action "accueil/index" 0.32 ms (1)
+Jul 01 13:28:06 symfony [info] {sfWebDebugLogger} View "Success" for "accueil/index" 143.31 ms (1)
+Jul 01 13:28:06 symfony [info] {sfWebDebugLogger} Partial "global/_user_infos" 26.28 ms (1)
+Jul 01 13:28:06 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.03 ms (4)
+Jul 01 13:28:06 symfony [info] {sfWebDebugLogger} Component "accueil/search" 4.47 ms (1)
+Jul 01 13:28:06 symfony [info] {sfWebDebugLogger} Partial "accueil/_search" 4.45 ms (1)
+Jul 01 13:28:06 symfony [info] {sfWebDebugLogger} Partial "global/_reader" 51.88 ms (1)
+Jul 01 13:28:06 symfony [info] {sfWebDebugLogger} Component "accueil/sidebar" 37.40 ms (1)
+Jul 01 13:28:06 symfony [info] {sfWebDebugLogger} Partial "accueil/_sidebar" 2.69 ms (1)
+Jul 01 13:28:06 symfony [info] {sfWebResponse} Send content (46751 o)
+Jul 01 13:28:56 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/guard/login)
+Jul 01 13:28:56 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/guard/logout)
+Jul 01 13:28:56 symfony [info] {sfPatternRouting} Match route "homepage" (/) for / with parameters array (  'module' => 'accueil',  'action' => 'index',)
+Jul 01 13:28:56 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jul 01 13:28:56 symfony [info] {sfFilterChain} Executing filter "sfGuardRememberMeFilter"
+Jul 01 13:28:56 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jul 01 13:28:56 symfony [info] {accueilActions} Call "accueilActions->executeIndex()"
+Jul 01 13:28:56 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/indexSuccess.php"
+Jul 01 13:28:56 symfony [info] {sfPHPView} Decorate content with "/var/www/sonor/apps/frontend/templates/layout.php"
+Jul 01 13:28:56 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/templates/layout.php"
+Jul 01 13:28:56 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/templates/_user_infos.php"
+Jul 01 13:28:56 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Jul 01 13:28:56 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.first_name AS s__first_name, s.last_name AS s__last_name, s.email_address AS s__email_address, s.username AS s__username, s.algorithm AS s__algorithm, s.salt AS s__salt, s.password AS s__password, s.is_active AS s__is_active, s.is_super_admin AS s__is_super_admin, s.last_login AS s__last_login, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM sf_guard_user s WHERE (s.id = ?) LIMIT 1 - (1)
+Jul 01 13:28:56 symfony [info] {main} Call "accueil->executeSearch()"
+Jul 01 13:28:56 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/_search.php"
+Jul 01 13:28:56 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/templates/_reader.php"
+Jul 01 13:28:56 symfony [info] {main} Call "accueil->executeSidebar()"
+Jul 01 13:28:56 symfony [info] {Doctrine_Connection_Statement} execute : SELECT p.id AS p__id, p.titre AS p__titre, p.id_user AS p__id_user, p.slug AS p__slug, c.id AS c__id, c.titre AS c__titre, c.duree AS c__duree, c.audio_file AS c__audio_file, c.id_album AS c__id_album, c.slug AS c__slug FROM playlist p LEFT JOIN chansons_playlists c2 ON (p.id = c2.id_playlist) LEFT JOIN chanson c ON c.id = c2.id_chanson WHERE (p.id_user = ?) ORDER BY p.titre ASC - (1)
+Jul 01 13:28:56 symfony [info] {Doctrine_Connection_Statement} execute : SELECT a.id AS a__id, a.titre AS a__titre, a.id_artiste AS a__id_artiste, a.slug AS a__slug FROM album a LEFT JOIN albums_users a2 ON (a.id = a2.id_album) LEFT JOIN sf_guard_user s ON s.id = a2.id_user WHERE (s.id IN (?)) ORDER BY a.titre ASC - (1)
+Jul 01 13:28:56 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/_sidebar.php"
+Jul 01 13:28:56 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jul 01 13:28:56 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jul 01 13:28:56 symfony [info] {sfWebDebugLogger} Configuration 7.62 ms (11)
+Jul 01 13:28:56 symfony [info] {sfWebDebugLogger} Factories 25.18 ms (1)
+Jul 01 13:28:56 symfony [info] {sfWebDebugLogger} Action "accueil/index" 0.22 ms (1)
+Jul 01 13:28:56 symfony [info] {sfWebDebugLogger} View "Success" for "accueil/index" 283.37 ms (1)
+Jul 01 13:28:56 symfony [info] {sfWebDebugLogger} Partial "global/_user_infos" 48.14 ms (1)
+Jul 01 13:28:56 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.03 ms (4)
+Jul 01 13:28:56 symfony [info] {sfWebDebugLogger} Component "accueil/search" 8.31 ms (1)
+Jul 01 13:28:56 symfony [info] {sfWebDebugLogger} Partial "accueil/_search" 8.64 ms (1)
+Jul 01 13:28:56 symfony [info] {sfWebDebugLogger} Partial "global/_reader" 109.93 ms (1)
+Jul 01 13:28:56 symfony [info] {sfWebDebugLogger} Component "accueil/sidebar" 78.12 ms (1)
+Jul 01 13:28:56 symfony [info] {sfWebDebugLogger} Partial "accueil/_sidebar" 2.84 ms (1)
+Jul 01 13:28:57 symfony [info] {sfWebResponse} Send content (46764 o)
+Jul 01 13:28:57 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/guard/login)
+Jul 01 13:28:57 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/guard/logout)
+Jul 01 13:28:57 symfony [info] {sfPatternRouting} Match route "javascript_functions" (/functions.:sf_format) for /functions with parameters array (  'module' => 'accueil',  'action' => 'javascript',  'sf_format' => 'js',)
+Jul 01 13:28:57 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jul 01 13:28:57 symfony [info] {sfFilterChain} Executing filter "sfGuardRememberMeFilter"
+Jul 01 13:28:57 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jul 01 13:28:57 symfony [info] {accueilActions} Call "accueilActions->executeJavascript()"
+Jul 01 13:28:57 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/javascriptSuccess.js.php"
+Jul 01 13:28:57 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jul 01 13:28:57 symfony [info] {sfWebResponse} Send header "Content-Type: application/javascript"
+Jul 01 13:28:57 symfony [info] {sfWebDebugLogger} Configuration 2.79 ms (9)
+Jul 01 13:28:57 symfony [info] {sfWebDebugLogger} Factories 41.78 ms (1)
+Jul 01 13:28:57 symfony [info] {sfWebDebugLogger} Action "accueil/javascript" 0.23 ms (1)
+Jul 01 13:28:57 symfony [info] {sfWebDebugLogger} View "Success" for "accueil/javascript" 13.57 ms (1)
+Jul 01 13:28:57 symfony [info] {sfWebResponse} Send content (326 o)
+Jul 01 13:29:49 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/guard/login)
+Jul 01 13:29:49 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/guard/logout)
+Jul 01 13:29:49 symfony [info] {sfPatternRouting} Match route "homepage" (/) for / with parameters array (  'module' => 'accueil',  'action' => 'index',)
+Jul 01 13:29:49 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jul 01 13:29:49 symfony [info] {sfFilterChain} Executing filter "sfGuardRememberMeFilter"
+Jul 01 13:29:49 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jul 01 13:29:49 symfony [info] {accueilActions} Call "accueilActions->executeIndex()"
+Jul 01 13:29:49 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/indexSuccess.php"
+Jul 01 13:29:49 symfony [info] {sfPHPView} Decorate content with "/var/www/sonor/apps/frontend/templates/layout.php"
+Jul 01 13:29:49 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/templates/layout.php"
+Jul 01 13:29:49 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/templates/_user_infos.php"
+Jul 01 13:29:49 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Jul 01 13:29:49 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.first_name AS s__first_name, s.last_name AS s__last_name, s.email_address AS s__email_address, s.username AS s__username, s.algorithm AS s__algorithm, s.salt AS s__salt, s.password AS s__password, s.is_active AS s__is_active, s.is_super_admin AS s__is_super_admin, s.last_login AS s__last_login, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM sf_guard_user s WHERE (s.id = ?) LIMIT 1 - (1)
+Jul 01 13:29:49 symfony [info] {main} Call "accueil->executeSearch()"
+Jul 01 13:29:49 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/_search.php"
+Jul 01 13:29:49 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/templates/_reader.php"
+Jul 01 13:29:49 symfony [info] {main} Call "accueil->executeSidebar()"
+Jul 01 13:29:49 symfony [info] {Doctrine_Connection_Statement} execute : SELECT p.id AS p__id, p.titre AS p__titre, p.id_user AS p__id_user, p.slug AS p__slug, c.id AS c__id, c.titre AS c__titre, c.duree AS c__duree, c.audio_file AS c__audio_file, c.id_album AS c__id_album, c.slug AS c__slug FROM playlist p LEFT JOIN chansons_playlists c2 ON (p.id = c2.id_playlist) LEFT JOIN chanson c ON c.id = c2.id_chanson WHERE (p.id_user = ?) ORDER BY p.titre ASC - (1)
+Jul 01 13:29:49 symfony [info] {Doctrine_Connection_Statement} execute : SELECT a.id AS a__id, a.titre AS a__titre, a.id_artiste AS a__id_artiste, a.slug AS a__slug FROM album a LEFT JOIN albums_users a2 ON (a.id = a2.id_album) LEFT JOIN sf_guard_user s ON s.id = a2.id_user WHERE (s.id IN (?)) ORDER BY a.titre ASC - (1)
+Jul 01 13:29:49 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/_sidebar.php"
+Jul 01 13:29:49 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jul 01 13:29:49 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jul 01 13:29:49 symfony [info] {sfWebDebugLogger} Configuration 8.77 ms (11)
+Jul 01 13:29:49 symfony [info] {sfWebDebugLogger} Factories 33.75 ms (1)
+Jul 01 13:29:49 symfony [info] {sfWebDebugLogger} Action "accueil/index" 0.32 ms (1)
+Jul 01 13:29:49 symfony [info] {sfWebDebugLogger} View "Success" for "accueil/index" 276.99 ms (1)
+Jul 01 13:29:49 symfony [info] {sfWebDebugLogger} Partial "global/_user_infos" 49.03 ms (1)
+Jul 01 13:29:49 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.04 ms (4)
+Jul 01 13:29:49 symfony [info] {sfWebDebugLogger} Component "accueil/search" 7.04 ms (1)
+Jul 01 13:29:49 symfony [info] {sfWebDebugLogger} Partial "accueil/_search" 8.15 ms (1)
+Jul 01 13:29:49 symfony [info] {sfWebDebugLogger} Partial "global/_reader" 102.61 ms (1)
+Jul 01 13:29:49 symfony [info] {sfWebDebugLogger} Component "accueil/sidebar" 83.83 ms (1)
+Jul 01 13:29:49 symfony [info] {sfWebDebugLogger} Partial "accueil/_sidebar" 2.84 ms (1)
+Jul 01 13:29:49 symfony [info] {sfWebResponse} Send content (46764 o)
+Jul 01 13:29:49 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/guard/login)
+Jul 01 13:29:49 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/guard/logout)
+Jul 01 13:29:49 symfony [info] {sfPatternRouting} Match route "javascript_functions" (/functions.:sf_format) for /functions with parameters array (  'module' => 'accueil',  'action' => 'javascript',  'sf_format' => 'js',)
+Jul 01 13:29:49 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jul 01 13:29:49 symfony [info] {sfFilterChain} Executing filter "sfGuardRememberMeFilter"
+Jul 01 13:29:49 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jul 01 13:29:49 symfony [info] {accueilActions} Call "accueilActions->executeJavascript()"
+Jul 01 13:29:49 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/javascriptSuccess.js.php"
+Jul 01 13:29:49 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jul 01 13:29:49 symfony [info] {sfWebResponse} Send header "Content-Type: application/javascript"
+Jul 01 13:29:49 symfony [info] {sfWebDebugLogger} Configuration 10.74 ms (9)
+Jul 01 13:29:49 symfony [info] {sfWebDebugLogger} Factories 44.21 ms (1)
+Jul 01 13:29:49 symfony [info] {sfWebDebugLogger} Action "accueil/javascript" 0.44 ms (1)
+Jul 01 13:29:49 symfony [info] {sfWebDebugLogger} View "Success" for "accueil/javascript" 5.56 ms (1)
+Jul 01 13:29:49 symfony [info] {sfWebResponse} Send content (326 o)
+Jul 01 13:30:00 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/guard/login)
+Jul 01 13:30:00 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/guard/logout)
+Jul 01 13:30:00 symfony [info] {sfPatternRouting} Match route "homepage" (/) for / with parameters array (  'module' => 'accueil',  'action' => 'index',)
+Jul 01 13:30:00 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jul 01 13:30:00 symfony [info] {sfFilterChain} Executing filter "sfGuardRememberMeFilter"
+Jul 01 13:30:00 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jul 01 13:30:00 symfony [info] {accueilActions} Call "accueilActions->executeIndex()"
+Jul 01 13:30:00 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/indexSuccess.php"
+Jul 01 13:30:00 symfony [info] {sfPHPView} Decorate content with "/var/www/sonor/apps/frontend/templates/layout.php"
+Jul 01 13:30:00 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/templates/layout.php"
+Jul 01 13:30:00 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/templates/_user_infos.php"
+Jul 01 13:30:00 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Jul 01 13:30:00 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.first_name AS s__first_name, s.last_name AS s__last_name, s.email_address AS s__email_address, s.username AS s__username, s.algorithm AS s__algorithm, s.salt AS s__salt, s.password AS s__password, s.is_active AS s__is_active, s.is_super_admin AS s__is_super_admin, s.last_login AS s__last_login, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM sf_guard_user s WHERE (s.id = ?) LIMIT 1 - (1)
+Jul 01 13:30:00 symfony [info] {main} Call "accueil->executeSearch()"
+Jul 01 13:30:00 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/_search.php"
+Jul 01 13:30:00 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/templates/_reader.php"
+Jul 01 13:30:00 symfony [info] {main} Call "accueil->executeSidebar()"
+Jul 01 13:30:00 symfony [info] {Doctrine_Connection_Statement} execute : SELECT p.id AS p__id, p.titre AS p__titre, p.id_user AS p__id_user, p.slug AS p__slug, c.id AS c__id, c.titre AS c__titre, c.duree AS c__duree, c.audio_file AS c__audio_file, c.id_album AS c__id_album, c.slug AS c__slug FROM playlist p LEFT JOIN chansons_playlists c2 ON (p.id = c2.id_playlist) LEFT JOIN chanson c ON c.id = c2.id_chanson WHERE (p.id_user = ?) ORDER BY p.titre ASC - (1)
+Jul 01 13:30:00 symfony [info] {Doctrine_Connection_Statement} execute : SELECT a.id AS a__id, a.titre AS a__titre, a.id_artiste AS a__id_artiste, a.slug AS a__slug FROM album a LEFT JOIN albums_users a2 ON (a.id = a2.id_album) LEFT JOIN sf_guard_user s ON s.id = a2.id_user WHERE (s.id IN (?)) ORDER BY a.titre ASC - (1)
+Jul 01 13:30:00 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/_sidebar.php"
+Jul 01 13:30:00 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jul 01 13:30:00 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jul 01 13:30:00 symfony [info] {sfWebDebugLogger} Configuration 3.45 ms (11)
+Jul 01 13:30:00 symfony [info] {sfWebDebugLogger} Factories 18.72 ms (1)
+Jul 01 13:30:00 symfony [info] {sfWebDebugLogger} Action "accueil/index" 0.22 ms (1)
+Jul 01 13:30:00 symfony [info] {sfWebDebugLogger} View "Success" for "accueil/index" 141.72 ms (1)
+Jul 01 13:30:00 symfony [info] {sfWebDebugLogger} Partial "global/_user_infos" 26.39 ms (1)
+Jul 01 13:30:00 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.03 ms (4)
+Jul 01 13:30:00 symfony [info] {sfWebDebugLogger} Component "accueil/search" 3.97 ms (1)
+Jul 01 13:30:00 symfony [info] {sfWebDebugLogger} Partial "accueil/_search" 4.35 ms (1)
+Jul 01 13:30:00 symfony [info] {sfWebDebugLogger} Partial "global/_reader" 49.03 ms (1)
+Jul 01 13:30:00 symfony [info] {sfWebDebugLogger} Component "accueil/sidebar" 39.93 ms (1)
+Jul 01 13:30:00 symfony [info] {sfWebDebugLogger} Partial "accueil/_sidebar" 3.12 ms (1)
+Jul 01 13:30:00 symfony [info] {sfWebResponse} Send content (46782 o)
+Jul 01 13:30:00 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/guard/login)
+Jul 01 13:30:00 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/guard/logout)
+Jul 01 13:30:00 symfony [info] {sfPatternRouting} Match route "javascript_functions" (/functions.:sf_format) for /functions with parameters array (  'module' => 'accueil',  'action' => 'javascript',  'sf_format' => 'js',)
+Jul 01 13:30:00 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jul 01 13:30:00 symfony [info] {sfFilterChain} Executing filter "sfGuardRememberMeFilter"
+Jul 01 13:30:00 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jul 01 13:30:00 symfony [info] {accueilActions} Call "accueilActions->executeJavascript()"
+Jul 01 13:30:00 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/javascriptSuccess.js.php"
+Jul 01 13:30:00 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jul 01 13:30:00 symfony [info] {sfWebResponse} Send header "Content-Type: application/javascript"
+Jul 01 13:30:00 symfony [info] {sfWebDebugLogger} Configuration 2.32 ms (9)
+Jul 01 13:30:00 symfony [info] {sfWebDebugLogger} Factories 14.00 ms (1)
+Jul 01 13:30:00 symfony [info] {sfWebDebugLogger} Action "accueil/javascript" 0.32 ms (1)
+Jul 01 13:30:00 symfony [info] {sfWebDebugLogger} View "Success" for "accueil/javascript" 4.31 ms (1)
+Jul 01 13:30:00 symfony [info] {sfWebResponse} Send content (326 o)
+Jul 01 13:30:14 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/guard/login)
+Jul 01 13:30:14 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/guard/logout)
+Jul 01 13:30:14 symfony [info] {sfPatternRouting} Match route "homepage" (/) for / with parameters array (  'module' => 'accueil',  'action' => 'index',)
+Jul 01 13:30:14 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jul 01 13:30:14 symfony [info] {sfFilterChain} Executing filter "sfGuardRememberMeFilter"
+Jul 01 13:30:14 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jul 01 13:30:14 symfony [info] {accueilActions} Call "accueilActions->executeIndex()"
+Jul 01 13:30:14 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/indexSuccess.php"
+Jul 01 13:30:14 symfony [info] {sfPHPView} Decorate content with "/var/www/sonor/apps/frontend/templates/layout.php"
+Jul 01 13:30:14 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/templates/layout.php"
+Jul 01 13:30:14 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/templates/_user_infos.php"
+Jul 01 13:30:14 symfony [info] {main} Call "accueil->executeSearch()"
+Jul 01 13:30:14 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/_search.php"
+Jul 01 13:30:14 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/templates/_reader.php"
+Jul 01 13:30:14 symfony [info] {main} Call "accueil->executeSidebar()"
+Jul 01 13:30:14 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/_sidebar.php"
+Jul 01 13:30:14 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jul 01 13:30:14 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jul 01 13:30:14 symfony [info] {sfWebDebugLogger} Configuration 3.34 ms (11)
+Jul 01 13:30:14 symfony [info] {sfWebDebugLogger} Factories 18.76 ms (1)
+Jul 01 13:30:14 symfony [info] {sfWebDebugLogger} Action "accueil/index" 0.33 ms (1)
+Jul 01 13:30:14 symfony [info] {sfWebDebugLogger} View "Success" for "accueil/index" 75.72 ms (1)
+Jul 01 13:30:14 symfony [info] {sfWebDebugLogger} Partial "global/_user_infos" 1.16 ms (1)
+Jul 01 13:30:14 symfony [info] {sfWebDebugLogger} Component "accueil/search" 3.60 ms (1)
+Jul 01 13:30:14 symfony [info] {sfWebDebugLogger} Partial "accueil/_search" 4.10 ms (1)
+Jul 01 13:30:14 symfony [info] {sfWebDebugLogger} Partial "global/_reader" 51.28 ms (1)
+Jul 01 13:30:14 symfony [info] {sfWebDebugLogger} Component "accueil/sidebar" 0.05 ms (1)
+Jul 01 13:30:14 symfony [info] {sfWebDebugLogger} Partial "accueil/_sidebar" 1.03 ms (1)
+Jul 01 13:30:14 symfony [info] {sfWebResponse} Send content (36620 o)
+Jul 01 13:30:16 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/guard/login)
+Jul 01 13:30:16 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/guard/logout)
+Jul 01 13:30:16 symfony [info] {sfPatternRouting} Match route "sf_guard_signin" (/guard/login) for /guard/login with parameters array (  'module' => 'sfGuardAuth',  'action' => 'signin',)
+Jul 01 13:30:16 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jul 01 13:30:16 symfony [info] {sfFilterChain} Executing filter "sfGuardRememberMeFilter"
+Jul 01 13:30:16 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jul 01 13:30:16 symfony [info] {sfGuardAuthActions} Call "sfGuardAuthActions->executeSignin()"
+Jul 01 13:30:16 symfony [info] {sfPHPView} Render "/var/www/sonor/plugins/sfDoctrineGuardPlugin/modules/sfGuardAuth/templates/signinSuccess.php"
+Jul 01 13:30:16 symfony [info] {sfPartialView} Render "/var/www/sonor/plugins/sfDoctrineGuardPlugin/modules/sfGuardAuth/templates/_signin_form.php"
+Jul 01 13:30:16 symfony [info] {sfPHPView} Decorate content with "/var/www/sonor/apps/frontend/templates/layout.php"
+Jul 01 13:30:16 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/templates/layout.php"
+Jul 01 13:30:16 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/templates/_user_infos.php"
+Jul 01 13:30:16 symfony [info] {main} Call "accueil->executeSearch()"
+Jul 01 13:30:16 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/_search.php"
+Jul 01 13:30:16 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/templates/_reader.php"
+Jul 01 13:30:16 symfony [info] {main} Call "accueil->executeSidebar()"
+Jul 01 13:30:16 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/_sidebar.php"
+Jul 01 13:30:16 symfony [info] {sfWebResponse} Send status "HTTP/1.1 401 Unauthorized"
+Jul 01 13:30:16 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jul 01 13:30:16 symfony [info] {sfWebDebugLogger} Configuration 25.31 ms (12)
+Jul 01 13:30:16 symfony [info] {sfWebDebugLogger} Factories 13.89 ms (1)
+Jul 01 13:30:16 symfony [info] {sfWebDebugLogger} Action "sfGuardAuth/signin" 6.69 ms (1)
+Jul 01 13:30:16 symfony [info] {sfWebDebugLogger} View "Success" for "sfGuardAuth/signin" 99.57 ms (1)
+Jul 01 13:30:16 symfony [info] {sfWebDebugLogger} Partial "sfGuardAuth/_signin_form" 6.04 ms (1)
+Jul 01 13:30:16 symfony [info] {sfWebDebugLogger} Partial "global/_user_infos" 1.07 ms (1)
+Jul 01 13:30:16 symfony [info] {sfWebDebugLogger} Component "accueil/search" 2.43 ms (1)
+Jul 01 13:30:16 symfony [info] {sfWebDebugLogger} Partial "accueil/_search" 3.38 ms (1)
+Jul 01 13:30:16 symfony [info] {sfWebDebugLogger} Partial "global/_reader" 53.64 ms (1)
+Jul 01 13:30:16 symfony [info] {sfWebDebugLogger} Component "accueil/sidebar" 0.04 ms (1)
+Jul 01 13:30:16 symfony [info] {sfWebDebugLogger} Partial "accueil/_sidebar" 0.95 ms (1)
+Jul 01 13:30:16 symfony [info] {sfWebResponse} Send content (41758 o)
+Jul 01 13:30:24 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/guard/login)
+Jul 01 13:30:24 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/guard/logout)
+Jul 01 13:30:24 symfony [info] {sfPatternRouting} Match route "sf_guard_signin" (/guard/login) for /guard/login with parameters array (  'module' => 'sfGuardAuth',  'action' => 'signin',)
+Jul 01 13:30:24 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jul 01 13:30:24 symfony [info] {sfFilterChain} Executing filter "sfGuardRememberMeFilter"
+Jul 01 13:30:24 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jul 01 13:30:24 symfony [info] {sfGuardAuthActions} Call "sfGuardAuthActions->executeSignin()"
+Jul 01 13:30:24 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Jul 01 13:30:24 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.first_name AS s__first_name, s.last_name AS s__last_name, s.email_address AS s__email_address, s.username AS s__username, s.algorithm AS s__algorithm, s.salt AS s__salt, s.password AS s__password, s.is_active AS s__is_active, s.is_super_admin AS s__is_super_admin, s.last_login AS s__last_login, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM sf_guard_user s WHERE (s.username = ? AND s.is_active = ?) - (jeanphilippe.morvan@gmail.com, 1)
+Jul 01 13:30:24 symfony [info] {myUser} User is authenticated
+Jul 01 13:30:24 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.description AS s__description, s.created_at AS s__created_at, s.updated_at AS s__updated_at, s2.user_id AS s2__user_id, s2.permission_id AS s2__permission_id, s2.created_at AS s2__created_at, s2.updated_at AS s2__updated_at FROM sf_guard_permission s LEFT JOIN sf_guard_user_permission s2 ON s.id = s2.permission_id WHERE (s2.user_id IN (?)) - (1)
+Jul 01 13:30:24 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.name AS s__name, s.description AS s__description, s.created_at AS s__created_at, s.updated_at AS s__updated_at, s2.user_id AS s2__user_id, s2.group_id AS s2__group_id, s2.created_at AS s2__created_at, s2.updated_at AS s2__updated_at FROM sf_guard_group s LEFT JOIN sf_guard_user_group s2 ON s.id = s2.group_id WHERE (s2.user_id IN (?)) - (1)
+Jul 01 13:30:24 symfony [info] {myUser} Add credential(s) ""
+Jul 01 13:30:24 symfony [info] {Doctrine_Connection_Statement} execute : UPDATE sf_guard_user SET last_login = ?, updated_at = ? WHERE id = ? - (2011-07-01 13:30:24, 2011-07-01 13:30:24, 1)
+Jul 01 13:30:24 symfony [info] {sfFrontWebController} Redirect to "http://sonor/frontend_dev.php"
+Jul 01 13:30:24 symfony [info] {sfWebResponse} Send status "HTTP/1.1 302 Found"
+Jul 01 13:30:24 symfony [info] {sfWebResponse} Send header "Location: http://sonor/frontend_dev.php"
+Jul 01 13:30:24 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jul 01 13:30:24 symfony [info] {sfWebDebugLogger} Configuration 2.42 ms (8)
+Jul 01 13:30:24 symfony [info] {sfWebDebugLogger} Factories 14.70 ms (1)
+Jul 01 13:30:24 symfony [info] {sfWebDebugLogger} Action "sfGuardAuth/signin" 89.21 ms (1)
+Jul 01 13:30:24 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.04 ms (5)
+Jul 01 13:30:24 symfony [info] {sfWebResponse} Send content (100 o)
+Jul 01 13:30:24 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/guard/login)
+Jul 01 13:30:24 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/guard/logout)
+Jul 01 13:30:24 symfony [info] {sfPatternRouting} Match route "homepage" (/) for / with parameters array (  'module' => 'accueil',  'action' => 'index',)
+Jul 01 13:30:24 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jul 01 13:30:24 symfony [info] {sfFilterChain} Executing filter "sfGuardRememberMeFilter"
+Jul 01 13:30:24 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jul 01 13:30:24 symfony [info] {accueilActions} Call "accueilActions->executeIndex()"
+Jul 01 13:30:24 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/indexSuccess.php"
+Jul 01 13:30:24 symfony [info] {sfPHPView} Decorate content with "/var/www/sonor/apps/frontend/templates/layout.php"
+Jul 01 13:30:24 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/templates/layout.php"
+Jul 01 13:30:24 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/templates/_user_infos.php"
+Jul 01 13:30:24 symfony [info] {Doctrine_Connection_Mysql} exec : SET NAMES 'UTF8' - ()
+Jul 01 13:30:24 symfony [info] {Doctrine_Connection_Statement} execute : SELECT s.id AS s__id, s.first_name AS s__first_name, s.last_name AS s__last_name, s.email_address AS s__email_address, s.username AS s__username, s.algorithm AS s__algorithm, s.salt AS s__salt, s.password AS s__password, s.is_active AS s__is_active, s.is_super_admin AS s__is_super_admin, s.last_login AS s__last_login, s.created_at AS s__created_at, s.updated_at AS s__updated_at FROM sf_guard_user s WHERE (s.id = ?) LIMIT 1 - (1)
+Jul 01 13:30:24 symfony [info] {main} Call "accueil->executeSearch()"
+Jul 01 13:30:24 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/_search.php"
+Jul 01 13:30:24 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/templates/_reader.php"
+Jul 01 13:30:24 symfony [info] {main} Call "accueil->executeSidebar()"
+Jul 01 13:30:24 symfony [info] {Doctrine_Connection_Statement} execute : SELECT p.id AS p__id, p.titre AS p__titre, p.id_user AS p__id_user, p.slug AS p__slug, c.id AS c__id, c.titre AS c__titre, c.duree AS c__duree, c.audio_file AS c__audio_file, c.id_album AS c__id_album, c.slug AS c__slug FROM playlist p LEFT JOIN chansons_playlists c2 ON (p.id = c2.id_playlist) LEFT JOIN chanson c ON c.id = c2.id_chanson WHERE (p.id_user = ?) ORDER BY p.titre ASC - (1)
+Jul 01 13:30:24 symfony [info] {Doctrine_Connection_Statement} execute : SELECT a.id AS a__id, a.titre AS a__titre, a.id_artiste AS a__id_artiste, a.slug AS a__slug FROM album a LEFT JOIN albums_users a2 ON (a.id = a2.id_album) LEFT JOIN sf_guard_user s ON s.id = a2.id_user WHERE (s.id IN (?)) ORDER BY a.titre ASC - (1)
+Jul 01 13:30:24 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/_sidebar.php"
+Jul 01 13:30:24 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jul 01 13:30:24 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jul 01 13:30:24 symfony [info] {sfWebDebugLogger} Configuration 3.22 ms (11)
+Jul 01 13:30:24 symfony [info] {sfWebDebugLogger} Factories 19.63 ms (1)
+Jul 01 13:30:24 symfony [info] {sfWebDebugLogger} Action "accueil/index" 0.23 ms (1)
+Jul 01 13:30:24 symfony [info] {sfWebDebugLogger} View "Success" for "accueil/index" 149.65 ms (1)
+Jul 01 13:30:24 symfony [info] {sfWebDebugLogger} Partial "global/_user_infos" 27.91 ms (1)
+Jul 01 13:30:24 symfony [info] {sfWebDebugLogger} Database (Doctrine) 0.03 ms (4)
+Jul 01 13:30:24 symfony [info] {sfWebDebugLogger} Component "accueil/search" 4.15 ms (1)
+Jul 01 13:30:24 symfony [info] {sfWebDebugLogger} Partial "accueil/_search" 6.27 ms (1)
+Jul 01 13:30:24 symfony [info] {sfWebDebugLogger} Partial "global/_reader" 49.97 ms (1)
+Jul 01 13:30:24 symfony [info] {sfWebDebugLogger} Component "accueil/sidebar" 41.33 ms (1)
+Jul 01 13:30:24 symfony [info] {sfWebDebugLogger} Partial "accueil/_sidebar" 2.89 ms (1)
+Jul 01 13:30:24 symfony [info] {sfWebResponse} Send content (46969 o)
+Jul 01 13:30:24 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/guard/login)
+Jul 01 13:30:24 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/guard/logout)
+Jul 01 13:30:24 symfony [info] {sfPatternRouting} Match route "javascript_functions" (/functions.:sf_format) for /functions with parameters array (  'module' => 'accueil',  'action' => 'javascript',  'sf_format' => 'js',)
+Jul 01 13:30:24 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jul 01 13:30:24 symfony [info] {sfFilterChain} Executing filter "sfGuardRememberMeFilter"
+Jul 01 13:30:24 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jul 01 13:30:24 symfony [info] {accueilActions} Call "accueilActions->executeJavascript()"
+Jul 01 13:30:24 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/javascriptSuccess.js.php"
+Jul 01 13:30:24 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jul 01 13:30:24 symfony [info] {sfWebResponse} Send header "Content-Type: application/javascript"
+Jul 01 13:30:24 symfony [info] {sfWebDebugLogger} Configuration 3.13 ms (9)
+Jul 01 13:30:24 symfony [info] {sfWebDebugLogger} Factories 25.91 ms (1)
+Jul 01 13:30:24 symfony [info] {sfWebDebugLogger} Action "accueil/javascript" 0.23 ms (1)
+Jul 01 13:30:24 symfony [info] {sfWebDebugLogger} View "Success" for "accueil/javascript" 5.74 ms (1)
+Jul 01 13:30:24 symfony [info] {sfWebResponse} Send content (326 o)
+Jul 01 13:30:32 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/guard/login)
+Jul 01 13:30:32 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/guard/logout)
+Jul 01 13:30:32 symfony [info] {sfPatternRouting} Match route "sf_guard_signout" (/guard/logout) for /guard/logout with parameters array (  'module' => 'sfGuardAuth',  'action' => 'signout',)
+Jul 01 13:30:32 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jul 01 13:30:32 symfony [info] {sfFilterChain} Executing filter "sfGuardRememberMeFilter"
+Jul 01 13:30:32 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jul 01 13:30:32 symfony [info] {sfGuardAuthActions} Call "sfGuardAuthActions->executeSignout()"
+Jul 01 13:30:32 symfony [info] {myUser} User is not authenticated
+Jul 01 13:30:32 symfony [info] {sfFrontWebController} Redirect to "http://sonor/frontend_dev.php"
+Jul 01 13:30:32 symfony [info] {sfWebResponse} Send status "HTTP/1.1 302 Found"
+Jul 01 13:30:32 symfony [info] {sfWebResponse} Send header "Location: http://sonor/frontend_dev.php"
+Jul 01 13:30:32 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jul 01 13:30:32 symfony [info] {sfWebResponse} Send cookie "sfRemember": ""
+Jul 01 13:30:32 symfony [info] {sfWebDebugLogger} Configuration 2.31 ms (8)
+Jul 01 13:30:32 symfony [info] {sfWebDebugLogger} Factories 13.99 ms (1)
+Jul 01 13:30:32 symfony [info] {sfWebDebugLogger} Action "sfGuardAuth/signout" 2.08 ms (1)
+Jul 01 13:30:32 symfony [info] {sfWebResponse} Send content (100 o)
+Jul 01 13:30:32 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/guard/login)
+Jul 01 13:30:32 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/guard/logout)
+Jul 01 13:30:32 symfony [info] {sfPatternRouting} Match route "homepage" (/) for / with parameters array (  'module' => 'accueil',  'action' => 'index',)
+Jul 01 13:30:32 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Jul 01 13:30:32 symfony [info] {sfFilterChain} Executing filter "sfGuardRememberMeFilter"
+Jul 01 13:30:32 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Jul 01 13:30:32 symfony [info] {accueilActions} Call "accueilActions->executeIndex()"
+Jul 01 13:30:32 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/indexSuccess.php"
+Jul 01 13:30:32 symfony [info] {sfPHPView} Decorate content with "/var/www/sonor/apps/frontend/templates/layout.php"
+Jul 01 13:30:32 symfony [info] {sfPHPView} Render "/var/www/sonor/apps/frontend/templates/layout.php"
+Jul 01 13:30:32 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/templates/_user_infos.php"
+Jul 01 13:30:32 symfony [info] {main} Call "accueil->executeSearch()"
+Jul 01 13:30:32 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/_search.php"
+Jul 01 13:30:32 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/templates/_reader.php"
+Jul 01 13:30:32 symfony [info] {main} Call "accueil->executeSidebar()"
+Jul 01 13:30:32 symfony [info] {sfPartialView} Render "/var/www/sonor/apps/frontend/modules/accueil/templates/_sidebar.php"
+Jul 01 13:30:32 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Jul 01 13:30:32 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Jul 01 13:30:32 symfony [info] {sfWebDebugLogger} Configuration 3.16 ms (11)
+Jul 01 13:30:32 symfony [info] {sfWebDebugLogger} Factories 15.56 ms (1)
+Jul 01 13:30:32 symfony [info] {sfWebDebugLogger} Action "accueil/index" 0.31 ms (1)
+Jul 01 13:30:32 symfony [info] {sfWebDebugLogger} View "Success" for "accueil/index" 74.87 ms (1)
+Jul 01 13:30:32 symfony [info] {sfWebDebugLogger} Partial "global/_user_infos" 1.37 ms (1)
+Jul 01 13:30:32 symfony [info] {sfWebDebugLogger} Component "accueil/search" 3.92 ms (1)
+Jul 01 13:30:32 symfony [info] {sfWebDebugLogger} Partial "accueil/_search" 3.48 ms (1)
+Jul 01 13:30:32 symfony [info] {sfWebDebugLogger} Partial "global/_reader" 50.59 ms (1)
+Jul 01 13:30:32 symfony [info] {sfWebDebugLogger} Component "accueil/sidebar" 0.04 ms (1)
+Jul 01 13:30:32 symfony [info] {sfWebDebugLogger} Partial "accueil/_sidebar" 1.03 ms (1)
+Jul 01 13:30:32 symfony [info] {sfWebResponse} Send content (37028 o)

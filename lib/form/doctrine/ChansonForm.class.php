@@ -14,6 +14,7 @@ class ChansonForm extends BaseChansonForm
   {
     unset($this['slug'], $this['playlists_list'], $this['duree'], $this['titre']);
 //    $this->widgetSchema['duree'];
+    tools::pr(sfConfig::get('app_files_storage_path_todo'));
     $this->widgetSchema['audio_file'] = new sfWidgetFormInputFile();
     $this->validatorSchema['audio_file'] = new sfValidatorFile(array(
                                         'required' => true,
@@ -30,6 +31,7 @@ class ChansonForm extends BaseChansonForm
 //      $values['date'],
 //      $this['date']
 //    );
+    tools::pr($values);
     parent::doUpdateObject($values);
   }
   

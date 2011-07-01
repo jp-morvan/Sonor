@@ -1,6 +1,5 @@
 cache/*
 log/*
-web/upload/audio/*
 config/databases.yml
 nbproject
 *.mp3
