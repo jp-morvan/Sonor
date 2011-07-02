@@ -6,43 +6,42 @@
  */
 class convert
 {
-  private static $_command = 'ffmpeg -i "%s" -f %s -strict experimental -acodec %s -aq 50 "`basename "%s" .%s`.%s"';
+  private static $_command = "ffmpeg -i '%s' -f '%s' -strict experimental -acodec '%s' -aq 50 '`basename '%s' .%s`.%s'" ;
 
-  public $file,
-         $input_format,
-         $output_format,
-         $codec;
+  public $output_format = null,
+         $codec = null;
 
-  public function __construct($file)
+  public function __construct(){}
+
+  public function convert($file)
   {
-    $this->file = $file;
-    $this->input_format = substr(strtolower(strrchr(basename($file), ".")), 1);
-    $this->setOutputFileAndCodec();
-  }
-
-  public function execute()
-  {
-    $command = sprintf(self::$_command, array(
-        $this->file,
+    $input_format = substr(strtolower(strrchr(basename($file), ".")), 1);
+    $this->setOutputFileAndCodec($input_format);
+    $command = sprintf(self::$_command, 
+        $file,
         $this->output_format,
         $this->codec,
-        $this->file,
-        $this->input_format,
-        $this->output_format,
-    ));
+        $file,
+        $input_format,
+        $this->output_format
+    );
+    tools::pr($command);
     exec($command, $output);
-    print_r($output);
+    return $output;
   }
 
-  private function setOutputFileAndCodec()
+  private function setOutputFileAndCodec($input_format)
   {
-    if($this->input_format == "mp3")
+    if($input_format == "mp3")
     {
       $this->output_format = 'ogg';
       $this->codec = 'vorbis';
     }
-    $this->output_format = 'mp3';
-    $this->codec = 'm4a';
+    else
+    {
+      $this->output_format = 'mp3';
+      $this->codec = 'm4a';
+    }
   }
 }
 ?>

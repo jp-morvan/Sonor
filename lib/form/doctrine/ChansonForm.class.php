@@ -12,6 +12,8 @@ class ChansonForm extends BaseChansonForm
 {
   public function configure()
   {
+    $tmp = new convertDir(sfConfig::get('app_files_storage_path_todo'));
+    $tmp->convertDir();
     unset($this['slug'], $this['playlists_list'], $this['duree'], $this['titre'], $this['id_album'], $this['piste']);
     $this->widgetSchema['audio_file'] = new sfWidgetFormInputFile();
     $this->validatorSchema['audio_file'] = new sfValidatorFile(array(
