@@ -17,6 +17,8 @@ abstract class BaseChansonFormFilter extends BaseFormFilterDoctrine
       'duree'          => new sfWidgetFormFilterInput(),
       'audio_file'     => new sfWidgetFormFilterInput(),
       'id_album'       => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Album'), 'add_empty' => true)),
+      'piste'          => new sfWidgetFormFilterInput(),
+      'has_metadata'   => new sfWidgetFormChoice(array('choices' => array('' => 'yes or no', 1 => 'yes', 0 => 'no'))),
       'slug'           => new sfWidgetFormFilterInput(),
       'playlists_list' => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Playlist')),
     ));
@@ -26,6 +28,8 @@ abstract class BaseChansonFormFilter extends BaseFormFilterDoctrine
       'duree'          => new sfValidatorPass(array('required' => false)),
       'audio_file'     => new sfValidatorPass(array('required' => false)),
       'id_album'       => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Album'), 'column' => 'id')),
+      'piste'          => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
+      'has_metadata'   => new sfValidatorChoice(array('required' => false, 'choices' => array('', 1, 0))),
       'slug'           => new sfValidatorPass(array('required' => false)),
       'playlists_list' => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Playlist', 'required' => false)),
     ));
@@ -70,6 +74,8 @@ abstract class BaseChansonFormFilter extends BaseFormFilterDoctrine
       'duree'          => 'Text',
       'audio_file'     => 'Text',
       'id_album'       => 'ForeignKey',
+      'piste'          => 'Number',
+      'has_metadata'   => 'Boolean',
       'slug'           => 'Text',
       'playlists_list' => 'ManyKey',
     );

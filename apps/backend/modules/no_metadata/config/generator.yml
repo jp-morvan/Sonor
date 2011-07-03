@@ -1,0 +1,24 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Chanson
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          chanson_no_metadata
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  ~
+      list:    
+        display: [titre, duree, Album]
+        table_method: retrieveNoMedatada
+      filter:  
+        display: [titre, id_album]
+      form:    ~
+      edit:    ~
+      new:     ~

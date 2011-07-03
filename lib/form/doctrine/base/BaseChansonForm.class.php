@@ -20,6 +20,8 @@ abstract class BaseChansonForm extends BaseFormDoctrine
       'duree'          => new sfWidgetFormTime(),
       'audio_file'     => new sfWidgetFormInputText(),
       'id_album'       => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Album'), 'add_empty' => true)),
+      'piste'          => new sfWidgetFormInputText(),
+      'has_metadata'   => new sfWidgetFormInputCheckbox(),
       'slug'           => new sfWidgetFormInputText(),
       'playlists_list' => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Playlist')),
     ));
@@ -30,6 +32,8 @@ abstract class BaseChansonForm extends BaseFormDoctrine
       'duree'          => new sfValidatorTime(array('required' => false)),
       'audio_file'     => new sfValidatorString(array('max_length' => 255, 'required' => false)),
       'id_album'       => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Album'), 'required' => false)),
+      'piste'          => new sfValidatorInteger(array('required' => false)),
+      'has_metadata'   => new sfValidatorBoolean(array('required' => false)),
       'slug'           => new sfValidatorString(array('max_length' => 255, 'required' => false)),
       'playlists_list' => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Playlist', 'required' => false)),
     ));

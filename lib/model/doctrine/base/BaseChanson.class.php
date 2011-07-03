@@ -9,6 +9,8 @@
  * @property time $duree
  * @property string $audio_file
  * @property integer $id_album
+ * @property integer $piste
+ * @property boolean $has_metadata
  * @property Album $Album
  * @property Doctrine_Collection $Playlists
  * @property Doctrine_Collection $ChansonsPlaylists
@@ -17,6 +19,8 @@
  * @method time                getDuree()             Returns the current record's "duree" value
  * @method string              getAudioFile()         Returns the current record's "audio_file" value
  * @method integer             getIdAlbum()           Returns the current record's "id_album" value
+ * @method integer             getPiste()             Returns the current record's "piste" value
+ * @method boolean             getHasMetadata()       Returns the current record's "has_metadata" value
  * @method Album               getAlbum()             Returns the current record's "Album" value
  * @method Doctrine_Collection getPlaylists()         Returns the current record's "Playlists" collection
  * @method Doctrine_Collection getChansonsPlaylists() Returns the current record's "ChansonsPlaylists" collection
@@ -24,6 +28,8 @@
  * @method Chanson             setDuree()             Sets the current record's "duree" value
  * @method Chanson             setAudioFile()         Sets the current record's "audio_file" value
  * @method Chanson             setIdAlbum()           Sets the current record's "id_album" value
+ * @method Chanson             setPiste()             Sets the current record's "piste" value
+ * @method Chanson             setHasMetadata()       Sets the current record's "has_metadata" value
  * @method Chanson             setAlbum()             Sets the current record's "Album" value
  * @method Chanson             setPlaylists()         Sets the current record's "Playlists" collection
  * @method Chanson             setChansonsPlaylists() Sets the current record's "ChansonsPlaylists" collection
@@ -51,6 +57,13 @@ abstract class BaseChanson extends sfDoctrineRecord
              ));
         $this->hasColumn('id_album', 'integer', null, array(
              'type' => 'integer',
+             ));
+        $this->hasColumn('piste', 'integer', null, array(
+             'type' => 'integer',
+             ));
+        $this->hasColumn('has_metadata', 'boolean', null, array(
+             'type' => 'boolean',
+             'default' => false,
              ));
 
         $this->option('collate', 'utf8_general_ci');

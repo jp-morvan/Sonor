@@ -17,6 +17,11 @@ class ChansonTable extends Doctrine_Table
         return Doctrine_Core::getTable('Chanson');
     }
 
+  public function retrieveNoMedatada(Doctrine_Query $dq)
+  {
+    return $dq->where($dq->getRootAlias().'.has_metadata=0');
+  }
+  
   public function findForType($type, $slug)
   {
     if($type == "playlist")

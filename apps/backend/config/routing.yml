@@ -1,3 +1,12 @@
+chanson_no_metadata:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Chanson
+    module:               no_metadata
+    prefix_path:          /no_metadata
+    column:               id
+    with_wildcard_routes: true
+
 playlist:
   class: sfDoctrineRouteCollection
   options:
