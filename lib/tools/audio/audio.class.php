@@ -17,7 +17,6 @@ class audio extends getID3
     {
       $this->setTags();
     }
-    tools::pr($this->_tags);
   }
 
   

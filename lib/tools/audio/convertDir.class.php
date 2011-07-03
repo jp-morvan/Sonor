@@ -16,7 +16,7 @@ class convertDir extends convert
   
   public function convertDir()
   {
-    foreach(scandir($this->_dir) as $file)
+    /*foreach(scandir($this->_dir) as $file)
     {
       $path = $this->_dir.$file;
       if(!is_dir($path))
@@ -24,7 +24,9 @@ class convertDir extends convert
         tools::pr($this->convert($path));
         $this->moveToRightDir($path);
       }
-    }
+    }*/
+    exec('dir2ogg -d '.$this->_dir, $output);
+    return $output;
   }
   
   private function moveToRightDir($path)
