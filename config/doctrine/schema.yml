@@ -16,6 +16,9 @@ Chanson:
     audio_file: string(255)
     id_album: integer
     piste: integer
+    has_metadata: 
+      type: boolean
+      default: false
   relations:
     Album: { onDelete: CASCADE, onUpdate: CASCADE, local: id_album, foreign: id }
     Playlists:

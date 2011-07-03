@@ -1,3 +1,55 @@
+Artiste:
+  Artiste_1:
+    nom: 'jj goldman'
+    slug: jj-goldman
+  Artiste_2:
+    nom: 'daft punk'
+    slug: daft-punk
+  Artiste_3:
+    nom: Muse
+    slug: muse
+Playlist:
+  Playlist_1:
+    titre: 'j''aime bien daft punk'
+    sfGuardUser: sfGuardUser_1
+    slug: j-aime-bien-daft-punk
+ChansonsPlaylists:
+  ChansonsPlaylists_1:
+    Playlist: Playlist_1
+    Chanson: Chanson_1
+  ChansonsPlaylists_2:
+    Playlist: Playlist_1
+    Chanson: Chanson_2
+  ChansonsPlaylists_3:
+    Playlist: Playlist_1
+    Chanson: Chanson_3
+  ChansonsPlaylists_4:
+    Playlist: Playlist_1
+    Chanson: Chanson_4
+  ChansonsPlaylists_5:
+    Playlist: Playlist_1
+    Chanson: Chanson_5
+Album:
+  Album_1:
+    titre: 'chanson pour les pieds'
+    Artiste: Artiste_1
+    slug: chanson-pour-les-pieds
+  Album_2:
+    titre: homework
+    Artiste: Artiste_2
+    slug: homework
+  Album_3:
+    titre: discovery
+    Artiste: Artiste_2
+    slug: discovery
+  Album_4:
+    titre: test
+    Artiste: Artiste_1
+    slug: test
+  Album_5:
+    titre: 'Black Holes and Revelations'
+    Artiste: Artiste_3
+    slug: black-holes-and-revelations
 Chanson:
   Chanson_1:
     titre: Burnin
@@ -29,67 +81,43 @@ Chanson:
     audio_file: tournent
     Album: Album_1
     slug: tournent-les-violons
-  Chanson_10:
+  Chanson_6:
     titre: 01-jacqueline.mp3
     duree: '00:02:29'
     audio_file: 01-jacqueline.mp3
     Album: Album_1
     slug: 01-jacqueline-mp3
-Album:
-  Album_1:
-    titre: 'chanson pour les pieds'
-    Artiste: Artiste_1
-    slug: chanson-pour-les-pieds
-  Album_2:
-    titre: homework
-    Artiste: Artiste_2
-    slug: homework
-  Album_3:
-    titre: discovery
-    Artiste: Artiste_2
-    slug: discovery
-  Album_4:
-    titre: test
-    Artiste: Artiste_1
-    slug: test
-Playlist:
-  Playlist_1:
-    titre: 'j''aime bien daft punk'
-    sfGuardUser: sfGuardUser_1
-    slug: j-aime-bien-daft-punk
-Artiste:
-  Artiste_1:
-    nom: 'jj goldman'
-    slug: jj-goldman
-  Artiste_2:
-    nom: 'daft punk'
-    slug: daft-punk
-ChansonsPlaylists:
-  ChansonsPlaylists_1:
-    Playlist: Playlist_1
-    Chanson: Chanson_1
-  ChansonsPlaylists_2:
-    Playlist: Playlist_1
-    Chanson: Chanson_2
-  ChansonsPlaylists_3:
-    Playlist: Playlist_1
-    Chanson: Chanson_3
-  ChansonsPlaylists_4:
-    Playlist: Playlist_1
-    Chanson: Chanson_4
-  ChansonsPlaylists_5:
-    Playlist: Playlist_1
-    Chanson: Chanson_5
-AlbumsUsers:
-  AlbumsUsers_1:
-    Album: Album_1
-    sfGuardUser: sfGuardUser_1
-  AlbumsUsers_2:
-    Album: Album_3
-    sfGuardUser: sfGuardUser_1
-  AlbumsUsers_3:
-    Album: Album_4
-    sfGuardUser: sfGuardUser_1
+  Chanson_7:
+    titre: 'Take a Bow'
+    duree: '00:04:39'
+    audio_file: 01-take-a-bow.mp3
+    Album: Album_5
+    slug: take-a-bow
+  Chanson_8:
+    titre: Starlight
+    duree: '00:04:00'
+    audio_file: 02-starlight.mp3
+    Album: Album_5
+    slug: starlight
+  Chanson_9:
+    titre: 'Supermassive Black Hole'
+    duree: '00:03:29'
+    audio_file: 03-supermassive-black-hole.mp3
+    Album: Album_5
+    slug: supermassive-black-hole
+  Chanson_10:
+    titre: 'Map of the Problematiqu'
+    duree: null
+    audio_file: 04-map-of-the-problematique.mp3
+    Album: Album_5
+    slug: map-of-the-problematique
+sfGuardRememberKey:
+  sfGuardRememberKey_1:
+    User: sfGuardUser_1
+    remember_key: 8y8otru4kh8o00wcgwc4cc80co4ok04
+    ip_address: 10.104.102.34
+    created_at: '2011-06-29 14:35:14'
+    updated_at: '2011-06-29 14:35:14'
 sfGuardUser:
   sfGuardUser_1:
     first_name: Jean-Philippe
@@ -101,13 +129,19 @@ sfGuardUser:
     password: f12eb58558facc47d40d77bd820a06bac4aacc83
     is_active: true
     is_super_admin: false
-    last_login: '2011-07-01 13:30:24'
+    last_login: '2011-07-01 18:25:17'
     created_at: '2011-06-29 13:28:53'
-    updated_at: '2011-07-01 13:30:24'
-sfGuardRememberKey:
-  sfGuardRememberKey_1:
-    User: sfGuardUser_1
-    remember_key: 8y8otru4kh8o00wcgwc4cc80co4ok04
-    ip_address: 10.104.102.34
-    created_at: '2011-06-29 14:35:14'
-    updated_at: '2011-06-29 14:35:14'
+    updated_at: '2011-07-01 18:25:17'
+AlbumsUsers:
+  AlbumsUsers_1:
+    Album: Album_1
+    sfGuardUser: sfGuardUser_1
+  AlbumsUsers_2:
+    Album: Album_3
+    sfGuardUser: sfGuardUser_1
+  AlbumsUsers_3:
+    Album: Album_4
+    sfGuardUser: sfGuardUser_1
+  AlbumsUsers_4:
+    Album: Album_5
+    sfGuardUser: sfGuardUser_1
