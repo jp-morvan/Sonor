@@ -12,9 +12,9 @@ class ChansonForm extends BaseChansonForm
 {
   public function configure()
   {
-    $tmp = new convertDir(sfConfig::get('app_files_storage_path_todo'));
-    $tmp->convertDir();
-    unset($this['slug'], $this['playlists_list'], $this['duree'], $this['titre'], $this['id_album'], $this['piste']);
+    /*$tmp = new convertDir(sfConfig::get('app_files_storage_path_todo'));
+    $tmp->convertDir();*/
+    unset($this['slug'], $this['playlists_list'], $this['duree'], $this['titre'], $this['id_album'], $this['piste'], $this['has_metadata']);
     $this->widgetSchema['audio_file'] = new sfWidgetFormInputFile();
     $this->validatorSchema['audio_file'] = new sfValidatorFile(array(
                                         'required' => true,
@@ -36,30 +36,24 @@ class ChansonForm extends BaseChansonForm
 
   protected function doUpdateObject($values)
   {
-//    $values['start_time'] = $this->getValueDateTime($values, 'start_time');
-//    $values['end_time'] = $this->getValueDateTime($values, 'end_time');
-//    unset(
-//      $values['date'],
-//      $this['date']
-//    );
     $file = sfConfig::get('app_files_storage_path_todo').$values['audio_file'];
     if(file_exists($file))
     {
-//      $values['titre'] = ;
       $audio = new audio($file);
       if($audio->hasTags())
       {
         $values['titre'] = $audio->getTag('title');
-        $values['duree'] = $audio->getTag('duration');
+        $values['duree'] = $audio->getDuration();
+        $values['piste'] = $audio->getTag('track');
         $artiste = $this->_issetArtisteOrCreate($audio->getTag('artist'));
         $values['id_album'] = $this->_issetAlbumOrCreate($audio->getTag('album'), $artiste);
+        $values['has_metadata'] = true;
       }
-      //$values['duree'] = $audio->getTitre();
-      //tools::pr($audio->getDuration());
-      //tools::pr($this->_issetAlbumOrCreate($audio->getAlbum()));
-      //tools::pr($audio->getArtiste());
+      else
+      {
+        $values['titre'] = tools::getFilenameWithoutExtension($audio->getFilename());
+      }
     }
-    //die();
     parent::doUpdateObject($values);
   }
   

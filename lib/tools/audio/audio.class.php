@@ -42,6 +42,21 @@ class audio extends getID3
     return date('H:i:s', mktime(0, 0, $this->_infos['playtime_seconds'], 0, 0, 0));
   }
   
+  public function getTags()
+  {
+    return $this->_tags;
+  }
+  
+  public function getFilename()
+  {
+    return $this->_infos['filename'];
+  }
+  
+  public function getInfos()
+  {
+    return $this->_infos;
+  }
+  
   public function getTag($tag)
   {
     if(isset($this->_tags[$tag]))

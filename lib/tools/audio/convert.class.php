@@ -6,28 +6,43 @@
  */
 class convert
 {
-  private static $_command = "ffmpeg -i '%s' -f '%s' -strict experimental -acodec '%s' -aq 50 '`basename '%s' .%s`.%s'" ;
+  private static $_mp3_command = "ffmpeg -i '%s' -f '%s' -strict experimental -acodec '%s' -aq 50 '`basename '%s' .%s`.%s'",
+                 $_ogg_command = "dir2ogg %s";
 
   public $output_format = null,
-         $codec = null;
+         $codec = null,
+         $file = null;
 
   public function __construct(){}
 
   public function convert($file)
   {
+    $this->file = $file;
     $input_format = substr(strtolower(strrchr(basename($file), ".")), 1);
     $this->setOutputFileAndCodec($input_format);
-    $command = sprintf(self::$_command, 
-        $file,
-        $this->output_format,
-        $this->codec,
-        $file,
-        $input_format,
-        $this->output_format
-    );
+    $command = $this->getCommand($format);
     tools::pr($command);
-    exec($command, $output);
-    return $output;
+    //exec($command, $output);
+    //return $output;
+  }
+  
+  private function getCommand($format)
+  {
+    if($format == 'mp3')
+    {
+      return sprintf(self::$_mp3_command, 
+          $this->file,
+          $this->output_format,
+          $this->codec,
+          $this->file,
+          $input_format,
+          $this->output_format
+      );
+    }
+    if($format == 'ogg')
+    {
+      return sprintf(self::$_ogg_command, $this->file);
+    }
   }
 
   private function setOutputFileAndCodec($input_format)

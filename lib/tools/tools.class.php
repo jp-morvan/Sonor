@@ -41,55 +41,6 @@ class tools
     }
   }
 
-  public static function clearMenuCache()
-  {
-    if(self::hasContext())
-    {
-      if ($cacheManager = sfContext::getInstance()->getViewCacheManager())
-      {
-        $cacheManager->remove('@sf_cache_partial?module=menu&action=_haut&sf_cache_key=*');
-      }
-    }
-  }
-
-  public static function clearCacheForUser($id)
-  {
-    if(($cacheDir = sfConfig::get('sf_template_cache_dir')) != "")
-    {
-      $cacheDir.="/*/all/sf_cache_partial/*/*/sf_cache_key/user-".$id;
-      sfToolkit::clearGlob($cacheDir);
-    }
-  }
-
-  public static function rebuildGroupsArray($array, $group, $multiple = true, $children = false)
-  {
-    $groups = $array[$group];
-    if($groups == "")
-    {
-      return $groups;
-    }
-    $temp = array();
-    if($multiple)
-    {
-      foreach($groups as $g)
-      {
-        $temp[$g['id']] = $g['name'];
-      }
-    }
-    else
-    {
-      $temp[$groups['id']] = $groups['name'];
-    }
-    if($children !== false)
-    {
-      foreach($array[$children] as $c)
-      {
-        $temp[$c[$group]['id']] = $c[$group]['name'];
-      }
-    }
-    return $temp;
-  }
-
   public static function pr($tab, $label = null)
   {
     $firephp = sfFirePHP::getInstance(true);
@@ -99,11 +50,6 @@ class tools
                  'includeLineNumbers' => true);
     $firephp->setOptions($options);
     $firephp->info($tab, $label);
-  }
-  
-  public static function parseMethodOption($method_options, $delimiteur = "|")
-  {
-    return explode($delimiteur, $method_options);
   }
 
   public static function removeCharactersAndLowercase($string)
@@ -144,6 +90,48 @@ class tools
       }
     }
     return $string;
+  }
+  
+  public static function getExtension($file)
+  {
+    return substr(strrchr(self::getFilename($file), "."), 1);
+  }
+  
+  public static function getFilenameWithoutExtension($file)
+  {
+    $filename = self::getFilename($file);
+    $file_len = strlen($filename);
+    $ext_len = strlen(self::getExtension($file));
+    return substr($filename, 0, ($file_len - $ext_len - 1));
+  }
+  
+  public static function getFilename($file)
+  {
+    return strtolower(basename($file));
+  }
+  
+  public static function moveFilesToDir($dir, $files)
+  {
+    if(!is_array($files))
+    {
+      $files = array($files);
+    }
+    foreach($files as $file)
+    {
+      if(!file_exists($file))
+      {
+        throw new sfException('Le fichier '.$file.' n\'existe pas.');
+      }
+      if(!is_dir($dir))
+      {
+        throw new sfException('Le répertoire '.$dir.' n\'existe pas.');
+      }
+      if(!is_writable($dir))
+      {
+        throw new sfException('Le répertoire '.$dir.' n\'est pas accessible en écriture.');
+      }
+      exec('mv '.$file.' '.$dir);
+    }
   }
 }
 ?>
