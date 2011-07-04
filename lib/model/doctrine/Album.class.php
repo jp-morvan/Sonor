@@ -14,6 +14,6 @@ class Album extends BaseAlbum
 {
   public function __toString()
   {
-    return $this->titre;
+    return ($this->titre != '') ? $this->titre : '';
   }
 }

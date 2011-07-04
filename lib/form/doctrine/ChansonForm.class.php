@@ -12,14 +12,11 @@ class ChansonForm extends BaseChansonForm
 {
   public function configure()
   {
-    /*$tmp = new convertDir(sfConfig::get('app_files_storage_path_todo'));
-    $tmp->convertDir();*/
     unset($this['slug'], $this['playlists_list'], $this['duree'], $this['titre'], $this['id_album'], $this['piste'], $this['has_metadata']);
     $this->widgetSchema['audio_file'] = new sfWidgetFormInputFile();
     $this->validatorSchema['audio_file'] = new sfValidatorFile(array(
                                         'required' => true,
                                         'path' => sfConfig::get('app_files_storage_path_todo'),
-//                                        'mime_types' => 'web_images',
                                ));
     $this->validatorSchema->setPostValidator(new sfValidatorAnd(array(
           new sfValidatorCallback(array('callback' => array($this, 'verifType'))),
@@ -54,9 +51,9 @@ class ChansonForm extends BaseChansonForm
         $values['titre'] = tools::getFilenameWithoutExtension($audio->getFilename());
       }
     }
-    tools::pr($audio->getInfos());
-    die();
-//    parent::doUpdateObject($values);
+//    tools::pr($audio->getInfos());
+//    die();
+    parent::doUpdateObject($values);
   }
   
   private function _issetArtisteOrCreate($artiste)
