@@ -1,6 +1,6 @@
 <?php
 
-require_once '/home/symfony/SOURCES/symfony-1.4.11/lib/autoload/sfCoreAutoload.class.php';
+require_once '/home/symfony/symfony/lib/autoload/sfCoreAutoload.class.php';
 sfCoreAutoload::register();
 
 class ProjectConfiguration extends sfProjectConfiguration
