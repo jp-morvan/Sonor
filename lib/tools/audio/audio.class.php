@@ -15,7 +15,6 @@ class audio extends getID3
   public function __construct($filename)
   {
     $this->encoding = "UTF-8";
-//    $this->encoding_id3v1 = "UTF-8";
     $this->_infos = parent::analyze($filename);
     if($this->hasTags())
     {

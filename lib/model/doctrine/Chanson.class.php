@@ -26,4 +26,26 @@ class Chanson extends BaseChanson
   {
     return substr($file->getOriginalName(), 0, (strlen($file->getOriginalName()) - strlen($file->getOriginalExtension())));
   }
+  
+  public static function newWithoutTags($audio, $file) 
+  {
+    $chanson = new Chanson();
+    $chanson['titre'] = tools::getFilenameWithoutExtension($file);
+    $chanson['duree'] = $audio->getDuration();
+    $chanson['audio_file'] = tools::getFilename($file);
+    return $chanson->save();
+  }
+  
+  public static function newWithTags($audio) 
+  {
+    $chanson = new Chanson();
+    $chanson['titre'] = $audio->getTag('title');
+    $chanson['duree'] = $audio->getDuration();
+    $chanson['piste'] = $audio->getTag('track');
+    $chanson['audio_file'] = tools::getFilenameWithoutExtension($audio->getFilename());
+    $artiste = Artiste::issetOrCreate($audio->getTag('artist'));
+    $chanson['id_album'] = Album::issetOrCreate($audio->getTag('album'), $artiste);
+    $chanson['has_metadata'] = true;
+    return $chanson->save();
+  }
 }

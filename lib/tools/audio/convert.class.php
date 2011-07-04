@@ -7,28 +7,31 @@
 class convert
 {
   private static $_mp3_command = "ffmpeg -i '%s' -f '%s' -strict experimental -acodec '%s' -aq 50 '`basename '%s' .%s`.%s'",
-                 $_ogg_command = "dir2ogg %s";
+                 $_ogg_command = "dir2ogg '%s'";
 
   public $output_format = null,
          $codec = null,
          $file = null;
 
-  public function __construct(){}
+  public function __construct()
+  {
+    // TODO installer le paquet dir2ogg
+    // TODO installer le paquet ffmpeg
+  }
 
-  public function convert($file)
+  public function doConversion($file)
   {
     $this->file = $file;
     $input_format = substr(strtolower(strrchr(basename($file), ".")), 1);
     $this->setOutputFileAndCodec($input_format);
-    $command = $this->getCommand($format);
-    tools::pr($command);
-    //exec($command, $output);
-    //return $output;
+    $command = $this->getCommand();
+    exec($command, $output);
+    return $output;
   }
   
-  private function getCommand($format)
+  private function getCommand()
   {
-    if($format == 'mp3')
+    if($this->output_format == 'mp3')
     {
       return sprintf(self::$_mp3_command, 
           $this->file,
@@ -39,7 +42,7 @@ class convert
           $this->output_format
       );
     }
-    if($format == 'ogg')
+    if($this->output_format == 'ogg')
     {
       return sprintf(self::$_ogg_command, $this->file);
     }

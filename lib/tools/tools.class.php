@@ -130,7 +130,8 @@ class tools
       {
         throw new sfException('Le répertoire '.$dir.' n\'est pas accessible en écriture.');
       }
-      exec('mv '.$file.' '.$dir);
+      exec('mv '.$file.' '.$dir, $output);
+      return $output;
     }
   }
 }
