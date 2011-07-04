@@ -29,20 +29,25 @@ class convert
     return $output;
   }
   
+  public function getOutputFormat()
+  {
+    return $this->output_format;
+  }
+  
   private function getCommand()
   {
     if($this->output_format == 'mp3')
     {
       return sprintf(self::$_mp3_command, 
           $this->file,
-          $this->output_format,
+          $this->getOutputFormat(),
           $this->codec,
           $this->file,
           $input_format,
-          $this->output_format
+          $this->getOutputFormat()
       );
     }
-    if($this->output_format == 'ogg')
+    if($this->getOutputFormat() == 'ogg')
     {
       return sprintf(self::$_ogg_command, $this->file);
     }

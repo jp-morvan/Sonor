@@ -82,8 +82,10 @@ EOF;
     $conv = new convert();
     $conversion = $conv->doConversion($file);
     $this->_files_converted[] = tools::getFilename($file);
-//    $this->move($mp3_file, 'mp3');
-//    $this->move($ogg_file, 'ogg');
+    $this->move($file, 'list');
+    $ext = tools::getExtension($file);
+    $ogg = tools::getFilenameWithoutExtension($file, false).".".$conv->getOutputFormat();
+    $this->move($this->todo_path.$ogg, 'list');
   }
   
   protected function move($file, $path)

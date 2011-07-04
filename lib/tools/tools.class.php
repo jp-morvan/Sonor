@@ -97,17 +97,22 @@ class tools
     return substr(strrchr(self::getFilename($file), "."), 1);
   }
   
-  public static function getFilenameWithoutExtension($file)
+  public static function getFilenameWithoutExtension($file, $lower = true)
   {
-    $filename = self::getFilename($file);
+    $filename = self::getFilename($file, $lower);
     $file_len = strlen($filename);
     $ext_len = strlen(self::getExtension($file));
     return substr($filename, 0, ($file_len - $ext_len - 1));
   }
   
-  public static function getFilename($file)
+  public static function getFilename($file, $lower = true)
   {
-    return strtolower(basename($file));
+    $filename = basename($file);
+    if($lower === true)
+    {
+      $filename = strtolower($filename);
+    }
+    return $filename;
   }
   
   public static function moveFilesToDir($dir, $files)
@@ -130,7 +135,7 @@ class tools
       {
         throw new sfException('Le répertoire '.$dir.' n\'est pas accessible en écriture.');
       }
-      exec('mv '.$file.' '.$dir, $output);
+      exec('mv "'.$file.'" "'.$dir.'"', $output);
       return $output;
     }
   }
