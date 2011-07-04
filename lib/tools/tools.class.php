@@ -112,7 +112,7 @@ class tools
     {
       $filename = strtolower($filename);
     }
-    return $filename;
+    return self::slugify($filename);
   }
   
   public static function moveFilesToDir($dir, $files)

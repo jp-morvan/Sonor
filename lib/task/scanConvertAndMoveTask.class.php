@@ -91,6 +91,7 @@ EOF;
   protected function move($file, $path)
   {
     tools::moveFilesToDir($this->{$path.'_path'}, $file);
+    $this->logSection('move', sprintf('%s in %s', $file, $path));
   }
 
   /**
