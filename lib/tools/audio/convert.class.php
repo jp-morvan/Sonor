@@ -13,17 +13,17 @@ class convert
          $codec = null,
          $file = null;
 
-  public function __construct()
+  public function __construct($file)
   {
     // TODO installer le paquet dir2ogg
     // TODO installer le paquet ffmpeg
+    $this->file = $file;
+    $input_format = substr(strtolower(strrchr(basename($file), ".")), 1);
+    $this->setOutputFileAndCodec($input_format);
   }
 
   public function doConversion($file)
   {
-    $this->file = $file;
-    $input_format = substr(strtolower(strrchr(basename($file), ".")), 1);
-    $this->setOutputFileAndCodec($input_format);
     $command = $this->getCommand();
     exec($command, $output);
     return $output;

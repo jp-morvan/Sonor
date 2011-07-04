@@ -46,6 +46,11 @@ EOF;
       $path = $this->todo_path.$file;
       if(!is_dir($path))
       {
+        if(tools::getFilename($path) != tools::getSlugifyFilename($path))
+        {
+          $this->move($path, 'todo', tools::getSlugifyFilename($path));
+        }
+        $path = $this->todo_path.tools::getSlugifyFilename($path);
         $audio = new audio($path);
         if(!$audio->hasTags())
         {
@@ -79,19 +84,23 @@ EOF;
   
   protected function convert($file)
   {
-    $conv = new convert();
-    $conversion = $conv->doConversion($file);
-    $this->_files_converted[] = tools::getFilename($file);
-    $this->move($file, 'list');
-    $ext = tools::getExtension($file);
+    $conv = new convert($file);
+    $filename = tools::getFilename($file);
     $ogg = tools::getFilenameWithoutExtension($file, false).".".$conv->getOutputFormat();
-    $this->move($this->todo_path.$ogg, 'list');
+    $ogg_path = $this->todo_path.$ogg;
+    if(!file_exists($ogg_path))
+    {
+      $conversion = $conv->doConversion();
+      $this->_files_converted[] = $filename;
+    }
+    $this->move($this->todo_path.$filename, 'list');
+    $this->move($ogg_path, 'list');
   }
   
-  protected function move($file, $path)
+  protected function move($file, $path, $new_name = null)
   {
-    tools::moveFilesToDir($this->{$path.'_path'}, $file);
     $this->logSection('move', sprintf('%s in %s', $file, $path));
+    tools::moveFileToDir($this->{$path.'_path'}, $file, $new_name);
   }
 
   /**

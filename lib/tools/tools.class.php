@@ -112,32 +112,35 @@ class tools
     {
       $filename = strtolower($filename);
     }
-    return self::slugify($filename);
+    return $filename;
   }
   
-  public static function moveFilesToDir($dir, $files)
+  public static function getSlugifyFilename($file) 
   {
-    if(!is_array($files))
+    return tools::slugify(self::getFilenameWithoutExtension($file)).".".self::getExtension($file);
+  }
+  
+  public static function moveFileToDir($dir, $file, $new_name = null)
+  {
+    if(!file_exists($file))
     {
-      $files = array($files);
+      throw new sfException('Le fichier '.$file.' n\'existe pas.');
     }
-    foreach($files as $file)
+    if(!is_dir($dir))
     {
-      if(!file_exists($file))
-      {
-        throw new sfException('Le fichier '.$file.' n\'existe pas.');
-      }
-      if(!is_dir($dir))
-      {
-        throw new sfException('Le répertoire '.$dir.' n\'existe pas.');
-      }
-      if(!is_writable($dir))
-      {
-        throw new sfException('Le répertoire '.$dir.' n\'est pas accessible en écriture.');
-      }
-      exec('mv "'.$file.'" "'.$dir.'"', $output);
-      return $output;
+      throw new sfException('Le répertoire '.$dir.' n\'existe pas.');
     }
+    if(!is_writable($dir))
+    {
+      throw new sfException('Le répertoire '.$dir.' n\'est pas accessible en écriture.');
+    }
+    if(is_null($new_name))
+    {
+      $new_name = tools::getFilename($file);
+    }
+    $new_file = $dir.$new_name;
+    exec('mv "'.$file.'" "'.$new_file.'"', $output);
+    return $output;
   }
 }
 ?>
