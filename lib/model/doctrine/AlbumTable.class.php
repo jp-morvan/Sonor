@@ -26,4 +26,13 @@ class AlbumTable extends Doctrine_Table
           ->orderBy('a.titre ASC');
     return $dq->execute();
   }
+
+  public function getAutocompletion($q, $limit)
+  {
+    $dq = self::createQuery()
+            ->select("id, titre")
+            ->where("titre LIKE ?","%".$q."%")
+            ->limit($limit);
+    return $dq->execute(array(), Doctrine::HYDRATE_ARRAY);
+  }
 }

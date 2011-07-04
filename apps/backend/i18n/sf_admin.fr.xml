@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE xliff PUBLIC "-//XLIFF//DTD XLIFF//EN" "http://www.oasis-open.org/committees/xliff/documents/xliff.dtd" >
+<xliff version="1.0">
+  <file original="global" source-language="en" datatype="plaintext">
+    <header />
+    <body>
+      <!-- Actions -->
+      <trans-unit>
+        <source>New</source>
+        <target>Ajouter</target>
+      </trans-unit>
+      <trans-unit>
+        <source>List</source>
+        <target>Retour à la liste</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Save</source>
+        <target>Enregistrer</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Cancel</source>
+        <target>Retour à la liste</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Save and add</source>
+        <target>Enregistrer &amp; Ajouter</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Are you sure?</source>
+        <target>Etes-vous sûr ?</target>
+      </trans-unit>
+
+
+      <!-- Filters -->
+      <trans-unit>
+        <source>is empty</source>
+        <target>est vide</target>
+      </trans-unit>
+      <trans-unit>
+        <source>from</source>
+        <target>entre le</target>
+      </trans-unit>
+      <trans-unit>
+        <source>to</source>
+        <target>et le</target>
+      </trans-unit>
+      
+      <!-- Flash messages -->
+      <trans-unit>
+        <source>The item has not been saved due to some errors.</source>
+        <target>L'objet n'a pu être enregistré.</target>
+      </trans-unit>
+      <trans-unit>
+        <source>The item was restored successfully.</source>
+        <target>L'objet a été restauré avec succès.</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Database correctly purge.</source>
+        <target>Base de données correctement épurée.</target>
+      </trans-unit>
+      <trans-unit>
+        <source>A problem occurs when purging database.</source>
+        <target>Un problème est survenu lors de l'épuration de la base de données.</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Logout completed.</source>
+        <target>Vous venez de vous déconnecter.</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Your account is not authorize to connect.</source>
+        <target>Votre compte ne dispose pas des autorisations suffisantes pour se connecter.</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Login and/or password wrong.</source>
+        <target>Identifiant et/ou Mot de passe incorrect(s).</target>
+      </trans-unit>
+      
+      <!-- Titres -->
+      <trans-unit>
+        <source>Letter of index card with number</source>
+        <target>Courrier de la fiche n°</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Letters of index cards with number</source>
+        <target>Courriers des fiches n°</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Printing of all index cards</source>
+        <target>Impression de l'ensemble des fiches</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Printing of index card with number</source>
+        <target>Impression de la fiche n°</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Printing of index cards with number</source>
+        <target>Impression des fiches n°</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Selection of the columns to export</source>
+        <target>Sélection des colonnes à exporter</target>
+      </trans-unit>
+      
+      <!-- Form Error Messages -->
+      <trans-unit>
+        <source>Required.</source>
+        <target>Ce champ est obligatoire.</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Invalid.</source>
+        <target>Ce champ n'est pas rempli correctement.</target>
+      </trans-unit>
+      <trans-unit>
+        <source>"%value%" is too long (%max_length% characters max).</source>
+        <target>"%value%" est trop long (%max_length% caractères max).</target>
+      </trans-unit>
+      <trans-unit>
+        <source>"%value%" is not an integer.</source>
+        <target>"%value%" n'est pas un nombre entier.</target>
+      </trans-unit>
+      <trans-unit>
+        <source>"%value%" is not an number.</source>
+        <target>"%value%" n'est pas un nombre.</target>
+      </trans-unit>
+      <trans-unit>
+        <source>File is too large (maximum is %max_size% bytes).</source>
+        <target>Fichier trop grand (maximum %max_size% octets).</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Invalid mime type (%mime_type%).</source>
+        <target>Type invalide (%mime_type%).</target>
+      </trans-unit>
+      <trans-unit>
+        <source>The uploaded file was only partially uploaded.</source>
+        <target>Le fichier n'a été que patiellement uploadé.</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Missing a temporary folder.</source>
+        <target>Répertoire temporaire manquant.</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Failed to write file to disk.</source>
+        <target>Erreur lors de l'écriture du fichier sur le disque.</target>
+      </trans-unit>
+      <trans-unit>
+        <source>File upload stopped by extension.</source>
+        <target>Upload stoppé par l'extension.</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

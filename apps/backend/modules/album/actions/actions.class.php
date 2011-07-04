@@ -13,4 +13,14 @@ require_once dirname(__FILE__).'/../lib/albumGeneratorHelper.class.php';
  */
 class albumActions extends autoAlbumActions
 {
+  public function executeSearch(sfWebRequest $request) 
+  {
+    $this->getResponse()->setContentType('application/json');
+    $albums = array();
+    foreach(Doctrine::getTable('Album')->getAutocompletion($request->getParameter('q'), $request->getParameter('limit')) as $album)
+    {
+      $albums[$album['id']] = $album['titre'];
+    }
+    return $this->renderText(json_encode($albums));
+  }
 }

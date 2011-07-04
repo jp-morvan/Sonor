@@ -16,4 +16,13 @@ class ArtisteTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('Artiste');
     }
+
+  public function getAutocompletion($q, $limit)
+  {
+    $dq = self::createQuery()
+            ->select("id, nom")
+            ->where("nom LIKE ?","%".$q."%")
+            ->limit($limit);
+    return $dq->execute(array(), Doctrine::HYDRATE_ARRAY);
+  }
 }

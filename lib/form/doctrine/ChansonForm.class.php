@@ -54,7 +54,9 @@ class ChansonForm extends BaseChansonForm
         $values['titre'] = tools::getFilenameWithoutExtension($audio->getFilename());
       }
     }
-    parent::doUpdateObject($values);
+    tools::pr($audio->getInfos());
+    die();
+//    parent::doUpdateObject($values);
   }
   
   private function _issetArtisteOrCreate($artiste)

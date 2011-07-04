@@ -13,4 +13,14 @@ require_once dirname(__FILE__).'/../lib/artisteGeneratorHelper.class.php';
  */
 class artisteActions extends autoArtisteActions
 {
+  public function executeSearch(sfWebRequest $request) 
+  {
+    $this->getResponse()->setContentType('application/json');
+    $artistes = array();
+    foreach(Doctrine::getTable('Artiste')->getAutocompletion($request->getParameter('q'), $request->getParameter('limit')) as $artiste)
+    {
+      $artistes[$artiste['id']] = $artiste['nom'];
+    }
+    return $this->renderText(json_encode($artistes));
+  }
 }

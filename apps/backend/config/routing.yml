@@ -1,3 +1,11 @@
+get_artiste:
+  url: /recherche-artiste
+  param: { module: artiste, action: search }
+  
+get_album:
+  url: /recherche-album
+  param: { module: album, action: search }
+
 chanson_no_metadata:
   class: sfDoctrineRouteCollection
   options:

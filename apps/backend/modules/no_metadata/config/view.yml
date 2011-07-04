@@ -1,0 +1,2 @@
+default:
+  javascripts:    [/js/jquery/jquery.min.js, /js/jquery/jquery-ui.custom.min.js, /sfFormExtraPlugin/js/jquery.autocompleter.js]

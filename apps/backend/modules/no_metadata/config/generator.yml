@@ -13,12 +13,19 @@ generator:
 
     config:
       actions: ~
-      fields:  ~
+      fields:  
+        id_album: { label: Album }
+        new_album: { label: Nouvel Album }
       list:    
         display: [titre, duree, Album]
         table_method: retrieveNoMedatada
+        actions: {}
       filter:  
         display: [titre, id_album]
-      form:    ~
-      edit:    ~
+      form:    
+        class: ChansonNoMetadataForm
+      edit:    
+        display:
+          "NONE": [titre, piste, has_metadata, duree, audio_file]
+          "Sélection de l'album": [id_album, new_album]
       new:     ~
