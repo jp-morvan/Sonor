@@ -1,6 +1,5 @@
 all:
   files_storage_path: 
-    mp3: <?php echo sfConfig::get('sf_upload_dir') ?>/audio/mp3/
-    ogg: <?php echo sfConfig::get('sf_upload_dir') ?>/audio/ogg/
+    list: <?php echo sfConfig::get('sf_upload_dir') ?>/audio/list/
     todo: <?php echo sfConfig::get('sf_upload_dir') ?>/audio/todo/
     no_metadata: <?php echo sfConfig::get('sf_upload_dir') ?>/audio/no_metadata/
