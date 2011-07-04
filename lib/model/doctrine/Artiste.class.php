@@ -14,6 +14,18 @@ class Artiste extends BaseArtiste
 {
   public function __toString()
   {
-    return ($this->nom != '') ? $this->nom : '';
+    return (($this->nom != '') ? $this->nom : '');
+  }
+  
+  public static function issetOrCreate($artiste)
+  {
+    if(!is_null($artiste) && ($art = Doctrine_Core::getTable('Artiste')->findOneBy('nom', $artiste)) !== false)
+    {
+      return $art->id;
+    }
+    $art = new Artiste();
+    $art->nom = $artiste;
+    $art->save();
+    return $art->id;
   }
 }

@@ -14,6 +14,19 @@ class Album extends BaseAlbum
 {
   public function __toString()
   {
-    return ($this->titre != '') ? $this->titre : '';
+    return (($this->titre != '') ? $this->titre : '');
+  }
+  
+  public static function issetOrCreate($album, $artiste_id)
+  {
+    if(!is_null($album) && ($alb = Doctrine_Core::getTable('Album')->findOneBy('titre', $album)) !== false)
+    {
+      return $alb->id;
+    }
+    $alb = new Album();
+    $alb->titre = $album;
+    $alb->id_artiste = $artiste_id;
+    $alb->save();
+    return $alb->id;
   }
 }
