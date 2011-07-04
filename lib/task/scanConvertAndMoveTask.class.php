@@ -2,13 +2,19 @@
 
 class scanConvertAndMoveTask extends sfBaseTask
 {
-  private $_files = array();
+  private $_infos = array(
+      'without_metadata' => 0,
+      'with_metadata' => 0,
+  );
+  
+  private $_files_converted = array();
   
   protected function configure()
   {
      $this->addOptions(array(
       new sfCommandOption('application', null, sfCommandOption::PARAMETER_OPTIONAL, 'The application name', 'backend'),
       new sfCommandOption('env', null, sfCommandOption::PARAMETER_OPTIONAL, 'The environment', 'prod'),
+      new sfCommandOption('debug', null, sfCommandOption::PARAMETER_OPTIONAL, 'use debug mode', 'false'),
     ));
 
     $this->namespace        = 'scan';
@@ -24,11 +30,13 @@ EOF;
     $databaseManager = new sfDatabaseManager($this->configuration);
     $connection = $databaseManager->getDatabase($options['connection'] ? $options['connection'] : 'doctrine')->getConnection();
     $this->todo_path = sfConfig::get('app_files_storage_path_todo');
-    $this->mp3_path = sfConfig::get('app_files_storage_path_mp3');
-    $this->ogg_path = sfConfig::get('app_files_storage_path_ogg');
+    $this->list_path = sfConfig::get('app_files_storage_path_list');
     $this->no_metadata_path = sfConfig::get('app_files_storage_path_no_metadata');
     $this->scanAndAnalyse();
-//    $this->calcule($arguments);
+    if($options['debug'] == 'true')
+    {
+      $this->debug();
+    }
   }
   
   protected function scanAndAnalyse()
@@ -41,21 +49,46 @@ EOF;
         $audio = new audio($path);
         if(!$audio->hasTags())
         {
+          Chanson::newWithoutTags($audio, $path);
           $this->move($path, 'no_metadata');
+          $this->_infos['without_metadata']++;
+        }
+        else
+        {
+          $this->chanson = Chanson::newWithTags($audio);
+          $this->convert($path);
+          $this->_infos['with_metadata']++;
         }
       }
     }
   }
   
-  protected function convert()
+  protected function debug()
   {
-    
+    foreach($this->_infos as $field => $value)
+    {
+      $this->logSection('scan', sprintf('%s : %s générés', $field, $value));
+    }
+    $this->logBlock('Fichiers convertis :', 'QUESTION_LARGE');
+    foreach($this->_files_converted as $file)
+    {
+      $this->logSection('files', sprintf('%s', $file));
+    }
+  }
+  
+  
+  protected function convert($file)
+  {
+    $conv = new convert();
+    $conversion = $conv->doConversion($file);
+    $this->_files_converted[] = tools::getFilename($file);
+//    $this->move($mp3_file, 'mp3');
+//    $this->move($ogg_file, 'ogg');
   }
   
   protected function move($file, $path)
   {
-    exec('mv '.$file.' '.$this->{$path.'_path'}, $output);
-    return $output;
+    tools::moveFilesToDir($this->{$path.'_path'}, $file);
   }
 
   /**
