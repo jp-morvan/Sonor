@@ -55,6 +55,10 @@
         <target>L'objet a été restauré avec succès.</target>
       </trans-unit>
       <trans-unit>
+        <source>The item was created successfully. No medatada found, please add some.</source>
+        <target>L'objet a été créé avec succès. Aucune métadonnée n'a été détectée, merci d'en ajouter.</target>
+      </trans-unit>
+      <trans-unit>
         <source>Database correctly purge.</source>
         <target>Base de données correctement épurée.</target>
       </trans-unit>
