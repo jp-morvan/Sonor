@@ -19,6 +19,7 @@ generator:
       list:    
         display: [titre, duree, Album]
         table_method: retrieveNoMedatada
+        max_per_page: 10
         actions: {}
       filter:  
         display: [titre, id_album]
