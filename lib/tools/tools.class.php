@@ -152,5 +152,40 @@ class tools
       umask($current_umask);
     }
   }
+  
+  public static function scanTree($dir, $ext = null) 
+  {
+    $path = '';
+    $stack[] = $dir;
+    while ($stack) 
+    {
+     $thisdir = array_pop($stack);
+     if ($dircont = scandir($thisdir)) 
+     {
+       $i=0;
+       while (isset($dircont[$i])) 
+       {  
+         if ($dircont[$i] !== '.' && $dircont[$i] !== '..') 
+         {
+           $current_file = "{$thisdir}/{$dircont[$i]}";
+           if (is_file($current_file)) 
+           {
+             $current_ext = self::getExtension($current_file);
+             if((!is_null($ext) && in_array($current_ext, $ext)) || is_null($ext))
+             {
+               $path[] = $current_file;
+             }
+           } 
+           elseif (is_dir($current_file)) 
+           {
+             $stack[] = $current_file;
+           }
+         }
+         $i++;
+       }
+     }
+    }
+    return $path;
+  }
 }
 ?>
