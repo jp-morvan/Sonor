@@ -19,7 +19,7 @@ class Chanson extends BaseChanson
   
   public function getAlbumDirectory() 
   {
-    return $this->Album->slug."/".$this->Album->getArtisteDirectory();
+    return $this->Album->getArtisteDirectory()."/".$this->Album->slug;
   }
   
   public function generateAudioFileFilename(sfValidatedFile $file)
