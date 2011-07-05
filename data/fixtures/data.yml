@@ -1,147 +1,26 @@
-Artiste:
-  Artiste_1:
-    nom: 'jj goldman'
-    slug: jj-goldman
-  Artiste_2:
-    nom: 'daft punk'
-    slug: daft-punk
-  Artiste_3:
-    nom: Muse
-    slug: muse
 Playlist:
-  Playlist_1:
+  Playlist_15:
     titre: 'j''aime bien daft punk'
-    sfGuardUser: sfGuardUser_1
+    sfGuardUser: sfGuardUser_15
     slug: j-aime-bien-daft-punk
-ChansonsPlaylists:
-  ChansonsPlaylists_1:
-    Playlist: Playlist_1
-    Chanson: Chanson_1
-  ChansonsPlaylists_2:
-    Playlist: Playlist_1
-    Chanson: Chanson_2
-  ChansonsPlaylists_3:
-    Playlist: Playlist_1
-    Chanson: Chanson_3
-  ChansonsPlaylists_4:
-    Playlist: Playlist_1
-    Chanson: Chanson_4
-  ChansonsPlaylists_5:
-    Playlist: Playlist_1
-    Chanson: Chanson_5
-Album:
-  Album_1:
-    titre: 'chanson pour les pieds'
-    Artiste: Artiste_1
-    slug: chanson-pour-les-pieds
-  Album_2:
-    titre: homework
-    Artiste: Artiste_2
-    slug: homework
-  Album_3:
-    titre: discovery
-    Artiste: Artiste_2
-    slug: discovery
-  Album_4:
-    titre: test
-    Artiste: Artiste_1
-    slug: test
-  Album_5:
-    titre: 'Black Holes and Revelations'
-    Artiste: Artiste_3
-    slug: black-holes-and-revelations
-Chanson:
-  Chanson_1:
-    titre: Burnin
-    duree: '00:03:00'
-    audio_file: burnin
-    Album: Album_2
-    slug: burnin
-  Chanson_2:
-    titre: 'Around the world'
-    duree: '00:07:00'
-    audio_file: around
-    Album: Album_2
-    slug: around-the-world
-  Chanson_3:
-    titre: 'harder better'
-    duree: '00:04:00'
-    audio_file: harder
-    Album: Album_3
-    slug: harder-better
-  Chanson_4:
-    titre: Ensemble
-    duree: '00:03:00'
-    audio_file: ensemble
-    Album: Album_1
-    slug: ensemble
-  Chanson_5:
-    titre: 'Tournent les violons'
-    duree: '00:02:00'
-    audio_file: tournent
-    Album: Album_1
-    slug: tournent-les-violons
-  Chanson_6:
-    titre: 01-jacqueline.mp3
-    duree: '00:02:29'
-    audio_file: 01-jacqueline.mp3
-    Album: Album_1
-    slug: 01-jacqueline-mp3
-  Chanson_7:
-    titre: 'Take a Bow'
-    duree: '00:04:39'
-    audio_file: 01-take-a-bow.mp3
-    Album: Album_5
-    slug: take-a-bow
-  Chanson_8:
-    titre: Starlight
-    duree: '00:04:00'
-    audio_file: 02-starlight.mp3
-    Album: Album_5
-    slug: starlight
-  Chanson_9:
-    titre: 'Supermassive Black Hole'
-    duree: '00:03:29'
-    audio_file: 03-supermassive-black-hole.mp3
-    Album: Album_5
-    slug: supermassive-black-hole
-  Chanson_10:
-    titre: 'Map of the Problematiqu'
-    duree: null
-    audio_file: 04-map-of-the-problematique.mp3
-    Album: Album_5
-    slug: map-of-the-problematique
-sfGuardRememberKey:
-  sfGuardRememberKey_1:
-    User: sfGuardUser_1
-    remember_key: 8y8otru4kh8o00wcgwc4cc80co4ok04
-    ip_address: 10.104.102.34
-    created_at: '2011-06-29 14:35:14'
-    updated_at: '2011-06-29 14:35:14'
 sfGuardUser:
-  sfGuardUser_1:
+  sfGuardUser_15:
     first_name: Jean-Philippe
     last_name: Morvan
     email_address: jeanphilippe.morvan@gmail.com
     username: jeanphilippe.morvan@gmail.com
     algorithm: sha1
     salt: 0a7e414befcab5863c2905874b8681a6
-    password: f12eb58558facc47d40d77bd820a06bac4aacc83
+    password: 1725e39d830b96bef92a3409e391d62bb5a4f16a
     is_active: true
     is_super_admin: false
     last_login: '2011-07-01 18:25:17'
     created_at: '2011-06-29 13:28:53'
     updated_at: '2011-07-01 18:25:17'
-AlbumsUsers:
-  AlbumsUsers_1:
-    Album: Album_1
-    sfGuardUser: sfGuardUser_1
-  AlbumsUsers_2:
-    Album: Album_3
-    sfGuardUser: sfGuardUser_1
-  AlbumsUsers_3:
-    Album: Album_4
-    sfGuardUser: sfGuardUser_1
-  AlbumsUsers_4:
-    Album: Album_5
-    sfGuardUser: sfGuardUser_1
+sfGuardRememberKey:
+  sfGuardRememberKey_15:
+    User: sfGuardUser_15
+    remember_key: 8y8otru4kh8o00wcgwc4cc80co4ok04
+    ip_address: 10.104.102.34
+    created_at: '2011-06-29 14:35:14'
+    updated_at: '2011-06-29 14:35:14'
