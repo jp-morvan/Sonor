@@ -142,5 +142,15 @@ class tools
     exec('mv "'.$file.'" "'.$new_file.'"', $output);
     return $output;
   }
+  
+  public static function mkdir($path) 
+  {
+    if(!is_dir($path))
+    {
+      $current_umask = umask(0000);
+      mkdir($path, 0777, true);
+      umask($current_umask);
+    }
+  }
 }
 ?>

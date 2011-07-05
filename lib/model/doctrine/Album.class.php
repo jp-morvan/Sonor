@@ -17,6 +17,11 @@ class Album extends BaseAlbum
     return (($this->titre != '') ? $this->titre : '');
   }
   
+  public function getArtisteDirectory() 
+  {
+    return $this->Artiste->slug."/";
+  }
+  
   public static function issetOrCreate($album, $artiste_id)
   {
     if(!is_null($album) && ($alb = Doctrine_Core::getTable('Album')->findOneBy('titre', $album)) !== false)

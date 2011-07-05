@@ -17,9 +17,14 @@ class Chanson extends BaseChanson
     return $this->titre;
   }  
   
+  public function getAlbumDirectory() 
+  {
+    return $this->Album->slug."/".$this->Album->getArtisteDirectory();
+  }
+  
   public function generateAudioFileFilename(sfValidatedFile $file)
   {
-    return tools::slugify($this->getAudioFilenameWithoutExtension($file)).$file->getOriginalExtension();
+    return tools::slugify($this->getAudioFilenameWithoutExtension($file), false).$file->getOriginalExtension();
   }
   
   public function getAudioFilenameWithoutExtension(sfValidatedFile $file) 
@@ -30,22 +35,24 @@ class Chanson extends BaseChanson
   public static function newWithoutTags($audio, $file) 
   {
     $chanson = new Chanson();
-    $chanson['titre'] = tools::getFilenameWithoutExtension($file);
-    $chanson['duree'] = $audio->getDuration();
-    $chanson['audio_file'] = tools::getFilename($file);
-    return $chanson->save();
+    $chanson->titre = tools::getFilenameWithoutExtension($file);
+    $chanson->duree = $audio->getDuration();
+    $chanson->audio_file = tools::getFilename($file);
+    $chanson->save();
+    return $chanson;
   }
   
   public static function newWithTags($audio) 
   {
     $chanson = new Chanson();
-    $chanson['titre'] = $audio->getTag('title');
-    $chanson['duree'] = $audio->getDuration();
-    $chanson['piste'] = $audio->getTag('track');
-    $chanson['audio_file'] = tools::getFilenameWithoutExtension($audio->getFilename());
+    $chanson->titre = $audio->getTag('title');
+    $chanson->duree = $audio->getDuration();
+    $chanson->piste = $audio->getTag('track');
+    $chanson->audio_file = tools::getFilenameWithoutExtension($audio->getFilename());
     $artiste = Artiste::issetOrCreate($audio->getTag('artist'));
-    $chanson['id_album'] = Album::issetOrCreate($audio->getTag('album'), $artiste);
-    $chanson['has_metadata'] = true;
-    return $chanson->save();
+    $chanson->id_album = Album::issetOrCreate($audio->getTag('album'), $artiste);
+    $chanson->has_metadata = true;
+    $chanson->save();
+    return $chanson;
   }
 }

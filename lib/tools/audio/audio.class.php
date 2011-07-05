@@ -10,8 +10,6 @@ class audio extends getID3
   private $_infos = null,
           $_tags = null;
   
-//  public function __destruct(){}
-  
   public function __construct($filename)
   {
     $this->encoding = "UTF-8";

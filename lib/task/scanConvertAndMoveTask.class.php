@@ -14,6 +14,8 @@ class scanConvertAndMoveTask extends sfBaseTask
      $this->addOptions(array(
       new sfCommandOption('application', null, sfCommandOption::PARAMETER_OPTIONAL, 'The application name', 'backend'),
       new sfCommandOption('env', null, sfCommandOption::PARAMETER_OPTIONAL, 'The environment', 'prod'),
+    ));
+     $this->addOptions(array(
       new sfCommandOption('debug', null, sfCommandOption::PARAMETER_OPTIONAL, 'use debug mode', 'false'),
     ));
 
@@ -28,7 +30,7 @@ EOF;
   protected function execute($arguments = array(), $options = array())
   {
     $databaseManager = new sfDatabaseManager($this->configuration);
-    $connection = $databaseManager->getDatabase($options['connection'] ? $options['connection'] : 'doctrine')->getConnection();
+    $connection = $databaseManager->getDatabase('doctrine')->getConnection();
     $this->todo_path = sfConfig::get('app_files_storage_path_todo');
     $this->list_path = sfConfig::get('app_files_storage_path_list');
     $this->no_metadata_path = sfConfig::get('app_files_storage_path_no_metadata');
@@ -41,31 +43,59 @@ EOF;
   
   protected function scanAndAnalyse()
   {
-    foreach(scandir($this->todo_path) as $file)
+    foreach(scandir($this->todo_path) as $filename)
     {
-      $path = $this->todo_path.$file;
-      if(!is_dir($path))
+      $file = $this->todo_path.$filename;
+      if(!is_dir($file))
       {
-        if(tools::getFilename($path) != tools::getSlugifyFilename($path))
+        if(tools::getFilename($file) != ($slugify_filename = tools::getSlugifyFilename($file)))
         {
-          $this->move($path, 'todo', tools::getSlugifyFilename($path));
+          $this->move($file, 'todo', $slugify_filename);
         }
-        $path = $this->todo_path.tools::getSlugifyFilename($path);
-        $audio = new audio($path);
+        $slugify_file = $this->todo_path.$slugify_filename;
+        $audio = new audio($slugify_file);
         if(!$audio->hasTags())
         {
-          Chanson::newWithoutTags($audio, $path);
-          $this->move($path, 'no_metadata');
+          $this->chanson = Chanson::newWithoutTags($audio, $slugify_file);
+          $this->move($slugify_file, 'no_metadata');
           $this->_infos['without_metadata']++;
         }
         else
         {
           $this->chanson = Chanson::newWithTags($audio);
-          $this->convert($path);
+          $file_destination = $this->list_path.$this->chanson->getAlbumDirectory();
+          tools::mkdir($file_destination);
+          $this->convert($slugify_file, $file_destination);
           $this->_infos['with_metadata']++;
         }
       }
     }
+  }
+  
+  
+  protected function convert($file, $destination)
+  {
+    $conv = new convert($file);
+    $filename = tools::getFilename($file);
+    $converted_filename = tools::getFilenameWithoutExtension($file, false).".".$conv->getOutputFormat();
+    $converted_file = $this->todo_path.$converted_filename;
+    if(!file_exists($converted_file))
+    {
+      $conversion = $conv->doConversion();
+      $this->_files_converted[] = $filename;
+    }
+    $this->move($file, $destination);
+    $this->move($converted_file, $destination);
+  }
+  
+  protected function move($file, $path, $new_name = null)
+  {
+    if(isset($this->{$path.'_path'}))
+    {
+      $path = $this->{$path.'_path'};
+    }
+    $this->logSection('move', sprintf('%s in %s', $file, $path));
+    tools::moveFileToDir($path, $file, $new_name);
   }
   
   protected function debug()
@@ -80,61 +110,4 @@ EOF;
       $this->logSection('files', sprintf('%s', $file));
     }
   }
-  
-  
-  protected function convert($file)
-  {
-    $conv = new convert($file);
-    $filename = tools::getFilename($file);
-    $ogg = tools::getFilenameWithoutExtension($file, false).".".$conv->getOutputFormat();
-    $ogg_path = $this->todo_path.$ogg;
-    if(!file_exists($ogg_path))
-    {
-      $conversion = $conv->doConversion();
-      $this->_files_converted[] = $filename;
-    }
-    $this->move($this->todo_path.$filename, 'list');
-    $this->move($ogg_path, 'list');
-  }
-  
-  protected function move($file, $path, $new_name = null)
-  {
-    $this->logSection('move', sprintf('%s in %s', $file, $path));
-    tools::moveFileToDir($this->{$path.'_path'}, $file, $new_name);
-  }
-
-  /**
-   * Calcule la liste du nombre de menus livré par agent sur le mois sélectionné
-   *
-   * @param array $arguments  Le mois et l'année à calculer
-   */
-  /*protected function calcule($arguments)
-  {
-    $context = sfContext::createInstance($this->configuration);
-    $this->configuration->loadHelpers('Partial');
-    $mois = $arguments['mois'];
-    $annee = $arguments['annee'];
-    $start_mktime = mktime(0, 0, 0, $mois, 1, $annee);
-    $end_mktime = mktime(0, 0, 0, $mois+1, 0, $annee);
-    $subject = 'Ville de Villejuif - Liste du nombre de menus par agent - '.tools::setFrDateWithMonthAndYear($start_mktime);
-    $liste = $this->formatArray($start_mktime, $end_mktime);
-    
-    setlocale(LC_TIME, sfConfig::get('app_culture_locale'));
-    $message = $this->getMailer()->compose(
-      'no-reply@ville-villejuif.fr',
-      array(sfConfig::get('app_configuration_email_facturation')),
-      $subject,
-      get_partial('commande/mailFacturation', array('mktime' => $start_mktime, 'liste' => $liste))
-    );
-    
-    $message->setContentType('text/html');
-    if($this->getMailer()->send($message))
-    {
-      print("Message envoyé.\n");
-    }
-    else
-    {
-      print("Erreur lors de l'envoi du message.\n");
-    }
-  }*/
 }
