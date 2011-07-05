@@ -8,7 +8,17 @@
 class audio extends getID3
 {
   private $_infos = null,
-          $_tags = null;
+          $_tags_type = array('id3v2', 'id3v1', 'lyrics3', 'ape'),
+          $_id3v2_tags = array(),
+          $_id3v1_tags = array(),
+          $_lyrics3_tags = array(),
+          $_ape_tags = array(),
+          $_id3v2_fields = array('title', 'artist', 'album', 'track_number'),
+          $_id3v1_fields = array('title', 'artist', 'album', 'track'),
+          $_lyrics3_fields = array('title', 'artist', 'album', 'track'),
+          $_ape_fields = array('title', 'artist', 'album', 'track'),
+          $_tags = array();
+  
   
   public function __construct($filename)
   {
@@ -28,12 +38,39 @@ class audio extends getID3
   
   public function setTags()
   {
-    for($i=1; $i < 10; $i++)
+    foreach($this->_tags_type as $tag_type)
     {
-      if(isset($this->_infos['tags']['id3v'.$i]))
+      if(isset($this->_infos['tags'][$tag_type]))
       {
-        $this->_tags = $this->_infos['tags']['id3v'.$i];
-        return;
+        $this->{'_'.$tag_type.'_tags'} = $this->_infos['tags'][$tag_type];
+        $this->_parseTags($tag_type);
+      }
+    }
+    $this->_mergeTags();
+  }
+  
+  private function _parseTags($tag_type)
+  {
+    $tags = $this->{'_'.$tag_type.'_tags'};
+    $tmp = array();
+    foreach($this->{'_'.$tag_type.'_fields'} as $field)
+    {
+      if(isset($tags[$field]))
+      {
+        $tmp[($field == "track_number") ? 'track': $field] = $tags[$field][0];
+      }
+    }
+    $this->{'_'.$tag_type.'_tags'} = $tmp;
+  }
+  
+  private function _mergeTags()
+  {
+    foreach($this->_tags_type as $tag_type)
+    {
+      $count = count($this->{'_'.$tag_type.'_tags'});
+      if($count == 4)
+      {
+        $this->_tags = $this->{'_'.$tag_type.'_tags'};
       }
     }
   }
@@ -62,7 +99,7 @@ class audio extends getID3
   {
     if(isset($this->_tags[$tag]))
     {
-      return $this->_tags[$tag][0];
+      return $this->_tags[$tag];
     }
     return null;
   }
