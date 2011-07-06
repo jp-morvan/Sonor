@@ -1,3 +1,7 @@
+get_chanson:
+  url: /lecture-de-la-chanson/:slug
+  param:  { module: accueil, action: getChanson, slug: '' }
+
 play:
   url:  /lecture/:type/:slug
   param:  { module: accueil, action: ajaxLecture, type: '', slug: '' }
@@ -15,12 +19,3 @@ javascript_functions:
 homepage:
   url:   /
   param: { module: accueil, action: index }
-
-# generic rules
-# please, remove them by adding more specific rules
-default_index:
-  url:   /:module
-  param: { action: index }
-
-default:
-  url:   /:module/:action/*

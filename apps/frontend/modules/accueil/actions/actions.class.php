@@ -18,6 +18,14 @@ class accueilActions extends sfActions
   {
   }
   
+  public function executeGetChanson(sfWebRequest $request)
+  {
+    $slug = $request->getParameter('slug');
+    $chanson = Doctrine_Core::getTable('Chanson')->findOneBy('slug', $slug);
+    $chanson->getAlbumDirectory();
+    $this->file = $chanson->getAlbumDirectory().$chanson->audio_file.".".$request->getAudioFileType();
+  }
+  
   public function executeAjaxLecture(sfWebRequest $request)
   {
     $type = $request->getParameter('type');

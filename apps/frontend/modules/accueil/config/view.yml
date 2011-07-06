@@ -1,0 +1,5 @@
+getChansonSuccess:
+  has_layout: false
+  http_metas:
+    content-type: audio/mpeg3
+    content-type: audio/ogg
