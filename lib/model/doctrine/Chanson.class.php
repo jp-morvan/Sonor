@@ -35,9 +35,18 @@ class Chanson extends BaseChanson
   public static function newWithoutTags($audio, $file) 
   {
     $chanson = new Chanson();
-    $chanson->titre = tools::getFilenameWithoutExtension($file);
+    $chanson->titre = $audio->hasTag('title') ? $audio->getTag('title') : tools::getFilenameWithoutExtension($file);
     $chanson->duree = $audio->getDuration();
+    $chanson->piste = $audio->hasTag('track') ? $audio->getTag('track') : null;
     $chanson->audio_file = tools::getFilename($file);
+    if($audio->hasTag('artist'))
+    {
+      $artiste = Artiste::issetOrCreate($audio->getTag('artist'));
+      if($audio->hasTag('album'))
+      {
+        $chanson->id_album = Album::issetOrCreate($audio->getTag('album'), $artiste);
+      }
+    }
     $chanson->save();
     return $chanson;
   }
@@ -47,7 +56,7 @@ class Chanson extends BaseChanson
     $chanson = new Chanson();
     $chanson->titre = $audio->getTag('title');
     $chanson->duree = $audio->getDuration();
-    $chanson->piste = $audio->getTag('track');
+    $chanson->piste = $audio->hasTag('track') ? $audio->getTag('track') : null;
     $chanson->audio_file = tools::getFilenameWithoutExtension($audio->getFilename());
     $artiste = Artiste::issetOrCreate($audio->getTag('artist'));
     $chanson->id_album = Album::issetOrCreate($audio->getTag('album'), $artiste);

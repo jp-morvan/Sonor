@@ -3,12 +3,11 @@
 class scanConvertAndMoveTask extends sfBaseTask
 {
   private $_infos = array(
-      'without_metadata' => 0,
-      'with_metadata' => 0,
+      'sans metadata' => 0,
+      'avec metadata' => 0,
   ),
-          $_move_errors = array();
-  
-  private $_files_converted = array();
+          $_move_errors = array(),
+          $_files_converted = array();
   
   protected function configure()
   {
@@ -47,7 +46,7 @@ EOF;
     $files = tools::scanTree(sfConfig::get('app_files_storage_path_todo'), array('mp3'));
     foreach($files as $file)
     {
-        if(tools::getFilename($file) != ($slugify_filename = tools::getSlugifyFilename($file)))
+        if(tools::getFilename($file, false) != ($slugify_filename = tools::getSlugifyFilename($file)))
         {
           $this->move($file, 'todo', $slugify_filename);
         }
@@ -57,7 +56,7 @@ EOF;
         {
           $this->chanson = Chanson::newWithoutTags($audio, $slugify_file);
           $this->move($slugify_file, 'no_metadata');
-          $this->_infos['without_metadata']++;
+          $this->_infos['sans metadata']++;
         }
         else
         {
@@ -65,7 +64,7 @@ EOF;
           $file_destination = $this->list_path.$this->chanson->getAlbumDirectory();
           tools::mkdir($file_destination);
           $this->convert($slugify_file, $file_destination);
-          $this->_infos['with_metadata']++;
+          $this->_infos['avec metadata']++;
         }
     }
   }
@@ -106,15 +105,21 @@ EOF;
     {
       $this->logSection('scan', sprintf('%s : %s générés', $field, $value));
     }
-    $this->logBlock('Fichiers convertis :', 'QUESTION_LARGE');
-    foreach($this->_files_converted as $file)
+    if(count($this->_files_converted) > 0)
     {
-      $this->logSection('files', sprintf('%s', $file));
+      $this->logBlock('Fichiers convertis :', 'QUESTION_LARGE');
+      foreach($this->_files_converted as $file)
+      {
+        $this->logSection('files', sprintf('%s', $file));
+      }
     }
-    $this->logBlock('Fichiers non déplacés :', 'ERROR_LARGE');
-    foreach($this->_move_errors as $error)
+    if(count($this->_move_errors) > 0)
     {
-      $this->logSection('move', sprintf('%s', $error), null, 'ERROR');
+      $this->logBlock('Fichiers non déplacés :', 'ERROR_LARGE');
+      foreach($this->_move_errors as $error)
+      {
+        $this->logSection('move', sprintf('%s', $error), null, 'ERROR');
+      }
     }
   }
 }
