@@ -44,19 +44,15 @@ EOF;
   protected function scanAndAnalyse()
   {
     $files = tools::scanTree(sfConfig::get('app_files_storage_path_todo'), array('mp3'));
-//    foreach(scandir($this->todo_path) as $filename)
     foreach($files as $file)
     {
-//      $file = $this->todo_path.$filename;
-//      if(!is_dir($file))
-//      {
         if(tools::getFilename($file) != ($slugify_filename = tools::getSlugifyFilename($file)))
         {
           $this->move($file, 'todo', $slugify_filename);
         }
         $slugify_file = $this->todo_path.$slugify_filename;
         $audio = new audio($slugify_file);
-        if(!$audio->hasTags())
+        if(!$audio->hasTags() || !$audio->hasEnoughTags())
         {
           $this->chanson = Chanson::newWithoutTags($audio, $slugify_file);
           $this->move($slugify_file, 'no_metadata');
@@ -70,7 +66,6 @@ EOF;
           $this->convert($slugify_file, $file_destination);
           $this->_infos['with_metadata']++;
         }
-//      }
     }
   }
   

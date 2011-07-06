@@ -26,11 +26,11 @@ class ChansonForm extends BaseChansonForm
     if(file_exists($file))
     {
       $audio = new audio($file);
-      if($audio->hasTags())
+      if($audio->hasTags() && $audio->hasEnoughTags())
       {
         $values['titre'] = $audio->getTag('title');
         $values['duree'] = $audio->getDuration();
-        $values['piste'] = $audio->getTag('track');
+        $values['piste'] = $audio->hasTag('track') ? $audio->getTag('track') : null;
         $artiste = Artiste::issetOrCreate($audio->getTag('artist'));
         $values['id_album'] = Album::issetOrCreate($audio->getTag('album'), $artiste);
         $values['has_metadata'] = true;

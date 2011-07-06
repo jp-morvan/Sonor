@@ -137,13 +137,19 @@ class audio extends getID3
     return $this->_infos;
   }
   
+  public function hasTag($tag) 
+  {
+    return isset($this->_tags[$tag]);
+  }
+  
   public function getTag($tag)
   {
-    if(isset($this->_tags[$tag]))
-    {
-      return $this->_tags[$tag];
-    }
-    return null;
+    return $this->_tags[$tag];
+  }
+  
+  public function hasEnoughTags() 
+  {
+    return ($this->hasTag('title') && $this->hasTag('artist') && $this->hasTag('album'));
   }
   
   private function _getFieldValue($tag_type, $field)
