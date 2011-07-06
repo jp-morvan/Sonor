@@ -18,7 +18,7 @@ class accueilActions extends sfActions
   {
   }
   
-  public function executeGetChanson(sfWebRequest $request)
+  public function executeAjaxLecture(sfWebRequest $request)
   {
     $slug = $request->getParameter('slug');
     $chanson = Doctrine_Core::getTable('Chanson')->findOneBy('slug', $slug);
@@ -34,20 +34,16 @@ class accueilActions extends sfActions
 //    $this->getResponse()->send();
   }
   
-  public function executeAjaxLecture(sfWebRequest $request)
-  {
-    $type = $request->getParameter('type');
-    $slug = $request->getParameter('slug');
-    $chanson = Doctrine_Core::getTable('Chanson')->findOneBy('slug', $slug);
-//    $file = $request->getAudioPath().$chanson->audio_file.".".$request->getAudioFileType();
-//    return $this->renderText($file);
-  }
-  
   public function executeAjaxListeChansons(sfWebRequest $request)
   {
     $type = $request->getParameter('type');
     $slug = $request->getParameter('slug');
     $chansons = Doctrine_Core::getTable('Chanson')->findForType($type, $slug);
-    return $this->renderPartial('accueil/content', array('chansons' => $chansons, 'type' => $type, 'slug' => $slug));
+    return $this->renderPartial('accueil/content', array(
+        'chansons' => $chansons, 
+        'type' => $type, 
+        'titre' => $chansons[0][ucfirst($type)]['titre'], 
+        'slug' => $slug)
+    );
   }
 }

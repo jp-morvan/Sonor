@@ -1,10 +1,6 @@
-get_chanson:
-  url: /lecture-de-la-chanson/:slug
-  param:  { module: accueil, action: getChanson, slug: '' }
-
 play:
   url:  /lecture/:type/:slug
-  param:  { module: accueil, action: ajaxLecture, type: '', slug: '' }
+  param:  { module: accueil, action: ajaxLecture, type: chanson, slug: '' }
 
 show_chansons:
   url:  /liste-des-chansons/:type/:slug
