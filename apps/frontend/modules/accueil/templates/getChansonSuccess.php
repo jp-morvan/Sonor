@@ -1,1 +1,0 @@
-<?php $sf_response->addHttpMeta('audio', $sf_request->getAudioFileType()) ?>

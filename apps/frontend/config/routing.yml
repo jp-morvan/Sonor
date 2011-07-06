@@ -13,8 +13,6 @@ show_chansons:
 javascript_functions:
   url:   /functions.:sf_format
   param: { module: accueil, action: javascript, sf_format: js }
-#  requirements:
-#    sf_format: (?:js)
 
 homepage:
   url:   /

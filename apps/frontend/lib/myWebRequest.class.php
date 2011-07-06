@@ -22,9 +22,9 @@ class myWebRequest extends browserDetectionWebRequest
     return $ref[count($ref)-1];
   }
   
-  public function getAudioFilePath() 
+  public function getAudioPath() 
   {
-    return '/uploads/audio/'.$this->getAudioFileType().'/';
+    return '/uploads/audio/list/';
   }
   
   public function getAudioFileType() 

@@ -1,7 +1,7 @@
 function show(type, slug)
 {
   $.ajax({
-    url: '/liste-des-chansons/'+type+'/'+slug,
+    url: '<?php echo url_for('@show_chansons') ?>/'+type+'/'+slug,
     success: function(data) {
       $('div#content').html(data);
     }
@@ -11,9 +11,10 @@ function show(type, slug)
 function play(type, slug)
 {
   $.ajax({
-    url: '/lecture/'+type+'/'+slug,
+    url: '<?php echo url_for('@get_chanson') ?>/'+slug,
     success: function(data) {
       $('audio#audio').attr('src', data);
+      $('audio#audio').attr('autoplay', 'autoplay');
     }
   });
 }

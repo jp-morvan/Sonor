@@ -22,8 +22,16 @@ class accueilActions extends sfActions
   {
     $slug = $request->getParameter('slug');
     $chanson = Doctrine_Core::getTable('Chanson')->findOneBy('slug', $slug);
-    $chanson->getAlbumDirectory();
-    $this->file = $chanson->getAlbumDirectory().$chanson->audio_file.".".$request->getAudioFileType();
+    $path = $chanson->getAlbumDirectory().$chanson->audio_file.".".$request->getAudioFileType();
+    $filename = sfConfig::get('app_files_storage_path_list').$path;
+    $file = $request->getAudioPath().$path;
+    return $this->renderText($file);
+//    $this->getResponse()->clearHttpHeaders();
+//    $this->getResponse()->setHttpHeader('Content-Length', filesize($filename));
+//    $this->getResponse()->setHttpHeader('Connection', 'Keep-Alive');
+//    $this->getResponse()->setContentType('audio/ogg');
+//    $this->getResponse()->setContent(file_get_contents($filename));
+//    $this->getResponse()->send();
   }
   
   public function executeAjaxLecture(sfWebRequest $request)
@@ -31,8 +39,8 @@ class accueilActions extends sfActions
     $type = $request->getParameter('type');
     $slug = $request->getParameter('slug');
     $chanson = Doctrine_Core::getTable('Chanson')->findOneBy('slug', $slug);
-    $file = $request->getAudioFilePath().$chanson->audio_file.".".$request->getAudioFileType();
-    return $this->renderText($file);
+//    $file = $request->getAudioPath().$chanson->audio_file.".".$request->getAudioFileType();
+//    return $this->renderText($file);
   }
   
   public function executeAjaxListeChansons(sfWebRequest $request)
@@ -40,6 +48,6 @@ class accueilActions extends sfActions
     $type = $request->getParameter('type');
     $slug = $request->getParameter('slug');
     $chansons = Doctrine_Core::getTable('Chanson')->findForType($type, $slug);
-    return $this->renderPartial('accueil/content', array('chansons' => $chansons));
+    return $this->renderPartial('accueil/content', array('chansons' => $chansons, 'type' => $type, 'slug' => $slug));
   }
 }
