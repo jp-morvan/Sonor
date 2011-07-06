@@ -124,15 +124,18 @@ class tools
   {
     if(!file_exists($file))
     {
-      throw new sfException('Le fichier '.$file.' n\'existe pas.');
+//      throw new sfException('Le fichier '.$file.' n\'existe pas.');
+      return 'Le fichier '.$file.' n\'existe pas.';
     }
     if(!is_dir($dir))
     {
-      throw new sfException('Le répertoire '.$dir.' n\'existe pas.');
+//      throw new sfException('Le répertoire '.$dir.' n\'existe pas.');
+      return 'Le répertoire '.$dir.' n\'existe pas.';
     }
     if(!is_writable($dir))
     {
-      throw new sfException('Le répertoire '.$dir.' n\'est pas accessible en écriture.');
+//      throw new sfException('Le répertoire '.$dir.' n\'est pas accessible en écriture.');
+      return 'Le répertoire '.$dir.' n\'est pas accessible en écriture.';
     }
     if(is_null($new_name))
     {
@@ -140,7 +143,7 @@ class tools
     }
     $new_file = $dir.$new_name;
     exec('mv "'.$file.'" "'.$new_file.'"', $output);
-    return $output;
+    return true;
   }
   
   public static function mkdir($path) 

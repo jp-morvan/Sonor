@@ -5,7 +5,8 @@ class scanConvertAndMoveTask extends sfBaseTask
   private $_infos = array(
       'without_metadata' => 0,
       'with_metadata' => 0,
-  );
+  ),
+          $_move_errors = array();
   
   private $_files_converted = array();
   
@@ -92,7 +93,11 @@ EOF;
       $path = $this->{$path.'_path'};
     }
     $this->logSection('move', sprintf('%s in %s', $file, $path));
-    tools::moveFileToDir($path, $file, $new_name);
+    if(($error = tools::moveFileToDir($path, $file, $new_name)) !== true)
+    {
+      $this->logSection('move', $error, null, 'ERROR');
+      $this->_move_errors[] = $error;
+    }
   }
   
   protected function debug()
@@ -105,6 +110,11 @@ EOF;
     foreach($this->_files_converted as $file)
     {
       $this->logSection('files', sprintf('%s', $file));
+    }
+    $this->logBlock('Fichiers non déplacés :', 'ERROR_LARGE');
+    foreach($this->_move_errors as $error)
+    {
+      $this->logSection('move', sprintf('%s', $error), null, 'ERROR');
     }
   }
 }
