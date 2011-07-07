@@ -40,3 +40,7 @@ div#content table#chansons td.duree{
   width: 60px;
   padding-right: 5px;
 }
+
+img.play:hover{
+  cursor: pointer;
+}

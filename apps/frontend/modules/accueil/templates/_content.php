@@ -2,7 +2,7 @@
   <thead>
     <tr>
       <th>
-        <img src="/images/control_play_blue.png" alt="Jouer <?php echo ($type == "album") ? "l'".$type: $type ?> '<?php echo $titre ?>'" onclick="play('<?php echo $type ?>', '<?php echo $slug ?>')" />
+        <img src="/images/big_play.png" class="play" alt="Jouer <?php echo ($type == "album") ? "l'".$type: $type ?> '<?php echo $titre ?>'" onclick="play('<?php echo $type ?>', '<?php echo $slug ?>')" />
       </th>
       <th colspan="2">
         <?php echo $titre ?>
@@ -13,7 +13,7 @@
 <?php foreach($chansons as $id => $chanson): ?>
     <tr class="<?php echo ($id%2 == 0) ? 'even' : 'odd' ?>">
       <td class="play">
-        <img src="/images/control_play_blue.png" alt="Jouer la chanson '<?php echo $chanson['titre'] ?>'" onclick="play('chanson', '<?php echo $chanson['slug'] ?>')" />
+        <img src="/images/play.png" class="play" alt="Jouer la chanson '<?php echo $chanson['titre'] ?>'" onclick="play('chanson', '<?php echo $chanson['slug'] ?>')" />
       </td>
       <td class="titre">
         <?php echo $chanson['titre'] ?>
