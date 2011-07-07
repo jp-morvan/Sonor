@@ -21,11 +21,26 @@ class accueilActions extends sfActions
   public function executeAjaxLecture(sfWebRequest $request)
   {
     $slug = $request->getParameter('slug');
-    $chanson = Doctrine_Core::getTable('Chanson')->findOneBy('slug', $slug);
-    $path = $chanson->getAlbumDirectory().$chanson->audio_file.".".$request->getAudioFileType();
-    $filename = sfConfig::get('app_files_storage_path_list').$path;
-    $file = $request->getAudioPath().$path;
-    return $this->renderText($file);
+    $type = $request->getParameter('type');
+    if($type == "chanson")
+    {
+      $chanson = Doctrine_Core::getTable('Chanson')->findOneBy('slug', $slug);
+      $path = $chanson->getAlbumDirectory().$chanson->audio_file.".".$request->getAudioFileType();
+      $filename = sfConfig::get('app_files_storage_path_list').$path;
+      $file = $request->getAudioPath().$path;
+      return $this->renderText($file);
+    }
+    if($type == "album")
+    {
+      $ids = array();
+      // TODO ajouter un order
+      $album = Doctrine_Core::getTable('Album')->findOneBy('slug', $slug);
+      foreach(($chansons = $album->getChanson()) as $chanson)
+      {
+        $ids[] = $chanson->slug;
+      }
+      return $this->renderText(json_encode($ids));
+    }
 //    $this->getResponse()->clearHttpHeaders();
 //    $this->getResponse()->setHttpHeader('Content-Length', filesize($filename));
 //    $this->getResponse()->setHttpHeader('Connection', 'Keep-Alive');
