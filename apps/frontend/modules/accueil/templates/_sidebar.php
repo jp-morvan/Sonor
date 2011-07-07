@@ -3,7 +3,7 @@
 <?php if(count($playlists) > 0): ?>
   <span>Playlists</span>
 <?php foreach($playlists as $playlist): ?>
-  <li><a href="#" onclick="show('playlist', '<?php echo $playlist->slug ?>')"><?php echo $playlist->titre ?></a></li>
+  <li><a href="#" onclick="show('playlists', '<?php echo $playlist->slug ?>')"><?php echo $playlist->titre ?></a></li>
 <?php endforeach; ?>
 <?php endif; ?>
   <span>Albums</span>

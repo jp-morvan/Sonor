@@ -64,4 +64,13 @@ class Chanson extends BaseChanson
     $chanson->save();
     return $chanson;
   }
+  
+  public static function writeDuree($duree) 
+  {
+    if(substr($duree, 0, 2) == "00")
+    {
+      $duree = substr($duree, 3);
+    }
+    return $duree;
+  }
 }

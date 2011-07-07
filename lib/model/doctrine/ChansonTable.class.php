@@ -24,16 +24,12 @@ class ChansonTable extends Doctrine_Table
   
   public function findForType($type, $slug)
   {
-    if($type == "playlist")
-    {
-      $type.="s";
-    }
     $r = substr($type, 1);
     $relation = ucfirst($type);
     $dq = self::createQuery('c')
           ->select('c.*, '.$r.'.*')
           ->leftJoin('c.'.$relation.' '.$r)
           ->where($r.'.slug = ?', $slug);
-    return $dq->execute();
+    return $dq->execute(array(), Doctrine_Core::HYDRATE_ARRAY);
   }
 }

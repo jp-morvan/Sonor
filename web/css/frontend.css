@@ -1,0 +1,42 @@
+html{
+  margin:0;
+  padding:0;
+  background-color: lightblue;
+}
+div#content table#chansons{
+  width:90%;
+  margin:0 auto;
+  padding: 0;
+  border-collapse: collapse;
+}
+div#content table#chansons thead, 
+div#content table#chansons tbody, 
+div#content table#chansons tr, 
+div#content table#chansons td, 
+div#content table#chansons th{
+  margin:0;
+  padding:0;
+}
+div#content table#chansons td{
+  height: 35px;
+}
+div#content table#chansons tr.even{
+  background-color: lightblue;
+}
+div#content table#chansons tr.odd{
+  background-color: lightslategrey;
+}
+div#content table#chansons td.play{
+  text-align: center;
+  width: 40px;
+  padding: 6px 5px 0 5px;
+}
+div#content table#chansons td.titre{
+  width: 100%;
+  font-weight: bold;
+}
+div#content table#chansons td.duree{
+  text-align: right;
+  width: 60px;
+  padding-right: 5px;
+}
