@@ -10,7 +10,8 @@ class SearchForm extends BaseForm
   {
     $this->widgetSchema['search'] = new sfWidgetFormDoctrineJQueryAutocompleterAndClear(array(
         'model' => 'Chanson',
-        'url'   => url_for("@homepage")
+        'url'   => url_for("@search"),
+        'config' => '{ max: 50 }'
     ));
     $this->validatorSchema['search'] = new sfValidatorPass();
   }

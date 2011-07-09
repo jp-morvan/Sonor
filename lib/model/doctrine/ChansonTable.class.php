@@ -32,4 +32,14 @@ class ChansonTable extends Doctrine_Table
           ->where($r.'.slug = ?', $slug);
     return $dq->execute(array(), Doctrine_Core::HYDRATE_ARRAY);
   }
+  
+  public function searchEverything($q, $limit = 10) 
+  {
+    $dq = self::createQuery('c')
+          ->select("c.*")
+          ->where("c.titre LIKE ?","%".$q."%")
+          ->limit($limit)
+          ->orderBy('c.titre ASC');
+    return $dq->execute();
+  }
 }

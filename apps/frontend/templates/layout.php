@@ -13,16 +13,15 @@
   </head>
   <body>
     <header>
-      <div id="logo"><img src="/images/logo.png" alt="Sonor" /></div>
+      <div id="reader">
+        <?php include_partial('global/reader') ?>
+      </div>
       <div id="user_info">
         <?php include_partial('global/user_infos') ?>
       </div>
-      <br />
+      <div id="logo"><img src="/images/logo.png" alt="Sonor" /></div>
       <div id="search">
         <?php include_component('accueil', 'search') ?>
-      </div>
-      <div id="reader">
-        <?php include_partial('global/reader') ?>
       </div>
     </header>
     <div id="page">

@@ -35,4 +35,14 @@ class AlbumTable extends Doctrine_Table
             ->limit($limit);
     return $dq->execute(array(), Doctrine::HYDRATE_ARRAY);
   }
+  
+  public function searchEverything($q, $limit = 10) 
+  {
+    $dq = self::createQuery('a')
+          ->select("a.*")
+          ->where("a.titre LIKE ?","%".$q."%")
+          ->limit($limit)
+          ->orderBy('a.titre ASC');
+    return $dq->execute();
+  }
 }

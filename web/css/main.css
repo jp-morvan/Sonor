@@ -1,5 +1,5 @@
 header, div#page{
-  width: 900px;
+  width: 1000px;
   margin: 0 auto;
   background-color: lightslategrey;
 }
@@ -10,7 +10,7 @@ header{
   top: 0;
   left:50%;
   margin:0;
-  margin-left: -453px;
+  margin-left: -503px;
   padding:0;
   border: 3px solid #330099;
   border-top: none;
@@ -24,9 +24,9 @@ header div#logo{
 }
 
 header div#user_info{
-  float:right;
+/*  float:right;*/
   width: 50%;
-  height: 64px;
+  height: 30px;
 }
 
 header div#reader{
@@ -36,14 +36,15 @@ header div#reader{
 }
 
 header div#search{
-  display: inline-block;
+/*  display: inline-block;*/
+float:right;
   width: 50%;
   height: 80px;
   text-align: center;
 }
 
 header div#search div{
-  margin: 20px auto;
+/*  margin: 20px auto;*/
 }
 
 header audio#audio{

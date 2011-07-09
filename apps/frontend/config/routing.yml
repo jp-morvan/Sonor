@@ -1,3 +1,7 @@
+search:
+  url:  /recherche
+  param:  { module: accueil, action: search }
+  
 play:
   url:  /lecture/:type/:slug
   param:  { module: accueil, action: ajaxLecture, type: chanson, slug: '' }

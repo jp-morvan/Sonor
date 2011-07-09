@@ -3,6 +3,10 @@ html{
   padding:0;
   background-color: lightblue;
 }
+input#autocomplete_search{
+  width: 470px;
+}
+
 div#content table#chansons{
   width:90%;
   margin:0 auto;

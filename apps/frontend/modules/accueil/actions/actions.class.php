@@ -14,6 +14,28 @@ class accueilActions extends sfActions
   {
   }
 
+  public function executeSearch(sfWebRequest $request)
+  {
+    $this->forward404unless($request->isXmlHttpRequest());
+    $this->getResponse()->setContentType('application/json');
+    $choices = array();
+    $chansons = Doctrine::getTable('Chanson')->searchEverything($request->getParameter('q'), $request->getParameter('limit'));
+    $albums = Doctrine::getTable('Album')->searchEverything($request->getParameter('q'), $request->getParameter('limit'));
+    foreach($chansons as $c)
+    {
+      $choices['c_'.$c->slug] = '(C) '.$c->titre;
+    }
+    foreach($albums as $a)
+    {
+      $choices['c_'.$a->slug] = '(A) '.$a->titre;
+    }
+    if(count($choices) == 0)
+    {
+      $choices[] = 'Aucun résultat';
+    }
+    return $this->renderText(json_encode($choices));
+  }
+
   public function executeJavascript(sfWebRequest $request)
   {
   }
