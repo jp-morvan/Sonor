@@ -1,6 +1,6 @@
 search:
-  url:  /recherche
-  param:  { module: accueil, action: search }
+  url:  /recherche/:type
+  param:  { module: accueil, action: search, type: '' }
   
 play:
   url:  /lecture/:type/:slug
@@ -9,6 +9,10 @@ play:
 show_chansons:
   url:  /liste-des-chansons/:type/:slug
   param:  { module: accueil, action: ajaxListeChansons, type: '', slug: '' }
+
+get_album_field:
+  url:  /champ-album
+  param:  { module: accueil, action: ajaxGetChampAlbumField }
 
 remove:
   url:  /suppression/:type/:slug

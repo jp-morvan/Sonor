@@ -46,7 +46,19 @@ $(function() {
     var id = $(this).attr('id').split("_");
     var type = id[1];
     var _type = type.charAt(0).toUpperCase() + type.substring(1).toLowerCase();
-    prompt('Titre', '', _type+" - Ajout", function(r) {
+    var field = null;
+    if(type == 'album')
+    {
+      field = function(){
+         $.ajax({
+          url: '<?php echo url_for('@get_album_field') ?>',
+          success: function(data) {
+            return data;
+          }
+        });
+      };
+    }
+    /*prompt('Titre', '', _type+" - Ajout", function(r) {
       if(r != null){
         $.ajax({
           url: '<?php echo url_for('@add') ?>/'+type+'/'+r,
@@ -55,7 +67,7 @@ $(function() {
           }
         });
       }
-    });
+    }, field);*/
     return false;
   });
 });
@@ -64,6 +76,7 @@ $(function() {
 var oAlert = alert;  
 function alert(txt, title) {  
     try {  
+        if(title == null) title = '';
         jAlert(txt, title);  
     } catch (e) {  
         oAlert(txt);  
@@ -74,6 +87,7 @@ function alert(txt, title) {
 var oConfirm = confirm;  
 function confirm(txt, title, func) {  
     try {  
+        if(title == null) title = '';
         jConfirm(txt, title, func);  
     } catch (e) {  
         if (oConfirm (txt, title)) func();  
@@ -84,6 +98,7 @@ function confirm(txt, title, func) {
 var oPrompt = prompt;  
 function prompt(txt, input, title, func){  
     try {  
+        if(title == null) title = '';
         jPrompt(txt, input, title, func);  
     } catch(e) {  
         func(prompt(txt, input, title));  
