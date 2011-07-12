@@ -37,7 +37,7 @@ $(function() {
     var slug = id[2]+"_"+id[3];
     if(id[4] != null)
     {
-      img = id[0]+'_'+id[1]+'_'+id[2]+'_'+id[3];
+      var img = id[0]+'_'+id[1]+'_'+id[2]+'_'+id[3];
     }
     var _type = type.charAt(0).toUpperCase() + type.substring(1).toLowerCase();
     confirm("Confirmer la suppression ?", _type+" - Suppression", function(r) {
@@ -45,7 +45,7 @@ $(function() {
         $.ajax({
           url: '<?php echo url_for('@remove') ?>/'+type+'/'+slug,
           success: function(data) {
-            $(img).parent('li').remove();
+            $('#'+img).parent('li').remove();
             updateInList(type, slug, 'supprimer');
           }
         });

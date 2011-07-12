@@ -110,8 +110,8 @@ class accueilActions extends sfActions
   {
     $acte = $request->getParameter('acte');
     $type = $request->getParameter('type');
-//    $slug = $request->getParameter('slug');
-    $slug = strchr($request->getParameter('slug'), "_");
+    $slug = $request->getParameter('slug');
+    $slug = (($new_slug = strchr($slug, "_", true)) !== false) ? $new_slug: $slug;
     if($type == "playlist")
     {
       $relation = Doctrine_Core::getTable('Playlist')->findOneBy('slug', $slug, Doctrine_Core::HYDRATE_ARRAY);
