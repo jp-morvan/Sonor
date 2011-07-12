@@ -87,7 +87,14 @@ class accueilActions extends sfActions
   {
     $type = $request->getParameter('type');
     $slug = $request->getParameter('slug');
-    $chansons = Doctrine_Core::getTable('Chanson')->findForType($type, $slug);
+    if($type == 'chanson')
+    {
+      $chansons = Doctrine_Core::getTable('Chanson')->findForType($type, $slug);
+    }
+    else
+    {
+      $chansons = Doctrine_Core::getTable('Chanson')->findForType($type, $slug);
+    }
     $relation = $chansons[0][ucfirst($type)];
     $in_user_list = false;
     foreach($relation['Users'] as $user)

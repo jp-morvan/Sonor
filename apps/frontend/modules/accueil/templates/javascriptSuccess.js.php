@@ -37,7 +37,7 @@ $(function() {
     var slug = id[2]+"_"+id[3];
     if(id[4] != null)
     {
-      var img = id[0]+'_'+id[1]+'_'+id[2]+'_'+id[3];
+      var img = $('#'+id[0]+'_'+id[1]+'_'+id[2]+'_'+id[3]);
     }
     var _type = type.charAt(0).toUpperCase() + type.substring(1).toLowerCase();
     confirm("Confirmer la suppression ?", _type+" - Suppression", function(r) {
@@ -45,8 +45,9 @@ $(function() {
         $.ajax({
           url: '<?php echo url_for('@remove') ?>/'+type+'/'+slug,
           success: function(data) {
-            $('#'+img).parent('li').remove();
+            img.parent('li').remove();
             updateInList(type, slug, 'supprimer');
+            showMessage('success', '<h1>'+_type+' supprimé(e) de votre musique avec succès !</h1>');
           }
         });
       }
@@ -59,9 +60,7 @@ $(function() {
   $('img.add').live('click', function() {
     var img = $(this);
     var id = $(this).attr('id').split("_");
-    //var type = 'playlist';
     var type = id[1];
-    //var _type = 'Playlist';
     var slug = id[2];
     var _type = type.charAt(0).toUpperCase() + type.substring(1).toLowerCase();
     if(type == 'playlist')
@@ -73,6 +72,7 @@ $(function() {
             success: function(data) {
               $("ul#"+type+"s_list").append(data);
               updateInList(type, r, 'ajouter');
+              showMessage('success', '<h1>Playlist "'+r+'" créée avec succès !</h1>');
             }
           });
         }
@@ -85,6 +85,7 @@ $(function() {
         success: function(data) {
           $("ul#"+type+"s_list").append(data);
           updateInList(type, slug, 'ajouter');
+          showMessage('success', '<h1>Album ajouté à votre musique avec succès !</h1>');
         }
       });
     }
@@ -102,6 +103,10 @@ $(function() {
       if(type == "a")
       {
         show('album', slug);
+      }
+      if(type == "c")
+      {
+        show('chanson', slug);
       }
     }, 250);
     return false;

@@ -32,5 +32,11 @@
         <?php echo $sf_content ?>
       </div>
     </div>
+    <div id="notification">
+      <div class="info message"></div>
+      <div class="error message"></div>
+      <div class="warning message"></div>
+      <div class="success message"><h1>dsqdqsdq</h1></div>
+    </div>
   </body>
 </html>
