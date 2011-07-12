@@ -22,6 +22,11 @@ class Album extends BaseAlbum
     return $this->Artiste->slug."/";
   }
   
+  public function countChansons() 
+  {
+    return count($this->getChanson());
+  }
+  
   public static function issetOrCreate($album, $artiste_id)
   {
     if(!is_null($album) && ($alb = Doctrine_Core::getTable('Album')->findOneBy('titre', $album)) !== false)

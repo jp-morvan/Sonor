@@ -10,6 +10,13 @@
  */
 class accueilActions extends sfActions
 {
+  private $user_id;
+  
+  public function preExecute() 
+  {
+    $this->user_id = $this->getUser()->getAttribute('user_id', null, 'sfGuardSecurityUser');
+  }
+  
   public function executeIndex(sfWebRequest $request)
   {
   }
@@ -32,7 +39,7 @@ class accueilActions extends sfActions
     $albums = Doctrine::getTable('Album')->searchEverything($request->getParameter('q'), $request->getParameter('limit'));
     foreach($albums as $a)
     {
-      $choices['a_'.$a->slug] = '(A) '.$a->titre;
+      $choices['a_'.$a->slug] = $a->titre;
     }
     if(count($choices) == 0)
     {
@@ -81,12 +88,39 @@ class accueilActions extends sfActions
     $type = $request->getParameter('type');
     $slug = $request->getParameter('slug');
     $chansons = Doctrine_Core::getTable('Chanson')->findForType($type, $slug);
+    $relation = $chansons[0][ucfirst($type)];
+    $in_user_list = false;
+    foreach($relation['Users'] as $user)
+    {
+      if($user['id'] == $this->user_id)
+      {
+        $in_user_list = true;
+      }
+    }
     return $this->renderPartial('accueil/content', array(
         'chansons' => $chansons, 
         'type' => $type, 
-        'titre' => $chansons[0][ucfirst($type)]['titre'], 
-        'slug' => $slug)
-    );
+        'relation' => $relation, 
+        'slug' => $slug,
+        'in_list' => $in_user_list
+    ));
+  }
+  
+  public function executeAjaxUpdateInList(sfWebRequest $request)
+  {
+    $acte = $request->getParameter('acte');
+    $type = $request->getParameter('type');
+//    $slug = $request->getParameter('slug');
+    $slug = strchr($request->getParameter('slug'), "_");
+    if($type == "playlist")
+    {
+      $relation = Doctrine_Core::getTable('Playlist')->findOneBy('slug', $slug, Doctrine_Core::HYDRATE_ARRAY);
+    }
+    else
+    {
+      $relation = Doctrine_Core::getTable('Album')->findOneBy('slug', $slug, Doctrine_Core::HYDRATE_ARRAY);
+    }
+    return $this->renderPartial('accueil/album_add_remove', array('relation' => $relation, 'in_list' => (($acte == 'ajouter') ? true: false)));
   }
   
   public function executeAjaxRemove(sfWebRequest $request)
@@ -100,8 +134,8 @@ class accueilActions extends sfActions
     }
     else
     {
-      $user_id = $this->getUser()->getAttribute('user_id', null, 'sfGuardSecurityUser');
-      $delete = Doctrine_Core::getTable('AlbumsUsers')->remove($id, $user_id);
+//      $user_id = $this->getUser()->getAttribute('user_id', null, 'sfGuardSecurityUser');
+      $delete = Doctrine_Core::getTable('AlbumsUsers')->remove($id, $this->user_id);
     }
     return $this->renderText('');
   }
@@ -110,24 +144,24 @@ class accueilActions extends sfActions
   {
     $type = $request->getParameter('type');
     $titre = $request->getParameter('titre');
-    $user_id = $this->getUser()->getAttribute('user_id', null, 'sfGuardSecurityUser');
+//    $user_id = $this->getUser()->getAttribute('user_id', null, 'sfGuardSecurityUser');
     if($type == "playlist")
     {
       $new = new Playlist();
       $new->titre = $titre;
-      $new->id_user = $user_id;
+      $new->id_user = $this->user_id;
       $new->save();
-//      $playlists = Doctrine_Core::getTable('Playlist')->getPlaylistsFormUser($user_id);
-      return $this->renderPartial('accueil/playlist_li', array('playlist' => $new));
+      return $this->renderPartial('accueil/playlist_li', array('playlist' => $new, 'count_chansons' => 0));
     }
     else
     {
-//      $new = new Playlist();
-//      $new->titre = $titre;
-//      $new->id_user = $user_id;
-//      $new->save();
+      $new = new AlbumsUsers();
+      $new->id_album = Doctrine_Core::getTable('Album')->findOneBy('slug', $titre, Doctrine_Core::HYDRATE_SINGLE_SCALAR);
+      $new->id_user = $this->user_id;
+      $new->save();
+      $album = $new->getAlbum();
+      return $this->renderPartial('accueil/album_li', array('album' => $album, 'count_chansons' => $album->countChansons()));
     }
-    return $this->renderText('');
   }
   
   public function executeAjaxGetChampAlbumField(sfWebRequest $request)

@@ -22,7 +22,7 @@ class AlbumsUsersTable extends Doctrine_Table
     $dq = self::createQuery('au')
           ->delete()
           ->where('au.id_album=?', $album_id)
-          ->where('au.id_user=?', $user_id);
+          ->andWhere('au.id_user=?', $user_id);
     return $dq->execute();
   }
 }

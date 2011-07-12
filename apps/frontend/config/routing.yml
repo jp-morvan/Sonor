@@ -14,6 +14,10 @@ get_album_field:
   url:  /champ-album
   param:  { module: accueil, action: ajaxGetChampAlbumField }
 
+update_in_list:
+  url:  /mise-a-jour/:acte/:type/:slug
+  param:  { module: accueil, action: ajaxUpdateInList, acte: '', type: '', slug: '' }
+
 remove:
   url:  /suppression/:type/:slug
   param:  { module: accueil, action: ajaxRemove, type: '', slug: '' }

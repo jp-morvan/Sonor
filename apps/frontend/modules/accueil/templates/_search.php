@@ -1,5 +1,5 @@
 <div>
   <form action="" method="post" name="search">
-    <?php echo $form['search']->render() ?>
+    <?php echo $form['recherche']->render() ?>
   </form>
 </div>

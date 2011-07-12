@@ -25,11 +25,15 @@ class ChansonTable extends Doctrine_Table
   public function findForType($type, $slug)
   {
     $r = substr($type, 1);
-    $relation = ucfirst($type);
     $dq = self::createQuery('c')
           ->select('c.*, '.$r.'.*')
-          ->leftJoin('c.'.$relation.' '.$r)
+          ->leftJoin('c.'.ucfirst($type).' '.$r)
           ->where($r.'.slug = ?', $slug);
+    if($type == "album")
+    {
+      $dq->addSelect('au.id')
+         ->leftJoin($r.'.Users au');
+    }
     return $dq->execute(array(), Doctrine_Core::HYDRATE_ARRAY);
   }
   

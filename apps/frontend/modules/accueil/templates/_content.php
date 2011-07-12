@@ -1,11 +1,16 @@
+<div>
+  <img src="/images/big_play.png" class="play" alt="Jouer <?php echo ($type == "album") ? "l'".$type: $type ?> '<?php echo $relation['titre'] ?>'" onclick="play('<?php echo $type ?>', '<?php echo $relation['slug'] ?>')" /><br />
+<?php if($type == "album"): ?>
+  <div id="album_in_list">
+<?php include_partial('album_add_remove', array('relation' => $relation, 'in_list' => $in_list)) ?>
+  </div>
+<?php endif; ?>
+</div>
 <table id="chansons">
   <thead>
     <tr>
-      <th>
-        <img src="/images/big_play.png" class="play" alt="Jouer <?php echo ($type == "album") ? "l'".$type: $type ?> '<?php echo $titre ?>'" onclick="play('<?php echo $type ?>', '<?php echo $slug ?>')" />
-      </th>
-      <th colspan="2">
-        <?php echo $titre ?>
+      <th colspan="3">
+        <?php echo $relation['titre'] ?>
       </th>
     </tr>
   </thead>

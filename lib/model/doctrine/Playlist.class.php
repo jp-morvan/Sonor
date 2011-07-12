@@ -16,4 +16,9 @@ class Playlist extends BasePlaylist
   {
     return $this->titre;
   }
+  
+  public function countChansons() 
+  {
+    return count($this->getChansons());
+  }
 }

@@ -56,16 +56,16 @@
 			});
 		},
 			
-		prompt: function(message, value, title, callback, field) {
+		prompt: function(message, value, title, callback) {
 			if( title == null ) title = 'Prompt';
 			$.alerts._show(title, message, value, 'prompt', function(result) {
 				if( callback ) callback(result);
-			}, field);
+			});
 		},
 		
 		// Private methods
 		
-		_show: function(title, msg, value, type, callback, field) {
+		_show: function(title, msg, value, type, callback) {
 			
 			$.alerts._hide();
 			$.alerts._overlay('show');
@@ -131,12 +131,7 @@
 					});
 				break;
 				case 'prompt':
-//					$("#popup_message").append('<br /><input type="text" size="30" id="popup_prompt" />').after('<div id="popup_panel"><input type="button" value="' + $.alerts.okButton + '" id="popup_ok" /> <input type="button" value="' + $.alerts.cancelButton + '" id="popup_cancel" /></div>');
-          if(field == null)
-          {
-            var field = '<input type="text" size="30" id="popup_prompt" />';
-          }
-					$("#popup_message").append('<br />'+field).after('<div id="popup_panel"><input type="button" value="' + $.alerts.okButton + '" id="popup_ok" /> <input type="button" value="' + $.alerts.cancelButton + '" id="popup_cancel" /></div>');
+					$("#popup_message").append('<br /><input type="text" size="30" id="popup_prompt" />').after('<div id="popup_panel"><input type="button" value="' + $.alerts.okButton + '" id="popup_ok" /> <input type="button" value="' + $.alerts.cancelButton + '" id="popup_cancel" /></div>');
 					$("#popup_prompt").width( $("#popup_message").width() );
 					$("#popup_ok").click( function() {
 						var val = $("#popup_prompt").val();

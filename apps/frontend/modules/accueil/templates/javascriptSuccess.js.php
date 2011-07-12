@@ -8,6 +8,16 @@ function show(type, slug)
   });
 }
 
+function updateInList(type, slug, acte)
+{
+  $.ajax({
+    url: '<?php echo url_for('@update_in_list') ?>/'+acte+'/'+type+'/'+slug,
+    success: function(data) {
+      $('div#album_in_list').html(data);
+    }
+  });
+}
+
 function play(type, slug)
 {
   $.ajax({
@@ -25,6 +35,10 @@ $(function() {
     var id = $(this).attr('id').split("_");
     var type = id[1];
     var slug = id[2]+"_"+id[3];
+    if(id[4] != null)
+    {
+      img = id[0]+'_'+id[1]+'_'+id[2]+'_'+id[3];
+    }
     var _type = type.charAt(0).toUpperCase() + type.substring(1).toLowerCase();
     confirm("Confirmer la suppression ?", _type+" - Suppression", function(r) {
       if(r){
@@ -32,6 +46,7 @@ $(function() {
           url: '<?php echo url_for('@remove') ?>/'+type+'/'+slug,
           success: function(data) {
             $(img).parent('li').remove();
+            updateInList(type, slug, 'supprimer');
           }
         });
       }
@@ -44,30 +59,51 @@ $(function() {
   $('img.add').live('click', function() {
     var img = $(this);
     var id = $(this).attr('id').split("_");
+    //var type = 'playlist';
     var type = id[1];
+    //var _type = 'Playlist';
+    var slug = id[2];
     var _type = type.charAt(0).toUpperCase() + type.substring(1).toLowerCase();
-    var field = null;
-    if(type == 'album')
+    if(type == 'playlist')
     {
-      field = function(){
-         $.ajax({
-          url: '<?php echo url_for('@get_album_field') ?>',
-          success: function(data) {
-            return data;
-          }
-        });
-      };
+      prompt('Titre', '', _type+" - Ajout", function(r) {
+        if(r != null){
+          $.ajax({
+            url: '<?php echo url_for('@add') ?>/'+type+'/'+r,
+            success: function(data) {
+              $("ul#"+type+"s_list").append(data);
+              updateInList(type, r, 'ajouter');
+            }
+          });
+        }
+      });
     }
-    /*prompt('Titre', '', _type+" - Ajout", function(r) {
-      if(r != null){
-        $.ajax({
-          url: '<?php echo url_for('@add') ?>/'+type+'/'+r,
-          success: function(data) {
-            $("ul#"+type+"s_list").append(data);
-          }
-        });
+    else
+    {
+      $.ajax({
+        url: '<?php echo url_for('@add') ?>/'+type+'/'+slug,
+        success: function(data) {
+          $("ul#"+type+"s_list").append(data);
+          updateInList(type, slug, 'ajouter');
+        }
+      });
+    }
+    return false;
+  });
+});
+
+// TODO vérifier si 250ms suffisent ou s'il faut augmenter
+$(function() {
+  $('input#autocomplete_recherche').change(function() {
+    var x = setTimeout(function(){
+      var content = $('input#recherche').val().split("_");
+      var type = content[0];
+      var slug = content[1];
+      if(type == "a")
+      {
+        show('album', slug);
       }
-    }, field);*/
+    }, 250);
     return false;
   });
 });
@@ -81,7 +117,7 @@ function alert(txt, title) {
     } catch (e) {  
         oAlert(txt);  
     }  
-}  
+} 
 
 //confirm()  
 var oConfirm = confirm;  
@@ -96,11 +132,11 @@ function confirm(txt, title, func) {
 
 //prompt()  
 var oPrompt = prompt;  
-function prompt(txt, input, title, func){  
+function prompt(txt, input, title, func, field){  
     try {  
         if(title == null) title = '';
-        jPrompt(txt, input, title, func);  
+        jPrompt(txt, input, title, func, field);  
     } catch(e) {  
         func(prompt(txt, input, title));  
     }  
-}  
+}
