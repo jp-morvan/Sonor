@@ -1,7 +1,7 @@
 html{
   margin:0;
   padding:0;
-  background-color: lightblue;
+  background-color: #d9f6b7;
 }
 input#autocomplete_search{
   width: 470px;
@@ -47,4 +47,13 @@ div#content table#chansons td.duree{
 
 img.play:hover{
   cursor: pointer;
+}
+
+div#page div#sidebar div{
+  background-color: #f4bb4c;
+  margin: 0 auto;
+  text-align: center;
+  padding: 3px 0 3px 0;
+  color: #455a2d;
+  font-weight: bold;
 }

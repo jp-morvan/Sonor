@@ -1,15 +1,19 @@
 <?php if($sf_user->isAuthenticated()): ?>
-<ul>
+<ul id="playlists_list">
+  <div id="playlists">Playlists <img src="/images/icon/add.png" width="16" height="16" alt="ajouter une playlist" class="add" id="add_playlist" /></div>
 <?php if(count($playlists) > 0): ?>
-  <span>Playlists</span>
 <?php foreach($playlists as $playlist): ?>
-  <li><a href="#" onclick="show('playlists', '<?php echo $playlist->slug ?>')"><?php echo $playlist->titre ?></a></li>
+<?php include_partial('playlist_li', array('playlist' => $playlist)) ?>
 <?php endforeach; ?>
 <?php endif; ?>
-  <span>Albums</span>
+</ul>
+<ul id="albums_list">
+  <div id="albums">Albums <img src="/images/icon/add.png" width="16" height="16" alt="ajouter une playlist" class="add" id="add_album" /></div>
+<?php if(count($albums) > 0): ?>
 <?php foreach($albums as $album): ?>
-  <li><a href="#" onclick="show('album', '<?php echo $album->slug ?>')"><?php echo $album->titre ?></a></li>
+<?php include_partial('album_li', array('album' => $album)) ?>
 <?php endforeach; ?>
+<?php endif; ?>
 </ul>
 <?php else: ?>
 &nbsp;

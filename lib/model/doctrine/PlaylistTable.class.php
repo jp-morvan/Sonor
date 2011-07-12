@@ -20,10 +20,11 @@ class PlaylistTable extends Doctrine_Table
   public function getPlaylistsFormUser($user_id)
   {
     $dq = self::createQuery('p')
-          ->select('p.*, c.*, COUNT(c.id) as count')
+//          ->select('p.*, c.*, COUNT(c.id) as count')
+          ->select('p.*, c.*')
           ->where('p.id_user = ?', $user_id)
           ->leftJoin('p.Chansons c')
-          ->having('count > 0')
+//          ->having('count > 0')
           ->orderBy('p.titre ASC');
     return $dq->execute();
   }

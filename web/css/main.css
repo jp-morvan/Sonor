@@ -1,7 +1,7 @@
 header, div#page{
   width: 1000px;
   margin: 0 auto;
-  background-color: lightslategrey;
+  background-color: #aede76;
 }
 
 header{
@@ -12,7 +12,7 @@ header{
   margin:0;
   margin-left: -503px;
   padding:0;
-  border: 3px solid #330099;
+  border: 3px solid #f4bb4c;
   border-top: none;
 }
 
@@ -55,7 +55,7 @@ header audio#audio{
 div#page{
   height: 100%;
   margin-top: 144px;
-  border: 3px solid #330099;
+  border: 3px solid #f4bb4c;
   border-top: none;
 }
 
@@ -64,8 +64,8 @@ div#page div#sidebar{
 /*  float: left;*/
   height: 100%;
   width: 245px;
-  border-right: 3px solid #330099;
-  border-top: 10px solid #330099;
+  border-right: 3px solid #f4bb4c;
+  border-top: 10px solid #f4bb4c;
 }
 
 div#page div#sidebar ul{
@@ -74,21 +74,13 @@ div#page div#sidebar ul{
   list-style-type: none;
 }
 
-div#page div#sidebar ul span{
-  background-color: #330099;
-  display: inline-block;
-  width: 100%;
-  padding: 3px 0 3px 0;
-}
-
 div#page div#sidebar ul li{
   padding-left: 10px;
 }
 
 div#page div#content{
-  border-top: 10px solid #330099;
-/*  float:right;*/
-margin-left: 250px;
+  border-top: 10px solid #f4bb4c;
+  margin-left: 250px;
   height: 100%;
   width: 652px;
 }

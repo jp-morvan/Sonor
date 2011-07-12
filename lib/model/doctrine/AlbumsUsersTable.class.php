@@ -16,4 +16,13 @@ class AlbumsUsersTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('AlbumsUsers');
     }
+    
+  public function remove($album_id, $user_id) 
+  {
+    $dq = self::createQuery('au')
+          ->delete()
+          ->where('au.id_album=?', $album_id)
+          ->where('au.id_user=?', $user_id);
+    return $dq->execute();
+  }
 }

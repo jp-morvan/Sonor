@@ -83,4 +83,45 @@ class accueilActions extends sfActions
         'slug' => $slug)
     );
   }
+  
+  public function executeAjaxRemove(sfWebRequest $request)
+  {
+    $id = substr(strrchr($request->getParameter('slug'), "_"), 1);
+    $type = $request->getParameter('type');
+    if($type == "playlist")
+    {
+      $delete = Doctrine_Core::getTable('Playlist')->findOneBy('id', $id);
+      $delete->delete();
+    }
+    else
+    {
+      $user_id = $this->getUser()->getAttribute('user_id', null, 'sfGuardSecurityUser');
+      $delete = Doctrine_Core::getTable('AlbumsUsers')->remove($id, $user_id);
+    }
+    return $this->renderText('');
+  }
+  
+  public function executeAjaxAdd(sfWebRequest $request)
+  {
+    $type = $request->getParameter('type');
+    $titre = $request->getParameter('titre');
+    $user_id = $this->getUser()->getAttribute('user_id', null, 'sfGuardSecurityUser');
+    if($type == "playlist")
+    {
+      $new = new Playlist();
+      $new->titre = $titre;
+      $new->id_user = $user_id;
+      $new->save();
+//      $playlists = Doctrine_Core::getTable('Playlist')->getPlaylistsFormUser($user_id);
+      return $this->renderPartial('accueil/playlist_li', array('playlist' => $new));
+    }
+    else
+    {
+//      $new = new Playlist();
+//      $new->titre = $titre;
+//      $new->id_user = $user_id;
+//      $new->save();
+    }
+    return $this->renderText('');
+  }
 }

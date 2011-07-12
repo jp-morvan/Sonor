@@ -10,6 +10,14 @@ show_chansons:
   url:  /liste-des-chansons/:type/:slug
   param:  { module: accueil, action: ajaxListeChansons, type: '', slug: '' }
 
+remove:
+  url:  /suppression/:type/:slug
+  param:  { module: accueil, action: ajaxRemove, type: '', slug: '' }
+
+add:
+  url:  /ajout/:type/:titre
+  param:  { module: accueil, action: ajaxAdd, type: '', titre: '' }
+
 javascript_functions:
   url:   /functions.:sf_format
   param: { module: accueil, action: javascript, sf_format: js }
