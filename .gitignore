@@ -1,5 +1,5 @@
 cache/*
-log/*
+log/*.log
 config/databases.yml
 nbproject
 *.mp3
