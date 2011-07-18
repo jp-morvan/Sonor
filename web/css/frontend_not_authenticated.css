@@ -36,3 +36,16 @@ header div#user_info form input[type=submit]{
 header div#user_info form input[type=submit]:hover{
   background-color: #d9f6b7;
 }
+
+header div#user_info form input[type=text].error,
+header div#user_info form input[type=password].error{
+  background-color: bisque;
+  border-color: #c43d3d;
+}
+
+header div#user_info form input[type=text].error:hover,
+header div#user_info form input[type=password].error:hover,
+header div#user_info form input[type=text].error:focus,
+header div#user_info form input[type=password].error:focus{
+  border-color: red;
+}

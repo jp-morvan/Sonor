@@ -14,6 +14,14 @@ class sfGuardFormAjaxSignin extends BasesfGuardFormSignin
     $this->widgetSchema['username']->setLabel(__('E-Mail', array(), 'sf_guard'));
     $this->widgetSchema['password']->setLabel(__('Password', array(), 'sf_guard'));
     $this->widgetSchema['remember']->setLabel(__('Remember', array(), 'sf_guard'));
+    if(!is_null($request = $this->getOption('request')))
+    {
+      if($request->isXmlHttpRequest())
+      {
+        $this->disableLocalCSRFProtection();
+      }
+    }
+    $this->widgetSchema->setFormFormatterName('Login');
   }
 }
 

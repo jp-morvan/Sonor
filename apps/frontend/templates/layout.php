@@ -5,11 +5,11 @@
     <?php include_metas() ?>
     <?php include_title() ?>
     <link rel="shortcut icon" href="/favicon.ico" />
+    <?php echo use_javascript('jquery/jquery.alerts.js'); ?>
+    <?php echo use_javascript('jquery/notification.js'); ?>
 <?php if($sf_user->isAuthenticated()): ?>
       <?php echo use_javascript('/sfFormExtraPlugin/js/jquery.autocompleter.js'); ?>
       <?php echo use_javascript('/audio_player.js'); ?>
-      <?php echo use_javascript('jquery/jquery.alerts.js'); ?>
-      <?php echo use_javascript('jquery/notification.js'); ?>
       <?php echo use_stylesheet('frontend.css'); ?>
 <?php else: ?>
       <?php echo use_stylesheet('frontend_not_authenticated.css'); ?>
@@ -47,13 +47,11 @@
         <?php echo $sf_content ?>
       </div>
     </div>
-<?php if($sf_user->isAuthenticated()): ?>
     <div id="notification">
       <div class="info message"></div>
       <div class="error message"></div>
       <div class="warning message"></div>
       <div class="success message"></div>
     </div>
-<?php endif; ?>
   </body>
 </html>

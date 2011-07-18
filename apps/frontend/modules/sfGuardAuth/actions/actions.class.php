@@ -28,7 +28,7 @@ class sfGuardAuthActions extends BasesfGuardAuthActions
     }
 
     $class = sfConfig::get('app_sf_guard_plugin_signin_form', 'sfGuardFormSignin'); 
-    $this->form = new $class();
+    $this->form = new $class(null, array('request' => $request));
 
     if ($request->isMethod('post'))
     {
@@ -44,6 +44,10 @@ class sfGuardAuthActions extends BasesfGuardAuthActions
         $signinUrl = sfConfig::get('app_sf_guard_plugin_success_signin_url', $user->getReferer($request->getReferer()));
 
         return $this->redirect('' != $signinUrl ? $signinUrl : '@homepage');
+      }
+      else
+      {
+        return $this->renderPartial('signin_form', array('form' => $this->form));
       }
     }
     else
@@ -66,7 +70,7 @@ class sfGuardAuthActions extends BasesfGuardAuthActions
       $this->getResponse()->setStatusCode(401);
     }
   }
-
+  
   public function executePassword($request)
   {
   }

@@ -160,4 +160,25 @@ $(function() {
     return false;
   });
 });
+
+$(function() {
+  $('input#submit_form_login').live('click', function() {
+    var form = $('form#form_login');
+    $.ajax({
+      type: "POST",
+      url: '<?php echo url_for('@ajax_login') ?>',
+      data: form.serialize(),
+      success: function(data){
+        if($(data+":contains(form)") != true)
+        {
+          $('div#user_info').html(data);
+          showMessage('error', '<h1>erreur</h1>');
+          return false;
+        }
+        return true;
+      }
+    });
+    return false;
+  });
+});
 <?php endif; ?>
