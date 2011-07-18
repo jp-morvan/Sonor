@@ -23,35 +23,6 @@ header div#logo{
   height: 64px;
 }
 
-header div#user_info{
-/*  float:right;*/
-  width: 50%;
-  height: 30px;
-}
-
-header div#reader{
-  float:right;
-  width: 50%;
-  height: 80px;
-}
-
-header div#search{
-/*  display: inline-block;*/
-float:right;
-  width: 50%;
-  height: 80px;
-  text-align: center;
-}
-
-header div#search div{
-/*  margin: 20px auto;*/
-}
-
-header audio#audio{
-  height:64px;
-  width: 100%;
-}
-
 div#page{
   height: 100%;
   margin-top: 144px;
@@ -61,7 +32,6 @@ div#page{
 
 div#page div#sidebar{
   display: inline-block;
-/*  float: left;*/
   height: 100%;
   width: 245px;
   border-right: 3px solid #f4bb4c;

@@ -1,3 +1,4 @@
+<?php if($sf_user->isAuthenticated()): ?>
 function show(type, slug)
 {
   $.ajax({
@@ -145,3 +146,18 @@ function prompt(txt, input, title, func, field){
         func(prompt(txt, input, title));  
     }  
 }
+<?php else: ?>
+
+$(function() {
+  $('a#login').live('click', function() {
+    var a = $('a#login');
+    $.ajax({
+      url: '<?php echo url_for('@ajax_login') ?>',
+      success: function(data) {
+        a.parent().html(data);
+      }
+    });
+    return false;
+  });
+});
+<?php endif; ?>

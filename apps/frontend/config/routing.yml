@@ -1,3 +1,11 @@
+sf_guard_forgot_password:
+  url:  /j-ai-perdu-mon-mot-de-passe
+  param:  { module: sfGuardAuth, action: password }
+
+ajax_login:
+  url:  /authentification
+  param:  { module: sfGuardAuth, action: ajaxSignin }
+  
 search:
   url:  /recherche/:type
   param:  { module: accueil, action: search, type: '' }

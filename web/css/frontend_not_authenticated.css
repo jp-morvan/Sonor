@@ -1,0 +1,38 @@
+html{
+  margin:0;
+  padding:0;
+  background-color: #d9f6b7;
+}
+
+header div#user_info{
+  margin: 0 auto;
+  padding-top: 5px;
+  text-align: center;
+  height: 30px;
+  background-color: #f4bb4c;
+}
+
+header div#user_info form label{
+  font-size: smaller;
+}
+
+header div#user_info form input[type=text],
+header div#user_info form input[type=password]{
+  background-color: #d9f6b7;
+  border: 2px solid #d9f6b7;
+}
+header div#user_info form input[type=text]:hover,
+header div#user_info form input[type=password]:hover,
+header div#user_info form input[type=text]:focus,
+header div#user_info form input[type=password]:focus{
+  border: 2px solid #aede76;
+}
+
+header div#user_info form input[type=submit]{
+  border: 2px solid #aede76;
+  background-color: #aede76;
+  font-weight: bold;
+}
+header div#user_info form input[type=submit]:hover{
+  background-color: #d9f6b7;
+}
