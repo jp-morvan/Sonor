@@ -13,4 +13,3 @@ function test()
   alert('Chanson suivante !');
 }
 </script>
-<a onclick="test(); return false;">test</a>

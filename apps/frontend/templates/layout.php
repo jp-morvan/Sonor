@@ -20,17 +20,17 @@
   </head>
   <body>
     <header>
-<?php if($sf_user->isAuthenticated()): ?>
-      <div id="reader">
-        <?php include_partial('global/reader') ?>
-      </div>
-<?php endif; ?>
       <div id="user_info">
         <?php include_partial('global/user_infos') ?>
       </div>
       <div id="logo">
         <a href="<?php echo url_for('@homepage') ?>"><img src="/images/logo.png" alt="Sonor" /></a>
       </div>
+<?php if($sf_user->isAuthenticated()): ?>
+      <div id="reader">
+        <?php include_partial('global/reader') ?>
+      </div>
+<?php endif; ?>
 <?php if($sf_user->isAuthenticated()): ?>
       <div id="search">
         <?php include_component('accueil', 'search') ?>

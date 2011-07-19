@@ -16,11 +16,21 @@ header{
   border-top: none;
 }
 
+header div#user_info{
+  margin: 0 auto;
+  padding-top: 5px;
+  text-align: center;
+  height: 30px;
+  width:100%;
+  font-size: smaller;
+  background-color: #f4bb4c;
+}
+
 header div#logo{
   display: inline-block;
   text-align: center;
   width: 50%;
-  height: 64px;
+  height: 80px;
 }
 
 div#page{

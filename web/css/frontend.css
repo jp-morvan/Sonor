@@ -4,11 +4,6 @@ html{
   background-color: #d9f6b7;
 }
 
-header div#user_info{
-  width: 50%;
-  height: 30px;
-}
-
 header div#reader{
   float:right;
   width: 50%;
@@ -18,7 +13,6 @@ header div#reader{
 header div#search{
   float:right;
   width: 50%;
-  height: 80px;
   text-align: center;
 }
 
