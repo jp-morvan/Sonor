@@ -46,6 +46,7 @@
         <?php echo $sf_content ?>
       </div>
 <?php endif; ?>
+    <div id="clear"></div>
     </div>
     <div id="notification">
       <div class="info message"></div>

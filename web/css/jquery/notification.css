@@ -50,6 +50,7 @@ div#notification .message
   top: 0;
   -webkit-animation: animate-bg 5s linear infinite;
   -moz-animation: animate-bg 5s linear infinite;
+  z-index: 20000;
 }
 
 div#notification h1
