@@ -23,7 +23,7 @@ function showMessage(type, msg)
   {
     container.html(msg);
   }
-  container.animate({top:"0"}, 1000).delay(1000).animate({top:"-40"}, 2000);
+  container.animate({top:"0"}, 1000).delay(1000).animate({top:"-"+container.outerHeight()}, 2000);
 }
 
 $(document).ready(function(){

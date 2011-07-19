@@ -42,10 +42,10 @@
       <div id="sidebar">
         <?php include_component('accueil', 'sidebar') ?>
       </div>
-<?php endif; ?>
       <div id="content">
         <?php echo $sf_content ?>
       </div>
+<?php endif; ?>
     </div>
     <div id="notification">
       <div class="info message"></div>

@@ -169,13 +169,16 @@ $(function() {
       url: '<?php echo url_for('@ajax_login') ?>',
       data: form.serialize(),
       success: function(data){
-        if($(data+":contains(form)") != true)
+        if(data.search(/form/i) > 1)
         {
           $('div#user_info').html(data);
           showMessage('error', '<h1>erreur</h1>');
           return false;
         }
-        return true;
+        else
+        {
+          window.location.href = '<?php echo url_for('@homepage') ?>';
+        }
       }
     });
     return false;

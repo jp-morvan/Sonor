@@ -1,3 +1,5 @@
 all:
-  sf_guard_plugin_signin:
-    form: sfGuardFormAjaxSignin
+  sf_guard_plugin:
+    signin_form: sfGuardFormAjaxSignin
+    success_signin_url: ""
+    

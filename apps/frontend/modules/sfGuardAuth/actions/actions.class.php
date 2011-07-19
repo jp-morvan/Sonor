@@ -24,7 +24,7 @@ class sfGuardAuthActions extends BasesfGuardAuthActions
     $user = $this->getUser();
     if ($user->isAuthenticated())
     {
-      return $this->redirect('@homepage');
+      $this->redirect('@homepage');
     }
 
     $class = sfConfig::get('app_sf_guard_plugin_signin_form', 'sfGuardFormSignin'); 
@@ -38,12 +38,7 @@ class sfGuardAuthActions extends BasesfGuardAuthActions
         $values = $this->form->getValues(); 
         $this->getUser()->signin($values['user'], array_key_exists('remember', $values) ? $values['remember'] : false);
 
-        // always redirect to a URL set in app.yml
-        // or to the referer
-        // or to the homepage
-        $signinUrl = sfConfig::get('app_sf_guard_plugin_success_signin_url', $user->getReferer($request->getReferer()));
-
-        return $this->redirect('' != $signinUrl ? $signinUrl : '@homepage');
+        return $this->renderText('');
       }
       else
       {
