@@ -5,19 +5,25 @@ html{
 }
 
 header div#logo{
-  width: 50%;
+  width: 25%;
+  float:left;
 }
 
 header div#reader{
-  float:right;
-  width: 50%;
+  float:left;
+  position: relative;
+  width: 40%;
   height: 80px;
 }
 
 header div#search{
+  position: relative;
   float:right;
-  width: 50%;
+  width: 35%;
   text-align: center;
+  height: 40px;
+  vertical-align: middle;
+  padding-top: 40px;
 }
 
 header audio#audio{
@@ -26,7 +32,7 @@ header audio#audio{
 }
 
 input#autocomplete_recherche{
-  width: 470px;
+  width: 90%;
 }
 
 div#content table#chansons{
