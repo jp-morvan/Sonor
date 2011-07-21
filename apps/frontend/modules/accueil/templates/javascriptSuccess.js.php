@@ -24,8 +24,11 @@ function play(type, slug)
   $.ajax({
     url: '<?php echo url_for('@play') ?>/'+type+'/'+slug,
     success: function(data) {
-      $('audio#audio').attr('src', data);
-      $('audio#audio').attr('autoplay', 'autoplay');
+      /*$('audio#audio').attr('src', data);
+      $('audio#audio').attr('autoplay', 'autoplay');*/
+      //lireChanson(data);
+      
+      $('#test').html(data);
     }
   });
 }

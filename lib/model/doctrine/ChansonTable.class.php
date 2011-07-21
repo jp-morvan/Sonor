@@ -34,7 +34,8 @@ class ChansonTable extends Doctrine_Table
       $dq->addSelect('au.id')
          ->leftJoin($r.'.Users au');
     }
-    return $dq->execute(array(), Doctrine_Core::HYDRATE_ARRAY);
+//    return $dq->execute(array(), Doctrine_Core::HYDRATE_ARRAY);
+    return $dq->execute();
   }
   
   public function searchEverything($q, $limit = 10) 

@@ -59,8 +59,9 @@ class accueilActions extends sfActions
     if($type == "chanson")
     {
       $chanson = Doctrine_Core::getTable('Chanson')->findOneBy('slug', $slug);
-      $path = $chanson->getAlbumDirectory().$chanson->audio_file.".".$request->getAudioFileType();
-      $filename = sfConfig::get('app_files_storage_path_list').$path;
+//      $path = $chanson->getAlbumDirectory().$chanson->audio_file.".".$request->getAudioFileType();
+      $path = $chanson->getAlbumDirectory().$chanson->audio_file;
+//      $filename = sfConfig::get('app_files_storage_path_list').$path;
       $file = $request->getAudioPath().$path;
       return $this->renderText($file);
     }
@@ -71,16 +72,12 @@ class accueilActions extends sfActions
       $album = Doctrine_Core::getTable('Album')->findOneBy('slug', $slug);
       foreach(($chansons = $album->getChanson()) as $chanson)
       {
-        $ids[] = $chanson->slug;
+        $path = $chanson->getAlbumDirectory().$chanson->audio_file;
+        $file = $request->getAudioPath().$path;
+        $ids[] = $file;
       }
       return $this->renderText(json_encode($ids));
     }
-//    $this->getResponse()->clearHttpHeaders();
-//    $this->getResponse()->setHttpHeader('Content-Length', filesize($filename));
-//    $this->getResponse()->setHttpHeader('Connection', 'Keep-Alive');
-//    $this->getResponse()->setContentType('audio/ogg');
-//    $this->getResponse()->setContent(file_get_contents($filename));
-//    $this->getResponse()->send();
   }
   
   public function executeAjaxListeChansons(sfWebRequest $request)
@@ -104,12 +101,20 @@ class accueilActions extends sfActions
         $in_user_list = true;
       }
     }
+    $ids = array();
+    foreach($chansons as $chanson)
+    {
+      $path = $chanson->getAlbumDirectory().$chanson->audio_file;
+      $file = $request->getAudioPath().$path;
+      $ids[] = $file;
+    }
     return $this->renderPartial('accueil/content', array(
         'chansons' => $chansons, 
         'type' => $type, 
         'relation' => $relation, 
         'slug' => $slug,
-        'in_list' => $in_user_list
+        'in_list' => $in_user_list,
+        'list'  => $ids
     ));
   }
   
