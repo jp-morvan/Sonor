@@ -22,10 +22,10 @@
   <body>
     <header>
       <div id="user_info">
-        <?php include_partial('global/user_infos') ?>
-      </div>
-      <div id="logo">
-        <a href="<?php echo url_for('@homepage') ?>"><img src="/images/logo.png" alt="Sonor" /></a>
+        <div id="logo">
+          <a href="<?php echo url_for('@homepage') ?>"><img src="/images/logo-icon.png" alt="" /> <span>Sonor</span></a>
+        </div>
+        <span id="user"><?php include_partial('global/user_infos') ?></span>
       </div>
 <?php if($sf_user->isAuthenticated()): ?>
       <div id="reader">

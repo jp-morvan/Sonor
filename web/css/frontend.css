@@ -2,18 +2,95 @@ html{
   margin:0;
   padding:0;
   background-color: #d9f6b7;
-}
-
-header div#logo{
-  width: 25%;
-  float:left;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 header div#reader{
   float:left;
   position: relative;
-  width: 40%;
+  width: 62%;
   height: 80px;
+}
+
+header div#reader div#player{
+  width: 100%;
+}
+
+header div#reader div#player div#controls{
+  width: 190px;
+  padding: 10px 10px 0 10px;
+  display: inline-block;
+  vertical-align:middle;
+  text-align: center;
+}
+
+header div#reader div#player div#controls div#buttons{
+  display: inline-block;
+}
+
+header div#reader div#player div#controls img:hover{
+  cursor: pointer;
+}
+
+header div#reader div#bloc_volume{
+  display: inline-block;
+}
+
+header div#reader div#bloc_volume img#mute_unmute{
+  width: 16px;
+  height: 16px;
+  vertical-align: middle;
+}
+
+header div#reader div#bloc_volume div#volume_slider{
+  width:40px;
+  height:6px;
+  display: inline-block;
+  font-size: 7px;
+}
+header div#reader div#bloc_volume div#volume{
+  width:100%;
+  text-align: center;
+  display: block;
+  font-size: 9px;
+}
+
+header div#reader div#player div#bloc_player{
+  width: 400px;
+  text-align: center;
+  height: 40px;
+  display: inline-block;
+  border: 3px solid #f4bb4c;
+  background-color: #f4bb4c;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px; 
+}
+
+header div#reader div#player div#bloc_player div#title,
+header div#reader div#player div#bloc_player div#artiste{
+  display: inline-block;
+  font-size: 13px;
+}
+
+header div#reader div#player div#bloc_player div#artiste{
+  font-weight: bold;
+}
+
+header div#reader div#player div#bloc_player div#timer{
+  display: inline-block;
+  float:left;
+  width: 45px;
+  font-size: 11px;
+  margin-top: -3px;
+}
+
+header div#reader div#player div#bloc_player div#time_slider{
+  width:85%;
+  margin-right: 10px;
+  height:9px;
+  font-size: 10px;
+  float: right;
 }
 
 header div#search{
@@ -24,11 +101,6 @@ header div#search{
   height: 40px;
   vertical-align: middle;
   padding-top: 40px;
-}
-
-header audio#audio{
-  height:64px;
-  width: 100%;
 }
 
 input#autocomplete_recherche{

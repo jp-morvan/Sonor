@@ -1,94 +1,145 @@
 <!--<audio id="audio" src="<?php echo $sf_request->getAudioPath() ?>empty.<?php echo $sf_request->getAudioFileType() ?>" controls preload></audio>-->
 <div id="player">
-  <img id="previous" src="/images/player/previous.png" />
-  <img id="lecture_pause" src="/images/player/play-48.png" />
-  <img id="stop" src="/images/player/stop.png" />
-  <img id="next" src="/images/player/next.png" />
-  <div id="timer"></div>
-</div>
-<div id="bloc_volume">
-  <img id="volume_down" src="/images/player/vol-down.png" />
-  <img id="volume_up" src="/images/player/vol-up2.png" />
-  <img id="mute" src="/images/player/mute.png" />
-  <span id="volume"></span>
+  <div id="controls">
+    <div id="buttons">
+    <img id="previous" src="/images/player/previous.png" />
+    <img id="play_pause" src="/images/player/play-48.png" />
+<!--    <img id="stop" src="/images/player/stop.png" />-->
+    <img id="next" src="/images/player/next.png" />
+    </div>
+    <div id="bloc_volume">
+      <img id="mute_unmute" src="/images/player/mute.png" />
+      <div id="volume_slider"></div>
+      <div id="volume"></div>
+    </div>
+  </div>
+  <div id="bloc_player">
+    <div id="artiste">Artiste</div> - 
+    <div id="title">Titre de la chanson</div>
+    <div id="time_slider"></div>
+    <div id="timer"></div>
+  </div>
 </div>
 <script type="text/javascript">
-//var mySound = new buzz.sound("<?php echo $sf_request->getAudioPath() ?>empty.<?php echo $sf_request->getAudioFileType() ?>");
-
-var mySound = new buzz.sound("<?php echo $sf_request->getAudioPath() ?>empty.<?php echo $sf_request->getAudioFileType() ?>")
-                        .bind( "timeupdate", function() {
-                            $("#timer").html(buzz.toTimer( this.getTime() ));
-                        })
-                        .bind("volumechange", function() {
-                            $("#volume").html(this.getVolume()+"%");
-                        });
-//var mySound1 = new buzz.sound("<?php echo $sf_request->getAudioPath() ?>empty.<?php echo $sf_request->getAudioFileType() ?>");
-//    mySound2 = new buzz.sound("/uploads/audio/list/burnin.ogg"),
-//    mySound3 = new buzz.sound("/uploads/audio/list/ensemble.ogg");
-//var myGroup = new buzz.group(mySound1, mySound2, mySound3);	
-//var myGroup = new buzz.group(mySound1);	
-//myGroup.loop().play().fadeIn()
-//    .fadeIn();
-//    .loop();
-//    .bind( "timeupdate", function() {
-//        var timer = buzz.toTimer( this.getTime() );
-//        document.getElementById( "timer" ).innerHTML = timer;
-//    });
+ArrayAccess = function(data){
+	this.data = data;
+};
+ArrayAccess.prototype = {
+	current: 0,
+	data: [],
+	move: function(n){
+		var l = this.data.length;
+		return this.data[Math.abs(this.current = (this.current + (n ? 1 : l - 1)) % l)];
+	},
+	getNext: function(){
+		return this.move(1);
+	},
+	getPrevious: function(){
+		return this.move(0);
+	},
+	getCurrent: function(){
+		return this.data[this.current];
+	}
+};
+  
+var sound1 = new buzz.sound("/uploads/audio/list/franz-ferdinand/franz-ferdinand/01-jacqueline.ogg");
+var sound2 = new buzz.sound("/uploads/audio/list/franz-ferdinand/franz-ferdinand/02-tell-her-tonight.ogg");
+var sound3 = new buzz.sound("/uploads/audio/list/franz-ferdinand/franz-ferdinand/03-take-me-out.ogg");
+var liste = new ArrayAccess([sound1, sound2, sound3]);
+var currentSound = sound1;
 
 $(function() {
-  // STOP
-  $('#stop').live('click', function() {
-    mySound.stop();
-    changePlayPauseButton('play');
+  // SLIDER DU VOLUME
+  $( "#volume_slider" ).slider({
+    range: "min",
+    value: 80,
+    min: 0,
+    max: 100,
+    step: 5,
+    slide: function( event, ui ) {
+      $( "#volume" ).html(ui.value + "%");
+    }
   });
-  // PLAY & PAUSE
-  $('#lecture_pause').live('click', function() {
-    if(mySound.sound.paused)
-    {
-      changePlayPauseButton('pause');
+  $( "#volume" ).html( $( "#volume_slider" ).slider( "value" )  + "%");
+  $( "#volume_slider" ).bind( "slidechange", function(event, ui) {
+    currentSound.setVolume(ui.value);
+  });
+  // SLIDER DU TEMPS
+  $( "#time_slider" ).slider({
+    range: "min",
+    value: 0,
+    min: 0,
+    max: 0,
+    step: 1,
+    slide: function( event, ui ) {
+      currentSound.setTime(ui.value);
     }
+  });
+  // VOLUME CHANGE
+  currentSound.bind("volumechange", function() {
+    if(this.isMuted())
+      changeMuteUnmuteButton('unmute');
     else
-    {
+      changeMuteUnmuteButton('mute');
+    $("#volume").html(this.getVolume()+"%");
+  });
+  // INIT DURACTION IN TIME SLIDER
+  currentSound.bind("durationchange", function(e) {
+    $( "#time_slider" ).slider( "option", "max", this.getDuration() );
+  });
+  // UPDATE SLIDER POSITION AND TIMER INDICATION
+  currentSound.bind( "timeupdate", function() {
+    $("#timer").html(buzz.toTimer( this.getTime() ));
+    $( "#time_slider" ).slider( "option", "value", this.getTime() );
+  });
+  // STOP
+  $('#next').live('click', function() {
+    $('#stop').click();
+    currentSound = liste.getNext();
+    $('#play_pause').click();
+    alert(currentSound.getTime());
+    $( "#time_slider" ).slider( "option", "value", currentSound.getTime() );
+  });
+  // STOP
+//  $('#stop').live('click', function() {
+//    currentSound.stop();
+//    changePlayPauseButton('play');
+//  });
+  // PLAY & PAUSE
+  $('#play_pause').live('click', function() {
+    if(currentSound.isPaused())
+      changePlayPauseButton('pause');
+    else
       changePlayPauseButton('play');
-    }
-    mySound.togglePlay();
+    currentSound.togglePlay();
   });
   // MUTE
-  var oldVolume = null;
-  $('#mute').live('click', function() {
-//    var volume = mySound.getVolume();
-//    if(volume > 0)
-//    {
-//      oldVolume = volume;
-//      mySound.setVolume(0);
-//    }
-//    else
-//    {
-//      mySound.setVolume(oldVolume);
-//    }
-    mySound.toggleMute();
-  });
-  // VOLUME UP
-  $('#volume_up').live('click', function() {
-    mySound.increaseVolume(20);
-  });
-  // VOLUME DOWN
-  $('#volume_down').live('click', function() {
-    mySound.decreaseVolume(20);
+  $('#mute_unmute').live('click', function() {
+    currentSound.toggleMute();
+    if(currentSound.isMuted())
+      $( "#volume_slider" ).slider( "disable");
+    else
+      $( "#volume_slider" ).slider( "enable");
   });
 });
 
 function changePlayPauseButton(stateToGo)
 {
-  var button = $('#lecture_pause');
+  var button = $('#play_pause');
   if(stateToGo == "pause")
-  {
     var img = '/images/player/pause-48.png';
-  }
   else
-  {
     var img = '/images/player/play-48.png';
-  }
+  button.attr('src', img);
+}
+
+function changeMuteUnmuteButton(stateToGo)
+{
+  var button = $('#mute_unmute');
+  if(stateToGo == "mute")
+    var img = '/images/player/mute.png';
+  else
+    var img = '/images/player/unmute.png';
   button.attr('src', img);
 }
 </script>

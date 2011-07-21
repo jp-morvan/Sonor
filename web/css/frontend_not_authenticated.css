@@ -4,8 +4,8 @@ html{
   background-color: #d9f6b7;
 }
 
-header div#logo{
-  width: 100%;
+header div#user_info span#user{
+  width: 892px;  
 }
 
 header div#user_info form input[type=text],

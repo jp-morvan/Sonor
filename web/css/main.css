@@ -31,11 +31,33 @@ header div#user_info{
   font-size: smaller;
   background-color: #f4bb4c;
 }
+/*
+header div#user_info span#user{
+  margin-left: -108px;
+}*/
 
-header div#logo{
+header div#user_info div#logo{
+  float:left;
+  height: 30px;
+  margin-top: -3px;
+}
+
+header div#user_info div#logo img{
+  height: 30px;
+  vertical-align: middle;
+}
+
+header div#user_info div#logo a{
+  text-decoration: none;
+}
+
+header div#user_info div#logo a span{
+  vertical-align: middle;
+  font-size: x-large;
+  color: #3b8eb5;
+  font-weight: bold;
   display: inline-block;
-  text-align: center;
-  height: 80px;
+  text-shadow: 1px 1px 3px #ddd;
 }
 
 div#page{

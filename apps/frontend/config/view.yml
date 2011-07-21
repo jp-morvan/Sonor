@@ -12,7 +12,7 @@ default:
     language:     fr
     #robots:       index, follow
 
-  stylesheets:    [main.css, /sfFormExtraPlugin/css/jquery.autocompleter.css, jquery/jquery.alerts.css, jquery/notification.css]
+  stylesheets:    [main.css, /sfFormExtraPlugin/css/jquery.autocompleter.css, jquery/jquery.alerts.css, jquery/notification.css, jquery/jquery-ui.custom.css]
 
   javascripts:    [jquery/jquery.min.js, jquery/jquery-ui.custom.min.js]
 
