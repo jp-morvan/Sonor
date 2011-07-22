@@ -1,5 +1,6 @@
 <div>
-  <img src="/images/big_play.png" class="play" alt="Jouer <?php echo ($type == "album") ? "l'".$type: $type ?> '<?php echo $relation['titre'] ?>'" onclick="play('<?php echo $type ?>', '<?php echo $relation['slug'] ?>')" /><br />
+<!--  <img src="/images/big_play.png" class="play" alt="Jouer <?php echo ($type == "album") ? "l'".$type: $type ?> '<?php echo $relation['titre'] ?>'" onclick="play('<?php echo $type ?>', '<?php echo $relation['slug'] ?>')" /><br />-->
+  <img src="/images/big_play.png" class="play" alt="Jouer <?php echo ($type == "album") ? "l'".$type: $type ?> '<?php echo $relation['titre'] ?>'" onclick="lecture('album')" /><br />
 <?php if($type == "album"): ?>
   <div id="album_in_list">
 <?php include_partial('album_add_remove', array('relation' => $relation, 'in_list' => $in_list)) ?>
@@ -18,7 +19,7 @@
 <?php foreach($chansons as $id => $chanson): ?>
     <tr class="<?php echo ($id%2 == 0) ? 'even' : 'odd' ?>">
       <td class="play">
-        <img src="/images/play.png" class="play" alt="Jouer la chanson '<?php echo $chanson['titre'] ?>'" onclick="lecture('<?php echo $id ?>', 'chanson')" />
+        <img src="/images/play.png" class="play" alt="Jouer la chanson '<?php echo $chanson['titre'] ?>'" onclick="lecture('chanson', '<?php echo $id ?>')" />
 <!--        <img src="/images/play.png" class="play" alt="Jouer la chanson '<?php echo $chanson['titre'] ?>'" onclick="play('chanson', '<?php echo $chanson['slug'] ?>')" />-->
       </td>
       <td class="titre">
@@ -32,19 +33,23 @@
   </tbody>
 </table>
 <script type="text/javascript">
-  var currentSound = new buzz.sound('/uploads/audio/list/empty', {formats: [ "ogg", "mp3"]});;
-  var pistes = [
+  var myGroup = new buzz.group([ 
 <?php foreach($list as $l): ?>
-    "<?php echo $l ?>",
+    <?php echo 'new buzz.sound(\''.$l.'\', {formats: [ "ogg", "mp3"]}),'; ?>
 <?php endforeach; ?>
-  ];
-  function lecture(piste, type)
+]);
+//  var myGroup = new buzz.sound('/uploads/audio/list/empty', {formats: [ "ogg", "mp3"]});;
+  function lecture(type, piste)
   {
-    if(type == "chanson")
+    /*if(type == "chanson")
     {
-      currentSound.stop();
-      currentSound = new buzz.sound(''+pistes[piste]+'', {formats: [ "ogg", "mp3"]});
+      myGroup.stop();
+      myGroup = new buzz.sound(''+pistes[piste]+'', {formats: [ "ogg", "mp3"]});
       $('#play_pause').click();
+    }*/
+    if(type == "album")
+    {
+      myGroup.getCurrent().play();
     }
   }
 
@@ -62,7 +67,7 @@ $(function() {
   });
   $( "#volume" ).html( $( "#volume_slider" ).slider( "value" )  + "%");
   $( "#volume_slider" ).bind( "slidechange", function(event, ui) {
-    currentSound.setVolume(ui.value);
+    myGroup.setVolume(ui.value);
   });
   // SLIDER DU TEMPS
   $( "#time_slider" ).slider({
@@ -72,74 +77,37 @@ $(function() {
     max: 0,
     step: 1,
     slide: function( event, ui ) {
-      currentSound.setTime(ui.value);
+      myGroup.getCurrent().setTime(ui.value);
     }
   });
   // VOLUME CHANGE
-  currentSound.bind("volumechange", function() {
-    if(this.isMuted())
-      changeMuteUnmuteButton('unmute');
-    else
-      changeMuteUnmuteButton('mute');
-    $("#volume").html(this.getVolume()+"%");
+  myGroup.bind("volumechange", function() {
+    doChangeVolume(myGroup.getCurrent());
   });
   // INIT DURACTION IN TIME SLIDER
-  currentSound.bind("durationchange", function(e) {
-    $( "#time_slider" ).slider( "option", "max", this.getDuration() );
+  myGroup.bind("durationchange", function(e) {
+    duUpdateDuration(myGroup.getCurrent());
   });
   // UPDATE SLIDER POSITION AND TIMER INDICATION
-  currentSound.bind( "timeupdate", function() {
-    $("#timer").html(buzz.toTimer( this.getTime() ));
-    $( "#time_slider" ).slider( "option", "value", this.getTime() );
+  myGroup.bind( "timeupdate", function() {
+    doUpdateTime(myGroup.getCurrent());
   });
   // STOP
   $('#next').live('click', function() {
-    $('#stop').click();
-    currentSound = liste.getNext();
-    $('#play_pause').click();
-    alert(currentSound.getTime());
-    $( "#time_slider" ).slider( "option", "value", currentSound.getTime() );
+    doMoveToNext(myGroup.getCurrent(), myGroup);
   });
   // STOP
-//  $('#stop').live('click', function() {
-//    currentSound.stop();
-//    changePlayPauseButton('play');
-//  });
+  $('#stop').live('click', function() {
+    doStop(myGroup.getCurrent());
+  });
   // PLAY & PAUSE
   $('#play_pause').live('click', function() {
-    if(currentSound.isPaused())
-      changePlayPauseButton('pause');
-    else
-      changePlayPauseButton('play');
-    currentSound.togglePlay();
+    doPlayPause(myGroup.getCurrent());
   });
   // MUTE
   $('#mute_unmute').live('click', function() {
-    currentSound.toggleMute();
-    if(currentSound.isMuted())
-      $( "#volume_slider" ).slider( "disable");
-    else
-      $( "#volume_slider" ).slider( "enable");
+    doMuteUnmute(myGroup.getCurrent());
   });
 });
 
-function changePlayPauseButton(stateToGo)
-{
-  var button = $('#play_pause');
-  if(stateToGo == "pause")
-    var img = '/images/player/pause-48.png';
-  else
-    var img = '/images/player/play-48.png';
-  button.attr('src', img);
-}
-
-function changeMuteUnmuteButton(stateToGo)
-{
-  var button = $('#mute_unmute');
-  if(stateToGo == "mute")
-    var img = '/images/player/mute.png';
-  else
-    var img = '/images/player/unmute.png';
-  button.attr('src', img);
-}
 </script>

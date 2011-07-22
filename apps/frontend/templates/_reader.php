@@ -37,33 +37,78 @@ $(function() {
   });
   $( "#volume" ).html( $( "#volume_slider" ).slider( "value" )  + "%");
   $( "#volume_slider" ).bind( "slidechange", function(event, ui) {
-    currentSound.setVolume(ui.value);
+    myGroup.getCurrent().setVolume(ui.value);
   });
 });
-//ArrayAccess = function(data){
-//	this.data = data;
-//};
-//ArrayAccess.prototype = {
-//	current: 0,
-//	data: [],
-//	move: function(n){
-//		var l = this.data.length;
-//		return this.data[Math.abs(this.current = (this.current + (n ? 1 : l - 1)) % l)];
-//	},
-//	getNext: function(){
-//		return this.move(1);
-//	},
-//	getPrevious: function(){
-//		return this.move(0);
-//	},
-//	getCurrent: function(){
-//		return this.data[this.current];
-//	}
-//};
-  
-//var sound1 = new buzz.sound("/uploads/audio/list/franz-ferdinand/franz-ferdinand/01-jacqueline", {formats: [ "ogg", "mp3"]});
-//var sound2 = new buzz.sound("/uploads/audio/list/franz-ferdinand/franz-ferdinand/02-tell-her-tonight.ogg");
-//var sound3 = new buzz.sound("/uploads/audio/list/franz-ferdinand/franz-ferdinand/03-take-me-out.ogg");
-//var liste = new ArrayAccess([sound1, sound2, sound3]);
-//var currentSound = sound1;
+function doChangeVolume(currentSong)
+{
+  if(currentSong.isMuted())
+    changeMuteUnmuteButton('unmute');
+  else
+    changeMuteUnmuteButton('mute');
+  $("#volume").html(currentSong.getVolume()+"%");
+}
+
+function duUpdateDuration(currentSong)
+{
+  $( "#time_slider" ).slider( "option", "max", currentSong.getDuration() );
+}
+
+function doUpdateTime(currentSong)
+{
+  $("#timer").html(buzz.toTimer( currentSong.getTime() ));
+  $( "#time_slider" ).slider( "option", "value", currentSong.getTime() );
+}
+
+function doMoveToNext(currentSong, group)
+{
+  doStop(currentSong);
+  group.getNext();
+  doPlayPause(currentSong);
+  $( "#time_slider" ).slider( "option", "value", currentSong.getTime() );
+}
+
+function doMuteUnmute(currentSong)
+{
+  currentSong.toggleMute();
+  if(currentSong.isMuted())
+    $( "#volume_slider" ).slider( "disable");
+  else
+    $( "#volume_slider" ).slider( "enable");
+}
+
+function doPlayPause(currentSong)
+{
+  if(currentSong.isPaused())
+    changePlayPauseButton('pause');
+  else
+    changePlayPauseButton('play');
+  currentSong.togglePlay();
+}
+
+function doStop(currentSong)
+{
+  currentSong.stop();
+  changePlayPauseButton('play');
+}
+
+function changePlayPauseButton(stateToGo)
+{
+  var button = $('#play_pause');
+  if(stateToGo == "pause")
+    var img = '/images/player/pause-48.png';
+  else
+    var img = '/images/player/play-48.png';
+  button.attr('src', img);
+}
+
+function changeMuteUnmuteButton(stateToGo)
+{
+  var button = $('#mute_unmute');
+  if(stateToGo == "mute")
+    var img = '/images/player/mute.png';
+  else
+    var img = '/images/player/unmute.png';
+  button.attr('src', img);
+}
 </script>
