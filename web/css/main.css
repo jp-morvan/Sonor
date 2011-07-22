@@ -31,10 +31,6 @@ header div#user_info{
   font-size: smaller;
   background-color: #f4bb4c;
 }
-/*
-header div#user_info span#user{
-  margin-left: -108px;
-}*/
 
 header div#user_info div#logo{
   float:left;
@@ -106,3 +102,34 @@ div#page div#clear{
   clear: both;
   height: 10px;
 }
+
+div.bouton{
+  padding: 3px 3px 3px 25px;
+  display: inline-block;
+  border: 1px solid #aede76;
+  background-color: #f4bb4c;
+  border-radius: 8px;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px; 
+  font-weight: bold;
+}
+
+div.bouton:hover{
+  cursor: pointer;
+  background-image: -webkit-gradient(
+      linear,
+      left bottom,
+      left top,
+      color-stop(0.24, #FAD287),
+      color-stop(0.62, #F7C363),
+      color-stop(0.81, #F4BC4C)
+  );
+  background-image: -moz-linear-gradient(
+      center bottom,
+      #FAD287 24%,
+      #F7C363 62%,
+      #F4BC4C 81%
+  );
+}
+
+div.bouton

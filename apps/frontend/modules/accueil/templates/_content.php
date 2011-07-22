@@ -1,8 +1,10 @@
 <div>
 <!--  <img src="/images/big_play.png" class="play" alt="Jouer <?php echo ($type == "album") ? "l'".$type: $type ?> '<?php echo $relation['titre'] ?>'" onclick="play('<?php echo $type ?>', '<?php echo $relation['slug'] ?>')" /><br />-->
-  <img src="/images/big_play.png" class="play" alt="Jouer <?php echo ($type == "album") ? "l'".$type: $type ?> '<?php echo $relation['titre'] ?>'" onclick="lecture('album')" /><br />
+  <div class="bouton">
+    <img src="/images/big_play.png" class="play" alt="Jouer <?php echo ($type == "album") ? "l'".$type: $type ?> '<?php echo $relation['titre'] ?>'" onclick="lecture('album')" />Ecouter l'album
+  </div>
 <?php if($type == "album"): ?>
-  <div id="album_in_list">
+  <div id="album_in_list" class="bouton">
 <?php include_partial('album_add_remove', array('relation' => $relation, 'in_list' => $in_list)) ?>
   </div>
 <?php endif; ?>
