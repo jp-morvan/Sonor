@@ -15,11 +15,12 @@ header{
   border: 3px solid #f4bb4c;
   border-top: none;
   z-index: 10000;
-  -moz-box-shadow: 0 0 5px 5px #555;  
-  -webkit-box-shadow: 0 0 5px 5px #555;  
   box-shadow: 0 0 5px 5px #555;  
-  -moz-border-radius: 6px;
-  -webkit-border-radius: 6px; 
+/*  -moz-box-shadow: 0 0 5px 5px #555;  
+  -webkit-box-shadow: 0 0 5px 5px #555;  */
+  border-radius: 6px;
+/*  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px; */
 }
 
 header div#user_info{
@@ -63,8 +64,8 @@ div#page{
   border: 3px solid #f4bb4c;
   border-top: none;
   border-radius: 0 0 6px 6px; 
-  -moz-border-radius: 0 0 6px 6px;
-  -webkit-border-radius: 0 0 6px 6px; 
+/*  -moz-border-radius: 0 0 6px 6px;
+  -webkit-border-radius: 0 0 6px 6px; */
   overflow: hidden;
 }
 
@@ -109,8 +110,8 @@ div.bouton{
   border: 1px solid #128f0f;
   background-color: #52c03a;
   border-radius: 8px;
-  -moz-border-radius: 8px;
-  -webkit-border-radius: 8px; 
+/*  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px; */
   font-weight: bold;
   background-repeat: no-repeat;
 }
@@ -129,7 +130,15 @@ div#content div#listen_album{
 
 div.bouton:hover{
   cursor: pointer;
-  background-image: -webkit-gradient(
+/*  background-image: -webkit-gradient(
+      linear,
+      left bottom,
+      left top,
+      color-stop(0.24, #FAD287),
+      color-stop(0.62, #F7C363),
+      color-stop(0.81, #F4BC4C)
+  );*/
+  background-image: gradient(
       linear,
       left bottom,
       left top,
@@ -137,12 +146,12 @@ div.bouton:hover{
       color-stop(0.62, #F7C363),
       color-stop(0.81, #F4BC4C)
   );
-  background-image: -moz-linear-gradient(
+/*  background-image: -moz-linear-gradient(
       center bottom,
       #FAD287 24%,
       #F7C363 62%,
       #F4BC4C 81%
-  );
+  );*/
 }
 
-div.bouton
+/*div.bouton*/

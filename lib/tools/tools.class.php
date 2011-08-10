@@ -11,6 +11,65 @@
  */
 class tools
 {
+  public static function stylesheet_tag_with_css_crush() 
+  {
+    $sources = func_get_args();
+    $sourceOptions = (func_num_args() > 1 && is_array($sources[func_num_args() - 1])) ? array_pop($sources) : array();
+
+    $html = '';
+    foreach ($sources as $source)
+    {
+      $absolute = false;
+      if (isset($sourceOptions['absolute']))
+      {
+        unset($sourceOptions['absolute']);
+        $absolute = true;
+      }
+
+      $condition = null;
+      if (isset($sourceOptions['condition']))
+      {
+        $condition = $sourceOptions['condition'];
+        unset($sourceOptions['condition']);
+      }
+
+      if (!isset($sourceOptions['raw_name']))
+      {
+        $source = stylesheet_path($source, $absolute);
+      }
+      else
+      {
+        unset($sourceOptions['raw_name']);
+      }
+//      $source = CssCrush::file($source, array('versioning'  => false));
+echo $source;
+      $options = array_merge(array('rel' => 'stylesheet', 'type' => 'text/css', 'media' => 'screen', 'href' => $source), $sourceOptions);
+      $tag = tag('link', $options);
+
+      if (null !== $condition)
+      {
+        $tag = comment_as_conditional($condition, $tag);
+      }
+
+      $html .= $tag."\n";
+    }
+
+    return $html;
+  }
+  
+  public static function include_stylesheets_with_css_crush($response) 
+  {
+    sfConfig::set('symfony.asset.stylesheets_included', true);
+
+    $html = '';
+    foreach ($response->getStylesheets() as $file => $options)
+    {
+      $html .= self::stylesheet_tag_with_css_crush($file, $options);
+    }
+
+    return $html;
+  }
+  
   public static $required_actions = array(
       'edit',
       'update',
