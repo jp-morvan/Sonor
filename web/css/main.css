@@ -106,12 +106,25 @@ div#page div#clear{
 div.bouton{
   padding: 3px 3px 3px 25px;
   display: inline-block;
-  border: 1px solid #aede76;
-  background-color: #f4bb4c;
+  border: 1px solid #128f0f;
+  background-color: #52c03a;
   border-radius: 8px;
   -moz-border-radius: 8px;
   -webkit-border-radius: 8px; 
   font-weight: bold;
+  background-repeat: no-repeat;
+}
+
+div#content div.add{
+  background-image: url('/images/icon/add-24.png');
+}
+
+div#content div.remove{
+  background-image: url('/images/icon/remove-24.png');
+}
+
+div#content div#listen_album{
+  background-image: url('/images/icon/play-24.png');
 }
 
 div.bouton:hover{
