@@ -1,0 +1,77 @@
+div#sonor_player{
+  width: 100%;
+}
+
+div#sonor_player div.controls{
+  width: 190px;
+  padding: 10px 10px 0 10px;
+  display: inline-block;
+  vertical-align:middle;
+  text-align: center;
+}
+
+div#sonor_player div.controls div.buttons,
+div#sonor_player div.controls div.sound{
+  display: inline-block;
+}
+
+div#sonor_player div.controls img:hover{
+  cursor: pointer;
+}
+
+div#sonor_player div.controls div.sound img.mute_unmute{
+  width: 16px;
+  height: 16px;
+  vertical-align: middle;
+}
+
+div#sonor_player div.controls div.sound div.volume_slider{
+  width:40px;
+  height:6px;
+  display: inline-block;
+  font-size: 7px;
+}
+div#sonor_player div.controls div.sound div.volume{
+  width:100%;
+  text-align: center;
+  display: block;
+  font-size: 9px;
+}
+
+div#sonor_player div.player{
+  width: 400px;
+  text-align: center;
+  height: 40px;
+  display: inline-block;
+  border: 3px solid #f4bb4c;
+  background-color: #f4bb4c;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px; 
+}
+
+div#sonor_player div.player div.title,
+div#sonor_player div.player div.artiste{
+  display: inline-block;
+  font-size: 13px;
+}
+
+div#sonor_player div.player div.artiste{
+  font-weight: bold;
+}
+
+div#sonor_player div.player div.timer{
+  display: inline-block;
+  float:left;
+  width: 45px;
+  font-size: 11px;
+  margin-top: -3px;
+}
+
+div#sonor_player div.player div.time_slider{
+  width:85%;
+  margin-right: 10px;
+  height:9px;
+  font-size: 10px;
+  float: right;
+}

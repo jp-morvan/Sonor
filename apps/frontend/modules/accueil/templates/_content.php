@@ -1,5 +1,4 @@
 <div>
-<!--  <img src="/images/big_play.png" class="play" alt="Jouer <?php echo ($type == "album") ? "l'".$type: $type ?> '<?php echo $relation['titre'] ?>'" onclick="play('<?php echo $type ?>', '<?php echo $relation['slug'] ?>')" /><br />-->
   <div class="bouton">
     <img src="/images/big_play.png" class="play" alt="Jouer <?php echo ($type == "album") ? "l'".$type: $type ?> '<?php echo $relation['titre'] ?>'" onclick="lecture('album')" />Ecouter l'album
   </div>
@@ -54,8 +53,10 @@
       myGroup.getCurrent().play();
     }
   }
-
-$(function() {
+  var player = new sonorPlayer(myGroup);
+  player.changePlayPauseButton('pause');
+//  player.changePlayPauseButton('pause');
+/*$(function() {
   // SLIDER DU VOLUME
   $( "#volume_slider" ).slider({
     range: "min",
@@ -111,5 +112,5 @@ $(function() {
     doMuteUnmute(myGroup.getCurrent());
   });
 });
-
+*/
 </script>
