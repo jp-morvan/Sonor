@@ -1,55 +1,77 @@
 function sonorPlayer(buzzGroup)
 {
-  this.volume_slider = $( "#sonor_player div.sound div.volume_slider" );
-  this.volume = $( "#sonor_player div.sound div.volume" );
-  this.time_slider = $( "#sonor_player div.player div.time_slider" );
-  this.timer = $( "#sonor_player div.player div.timer" );
-  this.play_pause = $( "#sonor_player div.controls div.buttons img.play_pause" );
-  this.mute_unmute = $( "#sonor_player div.controls div.buttons img.mute_unmute" );
+  var volume_slider = $( "#sonor_player div.sound div.volume_slider" );
+  var volume = $( "#sonor_player div.sound div.volume" );
+  var time_slider = $( "#sonor_player div.player div.time_slider" );
+  var timer = $( "#sonor_player div.player div.timer" );
+  var play_pause = $( "#sonor_player div.controls div.buttons img.play_pause" );
+  var mute_unmute = $( "#sonor_player div.controls div.buttons img.mute_unmute" );
   this.group = buzzGroup;
-  this.currentSong = this.group.getCurrent();
+  this.sounds = buzzGroup.getSounds();
+  this.currentSong = 0;
+  
+  this.getCurrentSong = function()
+  {
+    return this.sounds[this.currentSong];
+  }
+  
+  this.changeSong = function(n)
+  {
+    var l = this.sounds.length;
+    return this.sounds[Math.abs(this.currentSong = (this.currentSong + (n ? 1 : l - 1)) % l)];
+  }
+  
+  this.getNextSong = function()
+  {
+    this.changeSong(1);
+  }
+  
+  this.getPreviousSong = function()
+  {
+    this.changeSong(0);
+  }
   
   this.doChangeVolume = function()
   {
-    if(this.currentSong.isMuted())
+    if(this.getCurrentSong().isMuted())
       this.changeMuteUnmuteButton('unmute');
     else
       this.changeMuteUnmuteButton('mute');
-    this.volume.html(this.currentSong.getVolume()+"%");
+    volume.html(this.getCurrentSong().getVolume()+"%");
   }
 
   this.duUpdateDuration = function()
   {
-    this.time_slider.slider( "option", "max", this.currentSong.getDuration() );
+    time_slider.slider( "option", "max", this.getCurrentSong().getDuration() );
   }
 
   this.doUpdateTime = function()
   {
-    this.timer.html(buzz.toTimer( this.currentSong.getTime() ));
-    this.time_slider.slider( "option", "value", this.currentSong.getTime() );
+    timer.html(buzz.toTimer( this.getCurrentSong().getTime() ));
+    time_slider.slider( "option", "value", this.getCurrentSong().getTime() );
   }
 
   this.doMoveToNext = function()
   {
     this.doStop();
-    this.currentSong = this.group.getNext();
+    this.getNextSong();
     this.doPlayPause();
-    this.time_slider.slider( "option", "value", this.currentSong.getTime() );
+    time_slider.slider( "option", "value", this.getCurrentSong().getTime() );
   }
 
   this.doMuteUnmute = function()
   {
-    this.currentSong.toggleMute();
-    if(this.currentSong.isMuted())
-      this.volume_slider.slider( "disable");
+    this.getCurrentSong().toggleMute();
+    if(this.getCurrentSong().isMuted())
+      volume_slider.slider( "disable");
     else
-      this.volume_slider.slider( "enable");
+      volume_slider.slider( "enable");
   }
 
   this.doPlayPause = function()
   {
-    this.currentSong.togglePlay();
-    if(this.currentSong.isPaused())
+    this.getCurrentSong().togglePlay();
+    if(this.getCurrentSong().isPaused())
       this.changePlayPauseButton('pause');
     else
       this.changePlayPauseButton('play');
@@ -57,7 +79,7 @@ function sonorPlayer(buzzGroup)
 
   this.doStop = function()
   {
-    this.currentSong.stop();
+    this.getCurrentSong().stop();
     this.changePlayPauseButton('play');
   }
 
@@ -67,7 +89,7 @@ function sonorPlayer(buzzGroup)
       var img = '/images/player/pause-48.png';
     else
       var img = '/images/player/play-48.png';
-    this.play_pause.attr('src', img);
+    play_pause.attr('src', img);
   }
 
   this.changeMuteUnmuteButton = function(stateToGo)
@@ -76,33 +98,33 @@ function sonorPlayer(buzzGroup)
       var img = '/images/player/mute.png';
     else
       var img = '/images/player/unmute.png';
-    this.mute_unmute.attr('src', img);
+    mute_unmute.attr('src', img);
   }
   
   // SLIDER DU VOLUME
-  this.volume_slider.slider({
+  volume_slider.slider({
     range: "min",
     value: 80,
     min: 0,
     max: 100,
     step: 5,
     slide: function( event, ui ) {
-      this.volume.html(ui.value + "%");
+      volume.html(ui.value + "%");
     }
   });
-  this.volume.html( this.volume_slider.slider( "value" )  + "%");
-  this.volume_slider.bind( "slidechange", function(event, ui) {
-    this.currentSong.setVolume(ui.value);
+  volume.html( volume_slider.slider( "value" )  + "%");
+  volume_slider.bind( "slidechange", function(event, ui) {
+    getCurrentSong().setVolume(ui.value);
   });
   // SLIDER DU TEMPS
-  this.time_slider.slider({
+  /*time_slider.slider({
     range: "min",
     value: 0,
     min: 0,
     max: 0,
     step: 1,
     slide: function( event, ui ) {
-      this.currentSong.setTime(ui.value);
+      this.getCurrentSong().setTime(ui.value);
     }
   });
   // VOLUME CHANGE
@@ -132,5 +154,5 @@ function sonorPlayer(buzzGroup)
   // MUTE
   $('#mute_unmute').live('click', function(event) {
     event.doMuteUnmute();
-  });
+  });*/
 }

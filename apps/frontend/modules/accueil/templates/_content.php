@@ -50,7 +50,7 @@
     }*/
     if(type == "album")
     {
-      myGroup.getCurrent().play();
+//      myGroup.getCurrent().play();
     }
   }
   var player = new sonorPlayer(myGroup);

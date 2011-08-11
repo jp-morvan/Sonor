@@ -10,7 +10,7 @@
 <?php if($sf_user->isAuthenticated()): ?>
       <?php echo use_javascript('/sfFormExtraPlugin/js/jquery.autocompleter.js'); ?>
       <?php echo use_javascript('audio_player.js'); ?>
-      <?php echo use_javascript('buzz2.js'); ?>
+      <?php echo use_javascript('buzz.js'); ?>
       <?php echo use_stylesheet('frontend.css'); ?>
       <?php echo use_stylesheet('sonor.player.css'); ?>
 <?php else: ?>

@@ -1,6 +1,8 @@
 cache/*
-log/*.log
+log/frontend_dev.log
+log/backend_dev.log
 config/databases.yml
 nbproject
 *.mp3
 *.ogg
+plugins/.registry
