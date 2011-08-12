@@ -1,18 +1,34 @@
-function sonorPlayer(buzzGroup)
+function sonorPlayer(buzzGroup, songs)
 {
   this.volume_slider = $( "#sonor_player div.sound div.volume_slider" );
   this.volume = $( "#sonor_player div.sound div.volume" );
   this.time_slider = $( "#sonor_player div.player div.time_slider" );
   this.timer = $( "#sonor_player div.player div.timer" );
-  this.play_pause = $( "#sonor_player div.controls div.buttons img.play_pause" );
-  this.mute_unmute = $( "#sonor_player div.controls div.buttons img.mute_unmute" );
+  this.artist = $( "#sonor_player div.player div.artist" );
+  this.title = $( "#sonor_player div.player div.title" );
+  this.play_pause = $( "#sonor_player img.play_pause" );
+  this.mute_unmute = $( "#sonor_player img.mute_unmute" );
+  this.previous = $( "#sonor_player img.previous" );
+  this.next = $( "#sonor_player img.next" );
+  this.stop = $( "#sonor_player img.stop" );
   this.group = buzzGroup;
+  this.songs = songs != undefined ? songs : null;
   this.sounds = buzzGroup.getSounds();
   this.currentSong = 0;
   
-  this.getCurrentSong = function()
+  this.getCurrentSound = function()
   {
     return this.sounds[this.currentSong];
+  }
+  
+  this.getRemainingTime = function()
+  {
+    return (this.getCurrentSound().getDuration() - this.getCurrentSound().getTime());
+  }
+  
+  this.isEnding = function()
+  {
+    return (this.getRemainingTime() <= 3);
   }
   
   this.moveSong = function(n)
@@ -41,62 +57,86 @@ function sonorPlayer(buzzGroup)
   
   this.doChangeVolume = function()
   {
-    if(this.getCurrentSong().isMuted())
-      this.changeMuteUnmuteButton('unmute');
-    else
-      this.changeMuteUnmuteButton('mute');
-    this.volume.html(this.getCurrentSong().getVolume()+"%");
+    this.volume.html(this.getCurrentSound().getVolume()+"%");
+    return this;
+  }
+  
+  this.updateTitle = function()
+  {
+    if(this.songs != null)
+    {
+      this.title.html(this.songs[this.currentSong]['title']);
+    }
+    return this;
+  }
+  
+  this.updateArtist = function()
+  {
+    if(this.songs != null)
+    {
+      this.artist.html(this.songs[this.currentSong]['artist']);
+    }
     return this;
   }
 
   this.duUpdateDuration = function()
   {
-    this.time_slider.slider( "option", "max", this.getCurrentSong().getDuration() );
+    this.time_slider.slider( "option", "max", this.getCurrentSound().getDuration() );
     return this;
   }
 
   this.doUpdateTime = function()
   {
-    this.timer.html(buzz.toTimer( this.getCurrentSong().getTime() ));
-    this.time_slider.slider( "option", "value", this.getCurrentSong().getTime() );
+    this.timer.html(buzz.toTimer( this.getCurrentSound().getTime() ));
+    this.time_slider.slider( "option", "value", this.getCurrentSound().getTime() );
     return this;
   }
 
   this.doMoveToNext = function()
   {
     this.doStop().getNextSong().doPlay();
-    this.time_slider.slider( "option", "value", this.getCurrentSong().getTime() );
+    this.time_slider.slider( "option", "value", this.getCurrentSound().getTime() );
     return this;
   }
 
   this.doMoveToPrevious = function()
   {
     this.doStop().getPreviousSong().doPlay();
-    this.time_slider.slider( "option", "value", this.getCurrentSong().getTime() );
+    this.time_slider.slider( "option", "value", this.getCurrentSound().getTime() );
     return this;
   }
 
   this.doMuteUnmute = function()
   {
-    this.getCurrentSong().toggleMute();
-    if(this.getCurrentSong().isMuted())
+    this.getCurrentSound().toggleMute();
+    if(this.getCurrentSound().isMuted())
+    {
+      this.changeMuteUnmuteButton('unmute');
       this.volume_slider.slider( "disable");
+    }
     else
+    {
+      this.changeMuteUnmuteButton('mute');
       this.volume_slider.slider( "enable");
+    }
     return this;
   }
 
   this.doPlay = function()
   {
-    this.getCurrentSong().play();
+    this.updateTitle()
+        .updateArtist()
+        .duUpdateDuration()
+        .getCurrentSound()
+        .play();
     this.changePlayPauseButton('pause');
     return this;
   }
 
   this.doPlayPause = function()
   {
-    this.getCurrentSong().togglePlay();
-    if(this.getCurrentSong().isPaused())
+    this.getCurrentSound().togglePlay();
+    if(this.getCurrentSound().isPaused())
       this.changePlayPauseButton('play');
     else
       this.changePlayPauseButton('pause');
@@ -110,10 +150,10 @@ function sonorPlayer(buzzGroup)
 
   this.doStop = function()
   {
-    if(this.getCurrentSong().getTime() > 0)
+    if(!this.getCurrentSound().isEnded() && this.getCurrentSound().getTime() > 0)
     {
-      this.getCurrentSong().pause();
-      this.getCurrentSong().setTime( 0 );
+      this.getCurrentSound().pause();
+      this.getCurrentSound().setTime( 0 );
       this.changePlayPauseButton('play');
     }
     return this;
@@ -153,7 +193,7 @@ function bindPlayerEvents(player)
   });
   player.volume.html( player.volume_slider.slider( "value" )  + "%");
   player.volume_slider.bind( "slidechange", function(event, ui) {
-    player.getCurrentSong().setVolume(ui.value);
+    player.getCurrentSound().setVolume(ui.value);
   });
   // SLIDER DU TEMPS
   player.time_slider.slider({
@@ -163,7 +203,7 @@ function bindPlayerEvents(player)
     max: 0,
     step: 1,
     slide: function( event, ui ) {
-      player.getCurrentSong().setTime(ui.value);
+      player.getCurrentSound().setTime(ui.value);
     }
   });
   // VOLUME CHANGE
@@ -174,28 +214,31 @@ function bindPlayerEvents(player)
   player.group.bind("durationchange", function(event) {
     player.duUpdateDuration();
   });
+  player.group.bind("ended", function(event) {
+    player.doMoveToNext()
+  });
   // UPDATE SLIDER POSITION AND TIMER INDICATION
   player.group.bind( "timeupdate", function(event) {
     player.doUpdateTime();
     });
   // NEXT
-  $('#sonor_player img.next').live('click', function(event) {
+  player.next.live('click', function(event) {
     player.doMoveToNext();
   });
   // PREVIOUS
-  $('#sonor_player img.previous').live('click', function(event) {
+  player.previous.live('click', function(event) {
     player.doMoveToPrevious();
   });
   // STOP
-  $('#sonor_player img.stop').live('click', function(event) {
+  player.stop.live('click', function(event) {
     player.doStop();
   });
   // PLAY & PAUSE
-  $('#sonor_player img.play_pause').live('click', function(event) {
+  player.play_pause.live('click', function(event) {
     player.doPlayPause();
   });
   // MUTE
-  $("#sonor_player img.mute_unmute").live('click', function(event) {
+  player.mute_unmute.live('click', function(event) {
     player.doMuteUnmute();
   });
 }

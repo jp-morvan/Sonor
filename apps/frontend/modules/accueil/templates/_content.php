@@ -35,11 +35,13 @@
 </table>
 <script type="text/javascript">
   var myGroup = new buzz.group([ 
-<?php foreach($list as $l): ?>
-    <?php echo 'new buzz.sound(\''.$l.'\', {formats: [ "ogg", "mp3"]}),'; ?>
+<?php foreach($files as $file): ?>
+    <?php echo 'new buzz.sound(\''.$file.'\', {formats: [ "ogg", "mp3"]}),'; ?>
 <?php endforeach; ?>
 ]);
-  player = new sonorPlayer(myGroup);
+
+  var songs = {<?php echo $sf_data->getRaw('files_data') ?>};
+  player = new sonorPlayer(myGroup, songs);
   bindPlayerEvents(player);
   function lecture(type, piste)
   {

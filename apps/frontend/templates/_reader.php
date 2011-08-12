@@ -8,11 +8,11 @@
     <div class="sound">
       <img class="mute_unmute" src="/images/player/mute.png" alt="Mute/Unmunte" />
       <div class="volume_slider"></div>
-      <div class="volume"></div>
+      <div class="volume">&nbsp;</div>
     </div>
   </div>
   <div class="player">
-    <div class="artiste">Artiste</div> - 
+    <div class="artist">Artiste</div> - 
     <div class="title">Titre de la chanson</div>
     <div class="time_slider"></div>
     <div class="timer"></div>

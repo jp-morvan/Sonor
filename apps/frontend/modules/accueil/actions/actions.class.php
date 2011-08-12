@@ -101,12 +101,15 @@ class accueilActions extends sfActions
         $in_user_list = true;
       }
     }
-    $ids = array();
+    $files = array();
+    $files_data = array();
+    $i = 0;
     foreach($chansons as $chanson)
     {
       $path = $chanson->getAlbumDirectory().$chanson->audio_file;
       $file = $request->getAudioPath().$path;
-      $ids[] = $file;
+      $files[] = $file;
+      $files_data[] = "\n".$i++.": { artist: \"".$chanson->Album->Artiste->nom."\", title: \"".$chanson->titre."\" }";
     }
     return $this->renderPartial('accueil/content', array(
         'chansons' => $chansons, 
@@ -114,7 +117,8 @@ class accueilActions extends sfActions
         'relation' => $relation, 
         'slug' => $slug,
         'in_list' => $in_user_list,
-        'list'  => $ids
+        'files'  => $files,
+        'files_data'  => join(",", $files_data)
     ));
   }
   

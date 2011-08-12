@@ -51,12 +51,12 @@ div#sonor_player div.player{
 }
 
 div#sonor_player div.player div.title,
-div#sonor_player div.player div.artiste{
+div#sonor_player div.player div.artist{
   display: inline-block;
   font-size: 13px;
 }
 
-div#sonor_player div.player div.artiste{
+div#sonor_player div.player div.artist{
   font-weight: bold;
 }
 
