@@ -1,6 +1,6 @@
 <?php if($sf_user->isAuthenticated()): ?>
 <ul id="playlists_list">
-  <div id="playlists">Playlists <img src="/images/icon/add.png" width="16" height="16" alt="ajouter une playlist" class="add" id="add_playlist" /></div>
+  <div id="playlists">Playlists <img src="/images/icon/add.png" width="16" height="16" alt="ajouter une playlist" class="add" id="playlist" /></div>
 <?php if(count($playlists) > 0): ?>
 <?php foreach($playlists as $playlist): ?>
 <?php include_partial('playlist_li', array('playlist' => $playlist, 'count_chansons' => $playlist->countChansons())) ?>

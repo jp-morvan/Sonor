@@ -14,7 +14,7 @@ function updateInList(type, slug, acte)
   $.ajax({
     url: '<?php echo url_for('@update_in_list') ?>/'+acte+'/'+type+'/'+slug,
     success: function(data) {
-      $('div#album_in_list').html(data);
+      //$('div#album_in_list').html(data);
     }
   });
 }
@@ -34,14 +34,14 @@ function play(type, slug)
 }
 
 $(function() {
-  $('img.delete').live('click', function() {
+  $('img.delete, div.remove').live('click', function() {
     var img = $(this);
     var id = $(this).attr('id').split("_");
-    var type = id[1];
-    var slug = id[2]+"_"+id[3];
-    if(id[4] != null)
+    var type = id[0];
+    var slug = id[1]+"_"+id[2];
+    if(id[3] != null)
     {
-      var img = $('#'+id[0]+'_'+id[1]+'_'+id[2]+'_'+id[3]);
+      var img = $('#'+id[0]+'_'+id[1]+'_'+id[2]);
     }
     var _type = type.charAt(0).toUpperCase() + type.substring(1).toLowerCase();
     confirm("Confirmer la suppression ?", _type+" - Suppression", function(r) {
@@ -61,11 +61,11 @@ $(function() {
 });
 
 $(function() {
-  $('img.add').live('click', function() {
+  $('img.add, div.add').live('click', function() {
     var img = $(this);
     var id = $(this).attr('id').split("_");
-    var type = id[1];
-    var slug = id[2];
+    var type = id[0];
+    var slug = id[1];
     var _type = type.charAt(0).toUpperCase() + type.substring(1).toLowerCase();
     if(type == 'playlist')
     {

@@ -12,8 +12,8 @@
     </div>
   </div>
   <div class="player">
-    <div class="artist">Artiste</div> - 
-    <div class="title">Titre de la chanson</div>
+    <div class="artist">&nbsp;</div> - 
+    <div class="title">&nbsp;</div>
     <div class="time_slider"></div>
     <div class="timer"></div>
   </div>
