@@ -17,11 +17,11 @@
     </tr>
   </thead>
   <tbody>
+<?php $i = 0 ?>
 <?php foreach($chansons as $id => $chanson): ?>
     <tr class="<?php echo ($id%2 == 0) ? 'even' : 'odd' ?>">
       <td class="play">
-        <img src="/images/play.png" class="play" alt="Jouer la chanson '<?php echo $chanson['titre'] ?>'" onclick="lecture('chanson', '<?php echo $id ?>')" />
-<!--        <img src="/images/play.png" class="play" alt="Jouer la chanson '<?php echo $chanson['titre'] ?>'" onclick="play('chanson', '<?php echo $chanson['slug'] ?>')" />-->
+        <img src="/images/play.png" class="play" alt="Jouer la chanson '<?php echo $chanson['titre'] ?>'" onclick="lecture('chanson', '<?php echo $i++ ?>')" />
       </td>
       <td class="titre">
         <?php echo $chanson['titre'] ?>
@@ -39,78 +39,14 @@
     <?php echo 'new buzz.sound(\''.$l.'\', {formats: [ "ogg", "mp3"]}),'; ?>
 <?php endforeach; ?>
 ]);
-//  var myGroup = new buzz.sound('/uploads/audio/list/empty', {formats: [ "ogg", "mp3"]});;
+  player = new sonorPlayer(myGroup);
+  bindPlayerEvents(player);
   function lecture(type, piste)
   {
-    /*if(type == "chanson")
-    {
-      myGroup.stop();
-      myGroup = new buzz.sound(''+pistes[piste]+'', {formats: [ "ogg", "mp3"]});
-      $('#play_pause').click();
-    }*/
     if(type == "album")
     {
-//      myGroup.getCurrent().play();
+      piste = 0;
     }
+    player.doStopAndPlay(piste);
   }
-  var player = new sonorPlayer(myGroup);
-  player.changePlayPauseButton('pause');
-//  player.changePlayPauseButton('pause');
-/*$(function() {
-  // SLIDER DU VOLUME
-  $( "#volume_slider" ).slider({
-    range: "min",
-    value: 80,
-    min: 0,
-    max: 100,
-    step: 5,
-    slide: function( event, ui ) {
-      $( "#volume" ).html(ui.value + "%");
-    }
-  });
-  $( "#volume" ).html( $( "#volume_slider" ).slider( "value" )  + "%");
-  $( "#volume_slider" ).bind( "slidechange", function(event, ui) {
-    myGroup.setVolume(ui.value);
-  });
-  // SLIDER DU TEMPS
-  $( "#time_slider" ).slider({
-    range: "min",
-    value: 0,
-    min: 0,
-    max: 0,
-    step: 1,
-    slide: function( event, ui ) {
-      myGroup.getCurrent().setTime(ui.value);
-    }
-  });
-  // VOLUME CHANGE
-  myGroup.bind("volumechange", function() {
-    doChangeVolume(myGroup.getCurrent());
-  });
-  // INIT DURACTION IN TIME SLIDER
-  myGroup.bind("durationchange", function(e) {
-    duUpdateDuration(myGroup.getCurrent());
-  });
-  // UPDATE SLIDER POSITION AND TIMER INDICATION
-  myGroup.bind( "timeupdate", function() {
-    doUpdateTime(myGroup.getCurrent());
-  });
-  // STOP
-  $('#next').live('click', function() {
-    doMoveToNext(myGroup.getCurrent(), myGroup);
-  });
-  // STOP
-  $('#stop').live('click', function() {
-    doStop(myGroup.getCurrent());
-  });
-  // PLAY & PAUSE
-  $('#play_pause').live('click', function() {
-    doPlayPause(myGroup.getCurrent());
-  });
-  // MUTE
-  $('#mute_unmute').live('click', function() {
-    doMuteUnmute(myGroup.getCurrent());
-  });
-});
-*/
 </script>

@@ -1,11 +1,11 @@
 function sonorPlayer(buzzGroup)
 {
-  var volume_slider = $( "#sonor_player div.sound div.volume_slider" );
-  var volume = $( "#sonor_player div.sound div.volume" );
-  var time_slider = $( "#sonor_player div.player div.time_slider" );
-  var timer = $( "#sonor_player div.player div.timer" );
-  var play_pause = $( "#sonor_player div.controls div.buttons img.play_pause" );
-  var mute_unmute = $( "#sonor_player div.controls div.buttons img.mute_unmute" );
+  this.volume_slider = $( "#sonor_player div.sound div.volume_slider" );
+  this.volume = $( "#sonor_player div.sound div.volume" );
+  this.time_slider = $( "#sonor_player div.player div.time_slider" );
+  this.timer = $( "#sonor_player div.player div.timer" );
+  this.play_pause = $( "#sonor_player div.controls div.buttons img.play_pause" );
+  this.mute_unmute = $( "#sonor_player div.controls div.buttons img.mute_unmute" );
   this.group = buzzGroup;
   this.sounds = buzzGroup.getSounds();
   this.currentSong = 0;
@@ -15,20 +15,28 @@ function sonorPlayer(buzzGroup)
     return this.sounds[this.currentSong];
   }
   
-  this.changeSong = function(n)
+  this.moveSong = function(n)
   {
     var l = this.sounds.length;
     return this.sounds[Math.abs(this.currentSong = (this.currentSong + (n ? 1 : l - 1)) % l)];
   }
   
+  this.listenSong = function(n)
+  {
+    this.currentSong = n;
+    return this;
+  }
+  
   this.getNextSong = function()
   {
-    this.changeSong(1);
+    this.moveSong(1);
+    return this;
   }
   
   this.getPreviousSong = function()
   {
-    this.changeSong(0);
+    this.moveSong(0);
+    return this;
   }
   
   this.doChangeVolume = function()
@@ -37,50 +45,78 @@ function sonorPlayer(buzzGroup)
       this.changeMuteUnmuteButton('unmute');
     else
       this.changeMuteUnmuteButton('mute');
-    volume.html(this.getCurrentSong().getVolume()+"%");
+    this.volume.html(this.getCurrentSong().getVolume()+"%");
+    return this;
   }
 
   this.duUpdateDuration = function()
   {
-    time_slider.slider( "option", "max", this.getCurrentSong().getDuration() );
+    this.time_slider.slider( "option", "max", this.getCurrentSong().getDuration() );
+    return this;
   }
 
   this.doUpdateTime = function()
   {
-    timer.html(buzz.toTimer( this.getCurrentSong().getTime() ));
-    time_slider.slider( "option", "value", this.getCurrentSong().getTime() );
+    this.timer.html(buzz.toTimer( this.getCurrentSong().getTime() ));
+    this.time_slider.slider( "option", "value", this.getCurrentSong().getTime() );
+    return this;
   }
 
   this.doMoveToNext = function()
   {
-    this.doStop();
-    this.getNextSong();
-    this.doPlayPause();
-    time_slider.slider( "option", "value", this.getCurrentSong().getTime() );
+    this.doStop().getNextSong().doPlay();
+    this.time_slider.slider( "option", "value", this.getCurrentSong().getTime() );
+    return this;
+  }
+
+  this.doMoveToPrevious = function()
+  {
+    this.doStop().getPreviousSong().doPlay();
+    this.time_slider.slider( "option", "value", this.getCurrentSong().getTime() );
+    return this;
   }
 
   this.doMuteUnmute = function()
   {
     this.getCurrentSong().toggleMute();
     if(this.getCurrentSong().isMuted())
-      volume_slider.slider( "disable");
+      this.volume_slider.slider( "disable");
     else
-      volume_slider.slider( "enable");
+      this.volume_slider.slider( "enable");
+    return this;
+  }
+
+  this.doPlay = function()
+  {
+    this.getCurrentSong().play();
+    this.changePlayPauseButton('pause');
+    return this;
   }
 
   this.doPlayPause = function()
   {
     this.getCurrentSong().togglePlay();
     if(this.getCurrentSong().isPaused())
-      this.changePlayPauseButton('pause');
-    else
       this.changePlayPauseButton('play');
+    else
+      this.changePlayPauseButton('pause');
+    return this;
+  }
+
+  this.doStopAndPlay = function(n)
+  {
+    return this.doStop().listenSong(n).doPlay();
   }
 
   this.doStop = function()
   {
-    this.getCurrentSong().stop();
-    this.changePlayPauseButton('play');
+    if(this.getCurrentSong().getTime() > 0)
+    {
+      this.getCurrentSong().pause();
+      this.getCurrentSong().setTime( 0 );
+      this.changePlayPauseButton('play');
+    }
+    return this;
   }
 
   this.changePlayPauseButton = function(stateToGo)
@@ -89,7 +125,7 @@ function sonorPlayer(buzzGroup)
       var img = '/images/player/pause-48.png';
     else
       var img = '/images/player/play-48.png';
-    play_pause.attr('src', img);
+    this.play_pause.attr('src', img);
   }
 
   this.changeMuteUnmuteButton = function(stateToGo)
@@ -98,61 +134,68 @@ function sonorPlayer(buzzGroup)
       var img = '/images/player/mute.png';
     else
       var img = '/images/player/unmute.png';
-    mute_unmute.attr('src', img);
+    this.mute_unmute.attr('src', img);
   }
-  
+}
+
+function bindPlayerEvents(player)
+{
   // SLIDER DU VOLUME
-  volume_slider.slider({
+  player.volume_slider.slider({
     range: "min",
     value: 80,
     min: 0,
     max: 100,
     step: 5,
     slide: function( event, ui ) {
-      volume.html(ui.value + "%");
+      player.volume.html(ui.value + "%");
     }
   });
-  volume.html( volume_slider.slider( "value" )  + "%");
-  volume_slider.bind( "slidechange", function(event, ui) {
-    getCurrentSong().setVolume(ui.value);
+  player.volume.html( player.volume_slider.slider( "value" )  + "%");
+  player.volume_slider.bind( "slidechange", function(event, ui) {
+    player.getCurrentSong().setVolume(ui.value);
   });
   // SLIDER DU TEMPS
-  /*time_slider.slider({
+  player.time_slider.slider({
     range: "min",
     value: 0,
     min: 0,
     max: 0,
     step: 1,
     slide: function( event, ui ) {
-      this.getCurrentSong().setTime(ui.value);
+      player.getCurrentSong().setTime(ui.value);
     }
   });
   // VOLUME CHANGE
-  this.group.bind("volumechange", function(event) {
-    event.doChangeVolume();
+  player.group.bind("volumechange", function(event) {
+    player.doChangeVolume();
   });
-  // INIT DURACTION IN TIME SLIDER
-  this.group.bind("durationchange", function(event) {
-    event.duUpdateDuration();
+  // INIT DURATION IN TIME SLIDER
+  player.group.bind("durationchange", function(event) {
+    player.duUpdateDuration();
   });
   // UPDATE SLIDER POSITION AND TIMER INDICATION
-  this.group.bind( "timeupdate", function(event) {
-    event.doUpdateTime();
+  player.group.bind( "timeupdate", function(event) {
+    player.doUpdateTime();
+    });
+  // NEXT
+  $('#sonor_player img.next').live('click', function(event) {
+    player.doMoveToNext();
+  });
+  // PREVIOUS
+  $('#sonor_player img.previous').live('click', function(event) {
+    player.doMoveToPrevious();
   });
   // STOP
-  $('#next').live('click', function(event) {
-    event.doMoveToNext();
-  });
-  // STOP
-  $('#stop').live('click', function(event) {
-    event.doStop();
+  $('#sonor_player img.stop').live('click', function(event) {
+    player.doStop();
   });
   // PLAY & PAUSE
-  $('#play_pause').live('click', function(event) {
-    event.doPlayPause();
+  $('#sonor_player img.play_pause').live('click', function(event) {
+    player.doPlayPause();
   });
   // MUTE
-  $('#mute_unmute').live('click', function(event) {
-    event.doMuteUnmute();
-  });*/
+  $("#sonor_player img.mute_unmute").live('click', function(event) {
+    player.doMuteUnmute();
+  });
 }

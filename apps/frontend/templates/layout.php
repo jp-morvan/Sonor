@@ -9,16 +9,14 @@
     <?php echo use_javascript('jquery/notification.js'); ?>
 <?php if($sf_user->isAuthenticated()): ?>
       <?php echo use_javascript('/sfFormExtraPlugin/js/jquery.autocompleter.js'); ?>
-      <?php echo use_javascript('audio_player.js'); ?>
       <?php echo use_javascript('buzz.js'); ?>
+      <?php echo use_javascript('sonor.player.js'); ?>
       <?php echo use_stylesheet('frontend.css'); ?>
       <?php echo use_stylesheet('sonor.player.css'); ?>
 <?php else: ?>
       <?php echo use_stylesheet('frontend_not_authenticated.css'); ?>
 <?php endif; ?>
-    <?php echo use_javascript('sonor.player.js'); ?>
     <?php echo use_javascript(url_for('@javascript_functions')); ?>
-    <?php //tools::include_stylesheets_with_css_crush($sf_response) ?>
     <?php include_stylesheets() ?>
     <?php include_javascripts() ?>
   </head>
