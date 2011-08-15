@@ -32,10 +32,10 @@ class accueilActions extends sfActions
     {
       $choices['c_'.$c->slug] = '(C) '.$c->titre;
     }
-    if($type == "album")
-    {
-      $choices = array();
-    }
+//    if($type == "album")
+//    {
+//      $choices = array();
+//    }
     $albums = Doctrine::getTable('Album')->searchEverything($request->getParameter('q'), $request->getParameter('limit'));
     foreach($albums as $a)
     {
